@@ -1,0 +1,9 @@
+# Nikola's build and cache files
+*.py[cod]
+__pycache__
+cache
+output
+.doit.db
+.doit.db.db
+.venv
+nikolaserve.pid
