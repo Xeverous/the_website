@@ -1,0 +1,54 @@
+/*
+ * Note: once we have enough content, remove height properties
+ * from all elements - they are now only to see some boxes
+ * when no content is yet present.
+ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page {
+  width: 900px;
+  margin: 0 auto;
+}
+
+.container {
+  overflow: hidden; /* count floats in size */
+  background-color: #EAEDF0;
+}
+
+.header {
+  height: 100px;
+  background-color: #B2D6FF;
+}
+
+.sidebar {
+  float: left;
+  width: 200px;
+  height: 300px;
+  background-color: #F09A9D;
+}
+
+.content {
+  float: left;
+  width: 650px;
+  /* height: 500px; */
+  background-color: #F5CF8E;
+}
+
+.footer {
+  clear: both;
+  overflow: hidden;
+  background-color: #D6E9FE;
+}
+
+.footer-item {
+  float: left;
+  width: 31%;
+  margin: 20px 1.15%;
+  height: 160px;
+  background-color: #B2D6FF;
+}

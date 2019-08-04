@@ -1,0 +1,21 @@
+{% macro body() %}
+<body>
+	{# <div id="loader-wrapper">
+		<img src="{{ site.baseurl }}public/images/CPP_Logo.svg" alt="C++ Logo" class="loader-img">
+		<div id="loader"></div>
+		<div class="loader-section section-left"></div>
+		<div class="loader-section section-right"></div>
+	</div> #}
+
+	<div class='header'>HEADER</div>
+
+	<div class='container'>
+		<div class='page'>
+			{% import 'imports/sidebar.html' as sidebar with context %} {{ sidebar.sidebar() }}
+			<div class='content'>{{ post.text() }}</div>
+		</div>
+	</div>
+
+	{% import 'imports/footer.html' as footer %} {{ footer.footer() }}
+</body>
+{% endmacro %}

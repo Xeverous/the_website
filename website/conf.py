@@ -152,7 +152,8 @@ NAVIGATION_ALT_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "bootblog4"
+# Xeverous: we use our own "dark" theme
+THEME = "dark"
 
 # Primary color of your theme. This will be used to customize your theme.
 # Must be a HEX value.
@@ -216,16 +217,16 @@ THEME_CONFIG = {
 #     )
 
 POSTS = (
-    ("posts/*.rst", "posts", "post.tmpl"),
-    ("posts/*.md", "posts", "post.tmpl"),
-    ("posts/*.txt", "posts", "post.tmpl"),
-    ("posts/*.html", "posts", "post.tmpl"),
+    #("posts/*.rst", "posts", "post.tmpl"),
+    #("posts/*.md", "posts", "post.tmpl"),
+    #("posts/*.txt", "posts", "post.tmpl"),
+    #("posts/*.html", "posts", "post.tmpl"),
 )
 PAGES = (
-    ("pages/*.rst", "", "page.tmpl"),
-    ("pages/*.md", "", "page.tmpl"),
-    ("pages/*.txt", "", "page.tmpl"),
-    ("pages/*.html", "", "page.tmpl"),
+    #("pages/*.rst", "", "page.hmtl"),
+    ("pages/*.md", "", "page.html"),
+    #("pages/*.txt", "", "page.html"),
+    #("pages/*.html", "", "page.html"),
 )
 
 
@@ -1278,11 +1279,50 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code', 'markdown.extensions.c
 # USE_BUNDLES = True
 
 # Plugins you don't want to use. Be careful :-)
-# DISABLED_PLUGINS = ["render_galleries"]
+#
+# Xeverous: We get rid of everything unused. Some plugins expect certain things
+#           (some JS/CSS or HTML templates) to exist but our theme has no parent
+#           so we start from really nothing. Having plugins enabled would break
+#           the build due to missing dependencies.
+#           More info: https://github.com/getnikola/nikola/issues/3281
+#
+#           List of all built-in plugins:
+#           grep -i '^name' nikola/plugins/{misc,shortcode,task}/*.plugin
+DISABLED_PLUGINS = [
+    "render_galleries",     # expects gallery.tmpl
+    #"scan_posts", # requires render_posts
+    "classify_taxonomies",
+    "chart",
+    "emoji",
+    "gist",                 # maybe later
+    "listing_shortcode",
+    "post_list",
+    "thumbnail",
+    "classify_archive",
+    "classify_authors",
+    "create_bundles",
+    "classify_categories",
+    #"copy_assets",        # we have own assets to copy
+    #"copy_files",         # we have own files to copy
+    "render_galleries",
+    "gzip",
+    "classify_indexes",
+    "render_listings",
+    "classify_page_index",
+    #"render_pages",       # we have some pages (non-blog)
+    #"render_posts",        # maybe later
+    "redirect",
+    "robots",
+    "scale_images",
+    "sitemap",
+    "render_sources",
+    "classify_tags",
+    "render_taxonomies",
+]
 
 # Special settings to disable only parts of the indexes plugin.
 # Use with care.
-# DISABLE_INDEXES = False
+DISABLE_INDEXES = True
 # DISABLE_MAIN_ATOM_FEED = False
 # DISABLE_MAIN_RSS_FEED = False
 
