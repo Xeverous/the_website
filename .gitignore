@@ -1,2 +1,5 @@
 # virtualenv directory
 venv/
+
+# Visual Studio Code files
+.vscode/
