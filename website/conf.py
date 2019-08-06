@@ -872,7 +872,10 @@ IMAGE_FOLDERS = {'images': 'images'}
 # paraiso-light, pastie, perldoc, rrt, tango, trac, vim, vs, xcode
 # This list MAY be incomplete since pygments adds styles every now and then.
 # Check with list(pygments.styles.get_all_styles()) in an interpreter.
-# CODE_COLOR_SCHEME = 'default'
+#
+# Xeverous: we do not use built-in code highligting right now
+#           might enable later for use for certain languages
+CODE_COLOR_SCHEME = None
 
 # FAVICONS contains (name, file, size) tuples.
 # Used to create favicon link like this:

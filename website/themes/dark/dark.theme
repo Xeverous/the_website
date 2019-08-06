@@ -7,4 +7,3 @@ tags = dark
 
 [Nikola]
 bootswatch = False
-ignored_assets = css/style.css, css/code.css, js/baguetteBox.min.js, js/html5shiv-printshiv.min.js, js/fancydates.min.js, js/gallery.js, js/justified-layout.min.js, js/gallery.min.js, js/fancydates.js, js/moment-with-locales.min.js, js/html5.js, xml/rss.xsl, xml/atom.xsl, css/ipython.min.css, css/rst_base.css, css/baguetteBox.min.css, css/rst.css, css/nikola_ipython.css, css/html4css1.css, css/theme.css, css/nikola_rst.css, css/code.css
