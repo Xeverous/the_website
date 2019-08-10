@@ -7,12 +7,27 @@
 		<div class="loader-section section-right"></div>
 	</div> #}
 
-	<div class='header'>HEADER</div>
+	<header>
+		<nav>
+			<div class='menu-container'>
+				<ul class='menu'>
+					<li class='button'><a href='/'>HOME</a></li>
+					<li class='button'><a href='/index'>INDEX</a></li>
+					<li class='button'><a href='/faq'>FAQ</a></li>
+					<li class='button'><a href='/about'>ABOUT</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
 
-	<div class='container'>
-		<div class='page'>
-			{% import 'imports/sidebar.html' as sidebar with context %} {{ sidebar.sidebar() }}
-			<div class='content'>{{ post.text() }}</div>
+	<div class='container'> {# everything between header and footer #}
+		<div class='breadcrumb'>{# TODO #}</div>
+
+		<div class='content-wrapper'>
+			<div class='page'>
+				{% import 'imports/sidebar.html' as sidebar with context %} {{ sidebar.sidebar() }}
+				<div class='content'>{{ post.text() }}</div>
+			</div>
 		</div>
 	</div>
 

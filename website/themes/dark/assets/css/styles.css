@@ -10,33 +10,102 @@
   box-sizing: border-box;
 }
 
+body {
+  color: #ffffff;
+  background-color: #000000;
+  font-family: Ubuntu, Verdana, Helvetica, Arial, sans-serif;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
+}
+
 .page {
   width: 900px;
   margin: 0 auto;
 }
 
-.container {
-  overflow: hidden; /* count floats in size */
-  background-color: #EAEDF0;
+.menu-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  border-bottom: white solid 1px;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+  width: 100%;
+}
+
+.menu li {
+  list-style: none;
+  flex: 1;
+  text-align: center;
+  height: 100%;
+  border-right: white solid 1px;
+}
+
+.menu li:last-of-type {
+  border: none;
+}
+
+.menu li:hover, .menu li:active {
+  background-color: #7a6600;
+}
+
+.button a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1em;
 }
 
 .header {
   height: 100px;
-  background-color: #B2D6FF;
+  background-color: #000;
+  border-bottom: 1px solid #fafafa;
 }
 
 .sidebar {
   float: left;
   width: 200px;
   height: 300px;
-  background-color: #F09A9D;
+  background-color: #f09a9d;
+}
+
+.container {
+  overflow: hidden; /* count floats in size */
 }
 
 .content {
   float: left;
   width: 650px;
-  /* height: 500px; */
-  background-color: #F5CF8E;
+  background-color: #2d2d2d;
+  padding: 20px 20px;
+  margin: 20px;
+  border-radius: 10px;
+  color: #fff;
 }
 
 .footer {
@@ -51,4 +120,16 @@
   margin: 20px 1.15%;
   height: 160px;
   background-color: #B2D6FF;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link, a:visited {
+  color: #ffe55d;
+}
+
+a:hover {
+  color: #ffff5d;
 }
