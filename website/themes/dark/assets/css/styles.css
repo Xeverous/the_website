@@ -38,6 +38,37 @@ h6 {
   font-size: 1rem;
 }
 
+ol, ul {
+  display: block;
+  padding-left: 40px;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+table {
+  max-width: 100%;
+  margin-bottom: 1rem;
+  border: 1px solid #32383e;
+  border-collapse: collapse;
+  background-color: #212529;
+}
+
+table td, table th {
+  padding: .75rem;
+  vertical-align: middle;
+  border: 1px solid #32383e;
+}
+
 .page {
   width: 900px;
   margin: 0 auto;
@@ -49,6 +80,10 @@ h6 {
   align-items: stretch;
   width: 100%;
   border-bottom: white solid 1px;
+}
+
+.menu-container ul, .menu-container ol {
+  padding: 0;
 }
 
 .menu {
