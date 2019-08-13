@@ -58,15 +58,17 @@ p {
 table {
   max-width: 100%;
   margin-bottom: 1rem;
-  border: 1px solid #32383e;
   border-collapse: collapse;
   background-color: #212529;
 }
 
 table td, table th {
-  padding: .75rem;
-  vertical-align: middle;
+  padding: .25rem .5rem;
   border: 1px solid #32383e;
+}
+
+tbody tr:nth-child(odd) td, tbody tr:nth-child(odd) th {
+    background-color: #2c343b;
 }
 
 .page {
@@ -135,7 +137,7 @@ table td, table th {
 
 .content {
   float: left;
-  width: 650px;
+  max-width: 750px;
   background-color: #2d2d2d;
   padding: 20px 20px;
   margin: 20px;

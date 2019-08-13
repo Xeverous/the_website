@@ -106,7 +106,7 @@ Column A | Column B | Column C
 :--------|:--------:|--------:
 left align | middle align | right align
 left align | middle align | right align
-a loooooooong text | a loooooooong text | a loooooooong text
+a loooooooong text | a long text | a loooooooooooooooooooooooooong text that might span multiple lines
 
 ## Media
 
