@@ -19,6 +19,11 @@ body {
 	font-size: 1rem;
 }
 
+img {
+	max-width: 100%;
+	display: inline-block;
+}
+
 h1 {
 	font-size: 2.5rem;
 }
