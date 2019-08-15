@@ -1,0 +1,12 @@
+[Core]
+Name = generate_index
+Module = generate_index
+
+[Nikola]
+PluginCategory = ShortcodePlugin
+
+[Documentation]
+Author = Xeverous
+Version = 0.0
+Website = https://xeverous.github.io
+Description = Adds generate_index shortcode which outputs structure of all pages and their titles as a hierarchical list of links
