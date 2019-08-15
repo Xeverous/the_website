@@ -197,8 +197,9 @@ ul.menu, ol.menu {
 }
 
 .container {
+	min-width: 50%;
 	max-width: 800px;
-	margin-top: 2rem;
+	margin-top: 4rem;
 }
 
 .content {
