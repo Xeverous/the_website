@@ -4,7 +4,6 @@
 .. date: 2019-08-05 22:09:52 UTC+02:00
 .. tags:
 .. category:
-.. link:
 .. description:
 .. type: text
 .. author: Xeverous

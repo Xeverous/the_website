@@ -3,7 +3,6 @@
 .. slug: faq
 .. tags:
 .. category:
-.. link:
 .. description:
 .. type: text
 .. author: Xeverous
