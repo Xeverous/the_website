@@ -130,6 +130,10 @@ I do not have any strict rules regarding content, but would generally accept any
 
 Note: you have the freedom to choose different license for your articles.
 
+### Can I help with the website?
+
+Yes, and not necessarily by adding content. You can propose anything related to the website build system. I am pretty sure there is a lot of place for improvement. HTML and CSS are not my primary skills. There is also a bunch of Python code that could probably be simplified.
+
 ### Why is the content free? Would not selling books or online courses be better for you?
 
 This is a question that can not be answered in 1 sentence, especially to people who ask this with a very strong incentive on money. I have met enough narrow-minded people, constantly approaching my work with attitude like "Why are you working on this?", "Why are you doing something for free?", "Why are you contributing to open source instead of making money from wiriting game bots?".
