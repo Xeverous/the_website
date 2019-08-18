@@ -4,9 +4,10 @@
 .. date: 2019-08-05 22:09:52 UTC+02:00
 .. tags:
 .. category:
-.. description:
+.. description: homepage
 .. type: text
 .. author: Xeverous
+.. breadcrumb: False
 .. pretty_url: False
 -->
 

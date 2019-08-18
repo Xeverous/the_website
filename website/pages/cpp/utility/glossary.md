@@ -1,6 +1,6 @@
 <!--
 .. title: glossary
-.. slug: glossay
+.. slug: glossary
 .. tags:
 .. category:
 .. description: a list of terms common in the C and C++ community

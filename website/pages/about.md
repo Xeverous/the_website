@@ -3,8 +3,9 @@
 .. slug: about
 .. tags:
 .. category:
-.. description:
+.. description: about page
 .. type: text
+.. breadcrumb: False
 .. author: Xeverous
 -->
 

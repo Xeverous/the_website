@@ -27,7 +27,19 @@
 		</nav>
 
 		<div class='container'>
-			<div class='breadcrumb'>{# TODO #}</div>
+			{% if post.metadata.has_breadcrumb() %}
+				<nav class='breadcrumb'>
+					<ol>
+						<li><a href='/index'>index</a></li>
+						<span>/</span>
+						{% for b in post.metadata.breadcrumb %}
+							<li><a href="{{ b.link }}">{{ b.name }}</a></li>
+							<span>/</span>
+						{% endfor %}
+						<li>{{ post.title() }}</li>
+					</ol>
+				</nav>
+			{% endif %}
 			<div class='content'>
 				<h1>{{ post.title() }}</h1>{# TODO add author date etc #}
 				{{ post.text() }}

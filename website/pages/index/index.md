@@ -7,6 +7,9 @@
 .. description: index of all pages on the website
 .. type: text
 .. author: Xeverous
+.. index_path: /
+.. breadcrumb: False
+.. pretty_url: False
 -->
 
 {{% generate_index %}}

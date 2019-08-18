@@ -10,6 +10,10 @@
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 18px;
+}
+
 body {
 	color: #ffffff;
 	background-color: #000000;
@@ -202,6 +206,25 @@ ul.menu, ol.menu {
 	margin-top: 4rem;
 }
 
+nav.breadcrumb {
+	background-color: #1c1c1c;
+	border: 1px solid #3c3c3c;
+	border-radius: .25rem;
+	padding: .75rem 1rem;
+	margin-bottom: 1rem;
+}
+
+.breadcrumb ol {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	font-weight: 800;
+}
+
+.breadcrumb span {
+	padding: 0 10px;
+}
+
 .content {
 	background-color: #2d2d2d;
 	padding: 20px 20px;
@@ -224,6 +247,10 @@ ul.menu, ol.menu {
 }
 
 @media (min-width: 768px) {
+	html {
+		font-size: 20px;
+	}
+
 	.topbar {
 		display: none;
 	}
@@ -240,7 +267,7 @@ ul.menu, ol.menu {
 		margin: 0;
 	}
 
-	.content {
+	.breadcrumb, .content {
 		margin: 20px;
 	}
 }

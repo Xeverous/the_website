@@ -1,0 +1,12 @@
+[Core]
+Name = generate_metadata
+Module = generate_metadata
+
+[Nikola]
+PluginCategory = SignalHandler
+
+[Documentation]
+Author = Xeverous
+Version = 1.0
+Website = https://xeverous.github.io
+Description = Adds "metadata" attribute to the "site" object
