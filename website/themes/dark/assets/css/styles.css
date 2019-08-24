@@ -84,6 +84,11 @@ a {
 	text-decoration: none;
 }
 
+blockquote {
+	border-left: .25rem solid #afb1b4;
+	padding: 0 1rem;
+}
+
 a:link, a:visited {
 	color: #ffe55d;
 }
