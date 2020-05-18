@@ -135,9 +135,10 @@ def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEn
     """
     Generate a list of breadcrumb entries consisting of parent directory index pages
 
-    Note that for first-depth pages the resulting list will be empty. This is because
-    the HTML templates add extra elements: root index page and the page title. The
-    HTML template is effectively "index" / result / page.title().
+    Note that for first-depth pages the result of this function will be an empty list.
+    This is intentional: HTML templates already add extra elements around: they prepend
+    root index page and append the current page title. The HTML template is effectively:
+    root_index_page / this_function_result / page.title().
 
     This also means that you should not check it like "if page.metadata.breadcrumb"
     in HTML templates because an empty list still means the desire to generate a
