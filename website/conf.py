@@ -223,7 +223,7 @@ POSTS = (
     #("posts/*.html", "posts", "post.tmpl"),
 )
 PAGES = (
-    #("pages/*.rst", "", "page.hmtl"),
+    ("pages/*.rst", "", "page.html"),
     ("pages/*.md", "", "page.html"),
     #("pages/*.txt", "", "page.html"),
     #("pages/*.html", "", "page.html"),
