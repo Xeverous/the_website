@@ -2,7 +2,7 @@ import typing
 from blinker import signal
 
 from nikola.plugin_categories import SignalHandler
-from nikola.utils import get_logger, STDERR_HANDLER
+from nikola.utils import get_logger
 from nikola.nikola import Nikola
 
 from plugins.metadata import SiteMetadata, PageMetadata
@@ -22,12 +22,13 @@ class MetadataGenerator(SignalHandler):
         self.site.metadata = SiteMetadata(self.site)
 
         for page in self.site.pages:
+            self.logger.info(f"generating metadata for page {page.permalink()}")
             page.metadata = PageMetadata(page, self.site.metadata)
 
 
     def set_site(self, site: Nikola) -> None:
         self.site = site
-        self.logger = get_logger(self.name, STDERR_HANDLER)
+        self.logger = get_logger(self.name)
 
         self.ready = signal('scanned')
         self.ready.connect(self.add_metadata)

@@ -5,16 +5,21 @@ from typing import List, Tuple
 from nikola.plugin_categories import ShortcodePlugin
 from nikola.nikola import Nikola
 from nikola.post import Post
+from nikola.utils import get_logger
 
 from plugins.metadata import PageDir, directories_from_path
 
 class IndexGenerationShortcode(ShortcodePlugin):
     """Generates website structure. Requires SiteMetadata attribute in site."""
 
-    name = "generate_index"
+    def __init__(self):
+        self.name = "generate_index"
+        self.logger = get_logger(self.name)
+
 
     def set_site(self, site: Nikola) -> None:
-        site.register_shortcode("generate_index", self.generate_index)
+        site.register_shortcode(self.name, self.generate_index)
+
 
     def generate_index(
         self,
@@ -34,16 +39,17 @@ class IndexGenerationShortcode(ShortcodePlugin):
 
         # index pages can list contents of arbitrary directory
         # find first which directory the page refers to
-        current_dir: PageDir = site.metadata.structure
+        index_root: PageDir = site.metadata.structure
         index_path: str = post.meta[post.default_lang]["index_path"]
         if index_path == ".":
             for directory_name in directories_from_path(post.permalink()):
-                current_dir = current_dir.enter(directory_name)
+                index_root = index_root.enter(directory_name)
         elif index_path != "/":
             for directory_name in directories_from_path(index_path):
-                current_dir = current_dir.enter(directory_name)
+                index_root = index_root.enter(directory_name)
 
-        html_result: str = generate_hierarchical_html(current_dir)
+        self.logger.info(f"generating index structure for {post.permalink()} that starts in {index_path}")
+        html_result: str = generate_hierarchical_html(index_root)
 
         # We need to regenerate indexes every time a page is added or removed.
         # We can not return wildcard paths or generally - paths which do not exist
