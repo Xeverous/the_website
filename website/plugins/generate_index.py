@@ -7,7 +7,7 @@ from nikola.nikola import Nikola
 from nikola.post import Post
 from nikola.utils import get_logger
 
-from plugins.metadata import PageDir, directories_from_path
+from plugins.metadata import PageDir, split_path
 
 class IndexGenerationShortcode(ShortcodePlugin):
     """Generates website structure. Requires SiteMetadata attribute in site."""
@@ -42,10 +42,10 @@ class IndexGenerationShortcode(ShortcodePlugin):
         index_root: PageDir = site.metadata.structure
         index_path: str = post.meta[post.default_lang]["index_path"]
         if index_path == ".":
-            for directory_name in directories_from_path(post.permalink()):
+            for directory_name in split_path(post.permalink()):
                 index_root = index_root.enter(directory_name)
         elif index_path != "/":
-            for directory_name in directories_from_path(index_path):
+            for directory_name in split_path(index_path):
                 index_root = index_root.enter(directory_name)
 
         self.logger.info(f"generating index structure for {post.permalink()} that starts in {index_path}")

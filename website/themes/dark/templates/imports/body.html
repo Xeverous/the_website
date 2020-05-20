@@ -32,8 +32,8 @@
 					<ol>
 						<li><a href='/index'>index</a></li>
 						<span>/</span>
-						{% for b in post.metadata.breadcrumb %}
-							<li><a href="{{ b.link }}">{{ b.name }}</a></li>
+						{% for b in post.metadata.breadcrumb() %}
+							<li><a href="{{ b.link() }}">{{ b.name() }}</a></li>
 							<span>/</span>
 						{% endfor %}
 						<li>{{ post.title() }}</li>

@@ -2,10 +2,9 @@
 from __future__ import annotations
 from typing import List, Tuple
 
-import logging
-
 from nikola.post import Post
 from nikola.nikola import Nikola
+from nikola.utils import get_logger
 
 class SiteMetadata:
     def __init__(self, site: Nikola):
@@ -27,14 +26,15 @@ class SiteMetadata:
           -        -             -       WARN: empty directory
           -                              ERROR: missing index
         """
+        logger = get_logger(__name__)
         if root_dir.index_page:
             if not root_dir.subdirs and not root_dir.pages:
-                logging.warn(f'Directory "{root_dir.directory_name}" contains an index page but no child pages or directories')
+                logger.warn(f'Directory "{root_dir.directory_name}" contains an index page but no child pages or directories')
         else:
             if not root_dir.subdirs and not root_dir.pages:
-                logging.warn(f'Directory "{root_dir.directory_name}" is empty')
+                logger.warn(f'Directory "{root_dir.directory_name}" is empty')
             else:
-                logging.error(f'Directory "{root_dir.directory_name}" has child pages or directories but does not contain an index!')
+                logger.error(f'Directory "{root_dir.directory_name}" has child pages or directories but does not contain an index!')
 
         for subdir in root_dir.subdirs:
             self.log_correctness(subdir)
@@ -81,7 +81,7 @@ class PageDir:
 
 
 
-def directories_from_path(path: str) -> List[str]:
+def split_path(path: str) -> List[str]:
     """
     Strip slashes from the path and split the resulting directories into a list
 
@@ -98,38 +98,61 @@ def parse_site_structure(pages: List[Post]) -> PageDir:
         index_path = page.meta[page.default_lang].get("index_path")
         if index_path:
             if index_path == ".":
-                for directory_name in directories_from_path(page.permalink()):
+                for directory_name in split_path(page.permalink()):
                     current_dir = current_dir.enter_or_create(directory_name)
             elif index_path != "/":
-                for directory_name in directories_from_path(index_path):
+                for directory_name in split_path(index_path):
                     current_dir = current_dir.enter_or_create(directory_name)
             current_dir.index_page = page
         else:
             # skip last element because we are using PRETTY_URLS - every non-index page
             # becomes an index.html file in an extra directory named as its slug
-            for directory_name in directories_from_path(page.permalink())[:-1]:
+            for directory_name in split_path(page.permalink())[:-1]:
                 current_dir = current_dir.enter_or_create(directory_name)
             current_dir.pages.append(page)
 
     return root_dir
 
+# note: Nikola uses Post class for both blog posts and standalone pages
 class PageMetadata:
     def __init__(self, page: Post, site_metadata: SiteMetadata):
         self.is_index_page = "index_path" in page.meta[page.default_lang]
-
-        breadcrumb = page.meta[page.default_lang].get("breadcrumb")
-        if breadcrumb is None or breadcrumb != "False":
-            self.breadcrumb = generate_breadcrumb(page.permalink(), site_metadata.structure)
-        else:
-            self.breadcrumb = None
+        self._breadcrumb = make_page_breadcrumb(page, site_metadata.structure)
+        check_page_slug(page)
 
     def has_breadcrumb(self) -> bool:
-        return self.breadcrumb is not None
+        return self._breadcrumb is not None
+
+    def breadcrumb(self):
+        return self._breadcrumb
+
+def make_page_breadcrumb(page: Post, site_structure: PageDir):
+    breadcrumb = page.meta[page.default_lang].get("breadcrumb")
+    # TODO should this compare to "False"? (a string?)
+    if breadcrumb is None or breadcrumb != "False":
+        return generate_breadcrumb(page.permalink(), site_structure)
+    else:
+        return None
+
+def check_page_slug(page: Post) -> None:
+    # for consistency, page slug should be the same as the filename
+    file_name = page.translated_source_path(page.default_lang).split("/")[-1]
+    file_ext = page.source_ext()
+    page_slug = page.meta[page.default_lang].get("slug")
+    if page_slug != "index" and page_slug + file_ext != file_name:
+        logger = get_logger(__name__)
+        logger.warn(f'page {page.permalink()} uses slug "{page_slug}" which is different from source file name "{file_name}"')
 
 class BreadcrumbEntry:
     def __init__(self, link: str, name: str):
-        self.link = link
-        self.name = name
+        self._link = link
+        self._name = name
+
+    def name(self) -> str:
+        return self._name
+
+    def link(self) -> str:
+        return self._link
 
 def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEntry]:
     """
@@ -140,12 +163,12 @@ def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEn
     root index page and append the current page title. The HTML template is effectively:
     root_index_page / this_function_result / page.title().
 
-    This also means that you should not check it like "if page.metadata.breadcrumb"
+    This also means that you should not check it like "if page.metadata._breadcrumb"
     in HTML templates because an empty list still means the desire to generate a
     breadcrumb. Use "page.metadata.has_breadcrumb()" instead which differentiates
     between an empty list and None.
     """
-    directory_names = directories_from_path(page_path)
+    directory_names = split_path(page_path)
     if len(directory_names) == 0:
         raise RuntimeError(f"""Failed generation of a breadcrumb for "{page_path}"!
         Root directory pages should not have breadcrumbs.
