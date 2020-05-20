@@ -37,11 +37,11 @@ Because `this` was introduced before references have been added to the language.
 
 ### Why `constexpr` is not applied automatically anywhere possible?
 
-`constexpr` is applied automatically to aggregate type constructors. Besides this, it would be risky to do so. `constexpr` is a form of explicit promise: the code can be invoked at compile time. If it was not the case (applied automatically) it would be very easy to introduce breaking changes: someone might rely on a particular library version being compile-time compliant but future version could break it while the library author never meant it to be used this way. By having to specify compile-time compliance explictly, code author can crearly express that code can be safely used in compile-time contexts.
+`constexpr` is applied automatically to aggregate type constructors. Besides this, it would be risky to do so. `constexpr` is a form of explicit promise: the code can be invoked at compile time. If it was not the case (applied automatically) it would be very easy to introduce breaking changes: someone might rely on a particular library version being compile-time compliant but future version could break it while the library author never meant it to be used this way. By having to specify compile-time compliance explictly, code author can clearly express that code can be safely used in compile-time contexts.
 
 Exactly the same principles applies to `noexcept`. This is an explicit promise that the code in the current (and any future) version will not throw exceptions. No keyword means you should not assume such guuarantee.
 
-Note that in the case of code that is not formally `constexpr` compilers still optimize it, just not at the language level.
+Note that in the case of code that is not formally `constexpr` or `noexcept` compilers may still optimize it as if it was, it just does not happen at the language level.
 
 ### Is there a way to terminate the program instantly outside the main function?
 
