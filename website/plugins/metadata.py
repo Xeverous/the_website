@@ -10,6 +10,8 @@ class SiteMetadata:
     def __init__(self, site: Nikola):
         self._structure = parse_site_structure(site.pages)
         log_correctness(self.structure())
+        self._sidebar = make_sidebar()
+        verify_sidebar(self.sidebar(), site.pages)
 
     def __repr__(self) -> str:
         lines: List[str] = []
@@ -18,6 +20,9 @@ class SiteMetadata:
 
     def structure(self) -> PageDir:
         return self._structure
+
+    def sidebar(self) -> Sidebar:
+        return self._sidebar
 
 def log_correctness(root_dir: PageDir) -> None:
     """
@@ -97,7 +102,6 @@ class PageDir:
                 return subdir
 
         raise RuntimeError(f'Directory "{self.directory_name()}" has no child directory "{directory_name}"!')
-
 
 
 def split_path(path: str) -> List[str]:
@@ -207,3 +211,83 @@ def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEn
         result.append(BreadcrumbEntry(current_dir.index_page().permalink(), current_dir.index_page().title()))
 
     return result
+
+class Sidebar:
+    """
+    Represents sidebar on the page.
+
+    Do not add any links directly to HTML templates - add them here instead.
+    Instance of this class is passed then to templates which:
+    - avoids copy-paste errors
+    - lets Python code verify that all the data here is actually correct
+    """
+    def __init__(self, sections: List[SidebarSection]):
+        self._sections = sections
+
+    def sections(self) -> List[SidebarSection]:
+        return self._sections
+
+class SidebarSection:
+    def __init__(self, title: str, description: str, pages: List[SidebarLink]):
+        self._title = title
+        self._description = description
+        self._pages = pages
+
+    def title(self) -> str:
+        return self._title
+
+    def description(self) -> str:
+        return self._description
+
+    def pages(self) -> List[SidebarLink]:
+        return self._pages
+
+class SidebarPage:
+    def __init__(self, title: str, link: str):
+        self._title = title
+        self._link = link
+
+    def title(self) -> str:
+        return self._title
+
+    def link(self) -> str:
+        return self._link
+
+def verify_sidebar(sidebar: Sidebar, all_pages: List[Post]):
+    logger = get_logger(__name__)
+
+    for section in sidebar.sections():
+        if section.title() == "":
+            logger.warn(f'sidebar section with empty title, it has description: "{section.description()}"')
+        if len(section.pages()) == 0:
+            logger.warn(f'sidebar section "{section.title()}" has no pages')
+
+        for page in section.pages():
+            if page.title() == "":
+                logger.warn(f'untitled page in sidebar section "{section.title()}"')
+            if page.link() == "":
+                logger.warn(f'page "{page.title()}" in sidebar section "{section.title()}" has empty link')
+
+            page_found = False
+            for p in all_pages:
+                if page.link() == p.permalink():
+                    page_found = True
+                    break
+
+            if not page_found:
+                logger.warn(f'sidebar page "{page.title()}" link "{page.link()}" is invalid')
+
+def make_sidebar() -> Sidebar:
+    return Sidebar([
+        SidebarSection("C++ tutorials", "Learn C++ from begin() to the end() (and beyond) or use knowledge and experience gained in other languages in the accelerated tutorial.", []),
+        SidebarSection("C++ how-to", "Common and specific tasks explained.", []),
+        SidebarSection("C++ cheatsheets", "Yes, they exist!", []),
+        SidebarSection("C++ meta", "About the language itself.", [
+            SidebarPage("C++ FAQ", "/cpp/utility/cpp_faq/"),
+            SidebarPage("glossary", "/cpp/utility/glossary/")
+        ]),
+        SidebarSection("tooling", "How to setup environment and make writing programs easier", []),
+        SidebarSection("misc / meta", "About this website and its authors.", [
+            SidebarPage("about", "/about/")
+        ])
+    ])

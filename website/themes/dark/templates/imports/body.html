@@ -1,4 +1,4 @@
-{% macro body(page) %}
+{% macro body(page, sidebar_obj) %}
 <body>
 	{# <div id="loader-wrapper">
 		<img src="{{ site.baseurl }}public/images/CPP_Logo.svg" alt="C++ Logo" class="loader-img">
@@ -8,7 +8,7 @@
 	</div> #}
 
 	<div class='layout'>
-		{% import 'imports/sidebar.html' as sidebar %} {{ sidebar.sidebar() }}
+		{% import 'imports/sidebar.html' as sidebar %} {{ sidebar.sidebar(sidebar_obj) }}
 
 		<nav class='topbar'>
 			<ul class='menu'>

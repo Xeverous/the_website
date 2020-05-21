@@ -39,7 +39,7 @@ class IndexGenerationShortcode(ShortcodePlugin):
 
         # index pages can list contents of arbitrary directory
         # find first which directory the page refers to
-        index_root: PageDir = site.metadata.structure()
+        index_root: PageDir = site.GLOBAL_CONTEXT["metadata"].structure()
         index_path: str = post.meta[post.default_lang]["index_path"]
         if index_path == ".":
             for directory_name in split_path(post.permalink()):

@@ -20,11 +20,12 @@ class MetadataGenerator(SignalHandler):
 
     def add_metadata(self, event) -> None:
         self.logger.info("generating metadata for the site")
-        self.site.metadata = SiteMetadata(self.site)
+        metadata = SiteMetadata(self.site)
+        self.site.GLOBAL_CONTEXT["metadata"] = metadata
 
         for page in self.site.pages:
             self.logger.info(f"generating metadata for page {page.permalink()}")
-            page.metadata = PageMetadata(page, self.site.metadata)
+            page.metadata = PageMetadata(page, metadata)
 
 
     def set_site(self, site: Nikola) -> None:

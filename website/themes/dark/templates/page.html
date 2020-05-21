@@ -2,7 +2,7 @@
 <html lang="en">
 
 {% import 'imports/head.html' as head %} {{ head.head() }}
-{% import 'imports/body.html' as body %} {{ body.body(post) }}
+{% import 'imports/body.html' as body %} {{ body.body(post, metadata.sidebar()) }}
 
 {#
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

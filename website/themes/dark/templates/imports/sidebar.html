@@ -1,16 +1,26 @@
-{% macro sidebar(site_structure) %}
+{% macro sidebar(sidebar_obj) %}
 <nav class='sidebar'>
-	<h1>C++ TUTORIALS</h1>
-		TODO
-	<h1>C++ HOW-TO</h1>
-		TODO
-	<h1>C++ CHEATSHEETS</h1>
-		TODO
-	<h1>C++ CHEATSHEETS</h1>
-		TODO
-	<h1>TOOLING</h1>
-		TODO
-	<h1>MISC / META</h2>
-		TODO
+	<ul>
+		<li class="sidebar-section">
+			<ul>
+				{# TODO add some icons/images for these links #}
+				<li><a href="/">HOME</a></li>
+				<li><a href="/index">INDEX</a></li>
+			</ul>
+		</li>
+
+		{% for section in sidebar_obj.sections() %}
+			<li class="sidebar-section">
+				<h4 class="sidebar-section-title">{{ section.title() }}</h4>
+				<p class="sidebar-section-description">{{ section.description() }}</p>
+
+				<ul>
+					{% for page in section.pages() %}
+						<li><a href="{{ page.link() }}">{{ page.title() }}</a></li>
+					{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
 </nav>
 {% endmacro %}

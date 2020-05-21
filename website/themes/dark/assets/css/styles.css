@@ -187,7 +187,8 @@ ul.menu, ol.menu {
 	left: -100vh;
 	height: 100%;
 	top: 0;
-	background: #777;
+	padding: 20px 20px;
+	background: #383838;
 	transition: left 100ms ease-in-out;
 	z-index: 1;
 	overflow: auto;
@@ -200,9 +201,16 @@ ul.menu, ol.menu {
 .sidebar ul {
 	display: flex;
 	flex-flow: column;
-	list-style-type: none;
+	list-style: none;
+	padding-left: 0;
 	height: 100%;
 	margin-top: 0;
+}
+
+.sidebar-section-description {
+	font-style: italic;
+	font-size: 0.75em;
+	margin-bottom: 5px;
 }
 
 .container {
@@ -231,7 +239,7 @@ nav.breadcrumb {
 }
 
 .content {
-	background-color: #2d2d2d;
+	background-color: #262626;
 	padding: 20px 20px;
 	border-radius: 10px;
 	color: #fff;
