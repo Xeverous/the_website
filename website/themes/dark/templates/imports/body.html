@@ -1,4 +1,4 @@
-{% macro body() %}
+{% macro body(page) %}
 <body>
 	{# <div id="loader-wrapper">
 		<img src="{{ site.baseurl }}public/images/CPP_Logo.svg" alt="C++ Logo" class="loader-img">
@@ -8,7 +8,7 @@
 	</div> #}
 
 	<div class='layout'>
-		{% import 'imports/sidebar.html' as sidebar with context %} {{ sidebar.sidebar() }}
+		{% import 'imports/sidebar.html' as sidebar %} {{ sidebar.sidebar() }}
 
 		<nav class='topbar'>
 			<ul class='menu'>
@@ -27,22 +27,22 @@
 		</nav>
 
 		<div class='container'>
-			{% if post.metadata.has_breadcrumb() %}
+			{% if page.metadata.has_breadcrumb() %}
 				<nav class='breadcrumb'>
 					<ol>
 						<li><a href='/index'>index</a></li>
 						<span>/</span>
-						{% for b in post.metadata.breadcrumb() %}
+						{% for b in page.metadata.breadcrumb() %}
 							<li><a href="{{ b.link() }}">{{ b.name() }}</a></li>
 							<span>/</span>
 						{% endfor %}
-						<li>{{ post.title() }}</li>
+						<li>{{ page.title() }}</li>
 					</ol>
 				</nav>
 			{% endif %}
 			<div class='content'>
-				<h1>{{ post.title() }}</h1>{# TODO add author date etc #}
-				{{ post.text() }}
+				<h1>{{ page.title() }}</h1>{# TODO add author date etc #}
+				{{ page.text() }}
 			</div>
 		</div>
 	</div>

@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/33533148
 from __future__ import annotations
-from typing import List, Tuple
+from typing import List, Tuple, Optional
 
 from nikola.post import Post
 from nikola.nikola import Nikola
@@ -8,48 +8,51 @@ from nikola.utils import get_logger
 
 class SiteMetadata:
     def __init__(self, site: Nikola):
-        self.structure = parse_site_structure(site.pages)
-        self.log_correctness(self.structure)
+        self._structure = parse_site_structure(site.pages)
+        log_correctness(self.structure())
 
     def __repr__(self) -> str:
         lines: List[str] = []
-        build_structure_repr(self.structure, lines, 0)
+        build_structure_repr(self.structure(), lines, 0)
         return "\n".join(lines)
 
-    def log_correctness(self, root_dir: PageDir) -> None:
-        """
-        Check and log any suspicions in the structure
+    def structure(self) -> PageDir:
+        return self._structure
 
-        index   child dirs   child pages
-          +        -             -       WARN: useless index
-          +                              OK
-          -        -             -       WARN: empty directory
-          -                              ERROR: missing index
-        """
-        logger = get_logger(__name__)
-        if root_dir.index_page:
-            if not root_dir.subdirs and not root_dir.pages:
-                logger.warn(f'Directory "{root_dir.directory_name}" contains an index page but no child pages or directories')
+def log_correctness(root_dir: PageDir) -> None:
+    """
+    Check and log any suspicions in the structure
+
+    index   child dirs   child pages
+        +        -             -       WARN: useless index
+        +                              OK
+        -        -             -       WARN: empty directory
+        -                              ERROR: missing index
+    """
+    logger = get_logger(__name__)
+    if root_dir.index_page():
+        if not root_dir.subdirs() and not root_dir.pages():
+            logger.warn(f'Directory "{root_dir.directory_name()}" contains an index page but no child pages or directories')
+    else:
+        if not root_dir.subdirs() and not root_dir.pages():
+            logger.warn(f'Directory "{root_dir.directory_name()}" is empty')
         else:
-            if not root_dir.subdirs and not root_dir.pages:
-                logger.warn(f'Directory "{root_dir.directory_name}" is empty')
-            else:
-                logger.error(f'Directory "{root_dir.directory_name}" has child pages or directories but does not contain an index!')
+            logger.error(f'Directory "{root_dir.directory_name()}" has child pages or directories but does not contain an index!')
 
-        for subdir in root_dir.subdirs:
-            self.log_correctness(subdir)
+    for subdir in root_dir.subdirs():
+        log_correctness(subdir)
 
 # for debugging only
 def build_structure_repr(page_dir: PageDir, lines: List[str], recursion_depth: int) -> None:
     indent = "    " * recursion_depth
 
-    lines.append(f"{indent}INDEX: {page_dir.index_page is not None}")
+    lines.append(f"{indent}INDEX: {page_dir.index_page() is not None}")
 
-    for page in page_dir.pages:
+    for page in page_dir.pages():
         lines.append(f'{indent}"{page.title()}"')
 
-    for subdir in page_dir.subdirs:
-        lines.append(f"{indent}{subdir.directory_name}")
+    for subdir in page_dir.subdirs():
+        lines.append(f"{indent}{subdir.directory_name()}")
         build_structure_repr(subdir, lines, recursion_depth + 1)
 
 
@@ -57,27 +60,43 @@ class PageDir:
     """Represents a directory which may contain pages and subdirectories"""
 
     def __init__(self, directory_name: str, index_page: Post = None):
-        self.directory_name = directory_name
-        self.index_page = index_page
-        self.pages: List[Post] = []
-        self.subdirs: List[PageDir] = []
+        self._directory_name = directory_name
+        self._index_page = index_page
+        self._pages: List[Post] = []
+        self._subdirs: List[PageDir] = []
+
+    def directory_name(self) -> str:
+        return self._directory_name
+
+    def index_page(self, page: Post) -> None:
+        self._index_page = page
+
+    def index_page(self) -> Optional[Post]:
+        return self._index_page
+
+    # does not include index page
+    def pages(self) -> List[Post]:
+        return self._pages
+
+    def subdirs(self) -> List[PageDir]:
+        return self._subdirs
 
     def enter_or_create(self, directory_name: str) -> PageDir:
         """Return a nested directory object. If it does not exist, create one and then return it."""
-        for subdir in self.subdirs:
-            if subdir.directory_name == directory_name:
+        for subdir in self.subdirs():
+            if subdir.directory_name() == directory_name:
                 return subdir
 
-        self.subdirs.append(PageDir(directory_name))
-        return self.subdirs[-1]
+        self.subdirs().append(PageDir(directory_name))
+        return self.subdirs()[-1]
 
     def enter(self, directory_name: str) -> PageDir:
         """Return a nested directory object. If it does not exist, raise an exception"""
-        for subdir in self.subdirs:
-            if subdir.directory_name == directory_name:
+        for subdir in self.subdirs():
+            if subdir.directory_name() == directory_name:
                 return subdir
 
-        raise RuntimeError(f'Directory "{self.directory_name}" has no child directory "{directory_name}"!')
+        raise RuntimeError(f'Directory "{self.directory_name()}" has no child directory "{directory_name}"!')
 
 
 
@@ -103,13 +122,15 @@ def parse_site_structure(pages: List[Post]) -> PageDir:
             elif index_path != "/":
                 for directory_name in split_path(index_path):
                     current_dir = current_dir.enter_or_create(directory_name)
-            current_dir.index_page = page
+            # this does not look good but at the point of PageDir.__init__
+            # there is not enough information to set the index page
+            current_dir._index_page = page
         else:
             # skip last element because we are using PRETTY_URLS - every non-index page
             # becomes an index.html file in an extra directory named as its slug
             for directory_name in split_path(page.permalink())[:-1]:
                 current_dir = current_dir.enter_or_create(directory_name)
-            current_dir.pages.append(page)
+            current_dir.pages().append(page)
 
     return root_dir
 
@@ -117,7 +138,7 @@ def parse_site_structure(pages: List[Post]) -> PageDir:
 class PageMetadata:
     def __init__(self, page: Post, site_metadata: SiteMetadata):
         self.is_index_page = "index_path" in page.meta[page.default_lang]
-        self._breadcrumb = make_page_breadcrumb(page, site_metadata.structure)
+        self._breadcrumb = make_page_breadcrumb(page, site_metadata.structure())
         check_page_slug(page)
 
     def has_breadcrumb(self) -> bool:
@@ -183,6 +204,6 @@ def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEn
     #   we skip last element to avoid mentioning the same page twice
     for d in directory_names[:-1]:
         current_dir = current_dir.enter(d)
-        result.append(BreadcrumbEntry(current_dir.index_page.permalink(), current_dir.index_page.title()))
+        result.append(BreadcrumbEntry(current_dir.index_page().permalink(), current_dir.index_page().title()))
 
     return result

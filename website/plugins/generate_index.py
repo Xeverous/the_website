@@ -39,7 +39,7 @@ class IndexGenerationShortcode(ShortcodePlugin):
 
         # index pages can list contents of arbitrary directory
         # find first which directory the page refers to
-        index_root: PageDir = site.metadata.structure
+        index_root: PageDir = site.metadata.structure()
         index_path: str = post.meta[post.default_lang]["index_path"]
         if index_path == ".":
             for directory_name in split_path(post.permalink()):
@@ -73,11 +73,11 @@ def generate_hierarchical_html(root_dir: PageDir) -> str:
 def generate_hierarchical_html_impl(root_dir: PageDir, html_parts: List[str]) -> None:
     html_parts.append("<ul>")
 
-    for page in root_dir.pages:
+    for page in root_dir.pages():
         html_parts.append(f'<li><a href="{page.permalink()}">{page.title()}</a></li>')
 
-    for subdir in root_dir.subdirs:
-        html_parts.append(f'<li><a href="{subdir.index_page.permalink()}">{subdir.index_page.title()}</a>')
+    for subdir in root_dir.subdirs():
+        html_parts.append(f'<li><a href="{subdir.index_page().permalink()}">{subdir.index_page().title()}</a>')
         generate_hierarchical_html_impl(subdir, html_parts)
         html_parts.append("</li>")
 

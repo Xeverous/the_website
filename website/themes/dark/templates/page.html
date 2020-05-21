@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% import 'imports/head.html' as head with context %} {{ head.head() }}
-{% import 'imports/body.html' as body with context %} {{ body.body() }}
+{% import 'imports/head.html' as head %} {{ head.head() }}
+{% import 'imports/body.html' as body %} {{ body.body(post) }}
 
 {#
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

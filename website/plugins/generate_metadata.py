@@ -19,6 +19,7 @@ class MetadataGenerator(SignalHandler):
     name = 'generate_metadata'
 
     def add_metadata(self, event) -> None:
+        self.logger.info("generating metadata for the site")
         self.site.metadata = SiteMetadata(self.site)
 
         for page in self.site.pages:
