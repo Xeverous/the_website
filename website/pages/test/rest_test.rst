@@ -477,6 +477,16 @@ blank lines before and after.)
         So this block is not "lost",
         despite its indentation.
 
+Custom directives
+=================
+
+Custom code highlight
+---------------------
+
+.. cch::
+   :source_path: foo.cpp
+   :color_path: foo.color
+
 More advanced directives
 ========================
 

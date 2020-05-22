@@ -1,0 +1,12 @@
+[Core]
+Name = rest_highlighter
+Module = rest_highlighter
+
+[Nikola]
+PluginCategory = RestExtension
+
+[Documentation]
+Author = Xeverous
+Version = 1.0
+Website = https://xeverous.github.io
+Description = Implements custom reStructuredText directives
