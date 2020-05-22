@@ -89,6 +89,13 @@ blockquote {
 	padding: 0 1rem;
 }
 
+code {
+	background-color: #000000;
+	padding: 0.25rem 0.25rem;
+	border-radius: 0.5rem;
+	font-family: 'Consolas', 'Lucida Console', monospace;
+}
+
 a:link, a:visited {
 	color: #ffe55d;
 }
@@ -243,6 +250,45 @@ nav.breadcrumb {
 	padding: 20px 20px;
 	border-radius: 10px;
 	color: #fff;
+}
+
+.admonition {
+	padding: 0.5rem;
+	box-shadow: 0.25rem 0.25rem 1rem 0.25rem rgba(0, 0, 0, 0.3);
+	border-radius: 1rem;
+	box-sizing: border-box;
+	margin-bottom: 0.5rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.admonition > p {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.admonition.definition {
+	background-color: #500050;
+}
+
+.admonition.tip {
+	background-color: #9e8042;
+}
+
+.admonition.success {
+	background-color: #408000;
+}
+
+.admonition.note {
+	background-color: #2c4486;
+}
+
+.admonition.warning {
+	background-color: #de8909;
+}
+
+.admonition.error {
+	background-color: #e02300;
 }
 
 .footer {

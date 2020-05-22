@@ -59,7 +59,7 @@ Don't line-wrap long text manually by inserting line breaks. Enable line wrap in
 Blockquotes
 -----------
 
-TODO: search for a directive so that there is control of generated HTML class for CSS purposes.
+Generates ``<blockquote>`` elements. Already covered in CSS.
 
     Good afternoon, gentlemen. I am a HAL 9000 computer. I became operational at the H.A.L. plant in Urbana, Illinois on the 12th of January 1992. My instructor was Mr. Langley, and he taught me to sing a song. If you’d like to hear it I can sing it for you. - `HAL 9000 <http://en.wikipedia.org/wiki/HAL_9000>`_
 
@@ -520,6 +520,16 @@ Custom Admonition
    :class: my-admonition-class
 
    You can make up your own admonition too. With specified class.
+
+.. admonition:: Congratulations!
+   :class: success
+
+   You have finished the easy-mode Python tutorial. Now complete the inferno difficulty by changing the language to C++ or Java Script.
+
+.. admonition:: One Definition Rule
+   :class: definition
+
+   There should be at most one definition of One Definition Rule on this page.
 
 Images
 ------
