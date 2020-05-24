@@ -1,0 +1,92 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+6pp_direct macro_ref
+6pp_direct macro_ref 0com_single
+
+keyword <keyword tparam>
+keyword type : namespace::type {};
+
+3com_multi_dox 6com_tag_dox 0com_single_dox
+keyword type = namespace::type<built_in, built_in, built_in, namespace::type>;
+
+keyword <keyword... tparam>
+keyword type : tparam... { keyword tparam::keyword()...; };
+keyword <keyword... tparam>
+func(tparam...) -> type<tparam...>;
+
+keyword <keyword tparam>
+keyword concept = keyword(tparam param)
+{
+	{*param} -> keyword tparam::type; 0com_single
+	0com_single
+	0com_single
+};
+
+keyword <concept tparam, keyword... tparam> keyword
+keyword(keyword) func(tparam&& param, tparam&&... param) 0com_single
+{
+	keyword namespace::func<tparam>(param)(namespace::func<tparam>(param)...);
+}
+
+keyword <keyword tparam, namespace::type... tparam> keyword
+built_in func(tparam&& param, namespace::type<tparam...>)
+{
+	keyword !((namespace::func<tparam + num>(namespace::func<tparam>(param)) < namespace::func<tparam>(namespace::func<tparam>(param))) && ...);
+}
+
+keyword <concept... tparam> keyword
+built_in func(tparam&&... param)
+{
+	keyword keyword (keyword...(tparam) <= num1`)
+		keyword keyword;
+	keyword 3com_single_dox 5com_tag_dox 0com_single_dox
+		keyword func(namespace::func(namespace::func<tparam>(param)...), namespace::type<keyword...(tparam) - num>{});
+}
+
+built_in func()
+{
+	namespace::type<type> var_local = {num, num1`, 3num, str};
+
+	keyword (keyword& var_local : var_local)
+	{
+		0com_single
+		namespace::func([](keyword&& param) { namespace::var_static << param; }, var_local);
+
+		0com_single
+		var_local = namespace::func([](keyword&& param) -> type { keyword param + param; }, var_local);
+
+		namespace::var_static << str;
+
+		0com_single
+		namespace::func([](keyword&& param)
+		{
+			keyword type = namespace::type<keyword(param)>;
+
+			keyword keyword (namespace::type<type, built_in>)
+				namespace::namespace::func(str, param);
+			keyword keyword keyword (namespace::type<type, built_in>)
+				namespace::namespace::func(str, param);
+			keyword keyword keyword (namespace::type<type, built_in>)
+				namespace::namespace::func(str, param);
+			keyword keyword keyword (namespace::type<type, namespace::type>)
+				namespace::namespace::func(str, param);
+			keyword
+				keyword(type<type>::var_local, str);
+		}, var_local);
+	}
+
+	keyword (keyword keyword& var_local : var_local)
+	{
+		namespace::func(type {
+			[](keyword param) { namespace::var_static 2oo param 2oo chr; },
+			[](keyword param) { namespace::var_static 2oo namespace::func 2oo param 2oo chr; },
+			[](keyword namespace::type& param) { namespace::var_static 2oo namespace::func(param) 2oo chr; }
+		}, var_local);
+	}
+}

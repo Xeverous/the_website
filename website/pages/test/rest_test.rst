@@ -484,8 +484,8 @@ Custom code highlight
 ---------------------
 
 .. cch::
-   :source_path: foo.cpp
-   :color_path: foo.color
+   :code_path: test_code.cpp
+   :color_path: test_code.color
 
 More advanced directives
 ========================

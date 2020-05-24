@@ -1,0 +1,3 @@
+[submodule "website/external/arbitrary_code_highlighter"]
+	path = website/external/arbitrary_code_highlighter
+	url = https://github.com/Xeverous/arbitrary_code_highlighter.git
