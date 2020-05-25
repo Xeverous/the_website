@@ -1,0 +1,12 @@
+.. title: 404
+.. slug: 404
+.. tags:
+.. category:
+.. description: 404 page
+.. type: text
+.. breadcrumb: False
+.. author: Xeverous
+
+Page not found.
+
+Try trimming the link to move upwards, the linked resource was very likely moved and can be found in other pages in the same or sibling directories.
