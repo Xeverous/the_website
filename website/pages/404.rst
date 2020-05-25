@@ -5,6 +5,7 @@
 .. description: 404 page
 .. type: text
 .. breadcrumb: False
+.. pretty_url: False
 .. author: Xeverous
 
 Page not found.
