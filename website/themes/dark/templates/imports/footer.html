@@ -1,7 +1,24 @@
 {% macro footer() %}
-		<div class='footer'>
-			<div class='footer-item'>footer 1</div>
-			<div class='footer-item'>footer 2</div>
-			<div class='footer-item'>footer 3</div>
-		</div>
+		<footer class='footer'>
+			<div class='footer-item footer-item-container'>
+				<div class="footer-flex-item">
+					<a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">
+						<img alt="Creative Commons License" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+					</a>
+					<br />
+					All non-code content licensed under <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>, unless stated otherwise.
+				</div>
+				<div class="footer-flex-item">
+					All code content (monospaced font) licensed under <a rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons Zero License</a>, unless stated otherwise.
+				</div>
+			</div>
+			<div class='footer-item footer-item-container'>
+				<div class="footer-flex-item">
+					Generated using heavily customized <a href="https://getnikola.com">Nikola</a> static site generator.
+				</div>
+				<div class="footer-flex-item">
+					<a href="https://github.com/Xeverous/the_website">website repository and issue tracker</a>
+				</div>
+			</div>
+		</footer>
 {% endmacro %}

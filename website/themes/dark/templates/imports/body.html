@@ -1,12 +1,5 @@
 {% macro body(page, sidebar_obj) %}
 <body>
-	{# <div id="loader-wrapper">
-		<img src="{{ site.baseurl }}public/images/CPP_Logo.svg" alt="C++ Logo" class="loader-img">
-		<div id="loader"></div>
-		<div class="loader-section section-left"></div>
-		<div class="loader-section section-right"></div>
-	</div> #}
-
 	<div class='layout'>
 		{% import 'imports/sidebar.html' as sidebar %} {{ sidebar.sidebar(sidebar_obj) }}
 
@@ -47,6 +40,6 @@
 		</div>
 	</div>
 
-	{# {% import 'imports/footer.html' as footer %} {{ footer.footer() }} #}
+	{% import 'imports/footer.html' as footer %} {{ footer.footer() }}
 </body>
 {% endmacro %}

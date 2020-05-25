@@ -1,9 +1,3 @@
-/*
- * Note: once we have enough content, remove height properties
- * from all elements - they are now only to see some boxes
- * when no content is yet present.
- */
-
 * {
 	margin: 0;
 	padding: 0;
@@ -312,15 +306,22 @@ nav.breadcrumb {
 .footer {
 	clear: both;
 	overflow: hidden;
-	background-color: #D6E9FE;
+	background-color: #000000;
+	font-size: 0.75rem;
+	border-top: #ffffff 1px solid;
+	display: flex;
+	justify-content: space-around;
 }
 
 .footer-item {
-	float: left;
-	width: 31%;
+	width: 46%;
 	margin: 20px 1.15%;
-	height: 160px;
-	background-color: #B2D6FF;
+}
+
+.footer-item-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
 @media (min-width: 768px) {

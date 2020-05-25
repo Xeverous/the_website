@@ -4,6 +4,9 @@ https://docutils.sourceforge.io/docs/howto/rst-directives.html
 https://docutils.sourceforge.io/docs/howto/rst-roles.html
 https://github.com/getnikola/nikola/blob/master/nikola/plugins/compile/rest/media.py
 https://github.com/getnikola/nikola/issues/3415
+more examples:
+https://stackoverflow.com/questions/16719826/nesting-sphinx-extension-directives-with-rest
+https://github.com/fabpot/sphinx-php/blob/master/sensio/sphinx/configurationblock.py
 """
 
 from docutils import nodes

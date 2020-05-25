@@ -1,16 +1,16 @@
-{% macro head() %}
+{% macro head(page_title) %}
 <head>
 	<meta charset="utf-8"/>
 
 	<!-- Enable responsiveness on mobile devices-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
 
-	<!-- TODO do something useful with site.title and page.title here -->
-	<title>modern C++ by Xeverous</title>
+	<title>modern C++ by Xeverous - {{ page_title }}</title>
 
 	<link rel="icon" href="favicon.png"/>
 
 	<!-- RSS -->
+	{# TODO: enable/configure RSS in Nikola, this link is dead currently #}
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml"/>
 
 	<!-- CSS -->

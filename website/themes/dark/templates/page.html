@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% import 'imports/head.html' as head %} {{ head.head() }}
+{% import 'imports/head.html' as head %} {{ head.head(post.title()) }}
 {% import 'imports/body.html' as body %} {{ body.body(post, metadata.sidebar()) }}
 
 {#
