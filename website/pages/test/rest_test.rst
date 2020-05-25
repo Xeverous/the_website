@@ -477,6 +477,11 @@ blank lines before and after.)
         So this block is not "lost",
         despite its indentation.
 
+Custom interpreted text roles
+=============================
+
+Example inline C++ highlight: :cch:`std::string::npos`.
+
 Custom directives
 =================
 
