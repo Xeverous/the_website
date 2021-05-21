@@ -73,7 +73,7 @@ class PageDir:
     def directory_name(self) -> str:
         return self._directory_name
 
-    def index_page(self, page: Post) -> None:
+    def set_index_page(self, page: Post) -> None:
         self._index_page = page
 
     def index_page(self) -> Optional[Post]:
@@ -126,9 +126,10 @@ def parse_site_structure(pages: List[Post]) -> PageDir:
             elif index_path != "/":
                 for directory_name in split_path(index_path):
                     current_dir = current_dir.enter_or_create(directory_name)
-            # this does not look good but at the point of PageDir.__init__
-            # there is not enough information to set the index page
-            current_dir._index_page = page
+            # This is not done at the point of PageDir construction because
+            # the information which subpage is an index page is only available
+            # after all subpages have been processed.
+            current_dir.set_index_page(page)
         else:
             # skip last element because we are using PRETTY_URLS - every non-index page
             # becomes an index.html file in an extra directory named as its slug
@@ -188,7 +189,7 @@ def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEn
     root index page and append the current page title. The HTML template is effectively:
     root_index_page / this_function_result / page.title().
 
-    This also means that you should not check it like "if page.metadata._breadcrumb"
+    This also means that you should not check it like "if page.metadata.breadcrumb()"
     in HTML templates because an empty list still means the desire to generate a
     breadcrumb. Use "page.metadata.has_breadcrumb()" instead which differentiates
     between an empty list and None.

@@ -29,7 +29,7 @@ class IndexGenerationShortcode(ShortcodePlugin):
         lang: str = None
     ) -> Tuple[str, List[str]]:
         """
-        Generate a hierarchical list of all pages on the website.
+        Generate a hierarchical list of pages when shortcode is invoked.
 
         Ouput: a HTML string (nested <ul> elements containing <a> elements)
         and a list of file dependencies.

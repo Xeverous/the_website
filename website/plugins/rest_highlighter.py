@@ -149,7 +149,7 @@ class CustomCodeHighlight(Directive):
                 f'color_path: {color_path}\n'
                 f'valid_css_classes: {VALID_CSS_CLASSES}\n')
 
-        # report dependency on content of used files
+        # report dependency on used files - required to support incremental build
         self.state.document.settings.record_dependencies.add(code_path)
         self.state.document.settings.record_dependencies.add(color_path)
 
