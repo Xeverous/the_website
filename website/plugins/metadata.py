@@ -196,7 +196,7 @@ def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEn
     """
     directory_names = split_path(page_path)
     if len(directory_names) == 0:
-        raise RuntimeError(f"""Failed generation of a breadcrumb for "{page_path}"!
+        raise RuntimeError(f"""Failed to generate breadcrumb for "{page_path}"!
         Root directory pages should not have breadcrumbs.
         Add missing "breadcrumb: False" to page's metadata if this is the case.""")
 
@@ -209,6 +209,9 @@ def generate_breadcrumb(page_path: str, structure: PageDir) -> List[BreadcrumbEn
     #   we skip last element to avoid mentioning the same page twice
     for d in directory_names[:-1]:
         current_dir = current_dir.enter(d)
+        if current_dir.index_page() is None:
+            get_logger(__name__).error(f'Failed to generate breadcrumb for "{page_path}", missing index page(s)')
+            return []
         result.append(BreadcrumbEntry(current_dir.index_page().permalink(), current_dir.index_page().title()))
 
     return result
