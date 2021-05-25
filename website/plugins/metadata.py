@@ -161,13 +161,18 @@ def make_page_breadcrumb(page: Post, site_structure: PageDir):
         return None
 
 def check_page_slug(page: Post) -> None:
+    logger = get_logger(__name__)
+    index_page_slug = "index"
     # for consistency, page slug should be the same as the filename
     file_name = page.translated_source_path(page.default_lang).split("/")[-1]
     file_ext = page.source_ext()
     page_slug = page.meta[page.default_lang].get("slug")
-    if page_slug != "index" and page_slug + file_ext != file_name:
-        logger = get_logger(__name__)
+    if page_slug != index_page_slug and page_slug + file_ext != file_name:
         logger.warn(f'page {page.permalink()} uses slug "{page_slug}" which is different from source file name "{file_name}"')
+    # for consistency, index pages (that is, pages with "index_path" specified) should have slug "index"
+    if page.meta[page.default_lang].get("index_path") is not None:
+        if page_slug != index_page_slug:
+            logger.warn(f'page {page.permalink()} is an index page but has slug "{page_slug}" which is different from expected "{index_page_slug}"')
 
 class BreadcrumbEntry:
     def __init__(self, link: str, name: str):
