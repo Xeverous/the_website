@@ -40,8 +40,6 @@ Extra metadata fields:
 - `breadcrumb` (custom) - set to `False` if for some reason the page should not get a breadcrumb (e.g. 404 page).
 - `index_path` - makes the page an index page and allows to use `generate_index` *shortcode*.
 
-Pages with slug "index" are special-treated and always have `pretty_url` disabled for them, see https://github.com/getnikola/nikola/issues/3287 for more information.
-
 Unused metadata fields:
 
 - `tags` - comma-separated lists of tags (no uses found yet, might be used in the future).
@@ -57,6 +55,27 @@ Unused metadata fields:
 - `filters` - optional post-processing stuff built-in into Nikola.
 - `hidetitle` - no use since this site has own templates.
 - `nocomments` - this site currently does not use any comment system.
+
+Pages with slug "index" are special-treated and always have `pretty_url` disabled for them, see https://github.com/getnikola/nikola/issues/3287 for more information.
+
+Default metadata fields for a new page:
+
+```
+.. title: <TITLE>
+.. slug: <SAME AS FILENAME>
+.. description: <DESC>
+.. author: <NAME>
+```
+
+Default metadata fields for a new index page:
+
+```
+.. title: <TITLE>
+.. slug: index
+.. description: <DESC>
+.. author: <NAME>
+.. index_path: .
+```
 
 ## working with CSS
 
