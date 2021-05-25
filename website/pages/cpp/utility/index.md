@@ -5,7 +5,6 @@
 .. description: C++ utilities (schemas, cheatsheets etc)
 .. author: Xeverous
 .. index_path: .
-.. pretty_url: False
 -->
 
 {{% generate_index %}}

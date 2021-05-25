@@ -6,7 +6,6 @@
 .. author: Xeverous
 .. index_path: /
 .. breadcrumb: False
-.. pretty_url: False
 -->
 
 {{% generate_index %}}

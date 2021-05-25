@@ -5,7 +5,6 @@
 .. description: frequently asked quetions
 .. author: Xeverous
 .. index_path: .
-.. pretty_url: False
 -->
 
 # FAQ

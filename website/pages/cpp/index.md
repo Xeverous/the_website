@@ -5,7 +5,6 @@
 .. description: C++ materials
 .. author: Xeverous
 .. index_path: .
-.. pretty_url: False
 -->
 
 {{% generate_index %}}

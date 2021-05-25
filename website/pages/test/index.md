@@ -5,7 +5,6 @@
 .. description: test pages
 .. author: Xeverous
 .. index_path: .
-.. pretty_url: False
 -->
 
 test pages
