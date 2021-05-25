@@ -1,10 +1,7 @@
 .. title: reStructuredText test
 .. slug: rest_test
 .. date: 2020-05-20 13:08:52 UTC+02:00
-.. tags:
-.. category:
 .. description: reStructuredText test page
-.. type: text
 .. author: Xeverous
 
 The following page presents reStructuredText examples and how they look on the site. Compare the source of this page with how it looks on the site (after the build) to learn how everything is rendered.

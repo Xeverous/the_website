@@ -1,10 +1,7 @@
 <!--
 .. title: C++ FAQ
 .. slug: cpp_faq
-.. tags:
-.. category:
 .. description: a list of common questions regarding C++
-.. type: text
 .. author: Xeverous
 -->
 

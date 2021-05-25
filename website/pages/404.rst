@@ -1,9 +1,6 @@
 .. title: 404
 .. slug: 404
-.. tags:
-.. category:
 .. description: 404 page
-.. type: text
 .. breadcrumb: False
 .. pretty_url: False
 .. author: Xeverous

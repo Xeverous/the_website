@@ -1,10 +1,7 @@
 <!--
 .. title: glossary
 .. slug: glossary
-.. tags:
-.. category:
 .. description: a list of terms common in the C and C++ community
-.. type: text
 .. author: Xeverous
 -->
 

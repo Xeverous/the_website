@@ -1,10 +1,7 @@
 <!--
 .. title: site FAQ
 .. slug: site_faq
-.. tags:
-.. category:
 .. description: frequently asked questions about the website itself
-.. type: text
 .. author: Xeverous
 -->
 

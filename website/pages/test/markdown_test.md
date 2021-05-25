@@ -2,10 +2,7 @@
 .. title: Markdown test
 .. slug: markdown_test
 .. date: 2019-08-05 22:09:52 UTC+02:00
-.. tags:
-.. category:
 .. description: Markdown test page
-.. type: text
 .. author: Xeverous
 -->
 
