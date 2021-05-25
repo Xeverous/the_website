@@ -33,7 +33,7 @@ TODO - article with symbol character names.
 
 `GCC` - originally "GNU C Compiler", now "GNU Compilers Collecion". The de facto standard compiler toolchain for most GNU/Linux distributions.
 
-`final` - A keyword which has practically the same functionality in many languages. In C++ it is not technically a "keyword" but that is a minor detail. Depending on the context it is either preventing a class to be inherited from or preventing a virtual function to be overriden in descendant classes. In Java, it has additional functionality of preventing assignments (sismilar to `const` in other languages).
+`final` - A keyword which has practically the same functionality in many languages. In C++ it is not technically a "keyword" but that is a minor detail. Depending on the context it is either preventing a class to be inherited from or preventing a virtual function to be overriden in descendant classes. In Java, it has additional functionality of preventing assignments (similar to `const` in other languages).
 
 `framework` - a prepared set of tools and code base for certain purpose. Differs from library that it requires a certain application structure and can not be customized beyond creator's intent. Frameworks are more popular in higher level languages while libraries in lower level ones, although both are widely used in various languages.
 
@@ -51,7 +51,7 @@ TODO - article with symbol character names.
 
 `makefile` - a file with incremental build directives used by GNU make command line program. Various IDEs and other tools create makefiles and then call make which calls compiler and linker with appropriate arguments. Makefiles can also be used for other incremental command build tasks, for example LaTeX document generation.
 
-`MinGW` - Minimalist GNU for Windows, the most commonly used GCC toolchain port for Windows. Builds native Windows 32 and 64 bit executables.
+`MinGW` - Minimalist GNU for Windows. `MinGW-w64` is the most commonly used GCC toolchain port for Windows. Builds native Windows 32 and 64 bit executables without MSVC-specific code required such as `WinMain` entry function.
 
 `MI` - multiple inheritance.
 
@@ -77,7 +77,7 @@ TODO - article with symbol character names.
 
 `RVO` (or `NRVO`) - (named) return value optimization. In C++ function returning local temporaries by value are optimized out or to at least move operations. This allows to return any big object from the function without any unnecessary copies. Note: this optimization does not exist in C.
 
-`segfault` - [Segmentation Fault]((https://en.wikipedia.org/wiki/Segmentation_fault)). Error caused by dereferencing an invalid poitner (not necessarily a null pointer) or violating virtual memory access.
+`segfault` - [Segmentation Fault]((https://en.wikipedia.org/wiki/Segmentation_fault)). Error caused by dereferencing an invalid poitner (not necessarily a null pointer) or violating virtual memory access. Very common way to crash for programs with undefined behavior.
 
 `SFINAE` - substitution failure is not an error. Exploit on the C++ template instantiation mechanism used to disable certain implementations based on the type or value properties. Concepts can leverage SFINAE and offer syntax sugar for various template tricks but are mostly aimed towards generic type-safe programming.
 

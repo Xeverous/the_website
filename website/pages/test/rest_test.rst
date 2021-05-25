@@ -51,7 +51,7 @@ Lorem Ipsum
 
 **Lorem ipsum dolor sit amet**, consectetur adipiscing elit. Donec a elementum lectus. Sed quis dolor id ipsum interdum lobortis. Mauris ultricies eleifend rhoncus. Nullam nunc turpis, semper elementum risus ut, imperdiet vehicula elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer quam diam, tempus a malesuada ut, efficitur eu dolor. Phasellus ipsum urna, tincidunt in pellentesque sit amet, tempus ac dolor. Proin sed est ut arcu efficitur tincidunt quis non libero. Nulla imperdiet quam in orci auctor fermentum. Phasellus in mauris lacinia urna convallis cursus. Vivamus eget massa at magna aliquam fermentum.
 
-Don't line-wrap long text manually by inserting line breaks. Enable line wrap in editor and leave wrapping up to the final content reader (eg web browser).
+Don't line-wrap long text manually by inserting line breaks. Enable line wrap in editor and leave wrapping up to the final content reader (e.g. web browser).
 
 Blockquotes
 -----------

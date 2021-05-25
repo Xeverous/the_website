@@ -116,7 +116,7 @@ I use the designated keyword `typename` everywhere for consistency and to avoid 
 
 ### Why `T` in templates?
 
-I don't know the exact reason, but I predict it started either from the word "type" or "template". This is one of the very few places where C++ uses PascalCase. In generic contexts where more aliases are needed next alphabet letetrs are used.
+I don't know the exact reason, but I predict it started either from the word "type" or "template". This is one of the very few places where C++ uses PascalCase. In generic contexts where more aliases are needed next alphabet letters are used.
 
 In case of more adanced templates and concepts, longer and more descriptive names are used sush as `RandomAccessIterator` and `TriviallyConstructible`.
 
