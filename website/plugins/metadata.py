@@ -144,7 +144,7 @@ class PageMetadata:
     def __init__(self, page: Post, site_metadata: SiteMetadata):
         self.is_index_page = "index_path" in page.meta[page.default_lang]
         self._breadcrumb = make_page_breadcrumb(page, site_metadata.structure())
-        check_page_slug(page)
+        check_page_slug(page, self.is_index_page)
         check_required_metadata(page)
 
     def has_breadcrumb(self) -> bool:
@@ -161,7 +161,7 @@ def make_page_breadcrumb(page: Post, site_structure: PageDir):
     else:
         return None
 
-def check_page_slug(page: Post) -> None:
+def check_page_slug(page: Post, is_index_page: bool) -> None:
     logger = get_logger(__name__)
     index_page_slug = "index"
     # for consistency, page slug should be the same as the filename
@@ -171,9 +171,8 @@ def check_page_slug(page: Post) -> None:
     if page_slug != index_page_slug and page_slug + file_ext != file_name:
         logger.warn(f'page {page.permalink()} uses slug "{page_slug}" which is different from source file name "{file_name}"')
     # for consistency, index pages (that is, pages with "index_path" specified) should have slug "index"
-    if page.meta[page.default_lang].get("index_path") is not None:
-        if page_slug != index_page_slug:
-            logger.warn(f'page {page.permalink()} is an index page but has slug "{page_slug}" which is different from expected "{index_page_slug}"')
+    if is_index_page and page_slug != index_page_slug:
+        logger.warn(f'page {page.permalink()} is an index page but has slug "{page_slug}" which is different from expected "{index_page_slug}"')
 
 def check_required_metadata(page: Post) -> None:
     check_required_metadata_field(page, "title")
