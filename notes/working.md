@@ -27,14 +27,14 @@ Any file intended to be compiled must have metadata specified (https://getnikola
 Mandatory metadata fields:
 
 - `title` - will be used in `<title>` in generated HTML.
-- `description` - will be used used in `<meta>` in generated HTML for SEO.
 - `slug` - used as the last component of the page URL, should be short, only consist of `a-z0-9-_` and match the source file name.
-- `date` - creation time (ISO 8601).
+- `description` - will be used used in `<meta>` in generated HTML for SEO.
+- `author` - author name (string), will be used in generated HTML.
 
 Extra metadata fields:
 
+- `date` - creation time (ISO 8601).
 - `updated` - last modification time (ISO 8601).
-- `author` - author name (string), will be used in generated HTML.
 - `template` - override default HTML template used to render the page.
 - `pretty_url` - this site has globally enabled generation of pretty urls (`foo/index.html` instead of `foo.html`). This metadata tag overrides the setting for the given page. Note that pages with slug `index` will implicitly have pretty URL disabled. Setting this field to `False` should only be needed for special pages (e.g. 404 page).
 - `breadcrumb` (custom) - set to `False` if for some reason the page should not get a breadcrumb (e.g. 404 page).
