@@ -145,6 +145,7 @@ class PageMetadata:
         self.is_index_page = "index_path" in page.meta[page.default_lang]
         self._breadcrumb = make_page_breadcrumb(page, site_metadata.structure())
         check_page_slug(page)
+        check_required_metadata(page)
 
     def has_breadcrumb(self) -> bool:
         return self._breadcrumb is not None
@@ -173,6 +174,18 @@ def check_page_slug(page: Post) -> None:
     if page.meta[page.default_lang].get("index_path") is not None:
         if page_slug != index_page_slug:
             logger.warn(f'page {page.permalink()} is an index page but has slug "{page_slug}" which is different from expected "{index_page_slug}"')
+
+def check_required_metadata(page: Post) -> None:
+    check_required_metadata_field(page, "title")
+    check_required_metadata_field(page, "slug")
+    check_required_metadata_field(page, "description")
+    check_required_metadata_field(page, "author")
+
+def check_required_metadata_field(page: Post, field_name: str) -> None:
+    logger = get_logger(__name__)
+    field = page.meta[page.default_lang].get(field_name)
+    if not field:
+        logger.warn(f'page {page.permalink()} has missing "{field_name}" metadata field')
 
 class BreadcrumbEntry:
     def __init__(self, link: str, name: str):
