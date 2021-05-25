@@ -72,14 +72,16 @@ def load_inline_codes() -> Dict[str, str]:
             f"but color has {len(color_lines)}")
 
     result = {}
+    logger = get_logger(__name__)
     for i, (code, color) in enumerate(zip(code_lines, color_lines), 1):
         try:
+            if result.get(code):
+                logger.error(f'duplicate inline code defined: "{code}"')
             highlighted = pyach.run_highlighter(code, color,
                 replace=True, valid_css_classes=VALID_CSS_CLASSES)
             result[code] = f'<code class="code custom-cpp">{highlighted}</code>'
         except RuntimeError as err:
-            logger = get_logger("inline code highlight init")
-            logger.error(f'line {i}: highlight failed:\n{str(err)}')
+            logger.error(f'inline code line {i}: highlight failed:\n{str(err)}')
 
     return result
 
