@@ -77,8 +77,11 @@ def generate_hierarchical_html_impl(root_dir: PageDir, html_parts: List[str]) ->
         html_parts.append(f'<li><a href="{page.permalink()}">{page.title()}</a></li>')
 
     for subdir in root_dir.subdirs():
-        html_parts.append(f'<li><a href="{subdir.index_page().permalink()}">{subdir.index_page().title()}</a>')
-        generate_hierarchical_html_impl(subdir, html_parts)
-        html_parts.append("</li>")
+        if subdir.index_page() is None:
+            get_logger(__name__).error(f'Failed to generate index content for "{root_dir.directory_name()}", missing index page for subdir "{subdir.directory_name()}"')
+        else:
+            html_parts.append(f'<li><a href="{subdir.index_page().permalink()}">{subdir.index_page().title()}</a>')
+            generate_hierarchical_html_impl(subdir, html_parts)
+            html_parts.append("</li>")
 
     html_parts.append("</ul>")
