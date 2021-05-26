@@ -143,6 +143,7 @@ Lists
 =====
 
 Bullet lists:
+
 - This is item 1
 - This is item 2
 
@@ -856,7 +857,7 @@ Working limitations:
 
 - There is no support for checking that the number of columns in each row is the same.  However, this directive supports CSV generators that do not insert "empty" entries at the end of short rows, by automatically adding empty entries.
 - Whitespace delimiters are supported only for external CSV files.
-- With PythonÂ 2, the valuess for the ``delimiter``, ``quote``, and ``escape`` options must be ASCII characters. (The csv module does not support Unicode and all non-ASCII characters are encoded as multi-byte utf-8 string). This limitation does not exist under PythonÂ 3.
+- With Python 2, the valuess for the ``delimiter``, ``quote``, and ``escape`` options must be ASCII characters. (The csv module does not support Unicode and all non-ASCII characters are encoded as multi-byte utf-8 string). This limitation does not exist under Python 3.
 
 The following options are recognized:
 
@@ -1288,6 +1289,13 @@ be used.  Examples::
     Today's date is |date|.
 
     This document was generated on |date| at |time|.
+
+.. |date| date::
+.. |time| date:: %H:%M
+
+Today's date is |date|.
+
+This document was generated on |date| at |time|.
 
 Miscellaneous
 -------------
