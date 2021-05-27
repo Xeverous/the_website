@@ -91,6 +91,11 @@ anonymous__, `anonymous phase reference`__ - just like (phase) reference but the
 
 Hyperlinks can have embedded URIs, like `Python <http://www.python.org/>`_. Such references do not need definition.
 
+Links inside the website
+------------------------
+
+Nikola has a `built-in feature <https://getnikola.com/path-handlers.html>`__ do to it, like this: `reST examples <link://filename/pages/test/rest_examples.rst>`__.
+
 Internal Hyperlink Targets
 --------------------------
 
