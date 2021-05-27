@@ -586,7 +586,7 @@ The following options are recognized:
     above, when the "scale" option is also specified, they are combined.
 
 ``scale`` : integer percentage (the "%" symbol is optional)
-    The uniform scaling factor of the image.  The default is "100Â %", i.e.
+    The uniform scaling factor of the image.  The default is "100%", i.e.
     no scaling.
 
     If no "height" or "width" options are specified, the *Python Imaging
