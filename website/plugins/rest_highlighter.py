@@ -168,7 +168,7 @@ def make_not_word(b: bool) -> str:
 
 def make_path(rst_source_path: str, path: str) -> str:
     if is_relative_path(path):
-        return os.path.dirname(rst_source_path) + "/" + path
+        return os.path.join(os.path.dirname(rst_source_path), path)
     else:
         return path
 
