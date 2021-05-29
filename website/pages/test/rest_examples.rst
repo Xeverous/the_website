@@ -285,6 +285,18 @@ The "include" directive reads a text file. The directive argument is the path to
 
 This can be useful for articles/tutorials which share same/similar set of information.
 
+Code
+----
+
+The "code" directive constructs a literal block. Language and ``number-lines`` options are optional. Currently there is no Pygments-based highlighting. Unfortunately, I haven't found any way to change required 3-space indent, so the initial indent must be 3 spaces and then the code can use its own indentation.
+
+.. code:: python
+   :number-lines:
+
+   def my_function():
+       "just a test"
+       print 8/2
+
 Custom directives
 =================
 
