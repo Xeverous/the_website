@@ -288,14 +288,14 @@ This can be useful for articles/tutorials which share same/similar set of inform
 Code
 ----
 
-The "code" directive constructs a literal block. Language and ``number-lines`` options are optional. Currently there is no Pygments-based highlighting. Unfortunately, I haven't found any way to change required 3-space indent, so the initial indent must be 3 spaces and then the code can use its own indentation.
+The "code" directive constructs a literal block. Language and ``number-lines`` options are optional. Currently there is no Pygments-based highlighting. The indent needs to be the same for directive options and directive content.
 
 .. code:: python
-   :number-lines:
+    :number-lines:
 
-   def my_function():
-       "just a test"
-       print 8/2
+    def my_function():
+        "just a test"
+        print 8/2
 
 Custom directives
 =================
