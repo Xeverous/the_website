@@ -215,6 +215,12 @@ keyword
 0pp_header
 0pp_header
 0pp_header
+keyword*
+keyword* keyword
+keyword keyword*
+keyword keyword*
+keyword keyword* keyword
+keyword keyword* keyword
 func
 func
 func

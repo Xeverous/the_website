@@ -215,6 +215,12 @@ xor_eq
 <version>
 <wchar.h>
 <wctype.h>
+char*
+char* const
+const char*
+char const*
+const char* const
+char const* const
 printf
 fprintf
 sprintf
