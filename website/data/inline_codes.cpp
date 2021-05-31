@@ -276,5 +276,9 @@ std::unordered_multimap
 std::unordered_multiset
 std::unordered_set
 std::vector
-int main(int argc, char** argv)
+"abc"
+(const int[])
+(const int[4])
+(const int*)
 int main(int argc, char* argv[])
+int main(int argc, char** argv)

@@ -1,0 +1,3 @@
+keyword keyword var_local[] = str; 0com_single
+keyword keyword var_local[] = { chr, chr, chr, chr }; 0com_single
+keyword keyword* var_local = str; 0com_single
