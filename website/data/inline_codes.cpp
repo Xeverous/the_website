@@ -215,59 +215,59 @@ xor_eq
 <version>
 <wchar.h>
 <wctype.h>
+char const*
+char const* const
 char*
 char* const
 const char*
-char const*
 const char* const
-char const* const
-printf
 fprintf
-sprintf
-snprintf
-scanf
-fscanf
-sscanf
-std::printf
-std::fprintf
-std::sprintf
-std::snprintf
-std::scanf
-std::fscanf
-std::sscanf
-malloc()
-realloc()
 free()
+fscanf
+malloc()
+printf
+realloc()
+scanf
+snprintf
+sprintf
+sscanf
 std::array
-std::vector
-std::deque
-std::forward_list
-std::list
-std::set
-std::map
-std::multiset
-std::multimap
-std::unordered_set
-std::unordered_map
-std::unordered_multiset
-std::unordered_multimap
-std::stack
-std::queue
-std::priority_queue
-std::span
 std::basic_string_view<char>
 std::basic_string<char>
-std::string
-std::string_view
-std::string::npos
-std::to_address
-std::to_chars
-std::to_string
+std::deque
+std::forward_list
+std::fprintf
+std::fscanf
+std::list
 std::make_error_code
 std::make_optional
 std::make_pair
 std::make_shared
 std::make_tuple
 std::make_unique
+std::map
+std::multimap
+std::multiset
+std::printf
+std::priority_queue
+std::queue
+std::scanf
+std::set
+std::snprintf
+std::span
+std::sprintf
+std::sscanf
+std::stack
+std::string
+std::string_view
+std::string::npos
+std::to_address
+std::to_chars
+std::to_string
+std::unordered_map
+std::unordered_multimap
+std::unordered_multiset
+std::unordered_set
+std::vector
 int main(int argc, char** argv)
 int main(int argc, char* argv[])
