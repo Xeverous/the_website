@@ -1,0 +1,13 @@
+0com_single
+keyword func(
+	keyword* param,
+	type param,
+	type param,
+	keyword (*param)(keyword keyword*, keyword keyword*));
+
+0com_single
+keyword <keyword tparam, keyword tparam>
+keyword keyword namespace::func(
+	tparam param,
+	tparam param,
+	tparam param);

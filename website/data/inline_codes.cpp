@@ -221,16 +221,22 @@ char*
 char* const
 const char*
 const char* const
+const void*
+const void* const
 fprintf
 free()
 fscanf
 malloc()
+operator()
 printf
 realloc()
 scanf
 snprintf
 sprintf
 sscanf
+strlen
+void*
+void* const
 std::array
 std::basic_string_view<char>
 std::basic_string<char>
@@ -260,6 +266,7 @@ std::sscanf
 std::stack
 std::string
 std::string_view
+std::string_view::size
 std::string::npos
 std::to_address
 std::to_chars

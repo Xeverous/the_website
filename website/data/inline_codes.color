@@ -221,16 +221,22 @@ keyword*
 keyword* keyword
 keyword keyword*
 keyword keyword* keyword
+keyword keyword*
+keyword keyword* keyword
 func
 func()
 func
 func()
+keyword()
 func
 func()
 func
 func
 func
 func
+func
+keyword*
+keyword* keyword
 namespace::type
 namespace::type<keyword>
 namespace::type<keyword>
@@ -260,6 +266,7 @@ namespace::func
 namespace::type
 namespace::type
 namespace::type
+namespace::type::func
 namespace::type::static
 namespace::func
 namespace::func
