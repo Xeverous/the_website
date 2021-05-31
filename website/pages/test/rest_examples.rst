@@ -285,6 +285,29 @@ The "include" directive reads a text file. The directive argument is the path to
 
 This can be useful for articles/tutorials which share same/similar set of information.
 
+Parsed Literal Block
+--------------------
+
+Unlike an ordinary literal block, the "parsed-literal" directive constructs a literal block where the text is parsed for inline markup. It is equivalent to a line block with different rendering: typically in a typewriter/monospaced typeface, like an ordinary literal block. Parsed literal blocks are useful for adding hyperlinks to code examples.
+
+However, care must be taken with the text, because inline markup is recognized and there is no protection from parsing. Backslash-escapes may be necessary to prevent unintended parsing. And because the markup characters are removed by the parser, care must also be taken with vertical alignment. Parsed "ASCII art" is tricky, and extra whitespace may be necessary.
+
+This can be useful for presenting heavily-formatted text that is not strictly code. A good example are grammar specifications:
+
+.. parsed-literal::
+
+    *function-specifier*:
+        virtual
+        *explicit-specifier*
+
+    *explicit-specifier*:
+        explicit ( *constant-expression* )
+        explicit
+
+    *placeholder-type-specifier*:
+        *type-constraint*\ (optional) auto
+        *type-constraint*\ (optional) decltype ( auto )
+
 Code
 ----
 
