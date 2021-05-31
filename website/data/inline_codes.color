@@ -255,5 +255,19 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
+namespace::type<keyword>
+namespace::type<keyword>
+namespace::type
 namespace::type
 namespace::type::static
+namespace::func
+namespace::func
+namespace::func
+namespace::func
+namespace::func
+namespace::func
+namespace::func
+namespace::func
+namespace::func
+keyword func(keyword param, keyword** param)
+keyword func(keyword param, keyword* param[])

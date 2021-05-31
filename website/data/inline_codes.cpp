@@ -255,5 +255,19 @@ std::stack
 std::queue
 std::priority_queue
 std::span
+std::basic_string_view<char>
+std::basic_string<char>
 std::string
+std::string_view
 std::string::npos
+std::to_address
+std::to_chars
+std::to_string
+std::make_error_code
+std::make_optional
+std::make_pair
+std::make_shared
+std::make_tuple
+std::make_unique
+int main(int argc, char** argv)
+int main(int argc, char* argv[])
