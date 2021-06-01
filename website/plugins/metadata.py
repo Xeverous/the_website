@@ -9,6 +9,7 @@ from nikola.utils import get_logger
 class SiteMetadata:
     def __init__(self, site: Nikola):
         self._structure = parse_site_structure(site.pages)
+        self._structure.sort()
         log_correctness(self.structure())
         self._sidebar = make_sidebar()
         verify_sidebar(self.sidebar(), site.pages)
@@ -85,6 +86,12 @@ class PageDir:
 
     def subdirs(self) -> List[PageDir]:
         return self._subdirs
+
+    def sort(self) -> None:
+        self._pages.sort(key=lambda page: page.permalink())
+        self._subdirs.sort(key=lambda subdir: subdir.directory_name())
+        for subdir in self.subdirs():
+            subdir.sort()
 
     def enter_or_create(self, directory_name: str) -> PageDir:
         """Return a nested directory object. If it does not exist, create one and then return it."""
