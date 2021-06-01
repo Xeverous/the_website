@@ -1,0 +1,15 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+8pp_direct 0pp_header
+
+keyword func(keyword keyword* param, type& param)
+{
+	keyword type var_local; 0com_single
+	keyword (func(param, &var_local) != num) 0com_single
+		keyword macro_ref;
+
+	param = var_local.var_local;
+	keyword num;
+}

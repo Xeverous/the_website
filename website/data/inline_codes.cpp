@@ -1,3 +1,5 @@
+__attribute__
+__restrict
 alignas
 alignof
 and
@@ -66,6 +68,7 @@ reflexpr
 register
 reinterpret_cast
 requires
+restrict
 return
 short
 signed
@@ -276,6 +279,8 @@ std::unordered_multimap
 std::unordered_multiset
 std::unordered_set
 std::vector
+'\0'
+'a'
 "abc"
 (const int[])
 (const int[4])

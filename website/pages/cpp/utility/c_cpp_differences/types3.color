@@ -1,0 +1,2 @@
+keyword keyword { keyword var_member; } type;
+keyword keyword { enum, enum } type;

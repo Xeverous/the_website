@@ -1,0 +1,5 @@
+keyword type { keyword var_member; };
+keyword func(keyword type* param);
+
+keyword type { enum, enum };
+keyword func(keyword type param);

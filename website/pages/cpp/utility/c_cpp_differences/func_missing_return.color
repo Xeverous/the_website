@@ -1,0 +1,7 @@
+keyword func(keyword param, keyword param, keyword param)
+{
+	keyword (param > num)
+		keyword param / param;
+	keyword (param < num)
+		keyword param / param;
+}

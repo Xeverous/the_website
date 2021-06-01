@@ -96,6 +96,9 @@ keyword
 keyword
 keyword
 keyword
+keyword
+keyword
+keyword
 0pp_header
 0pp_header
 0pp_header
@@ -276,6 +279,8 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
+chr
+chr
 str
 (keyword keyword[])
 (keyword keyword[num])

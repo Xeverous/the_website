@@ -1,0 +1,9 @@
+0com_single
+keyword {
+	keyword var_member;
+	keyword var_member[num];
+} var_local;
+
+var_local.var_local = num;
+keyword (var_local.var_local[num] == num) 0com_single
+	0com_single
