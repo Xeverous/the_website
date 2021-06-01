@@ -291,6 +291,7 @@ def verify_sidebar(sidebar: Sidebar, all_pages: List[Post]):
 
             page_found = False
             for p in all_pages:
+                # for unknown reason, permalinks end with "/"
                 if page.link() == p.permalink():
                     page_found = True
                     break
@@ -300,7 +301,11 @@ def verify_sidebar(sidebar: Sidebar, all_pages: List[Post]):
 
 def make_sidebar() -> Sidebar:
     return Sidebar([
-        SidebarSection("C++ tutorials", "Learn C++ from begin() to the end() (and beyond) or use knowledge and experience gained in other languages in the accelerated tutorial.", []),
+        SidebarSection("C++ tutorials", "Learn C++ from begin() to the end() (and beyond) or use knowledge and experience gained in other languages in the accelerated tutorial.", [
+            SidebarPage("beginner", "/cpp/tutorials/beginner/"),
+            SidebarPage("accelerated", "/cpp/tutorials/accelerated/"),
+            SidebarPage("templates", "/cpp/tutorials/templates/")
+        ]),
         SidebarSection("C++ how-to", "Common and specific tasks explained.", []),
         SidebarSection("C++ cheatsheets", "Yes, they exist!", []),
         SidebarSection("C++ meta", "About the language itself.", [
