@@ -270,7 +270,7 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type::func
-namespace::type::static
+namespace::type::var_global
 namespace::func
 namespace::func
 namespace::func

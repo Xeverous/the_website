@@ -353,12 +353,11 @@ nav.breadcrumb {
 /* custom vibrant ink theme - mostly for C++ */
 
 .code.custom-cpp              { color: #ffffff } /* default color */
-.code.custom-cpp .built-in,                      /* build-in types such as int */
 .code.custom-cpp .keyword     { color: #ec691e } /* keywords */
 .code.custom-cpp .namespace,                     /* namespace names */
 .code.custom-cpp .type        { color: #9cf828 } /* classes, structs, unions, enum types, type aliases, etc */
 .code.custom-cpp .enum        { color: #408000 } /* enum values */
-.code.custom-cpp .ext         { color: #ffffff } /* externals or globals */
+.code.custom-cpp .ext         { color: #ffffff } /* externals */
 .code.custom-cpp .oo,                            /* overloaded operators */
 .code.custom-cpp .suf,                           /* user-defined literal suffix */
 .code.custom-cpp .func        { color: #f7c527 } /* function/method calls and declarations */
@@ -368,7 +367,7 @@ nav.breadcrumb {
 .code.custom-cpp .chr,                           /* character literals */
 .code.custom-cpp .var-local,                     /* function-local variables */
 .code.custom-cpp .var-member  { color: #319bbe } /* fields - class member variables */
-.code.custom-cpp .var-static  { color: #ffffff } /* static variables/functions */
+.code.custom-cpp .var-global  { color: #ffffff } /* global objects (including static) */
 .code.custom-cpp .str-esc,                       /* string literals (escaped content) */
 .code.custom-cpp .chr-esc     { color: #868613 } /* character literals (escaped content) */
 
