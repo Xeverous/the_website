@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/33533148
 from __future__ import annotations
-from typing import List, Tuple, Union
+from typing import List, Tuple
 
 from nikola.plugin_categories import ShortcodePlugin
 from nikola.nikola import Nikola
