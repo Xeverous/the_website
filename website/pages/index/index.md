@@ -8,4 +8,4 @@
 .. breadcrumb: False
 -->
 
-{{% generate_index %}}
+{{% generate_index depth=0 %}}

@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/33533148
 from __future__ import annotations
-from typing import List, Tuple
+from typing import List, Tuple, Union
 
 from nikola.plugin_categories import ShortcodePlugin
 from nikola.nikola import Nikola
@@ -26,13 +26,15 @@ class IndexGenerationShortcode(ShortcodePlugin):
         site: Nikola,
         post: Post,
         data: str = None,
-        lang: str = None
+        lang: str = None,
+        depth: int = 1
     ) -> Tuple[str, List[str]]:
         """
         Generate a hierarchical list of pages when shortcode is invoked.
 
         Ouput: a HTML string (nested <ul> elements containing <a> elements)
-        and a list of file dependencies.
+        and a list of file dependencies. Depth determines how far the index
+        recurses. Set depth to 0 to recurse as much as possible.
         """
         if not post.metadata.is_index_page:
             raise RuntimeError(f'Attempt to generate index on "{post.permalink()}" which is not an index page!')
@@ -49,7 +51,7 @@ class IndexGenerationShortcode(ShortcodePlugin):
                 index_root = index_root.enter(directory_name)
 
         self.logger.info(f"generating index structure for {post.permalink()} that starts in {index_path}")
-        html_result: str = generate_hierarchical_html(index_root)
+        html_result: str = generate_hierarchical_html(index_root, depth)
 
         # We need to regenerate indexes every time a page is added or removed.
         # We can not return wildcard paths or generally - paths which do not exist
@@ -60,17 +62,22 @@ class IndexGenerationShortcode(ShortcodePlugin):
         return html_result, file_dependencies
 
 
-def generate_hierarchical_html(root_dir: PageDir) -> str:
+def generate_hierarchical_html(root_dir: PageDir, max_depth: int) -> str:
     """Generate HTML code representing hierarchical list of links"""
 
     # There is no efficient way of appending to a string in Python.
     # Pass a list as an output parameter, append to it and then join elements.
     html_parts: List[str] = []
-    generate_hierarchical_html_impl(root_dir, html_parts)
+    generate_hierarchical_html_impl(root_dir, html_parts, 1, max_depth)
     return "".join(html_parts)
 
 
-def generate_hierarchical_html_impl(root_dir: PageDir, html_parts: List[str]) -> None:
+def generate_hierarchical_html_impl(
+    root_dir: PageDir,
+    html_parts: List[str],
+    current_depth: int,
+    max_depth: int
+) -> None:
     html_parts.append("<ul>")
 
     for page in root_dir.pages():
@@ -81,7 +88,8 @@ def generate_hierarchical_html_impl(root_dir: PageDir, html_parts: List[str]) ->
             get_logger(__name__).error(f'Failed to generate index content for "{root_dir.directory_name()}", missing index page for subdir "{subdir.directory_name()}"')
         else:
             html_parts.append(f'<li><a href="{subdir.index_page().permalink()}">{subdir.index_page().title()}</a>')
-            generate_hierarchical_html_impl(subdir, html_parts)
+            if current_depth != max_depth:
+                generate_hierarchical_html_impl(subdir, html_parts, current_depth + 1, max_depth)
             html_parts.append("</li>")
 
     html_parts.append("</ul>")
