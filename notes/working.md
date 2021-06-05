@@ -1,5 +1,23 @@
 # working with the code
 
+## build system
+
+There are at least few hundreds of static site generators. While the story in choosing [Nikola](https://getnikola.com) is pretty long, below is a short list of rationale:
+
+- Majority of static site generators are only for documentation or blogs. This project requires support of arbitrary directory trees and can not have inherent limitations how pages are laid out.
+- No fixed or artificially limited CSS/JS implementation or HTML templates.
+- Support for custom input data formats. Support for rich input format extensions.
+- Support for plugins and custom build hooks/steps.
+- Nikola uses already well-established projects (Docutils, Jinja2) which means good support and no risk of committing to something badly designed. This also allows easy transfer to potentially completely custom build implementation if such thing is needed in the future - right now Nikola is more or less code that only ties everything together.
+- Nikola is in Python which is a pretty common "scripting language choice" for C++ programmers.
+
+Still, if you think you can do better (with other framework or a completely custom build) - certainly open an issue and write your rationale. The core goal of the build process is to be able to write semi-rich pages in human-readable format.
+
+The current recommended input format for pages is [reStructuredText](https://docutils.sourceforge.io/rst.html) with this rationale:
+
+- Unlike Markdown, it has an actual specification. No problems with ever-diverging implementations.
+- Supports nesting block elements and custom block elements.
+
 ## general notes
 
 Note that this site completely replaces Nikola's default templates by using its own, parent-less theme so a lot of things that are mentioned in Nikola's documentation do not apply to this site or apply but have different effect. Multiple built-in features such as charts, galleries, timeline, anything blog-related, listings etc are not being used and had their respective files removed. This includes HTML templates, CSS and JS. Everything generation-related (HTML templates, CSS, JS) should be put into this site custom theme directory. Watch out when reading anything from https://getnikola.com/handbook.html as it implicitly assumes a blog with base theme. Better read https://getnikola.com/theming.html because that is the place where most functionality of this site comes from. Again, remember that this site theme has no base and absolutely all HTML templates are custom-made.
