@@ -198,6 +198,21 @@ function parameter vs function argument
 
 Function parameters are what function definition expects to be passed in. Function arguments are expressions that are given for specific function call. If there is a mismatch we can say that a function F has been passed incompatible argument X for parameter Y.
 
+"User-defined type is a very formal name for a class"
+=====================================================
+
+User-defined type is any new type (not an alias of an existing type) that has been defined in code. Standard library classes are also uder-defined types. Apart from classes, C++ has another mechanism for creating new types - enumerations.
+
+"Header files are for declarations. Source file are for definitions."
+=====================================================================
+
+This very short mental shortcut is just wrong:
+
+- Definitions of user-defined types are put in headers.
+- Both declaration and definition can be source-only if there is no need to use the entity in a different source file.
+
+The header/source split is not about declaration/definition mechanism but about what can be compiled and what not. Type definitions are only an abstraction - they do not form any code by themselves. What matters for compilation is executable code - mostly function definitions and global objects.
+
 "the type of :cch:`"abc"` is :cch:`const char*`" OR "an array is a pointer to its first element"
 ================================================================================================
 
