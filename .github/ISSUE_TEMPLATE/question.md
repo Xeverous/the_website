@@ -1,6 +1,6 @@
 ---
 name: question
-about: something you don't get
+about: something you don't get about the website
 title: ''
 labels: question
 assignees: Xeverous
