@@ -1,0 +1,15 @@
+keyword func(keyword param, keyword param)
+{
+	keyword (param < param)
+		keyword param;
+	keyword
+		keyword param;
+}
+
+keyword namespace::type& func(keyword namespace::type& param, keyword namespace::type& param)
+{
+	keyword (param < param)
+		keyword param;
+	keyword
+		keyword param;
+}

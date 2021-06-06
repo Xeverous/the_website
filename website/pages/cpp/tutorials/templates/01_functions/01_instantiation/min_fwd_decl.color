@@ -1,0 +1,2 @@
+keyword <keyword tparam>
+keyword tparam& func(keyword tparam& param, keyword tparam& param);
