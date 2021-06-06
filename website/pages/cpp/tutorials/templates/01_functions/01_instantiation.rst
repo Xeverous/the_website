@@ -19,7 +19,7 @@ You might already wonder what happens if the deduction results in ambiguity or i
 Instantiation in detail
 #######################
 
-C++ templates are a fully compile-time mechanism. They are not "real compilable code" (you can't e.g. take an address of a function template) but a recipe for making compilable code. The compiler can only generate machine code when it knows all necessary information about the entity. The act of using a template and providing that information is called **template instantation**.
+C++ templates are a fully compile-time mechanism. Templates alone are not transformed into machine code - they are a recipe for making such code. The compiler can only generate machine code when it knows all necessary information about the entity. The act of using a template and providing that information is called **template instantation**.
 
 .. admonition:: note
     :class: note
