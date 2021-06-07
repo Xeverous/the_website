@@ -14,21 +14,20 @@ Setters:
 
 Getters:
 
-- primary purpose: obtain information (get *get* things)
-- provide a uniform way to access information (different figures have different formulas but we don't need to remember them - just ``fig.get_area()``)
-- function names usually start with ``get`` (return value of a private data member or computate something from them)
+- primary purpose: obtain information (they *get* things)
+- function names usually start with ``get`` (return value of a private data member or compute something from them)
 - almost always are read-only operations that do not change data members
 
 Question-like functions (a subset of getters):
 
 - very often return :cch:`bool`
-- names usually start with ``is`` or ``has`` - for example: ``is_ready()``, ``is_full()``, ``is_open()``, ``has_completed()``, 
+- names usually start with ``is`` or ``has`` - for example: ``is_ready()``, ``is_full()``, ``is_open()``, ``has_completed()``,
 - almost always are read-only operations that do not change data members
 
 Action-like functions:
 
 - primary purpose: modify the object to complete specific task
-- names are formed like orders - for example: ``next_image()``, ``load_file()``, ``refresh()``
+- names are formed like orders - for example: ``next_item()``, ``load_file()``, ``refresh()``
 - typically return one of:
 
   - :cch:`void`
@@ -61,8 +60,8 @@ Member function qualifiers
 In C++ member functions can have certain qualifiers:
 
 - :cch:`const`
-- :cch`&` - the lvalue reference qualifier
-- :cch`&&` - the rvalue reference qualifier
+- :cch:`volatile` (explained in pointers chapter)
+- :cch:`&` - the lvalue reference qualifier or :cch:`&&` - the rvalue reference qualifier
 
 In this lesson you will learn about the simplest of them - the const qualifier.
 
@@ -134,7 +133,7 @@ Let's have an example:
      * Because fraction class is small and inexpensive to copy,
      * it should be passed by value instead of const reference.
      * Const reference is used here to demonstrate potential
-     * problems of calling non-const methods on const objects.
+     * errors of calling non-const methods on const objects.
      */
     void print_details(const fraction& fr)
     {
@@ -159,7 +158,7 @@ Let's have an example:
         test(fr);
     }
 
-It's important to note that const-qualifying a function changes its type. If you would like to form a reference (or a pointer) to such function (references and pointers to member function are also possible) you need to take it into account.
+It's important to note that const-qualifying a function changes its type. If you would like to form a reference (or a pointer) to such function (references and pointers to member functions are also possible) you need to take it into account. Analogical convertion rules apply - a reference/pointer to a less cv-qualified function can be converted to a reference/pointer to a more cv-qualified function but not vice versa.
 
 .. TODO should the above info be moved elsewhere?
 
@@ -167,6 +166,12 @@ It's important to note that const-qualifying a function changes its type. If you
     :class: tip
 
     Getters should be const-qualified.
+
+Don't get it wrong - do not const-qualify a function just becase it can be. Think what is the function's purpose and only then add :cch:`const` if it's a getter. Action-like functions should not be const-qualified even if they can (for whatever reason). If you make this mistake, there is a chance that the function implementation will change at some point in a way that prevents applying :cch:`const`. This can cause compilation issues in other code which was (incorrectly) using the class by relying on the action constness.
+
+    Does const-qualifying a function helps in optimization?
+
+Generally no. :cch:`const` does not help the compiler except in few corner cases. It's much more of a help for the programmer (to prevent bugs) than the compiler.
 
 Overloading on qualification
 ############################
@@ -198,10 +203,12 @@ This style of accessors is very popular in C++ (and often the recommended one):
 
 There are few key things here:
 
-- Member variables are named with some prefix (usually ``m_`` or ``_``)
-  - This avoid name clashes with method names.
-  - This improves codd readability of method implementations.
+- Member variables are named with some prefix (usually ``m_`` or ``_``):
+
+  - This avoids name clashes with method names.
+  - This improves code readability of method implementations.
   - This helps with tooling (e.g. IDE autocomplete feature)
+
 - Accessors are named as nouns, just like fields.
 - There are 2 overloads which differ in const qualification and analogically their return type.
 
@@ -214,5 +221,6 @@ The tradeoffs of this style:
 
 - Accessors expose an implementation detail - the type of the data member is visible in the function. If the class is later refactored to contain fields of different types, code which was using the class also needs to be changed.
 - Since the setter does not take the value as a parameter but returns a reference to a field:
+
   - ...it no longer can control what is actually written to it. This makes the style undesirable if the class has invariants to enforce.
   - ...the calling code can access field's methods, which allows significant code reuse.
