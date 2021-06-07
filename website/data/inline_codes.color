@@ -299,6 +299,8 @@ str
 (keyword keyword[])
 (keyword keyword[num])
 (keyword keyword*)
+&
+&&
 keyword func(keyword param, keyword* param[])
 keyword func(keyword param, keyword** param)
 keyword-

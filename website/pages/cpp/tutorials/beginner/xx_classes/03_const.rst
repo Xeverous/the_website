@@ -1,0 +1,218 @@
+.. title: 03 - const
+.. slug: 03_const
+.. description: accessors and const member function qualifier
+.. author: Xeverous
+
+So far we have talked about member functions and how they can shield the class from undesirable use. This lesson extends the topic, covering few very common kinds of member functions.
+
+Setters:
+
+- primary purpose: change data members (they *set* things)
+- secure class **invariants**.
+- function names usually start with ``set``
+- such functions almost always return :cch:`void`
+
+Getters:
+
+- primary purpose: obtain information (get *get* things)
+- provide a uniform way to access information (different figures have different formulas but we don't need to remember them - just ``fig.get_area()``)
+- function names usually start with ``get`` (return value of a private data member or computate something from them)
+- almost always are read-only operations that do not change data members
+
+Question-like functions (a subset of getters):
+
+- very often return :cch:`bool`
+- names usually start with ``is`` or ``has`` - for example: ``is_ready()``, ``is_full()``, ``is_open()``, ``has_completed()``, 
+- almost always are read-only operations that do not change data members
+
+Action-like functions:
+
+- primary purpose: modify the object to complete specific task
+- names are formed like orders - for example: ``next_image()``, ``load_file()``, ``refresh()``
+- typically return one of:
+
+  - :cch:`void`
+  - :cch:`bool` (to inform if the operation succeeded)
+  - specific data type that holds operation result and/or detailed error information
+
+Action-like functions are the most broad group and usually they will contain most important code for any given class.
+
+.. admonition:: definition
+    :class: definition
+
+    Getters and setters are commonly referred together as **accessors**.
+
+Getters and setters do not always come in pairs - getters may combine information from multiple members and setters (and action functions) may change multiple fields. This all depends on class invariants.
+
+Exercise
+########
+
+Recall fraction class from previous lesson. Can you assign each of its member functions a specific category?
+
+.. TODO spoiler
+
+- ``set`` - setter
+- ``simplify`` - action
+- ``print`` - getter (although instead of returning it prints the values)
+
+Member function qualifiers
+##########################
+
+In C++ member functions can have certain qualifiers:
+
+- :cch:`const`
+- :cch`&` - the lvalue reference qualifier
+- :cch`&&` - the rvalue reference qualifier
+
+In this lesson you will learn about the simplest of them - the const qualifier.
+
+When applied to a variable, :cch:`const` prevents its modification. When applied to a member function, it prevents that function from modifying fields - it's as if all fields were :cch:`const` for the code inside the function. You can still do everything else in such function, the only restriction is on modifying member variables.
+
+The fraction class already has a function that could use it - you probably already know which one.
+
+Const-qualified member functions have 2 important properties:
+
+- they can be called on const-qualified objects
+- they can not call non-const-qualified member functions
+
+Let's have an example:
+
+.. TOCOLOR
+
+.. code::
+
+    #include <iostream>
+
+    // (greatest common divisor)
+    // if you have C++17, you can remove this function and use std::gcd from <numeric>
+    int gcd(int a, int b)
+    {
+        if (b == 0)
+            return a;
+        else
+            return gcd(b, a % b);
+    }
+
+    class fraction
+    {
+    private:
+        int counter = 0;
+        int denominator = 1;
+
+    public:
+        void set(int count, int denom)
+        {
+            counter = count;
+
+            if (denom == 0)
+                denominator = 1;
+            else
+                denominator = denom;
+        }
+
+        void simplify()
+        {
+            const int n = gcd(counter, denominator);
+            counter /= n;
+            denominator /= n;
+        }
+
+        // note where the const keyword is placed
+        // "const double approx()" would affect return type, not the function
+        double approx() const
+        {
+            return static_cast<double>(counter) / denominator;
+        }
+
+        void print() const
+        {
+            std::cout << counter << "/" << denominator;
+        }
+    };
+
+    /*
+     * Because fraction class is small and inexpensive to copy,
+     * it should be passed by value instead of const reference.
+     * Const reference is used here to demonstrate potential
+     * problems of calling non-const methods on const objects.
+     */
+    void print_details(const fraction& fr)
+    {
+        fr.print();
+        std::cout << ", approx. " << fr.approx() << "\n";
+
+        // fr.simplify(); // error: can not call non-const member function on const-qualified object
+    }
+
+    void test(fraction fr)
+    {
+        print_details(fr);
+        fr.simplify();
+        std::cout << "after simplification:\n";
+        print_details(fr);
+    }
+
+    int main()
+    {
+        fraction fr;
+        fr.set(8, 12);
+        test(fr);
+    }
+
+It's important to note that const-qualifying a function changes its type. If you would like to form a reference (or a pointer) to such function (references and pointers to member function are also possible) you need to take it into account.
+
+.. TODO should the above info be moved elsewhere?
+
+.. admonition:: tip
+    :class: tip
+
+    Getters should be const-qualified.
+
+Overloading on qualification
+############################
+
+This style of accessors is very popular in C++ (and often the recommended one):
+
+.. TOCOLOR
+
+.. code::
+
+    class button
+    {
+    private:
+        std::string m_text;
+        // [...] other fields
+
+    public:
+              std::string& text()       { return m_text; }
+        const std::string& text() const { return m_text; }
+
+        // [...] other methods
+    };
+
+    // example uses
+    button1.text() = "Exit";
+
+    if (button2.text() == button3.text())
+        assert(button2.text().length() == button3.text().length());
+
+There are few key things here:
+
+- Member variables are named with some prefix (usually ``m_`` or ``_``)
+  - This avoid name clashes with method names.
+  - This improves codd readability of method implementations.
+  - This helps with tooling (e.g. IDE autocomplete feature)
+- Accessors are named as nouns, just like fields.
+- There are 2 overloads which differ in const qualification and analogically their return type.
+
+Which overload is choosen when a method is called? It depends on the constness of the object on which it is done.
+
+- For const objects, the const-qualified overload is choosen which acts only as a getter.
+- For non-const objects, the non-const-qualified overload is choosen which can be used both as a getter and as a setter.
+
+The tradeoffs of this style:
+
+- Accessors expose an implementation detail - the type of the data member is visible in the function. If the class is later refactored to contain fields of different types, code which was using the class also needs to be changed.
+- Since the setter does not take the value as a parameter but returns a reference to a field:
+  - ...it no longer can control what is actually written to it. This makes the style undesirable if the class has invariants to enforce.
+  - ...the calling code can access field's methods, which allows significant code reuse.

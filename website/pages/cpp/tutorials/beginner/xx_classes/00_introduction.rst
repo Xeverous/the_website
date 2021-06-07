@@ -3,7 +3,7 @@
 .. description: introduction to object-oriented programming
 .. author: Xeverous
 
-So far you have used built-in types and some of the uder-defined types provided in the C++ standard library. You have also learned how to create simplest user-defined types - enumerations. This chapter is dedicated towards a much more powerful type mechanism - classes, which are a very significant building block in OOP (object-oriented programming). OOP is all about representing real-world things as *objects* that can have certain similarities and (potentially shared) behaviors.
+So far you have used built-in types and some of the uder-defined types provided in the C++ standard library. You have also learned how to create simplest user-defined types - enumerations. This chapter is dedicated towards a much more powerful type mechanism - classes, which are a very significant building block in OOP (object-oriented programming). OOP is all about representing real-world things as *objects* that can have certain states and (potentially shared) behaviors.
 
 C++ is a multi-paradigm language. OOP is one of it's bigger features, but it's not required - in contrast, some languages force OO style of programming and their "hello world"s can not be written without creating a class. This conflicts with C++ philosophy and the goal that you don't pay for what you don't use. Most of the C++ standard library uses generic programming rather than OOP. Some of the most powerful design techniques combine aspects of traditional object-oriented programming, generic programming, functional programming, and some traditional imperative techniques [1]_.
 

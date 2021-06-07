@@ -65,7 +65,7 @@ Output:
 Notice few things:
 
 - Member functions, just like member variables are defined inside the class.
-- Member functions have innate ability to access member variables (without passing them as parameters). This resembles scoping rules.
+- Member functions have innate ability to access member variables - as if all class fields were always passed as arguments.
 - Because member functions are tied to a specific class, they can not be called like global functions. They need to be called **on a specific object**, and this is done using ``.`` operator.
 
 If you would like to split the code above into files:
@@ -86,7 +86,8 @@ If you would like to split the code above into files:
     };
 
     // source
-    // notice how member functions specify class name followed by ::
+    // notice that member function definitions use class_name::
+    // this informs the compiler about access to members
     void fraction::simplify()
     {
         const int n = gcd(counter, denominator);

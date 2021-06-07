@@ -20,21 +20,23 @@ The remaining 2 place certain restrictions:
 
 Derived classes will be explained in a later chapter. Now, we will only focus on public vs private access.
 
-order of sections
+Order of sections
 #################
 
 .. TODO recommended order of members? public/protected/private? This is pretty controversial
 
 There is no required order of sections within a class. You can also repeat access specifier keywords - this is sometimes required if definitions of certain members need at least declarations of other members.
 
-encapsulation
+.. TODO some simple example?
+
+Encapsulation
 #############
 
 We have modified the class in 2 ways:
 
 - member variables are now private
 - added a public function to set the values
-- added reasonable default values (simplest form of zero)
+- added reasonable default values (simplest form of a fraction representing 0)
 
 .. TOCOLOR
 
@@ -111,12 +113,19 @@ The change has important consequences:
 At this point we can say we have created a type that has:
 
 - an interface (public members) - a way to interact with the object from the outside
-- an implementation (private members) - details how stuff is done, only to be accessed through the interface
+- an implementation (private members) - details how stuff is done, only to be accessed (indirectly) through the interface
+
+...and this is the key to write code that cooperates with other projects. If you use someone else's code (e.g. from a library project) methods can be changed (e.g. library update) and code that uses them will also change its behaviour. In this regard methods save us from rewriting the program - all of your code automatically gets indirect update when a library's method implementation is changed. You have already wrote code that relies on it - the C++ standard library also gets updates on its specification and compiler vendors continuously work on improving the code inside.
+
+.. admonition:: note
+    :class: note
+
+    Library project interfaces are commonly referred to as **API** (application programming interface). We can say that the website `cppreference <https://en.cppreference.com/>`_ documents C++ standard library API.
 
 .. admonition:: tip
     :class: tip
 
-    For a class that has invariants:
+    Generally, for a class that has invariants:
 
     - All member variables should be private.
     - Functions which are a part of the class interface should be public.
@@ -127,6 +136,8 @@ In the case of a class representing a fraction, there was no need for private fu
     What if there are invariants but only between certain fields? What if other fields have no invariants? Should first group of fields be private and the second group be public?
 
 In theory yes, in practice such situation indicates that the class has been badly designed. Very likely, fields with invariants should form a class on their own, and the remaining fields should be added in another class definition through *composition* or *inheritance*.
+
+When in doubt, a good default is to make more smaller classes. Such code is more reusable, modular and testable.
 
 More analogy
 ############
