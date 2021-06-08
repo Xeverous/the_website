@@ -154,7 +154,12 @@ Let's have an example:
     int main()
     {
         fraction fr;
+
         fr.set(8, 12);
+        test(fr);
+        fr.set(8, -12);
+        test(fr);
+        fr.set(-8, -12);
         test(fr);
     }
 

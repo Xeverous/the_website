@@ -301,6 +301,8 @@ std::vector
 (const int*)
 &
 &&
+= default
+= delete
 int main(int argc, char* argv[])
 int main(int argc, char** argv)
 operator-

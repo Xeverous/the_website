@@ -55,7 +55,7 @@ Yes - C++ does not differentiate classes and structures. It's one thing that can
 .. admonition:: tip
     :class: tip
 
-    By convention, use :cch:`class` whenever you want something more than just a box of variables. :cch:`struct` should only be used when there are no constraints/conditions between fields. If in doubt, use :cch:`class`.
+    By convention, use :cch:`class` whenever you want something more than just a box of variables. :cch:`struct` should only be used when fields can vary independently. If in doubt, use :cch:`class`.
 
 So far we relied on implicit :cch:`public` access default in structures. Because of different defaults in classes, in order to have the same behavior as with :cch:`struct`, we need to specify the access as :cch:`public`. **In the code below all definitions are equivalent.**
 
