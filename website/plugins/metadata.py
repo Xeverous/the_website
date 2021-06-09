@@ -314,7 +314,9 @@ def make_sidebar() -> Sidebar:
             SidebarPage("templates", "/cpp/tutorials/templates/")
         ]),
         SidebarSection("C++ how-to", "Common and specific tasks explained.", []),
-        SidebarSection("C++ cheatsheets", "Yes, they exist!", []),
+        SidebarSection("C++ cheatsheets", "Yes, they exist!", [
+            SidebarPage("C++ cheatsheets", "/cpp/utility/cheatsheets/")
+        ]),
         SidebarSection("C++ meta", "About the language itself.", [
             SidebarPage("C++ FAQ", "/cpp/utility/cpp_faq/"),
             SidebarPage("glossary", "/cpp/utility/glossary/")

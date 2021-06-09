@@ -1,5 +1,5 @@
-.. title: C++ cheatsheets
-.. slug: cpp_cheatsheets
+.. title: cheatsheets
+.. slug: cheatsheets
 .. description: C++ cheatsheets
 .. author: Xeverous
 
@@ -50,7 +50,7 @@ Operators and operator overloading
       - 1
       - LtR
       - member
-      -
+      - C++11
     * - 2
       - function call
       - ``a()``
