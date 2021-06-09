@@ -516,3 +516,10 @@ Notes:
   - free, member - can be both free function and member function, no recommendation
   - recommended free - can be both a free function and a member function, recommended free function
   - \- - can not be overloaded
+
+Initialization
+##############
+
+- https://josuttis.com/cpp/c++initialization.pdf
+- http://randomcat.org/cpp_initialization/initialization.png
+- http://randomcat.org/cpp_initialization/initialization.svg
