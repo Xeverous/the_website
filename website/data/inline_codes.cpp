@@ -252,6 +252,7 @@ sscanf
 strlen
 void*
 void* const
+std
 std::array
 std::basic_string_view<char>
 std::basic_string<char>
@@ -299,12 +300,22 @@ std::vector
 (const int[])
 (const int[4])
 (const int*)
+*this
 &
 &&
 = default
 = delete
+alignof(a)
+alignof(T)
+co_await a
+co_yield a
+const_cast<T>(a)
+delete[]
+dynamic_cast<T>(a)
 int main(int argc, char* argv[])
 int main(int argc, char** argv)
+new[]
+noexcept(a)
 operator-
 operator--
 operator-=
@@ -343,6 +354,15 @@ operator|
 operator|=
 operator||
 operator~
+reinterpret_cast<T>(a)
+sizeof a
+sizeof T
+sizeof...(a)
+sizeof...(T)
+static_cast<T>(a)
 T
+throw a
+typeid(a)
+typeid(T)
 U
 V

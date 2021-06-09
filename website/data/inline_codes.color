@@ -252,6 +252,7 @@ func
 func
 keyword*
 keyword* keyword
+namespace
 namespace::type
 namespace::type<keyword>
 namespace::type<keyword>
@@ -299,12 +300,22 @@ str
 (keyword keyword[])
 (keyword keyword[num])
 (keyword keyword*)
+*keyword
 &
 &&
 = keyword
 = keyword
+keyword(var_local)
+keyword(type)
+keyword var_local
+keyword var_local
+keyword<type>(var_local)
+keyword[]
+keyword<type>(var_local)
 keyword func(keyword param, keyword* param[])
 keyword func(keyword param, keyword** param)
+keyword[]
+keyword(var_local)
 keyword-
 keyword--
 keyword-=
@@ -343,6 +354,15 @@ keyword|
 keyword|=
 keyword||
 keyword~
+keyword<type>(var_local)
+keyword var_local
+keyword type
+keyword...(var_local)
+keyword...(type)
+keyword<type>(var_local)
 tparam
+keyword var_local
+keyword(var_local)
+keyword(type)
 tparam
 tparam
