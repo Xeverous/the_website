@@ -286,9 +286,11 @@ std::string
 std::string_view
 std::string_view::size
 std::string::npos
+std::tie
 std::to_address
 std::to_chars
 std::to_string
+std::tuple
 std::unordered_map
 std::unordered_multimap
 std::unordered_multiset

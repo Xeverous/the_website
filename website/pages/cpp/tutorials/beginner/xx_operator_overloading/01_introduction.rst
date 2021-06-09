@@ -26,7 +26,7 @@ Rules
 
 All of the rules aim to reduce potential surprises.
 
-- These operators can not be overloaded: ``::``, ``.``, ``.*``, ``?:``.
+- These common operators can not be overloaded: ``::``, ``.``, ``.*``, ``?:``.
 - Some operators have restrictions on their return type (more in specific lessons).
 - You can not create new operators - e.g. ``%%`` or ``<-``.
 - You can not change arity of operators - if ``/`` takes 2 arguments normally, it must be a 2-argument function.
@@ -37,6 +37,8 @@ All of the rules aim to reduce potential surprises.
 
   - (RtL operators) overloaded ``x = y = z`` will always be treated as ``x = (y = z)``, never as ``(x = y) = z``.
   - (LtR operators) overloaded ``x << y << z`` will always be treated as ``(x << y) << z``, never as ``x << (y << z)``.
+
+- For binary operators which are commutative (that is, ``x + y == y + x``), there is a convention to name operands ``lhs`` and ``rhs``.
 
 Syntax
 ######
@@ -51,8 +53,9 @@ Recommendations
 - In practice, very few classes have overloaded operators other than ``=``, ``==`` and ``!=``. Unlike functions, operators don't have names so if they exist, it should be very clear what they do.
 - Write their implementation so that it always preserves intuitive mathematical rules:
 
-  - ``(x + y) + z`` should have the same result as ``x + (y + z)``
   - ``x == y`` should have the same result as ``y == x``
+  - ``x != y`` should have the same result as ``!(x == y)``
+  - ``(x + y) + z`` should have the same result as ``x + (y + z)``
   - ``x = x + y`` should have the same result as ``x += y``
   - after ``y = x``, ``y == x``
   - if ``x == y``, ``--(++x) == y`` should too
