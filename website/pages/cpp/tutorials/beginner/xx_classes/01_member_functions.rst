@@ -3,7 +3,7 @@
 .. description: class member functions
 .. author: Xeverous
 
-Classes, just like member variables (**fields**) can also contain member functions (**methods**). 
+Classes, just like member variables (**fields**) can also contain member functions (**methods**).
 
 .. TOCOLOR
 
@@ -24,19 +24,19 @@ Classes, just like member variables (**fields**) can also contain member functio
     class fraction
     {
     public:
-        int counter;
+        int numerator;
         int denominator;
 
         void simplify()
         {
-            const int n = gcd(counter, denominator);
-            counter /= n;
+            const int n = gcd(numerator, denominator);
+            numerator /= n;
             denominator /= n;
         }
 
         void print()
         {
-            std::cout << counter << "/" << denominator << "\n";
+            std::cout << numerator << "/" << denominator << "\n";
         }
     };
 
@@ -78,7 +78,7 @@ If you would like to split the code above into files:
     class fraction
     {
     public:
-        int counter;
+        int numerator;
         int denominator;
 
         void simplify();
@@ -90,14 +90,14 @@ If you would like to split the code above into files:
     // this informs the compiler about access to members
     void fraction::simplify()
     {
-        const int n = gcd(counter, denominator);
-        counter /= n;
+        const int n = gcd(numerator, denominator);
+        numerator /= n;
         denominator /= n;
     }
 
     void fraction::print()
     {
-        std::cout << counter << "/" << denominator << "\n";
+        std::cout << numerator << "/" << denominator << "\n";
     }
 
 Thanks to member functions, the code is now more object-oriented but it still contains some flaws. What happens if we replace the code with this?

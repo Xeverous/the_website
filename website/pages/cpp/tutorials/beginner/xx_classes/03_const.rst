@@ -95,13 +95,13 @@ Let's have an example:
     class fraction
     {
     private:
-        int counter = 0;
+        int numerator = 0;
         int denominator = 1;
 
     public:
         void set(int count, int denom)
         {
-            counter = count;
+            numerator = count;
 
             if (denom == 0)
                 denominator = 1;
@@ -111,8 +111,8 @@ Let's have an example:
 
         void simplify()
         {
-            const int n = gcd(counter, denominator);
-            counter /= n;
+            const int n = gcd(numerator, denominator);
+            numerator /= n;
             denominator /= n;
         }
 
@@ -120,12 +120,12 @@ Let's have an example:
         // "const double approx()" would affect return type, not the function
         double approx() const
         {
-            return static_cast<double>(counter) / denominator;
+            return static_cast<double>(numerator) / denominator;
         }
 
         void print() const
         {
-            std::cout << counter << "/" << denominator;
+            std::cout << numerator << "/" << denominator;
         }
     };
 

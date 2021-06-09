@@ -57,13 +57,13 @@ We have modified the class in 2 ways:
     class fraction
     {
     private:
-        int counter = 0;
+        int numerator = 0;
         int denominator = 1;
 
     public:
         void set(int count, int denom)
         {
-            counter = count;
+            numerator = count;
 
             if (denom == 0)
                 denominator = 1;
@@ -73,14 +73,14 @@ We have modified the class in 2 ways:
 
         void simplify()
         {
-            const int n = gcd(counter, denominator);
-            counter /= n;
+            const int n = gcd(numerator, denominator);
+            numerator /= n;
             denominator /= n;
         }
 
         void print()
         {
-            std::cout << counter << "/" << denominator << "\n";
+            std::cout << numerator << "/" << denominator << "\n";
         }
     };
 

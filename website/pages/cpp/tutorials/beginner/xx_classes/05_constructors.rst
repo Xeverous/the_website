@@ -47,37 +47,37 @@ Constructors have 2 main purposes:
     class fraction
     {
     private:
-        int counter = 0;
+        int numerator = 0;
         int denominator = 1;
 
     public:
         // constructor
-        fraction(int counter, int denominator)
+        fraction(int numerator, int denominator)
         {
-            set(counter, denominator);
+            set(numerator, denominator);
         }
 
         void set(int count, int denom)
         {
-            counter = count;
+            numerator = count;
             denominator = make_valid_denominator(denom);
         }
 
         void simplify()
         {
-            const int n = gcd(counter, denominator);
-            counter /= n;
+            const int n = gcd(numerator, denominator);
+            numerator /= n;
             denominator /= n;
         }
 
         double approx() const
         {
-            return static_cast<double>(counter) / denominator;
+            return static_cast<double>(numerator) / denominator;
         }
 
         void print() const
         {
-            std::cout << counter << "/" << denominator;
+            std::cout << numerator << "/" << denominator;
         }
     };
 
@@ -116,14 +116,14 @@ Constructors have a special feature for it - **member initializer list**:
     // BAD: fields are assigned
     // If field definitions have no default initializers,
     // they might be left uninitialized until assigned!
-    fraction(int counter, int denominator)
+    fraction(int numerator, int denominator)
     {
-        set(counter, denominator);
+        set(numerator, denominator);
     }
 
     // GOOD: fields are initialized
-    fraction(int counter, int denominator)
-    : counter(counter)
+    fraction(int numerator, int denominator)
+    : numerator(numerator)
     , denominator(make_valid_denominator(denominator))
     {}
 
@@ -144,32 +144,32 @@ Apart from overloading, a constructor can also delegate to another overload:
 
     // A: 1 overload using default parameter
 
-    fraction(int counter, int denominator = 1)
-    : counter(counter)
+    fraction(int numerator, int denominator = 1)
+    : numerator(numerator)
     , denominator(make_valid_denominator(denominator))
     {}
 
     // B: 2 overloads
 
-    fraction(int counter, int denominator)
-    : counter(counter)
+    fraction(int numerator, int denominator)
+    : numerator(numerator)
     , denominator(make_valid_denominator(denominator))
     {}
 
-    fraction(int counter)
-    : counter(counter)
+    fraction(int numerator)
+    : numerator(numerator)
     , denominator(1)
     {}
 
     // C: 2 overloads, 1 overload uses delegation
 
-    fraction(int counter, int denominator)
-    : counter(counter)
+    fraction(int numerator, int denominator)
+    : numerator(numerator)
     , denominator(make_valid_denominator(denominator))
     {}
 
-    fraction(int counter)
-    : fraction(counter, 1)
+    fraction(int numerator)
+    : fraction(numerator, 1)
     {}
 
 Your preference should be in this order:
@@ -192,7 +192,7 @@ If you have defined custom constructors and still want to have the default one, 
 .. code::
 
     fraction() = default;
-    fraction(int counter, int denominator = 1);
+    fraction(int numerator, int denominator = 1);
 
 Default constructor is not *a constructor that takes 0 arguments*, it's *a constructor that can be called with 0 arguments*:
 
@@ -201,7 +201,7 @@ Default constructor is not *a constructor that takes 0 arguments*, it's *a const
 .. code::
 
     // can be called with 0, 1 and 2 arguments
-    fraction(int counter = 0, int denominator = 1);
+    fraction(int numerator = 0, int denominator = 1);
 
 With the constructor above, the class is still *default constructible*.
 
