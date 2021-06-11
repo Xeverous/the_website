@@ -77,8 +77,8 @@ Operators and operator overloading
       - ``a->b``
       - 1
       - LtR
-      - \-
-      -
+      - member
+      - has return type restrictions
     * - 3
       - prefix increment
       - ``++a``
@@ -98,14 +98,14 @@ Operators and operator overloading
       - ``+a``
       - 1
       - RtL
-      - member
+      - free, member
       -
     * - 3
       - unary minus
       - ``-a``
       - 1
       - RtL
-      - member
+      - free, member
       -
     * - 3
       - logical NOT
@@ -364,70 +364,70 @@ Operators and operator overloading
       - ``a += b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by difference
       - ``a -= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by product
       - ``a *= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by quotient
       - ``a /= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by remainder
       - ``a %= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by bitwise left shift
       - ``a <<= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by bitwise right shift
       - ``a >>= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by bitwise AND
       - ``a &= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by bitwise XOR
       - ``a ^= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 16
       - compound assignment by bitwise OR
       - ``a |= b``
       - 2
       - RtL
-      - member
+      - recommended member
       -
     * - 17
       - comma
@@ -442,7 +442,7 @@ Operators and operator overloading
       - 1-2
       - \-
       - free
-      -
+      - C++11
     * - \-
       - static cast
       - :cch:`static_cast<T>(a)`
@@ -500,7 +500,7 @@ Operators and operator overloading
       - \-
       - C++11
 
-Notes:
+Legend:
 
 - **precendence** - C++ has no formal precendence of operators. Their precendence is implicitly defined by the grammar. Operators with no precedence are never ambiguous.
 - **arity** - number of operands (including :cch:`*this` if appropriate).
@@ -515,7 +515,12 @@ Notes:
   - member - must be a member function
   - free, member - can be both free function and member function, no recommendation
   - recommended free - can be both a free function and a member function, recommended free function
+  - recommended member - can be both a free function and a member function, recommended member function
   - \- - can not be overloaded
+
+Notes:
+
+- Overloading convertion operator affects all functional casts, C-style cast and :cch:`static_cast`.
 
 Initialization
 ##############
