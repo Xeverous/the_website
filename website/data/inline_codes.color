@@ -326,6 +326,9 @@ str
 &&
 = keyword
 = keyword
+tparam
+tparam
+tparam
 var_local != var_local
 var_local < var_local
 var_local == var_local
@@ -385,9 +388,7 @@ keyword type
 keyword...(var_local)
 keyword...(type)
 keyword<type>(var_local)
-tparam
 keyword var_local
 keyword(var_local)
 keyword(type)
-tparam
-tparam
+var_local = -var_local

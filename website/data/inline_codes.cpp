@@ -326,6 +326,9 @@ std::weak_ordering::less
 &&
 = default
 = delete
+T
+U
+V
 a != b
 a < b
 a == b
@@ -385,9 +388,7 @@ sizeof T
 sizeof...(a)
 sizeof...(T)
 static_cast<T>(a)
-T
 throw a
 typeid(a)
 typeid(T)
-U
-V
+x = -x
