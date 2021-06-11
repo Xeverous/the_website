@@ -257,11 +257,16 @@ namespace::type
 namespace::type
 namespace::type<keyword>
 namespace::type<keyword>
+namespace::var_global
+namespace::var_global
 namespace::type
 namespace::type
 namespace::func
 namespace::func
 namespace::type
+namespace::type
+namespace::type
+namespace::type
 namespace::func
 namespace::func
 namespace::func
@@ -271,6 +276,8 @@ namespace::func
 namespace::type
 namespace::func
 namespace::func
+namespace::type
+namespace::type
 namespace::type
 namespace::type
 namespace::var_global

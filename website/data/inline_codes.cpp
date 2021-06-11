@@ -257,10 +257,15 @@ std::array
 std::atomic
 std::basic_string_view<char>
 std::basic_string<char>
+std::cin
+std::cout
 std::deque
 std::forward_list
 std::fprintf
 std::fscanf
+std::fstream
+std::ifstream
+std::istream
 std::list
 std::make_error_code
 std::make_optional
@@ -273,6 +278,8 @@ std::max
 std::min
 std::multimap
 std::multiset
+std::ofstream
+std::ostream
 std::partial_order
 std::partial_ordering
 std::partial_ordering::equivalent
