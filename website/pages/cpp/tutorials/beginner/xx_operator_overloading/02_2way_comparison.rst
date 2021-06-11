@@ -79,9 +79,19 @@ Equality
     bool operator<(fraction lhs, fraction rhs)
     {
         if (lhs.denominator() == rhs.denominator())
-            return lhs.numerator() < rhs.numerator();
+        {
+            // if denominator is negative, result must be reversed
+            if (lhs.denominator() > 0) // e.g. 2/4 < 3/4
+                return lhs.numerator() < rhs.numerator();
+            else // e.g. 3/-4 < 2/-4
+                return rhs.numerator() < lhs.numerator();
+        }
 
-        return lhs.numerator() * rhs.denominator() < rhs.numerator() * lhs.denominator();
+        // if denominator signs differ, result must be reversed
+        if ((lhs.denominator() > 0) == (rhs.denominator() > 0))
+            return lhs.numerator() * rhs.denominator() < rhs.numerator() * lhs.denominator();
+        else
+            return rhs.numerator() * lhs.denominator() < lhs.numerator() * rhs.denominator();
     }
 
     bool operator> (fraction lhs, fraction rhs) { return rhs < lhs; }
@@ -96,6 +106,11 @@ Equality
         assert(fraction(1, 2) == fraction(-1, -2));
 
         assert(fraction(2, 6) == fraction(3, 9));
+
+        assert(fraction(3, 5) < fraction(2, 3));
+        assert(fraction(3, 5) > fraction(-2, 3));
+        assert(fraction(3, 5) > fraction(2, -3));
+        assert(fraction(3, 5) < fraction(-2, -3));
     }
 
 Notes:
@@ -181,7 +196,7 @@ Free function implementation has easier to read code but more importantly, it tr
             std::cout << m_numerator << "/" << m_denominator;
         }
 
-        // BAD: don't overload such operators as members
+        // BAD: don't overload comparison operators as members
 
         bool operator==(fraction rhs) const
         {
@@ -195,18 +210,6 @@ Free function implementation has easier to read code but more importantly, it tr
         {
             return !(*this == rhs);
         }
-
-        bool operator<(fraction rhs) const
-        {
-            if (denominator() == rhs.denominator())
-                return numerator() < rhs.numerator();
-
-            return numerator() * rhs.denominator() < rhs.numerator() * denominator();
-        }
-
-        bool operator> (fraction rhs) const { return rhs < *this; }
-        bool operator<=(fraction rhs) const { return !(*this > rhs); }
-        bool operator>=(fraction rhs) const { return !(*this < rhs); }
     };
 
     int main()
@@ -225,6 +228,71 @@ Free function implementation has easier to read code but more importantly, it tr
 The cause of this assymetry is the fact that if you call a member function, it's already known on what object the function is called. The reverse situation - searching for member functions on a different type is not possible.
 
 Thus, "symmetrical" (commutative binary) operators should be implemented as free functions.
+
+Mixed-type comparisons
+######################
+
+Sometimes you might also want to compare 2 different types, usually one is a subset of another.
+
+A good example is a game where every player has unique ID:
+
+.. TODO friend explanation when?
+
+.. TOCOLOR
+
+.. code::
+
+    class player
+    {
+    private:
+        int id;
+        // lots of other fields... (potentially expensive to construct)
+
+    public:
+        // [...]
+
+        friend bool operator==(const player& lhs, const player& rhs)
+        {
+            return lhs.id == rhs.id;
+        }
+    };
+
+    bool operator!=(const player& lhs, const player& rhs)
+    {
+        return !(lhs == rhs);
+    }
+
+Then you simply need to provide extra overloads:
+
+.. TOCOLOR
+
+.. code::
+
+    // inside class definition
+    friend bool operator==(const player& lhs, int id)
+    {
+        return lhs.id == id;
+    }
+
+    // outside class definition
+    bool operator==(int id, const player& rhs)
+    {
+        return rhs == id;
+    }
+
+    bool operator!=(const player& lhs, int id)
+    {
+        return !(lhs == id);
+    }
+
+    bool operator!=(int id, const player& rhs)
+    {
+        return rhs != id;
+    }
+
+The benefit of writing such extra operators is that if you have an ID and a player, you don't need to construct a temporary player object only to compare them. If object construction is expensive, this extra code improves performance.
+
+There is no need to do such thing with the fraction class - we can rely on implicit construction from integers. Fraction is a very cheap type to construct and copy so there is no benefit in writing extra comparison operators.
 
 3-way helpers
 #############
@@ -282,3 +350,17 @@ If you have a type with multiple members and need to implement lexicographical c
         return std::tie(lhs.rack, lhs.shelf, lhs.position)
              < std::tie(rhs.rack, rhs.shelf, rhs.position);
     }
+
+Recommendation
+##############
+
+- Every type should either:
+
+  - overload all 6 comparison operators
+  - overload only :cch:`operator==` and :cch:`operator!=`
+  - overload none of these
+
+- For types that overload all operators:
+
+  - *equivalence* (``!(a < b) && !(b < a)``) and *equality* (``a == b``) should always have the same result.
+  - ``a <= b`` should always have the same result as ``a < b || a == b``.

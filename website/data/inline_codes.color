@@ -272,6 +272,12 @@ namespace::func
 namespace::func
 namespace::type
 namespace::type
+namespace::var_global
+namespace::type
+namespace::type::var_global
+namespace::type::var_global
+namespace::type::var_global
+namespace::type::var_global
 namespace::func
 namespace::type
 namespace::type
@@ -286,6 +292,12 @@ namespace::type
 namespace::type
 namespace::type::func
 namespace::type::var_global
+namespace::var_global
+namespace::type
+namespace::type::var_global
+namespace::type::var_global
+namespace::type::var_global
+namespace::type::var_global
 namespace::func
 namespace::func
 namespace::func
@@ -296,8 +308,15 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
+namespace::var_global
+namespace::type
+namespace::type::var_global
+namespace::type::var_global
+namespace::type::var_global
+!(var_local == var_local)
 chr
 chr
+str
 str
 (keyword keyword[])
 (keyword keyword[num])
@@ -307,6 +326,10 @@ str
 &&
 = keyword
 = keyword
+var_local != var_local
+var_local < var_local
+var_local == var_local
+var_local > var_local
 keyword(var_local)
 keyword(type)
 keyword var_local

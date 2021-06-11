@@ -272,6 +272,12 @@ std::max
 std::min
 std::multimap
 std::multiset
+std::partial_order
+std::partial_ordering
+std::partial_ordering::equivalent
+std::partial_ordering::greater
+std::partial_ordering::less
+std::partial_ordering::unordered
 std::printf
 std::priority_queue
 std::queue
@@ -286,6 +292,12 @@ std::string
 std::string_view
 std::string_view::size
 std::string::npos
+std::strong_order
+std::strong_ordering
+std::strong_ordering::equal
+std::strong_ordering::equivalent
+std::strong_ordering::greater
+std::strong_ordering::less
 std::tie
 std::to_address
 std::to_chars
@@ -296,9 +308,16 @@ std::unordered_multimap
 std::unordered_multiset
 std::unordered_set
 std::vector
+std::weak_order
+std::weak_ordering
+std::weak_ordering::equivalent
+std::weak_ordering::greater
+std::weak_ordering::less
+!(a == b)
 '\0'
 'a'
 "abc"
+"abCD"
 (const int[])
 (const int[4])
 (const int*)
@@ -307,6 +326,10 @@ std::vector
 &&
 = default
 = delete
+a != b
+a < b
+a == b
+a > b
 alignof(a)
 alignof(T)
 co_await a
