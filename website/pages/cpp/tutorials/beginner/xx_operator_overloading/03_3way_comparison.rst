@@ -154,6 +154,73 @@ For the implementation of :cch:`operator<=>`:
 
 Optimization. Take strings as an example. Determining which of :cch:`"abc"` and :cch:`"abCD"` is greater requires a loop that goes through multiple characters. Determining whether they are equal is instant because equality can start by comparing length and only consider looping through characters if lengths are the same.
 
+Fraction class
+##############
+
+- Weak ordering is used since two equal fractions may have different values (e.g. 1/2 vs 2/4).
+- :cch:`operator==` is defined because checking for equality has slighly less operations to perform.
+
+.. TOCOLOR
+
+.. code::
+
+    // (all inside class body)
+
+    bool operator==(fraction rhs) const
+    {
+        if (denominator() == rhs.denominator())
+            return numerator() == rhs.numerator();
+
+        return numerator() * rhs.denominator() == rhs.numerator() * denominator();
+    }
+
+    std::weak_ordering operator<=>(fraction rhs) const
+    {
+        if (denominator() == rhs.denominator())
+        {
+            if (denominator() > 0)
+            {
+                if (numerator() < rhs.numerator())
+                    return std::weak_ordering::less;
+                else if (numerator() > rhs.numerator())
+                    return std::weak_ordering::greater;
+                else
+                    return std::weak_ordering::equivalent;
+            }
+            else
+            {
+                if (numerator() < rhs.numerator())
+                    return std::weak_ordering::greater;
+                else if (numerator() > rhs.numerator())
+                    return std::weak_ordering::less;
+                else
+                    return std::weak_ordering::equivalent;
+            }
+        }
+
+        const int new_lhs_numerator = lhs.numerator() * rhs.denominator();
+        const int new_rhs_numerator = rhs.numerator() * lhs.denominator();
+
+        if ((lhs.denominator() > 0) == (rhs.denominator() > 0))
+        {
+            if (new_lhs_numerator < new_rhs_numerator)
+                return std::weak_ordering::less;
+            else if (new_lhs_numerator > new_rhs_numerator)
+                return std::weak_ordering::greater;
+            else
+                return std::weak_ordering::equivalent;
+        }
+        else
+        {
+            if (new_lhs_numerator < new_rhs_numerator)
+                return std::weak_ordering::greater;
+            else if (new_lhs_numerator > new_rhs_numerator)
+                return std::weak_ordering::less;
+            else
+                return std::weak_ordering::equivalent;
+        }
+    }
+
 Mixed-type comparisons
 ######################
 
