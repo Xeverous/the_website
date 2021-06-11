@@ -254,6 +254,7 @@ void*
 void* const
 std
 std::array
+std::atomic
 std::basic_string_view<char>
 std::basic_string<char>
 std::deque
@@ -324,6 +325,7 @@ std::weak_ordering::less
 *this
 &
 &&
+0
 = default
 = delete
 T

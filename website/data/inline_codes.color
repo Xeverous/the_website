@@ -254,6 +254,7 @@ keyword*
 keyword* keyword
 namespace
 namespace::type
+namespace::type
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::type
@@ -324,6 +325,7 @@ str
 *keyword
 &
 &&
+num
 = keyword
 = keyword
 tparam
