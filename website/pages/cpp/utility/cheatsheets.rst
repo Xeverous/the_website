@@ -61,7 +61,7 @@ Operators and operator overloading
     * - 2
       - subscript
       - ``a[]``
-      - 1+
+      - 2
       - LtR
       - member
       -
@@ -439,7 +439,7 @@ Operators and operator overloading
     * - \-
       - user-defined literal
       - ``""a``
-      - 1-2
+      - 1
       - \-
       - free
       - C++11
