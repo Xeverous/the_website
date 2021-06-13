@@ -27,10 +27,10 @@ Rules
 All of the rules aim to reduce potential surprises.
 
 - These common operators can not be overloaded: ``::``, ``.``, ``.*``, ``?:``.
-- Some operators have restrictions on their return type (more in specific lessons).
+- :cch:`operator->` must return a raw pointer or a type for which this operator is also overloaded.
 - You can not create new operators - e.g. ``%%`` or ``<-``.
 - You can not change arity of operators - if ``/`` takes 2 arguments normally, it must be a 2-argument function.
-- Overloaded operators lose *short-circuit evaluation*.
+- Overloaded :cch:`operator&&` and :cch:`operator||` lose *short-circuit evaluation*.
 - At least one of operands must be a user-defined type - you can't redefine behaviour for built-in types.
 - You can not change operator precedence - overloaded ``x + y * z`` will always be treated as ``x + (y * z)``, never as ``(x + y) * z``.
 - You can not change operator associativity:
@@ -45,7 +45,7 @@ Syntax
 
 Operators are just functions with special names. The name format is :cch:`operator` keyword followed by operator symbol.
 
-Some operators must be member functions. Others can be both free functions and member functions.
+Some operators must be member functions, some must be free functions and some can be both. More info in specific lessons.
 
 Recommendations
 ###############
@@ -60,7 +60,7 @@ Recommendations
   - if ``x == y``, ``--(++x) == y`` should too
   - and so on...
 
-- Don't overload ``,`` and unary ``&``. They can easily slip into unexpected places and have very nasty consequences.
+- Don't overload ``&&``, ``||``, ``,`` and unary ``&``. They can easily slip into unexpected places and have very nasty consequences.
 - Overloaded operators should be defined in the same namespace as one of their operand types (this isn't just for consistency, it has consequences in how overload resolution works). Remember that (by default) it's not allowed to place new entities in namespace :cch:`std` so if one of operands is a standard library type and the other is your type - write the overload in your type's namespace.
 
 EDSL
@@ -86,7 +86,11 @@ More information:
 - https://en.wikipedia.org/wiki/Spirit_Parser_Framework
 - https://en.wikipedia.org/wiki/Domain-specific_language
 
+    Is there a project where overloading :cch:`operator,` made sense?
+
+Yes. C++ is a fun language where even the most obscure "features" will be found by someone to be useful. :cch:`operator,` is overloaded in `Boost Assign <http://www.boost.org/doc/libs/release/libs/assign/doc/index.html#intro>`_ to extend interface of STL containers. This library is somewhat old (pre modern C++ era); since C++11 there are much better (and less confusing) ways to do things what the library provides.
+
 Practice
 ########
 
-In practice, very few classes have overloaded operators other than ``=``, ``==`` and ``!=``. Thus, you can skip this chapter and come back later. Vast majority of code does not need to overload any operators so there is no significant value in trying to remember all possible recommendations for each operator mentioned in this chapter.
+In practice, very few classes have overloaded operators other than ``=``, ``==`` and ``!=``. Thus, **you can skip this chapter and come back later. Vast majority of code does not need to overload any operators** so there is no significant value in trying to remember all possible recommendations for each operator mentioned in this chapter.
