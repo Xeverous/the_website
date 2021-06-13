@@ -61,4 +61,22 @@ Example usage:
 Trivia
 ######
 
-The :cch:`explicit` feature has been added after it turned out that user-defined implicit convertions are hardly ever useful. Unwanted implicit convertions cause lots of bugs so **it's recommended to make user-defined convertions explicit**.
+The :cch:`explicit` convertion feature has been added after it turned out that user-defined implicit convertions are hardly ever useful and can cause lots of bugs:
+
+.. TOCOLOR
+
+.. code::
+
+    // even if a and b are of different types but have implicit convertion to bool,
+    // the compiler will use built-in operator==(bool, bool)
+    if (a == b)
+        // ...
+
+To solve this (in era before C++11), there was a `safe bool <https://en.wikibooks.org/wiki/More_C%2B%2B_Idioms/Safe_bool>`_ idiom. A class did not overload convertion to :cch:`bool`, but to a member function pointer or a member data pointer, which themselves are convertible to :cch:`bool`. Then it added some template overloads of :cch:`operator==` and :cch:`operator!=` which call empty member function to cause compilation errors on specific (unwanted) comparisons. In short, it was a pretty complex idiom to implement correctly, only to prevent certain unwanted implicit convertions to :cch:`bool`.
+
+After C++11 introduced :cch:`explicit` for user-defined convertions, the safe bool idiom is now obsolete.
+
+Recommendation
+##############
+
+Make user-defined convertions :cch:`explicit`, especially convertions to :cch:`bool`.

@@ -257,6 +257,7 @@ namespace::type
 namespace::type
 namespace::type<keyword>
 namespace::type<keyword>
+namespace::namespace::type
 namespace::var_global
 namespace::var_global
 namespace::type
@@ -326,6 +327,7 @@ chr
 chr
 str
 str
+str
 (keyword keyword[])
 (keyword keyword[num])
 (keyword keyword*)
@@ -360,6 +362,7 @@ keyword->
 keyword->*
 keyword!
 keyword!=
+keyword""
 keyword()
 keyword[]
 keyword*

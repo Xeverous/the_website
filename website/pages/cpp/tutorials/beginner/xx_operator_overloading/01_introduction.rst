@@ -17,7 +17,7 @@ C++ standard library has overloaded operators in many places:
 .. admonition:: note
     :class: note
 
-    Even through this chapter is purely about operator overloading, it does not explain overloading of operators :cch:`new`, :cch:`new[]`, :cch:`delete` and :cch:`delete[]`. For these, go to TODO link.
+    Even through this chapter is purely about operator overloading, it does not explain overloading of operators :cch:`new`, :cch:`new[]`, :cch:`delete` and :cch:`delete[]`. These require advanced C++ knowledge and this has been put in TODO link.
 
 Rules
 #####
@@ -50,8 +50,7 @@ Some operators must be member functions. Others can be both free functions and m
 Recommendations
 ###############
 
-- In practice, very few classes have overloaded operators other than ``=``, ``==`` and ``!=``. Unlike functions, operators don't have names so if they exist, it should be very clear what they do.
-- Write their implementation so that it always preserves intuitive mathematical rules:
+- Unlike functions, operators don't have names so if they exist, it should be very clear what they do. Write their implementation so that it always preserves intuitive mathematical rules:
 
   - ``x == y`` should have the same result as ``y == x``
   - ``x != y`` should have the same result as ``!(x == y)``
@@ -86,3 +85,8 @@ More information:
 
 - https://en.wikipedia.org/wiki/Spirit_Parser_Framework
 - https://en.wikipedia.org/wiki/Domain-specific_language
+
+Practice
+########
+
+In practice, very few classes have overloaded operators other than ``=``, ``==`` and ``!=``. Thus, you can skip this chapter and come back later. Vast majority of code does not need to overload any operators so there is no significant value in trying to remember all possible recommendations for each operator mentioned in this chapter.

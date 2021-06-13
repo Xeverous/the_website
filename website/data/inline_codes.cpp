@@ -257,6 +257,7 @@ std::array
 std::atomic
 std::basic_string_view<char>
 std::basic_string<char>
+std::chrono::seconds
 std::cin
 std::cout
 std::deque
@@ -324,6 +325,7 @@ std::weak_ordering::less
 !(a == b)
 '\0'
 'a'
+""
 "abc"
 "abCD"
 (const int[])
@@ -360,6 +362,7 @@ operator->
 operator->*
 operator!
 operator!=
+operator""
 operator()
 operator[]
 operator*
