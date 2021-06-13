@@ -502,8 +502,10 @@ Operators and operator overloading
 
 Legend:
 
-- **precendence** - C++ has no formal precendence of operators. Their precendence is implicitly defined by the grammar. Operators with no precedence are never ambiguous.
-- **arity** - number of operands (including :cch:`*this` if appropriate).
+- **precendence** - C++ has no formal precendence of operators. Their precendence is implicitly defined by the grammar.
+  - If multiple operators have the same precedence they are applied according to their associativity.
+  - Operators with no precedence in the table are never ambiguous.
+- **arity** - number of operands (including :cch:`*this` if appropriate). In cases like ``a.b`` and ``a->b`` the arity is 1 because ``b`` does not contribute to the operator's output.
 - **associativity**:
 
   - left-to-right: ``a @ b @ c`` is equivalent to ``(a @ b) @ c``
