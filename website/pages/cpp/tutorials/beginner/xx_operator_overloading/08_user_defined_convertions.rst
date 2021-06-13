@@ -13,10 +13,21 @@ Optionally, :cch:`explicit` can be used to disallow implicit convertions.
 
 .. code::
 
-    // inside fraction class
+    // all inside fraction class
+
+    explicit operator float() const
+    {
+        return static_cast<float>(numerator()) / denominator();
+    }
+
     explicit operator double() const
     {
         return static_cast<double>(numerator()) / denominator();
+    }
+
+    explicit operator long double() const
+    {
+        return static_cast<long double>(numerator()) / denominator();
     }
 
     explicit operator bool() const
