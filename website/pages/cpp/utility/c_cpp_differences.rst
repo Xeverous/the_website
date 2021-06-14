@@ -17,7 +17,7 @@ keywords
 character literals
 ##################
 
-In C, character literals like :cch:`'a'` have type :cch:`int`. In C++ they have type :cch:`char`. Both languages support character literal suffixes and for suffixes allowed in both languages they have the same resulting type.
+In C, character literals like :cch:`'a'` have type :cch:`int`. In C++ they have type :cch:`char`. Both languages support character literal prefixes and for prefixes allowed in both languages they have the same resulting type.
 
 string literals
 ###############
