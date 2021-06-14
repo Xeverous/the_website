@@ -105,6 +105,13 @@ However:
 
 Writing such functions is obviously discouraged in both languages, all major compilers generate a warning.
 
+standard library function address
+#################################
+
+C explicitly allows to take adresses of standard library functions (with exceptions).
+
+C++ explicitly disallows to take addresses of standard library functions (with exceptions). One of the reasons is that C++ allows or requires multiple overloads for many functions, many of which can be implemented through templates and can change with standard library updates. Workaround: make a wrapper around standard library function and use the address of the wrapper.
+
 unions
 ######
 
