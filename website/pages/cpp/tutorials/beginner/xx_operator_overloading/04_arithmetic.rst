@@ -55,6 +55,11 @@ These should be very intuitive.
         int numerator() const { return m_numerator; }
         int denominator() const { return m_denominator; }
 
+        double approx() const
+        {
+            return static_cast<double>(m_numerator) / m_denominator;
+        }
+
         void print() const
         {
             std::cout << m_numerator << "/" << m_denominator;
@@ -175,6 +180,8 @@ These should be very intuitive.
         assert(fraction(2, 1) % fraction(-3, 10) == fraction(1, 5));
         assert(fraction(-2, 1) % fraction(3, 10) == fraction(-1, 5));
         assert(fraction(2, -1) % fraction(3, 10) == fraction(-1, 5));
+
+        assert((1 - fraction(1, 2)).approx() == 0.5);
     }
 
 Unary arithmetic operators
