@@ -7,19 +7,19 @@ Below is a (hopefully complete) list of differences between C and C++.
 
 I do not list features that are only in one language, only stuff that exists in both but has different meaning.
 
-keywords
+Keywords
 ########
 
 - C++ has no :cch:`restrict` keyword. There were some attempts to bring it but it is already complicated in C - in C++ due to language complexity it could very easily become a source of bug-generating optimizations if used incorrectly. Every major compiler offers :cch:`__restrict` extension though.
 - C++ has no meaning for :cch:`register`, the keyword remains reserved.
 - C++ has changed meaning of :cch:`auto` from storage specifier to a type specifier.
 
-character literals
+Character literals
 ##################
 
 In C, character literals like :cch:`'a'` have type :cch:`int`. In C++ they have type :cch:`char`. Both languages support character literal prefixes and for prefixes allowed in both languages they have the same resulting type.
 
-string literals
+String literals
 ###############
 
 C allows to assign string literals to non-const pointers:
@@ -38,7 +38,7 @@ Both languages allow to initialize non-const character array with a string liter
 
 There is no undefined behaviour when modifying such array.
 
-type definitions and usage
+Type definitions and usage
 ##########################
 
 C requires to prefix every non-built-in type name with a keyword that describes what it is.
@@ -69,7 +69,7 @@ A corner case where it is required are name clashes:
 
 Obviously using the same name for a type and a function is bad practice.
 
-empty types
+Empty types
 ###########
 
 C does not allow empty types.
@@ -80,7 +80,7 @@ C does not allow empty types.
 
 Empty types in C++ are commonly used in tag dispatching and other tricks that leverage strong typing - usually found in templates. Empty types are also a subject for empty base optimization.
 
-empty parameter lists
+Empty parameter lists
 #####################
 
 In C, a function declaration with no expression between parenthesis declares a function with unspecified amount of arguments (also known as function without prototype). Calling such function with arguments that mismatch function definition results in undefined behavior. In C++ there is no such problem.
@@ -89,7 +89,7 @@ In C, a function declaration with no expression between parenthesis declares a f
     :code_path: c_cpp_differences/func_decl.cpp
     :color_path: c_cpp_differences/func_decl.color
 
-missing return
+Missing return
 ##############
 
 In both languages it is valid to have a function with non-void return that does not return on some control flow paths.
@@ -105,14 +105,25 @@ However:
 
 Writing such functions is obviously discouraged in both languages, all major compilers generate a warning.
 
-standard library function address
-#################################
+Addresses of standard library functions
+#######################################
 
 C explicitly allows to take adresses of standard library functions (with exceptions).
 
 C++ explicitly disallows to take addresses of standard library functions (with exceptions). One of the reasons is that C++ allows or requires multiple overloads for many functions, many of which can be implemented through templates and can change with standard library updates. Workaround: make a wrapper around standard library function and use the address of the wrapper.
 
-unions
+Arrays
+######
+
+In C++, references and pointers to arrays of unknown bound can be formed, but cannot be initialized or assigned from arrays and pointers to arrays of known bound.
+
+In C, pointers to arrays of unknown bound are compatible with pointers to arrays of known bound and are thus convertible and assignable in both directions.
+
+.. cch::
+    :code_path: c_cpp_differences/arrays.cpp
+    :color_path: c_cpp_differences/arrays.color
+
+Unions
 ######
 
 C allows unions for type punning.
@@ -125,7 +136,7 @@ C++ has constructors and destructors which complicate the situation. Unions allo
 
 All major C++ compilers document that such behavior is not UB in their implementation and permit it for type punning (there are other, standard-compliant ways to do it though). C++ committee is aware of the problem that this part of the standard is a grey area; from what I know there is some work undergoing to permit such code if the union members are *trivial* types.
 
-aliasing
+Aliasing
 ########
 
 - In both languages any (potentially cv-qualified) :cch:`void*` may alias.
@@ -134,7 +145,7 @@ aliasing
 
 Want to know more? Read the article about strict aliasing TODO link.
 
-linkage rules
+Linkage rules
 #############
 
 Names in the global scope that are :cch:`const` and not :cch:`extern` have external linkage in C but internal linkage in C++.
