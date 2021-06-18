@@ -32,6 +32,7 @@ When we want to concisely express variable purpose.
 - ``x``, ``y``, ``z``, ``w``, ``u``, ``v`` - anything related to position, sometimes also loop counters
 - ``first``, ``last``, ``it`` - counters in iterator-based loops, variables/parameters in algorithms
 - ``lhs``, ``rhs`` (left/right hand side) - used for operator overloading and comparisons - use these if you have no better names to represent 2 different objects of the same type
+- ``scoped_`` - RAII wrappers around specific tasks (e.g. :cch:`std::scoped_lock`, :cch:`std::scoped_allocator_adaptor`)
 
 type names
 ##########

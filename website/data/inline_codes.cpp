@@ -291,6 +291,8 @@ std::printf
 std::priority_queue
 std::queue
 std::scanf
+std::scoped_allocator_adaptor
+std::scoped_lock
 std::set
 std::snprintf
 std::span
@@ -360,6 +362,7 @@ operator--
 operator-=
 operator->
 operator->*
+operator,
 operator!
 operator!=
 operator""

@@ -35,6 +35,8 @@ TODO - article with symbol character names.
 
 `final` - A keyword which has practically the same functionality in many languages. In C++ it is not technically a "keyword" but that is a minor detail. Depending on the context it is either preventing a class to be inherited from or preventing a virtual function to be overriden in descendant classes. In Java, it has additional functionality of preventing assignments (similar to `const` in other languages).
 
+`FOSS` - free and open-source software. "free" here can have 2 meanings: zero price but more importantly freedom - the fact that FOSS is done for users and should not contain any aritifcial limitations (e.g. constantly requiring internet connection to send usage statistics).
+
 `framework` - a prepared set of tools and code base for certain purpose. Differs from library that it requires a certain application structure and can not be customized beyond creator's intent. Frameworks are more popular in higher level languages while libraries in lower level ones, although both are widely used in various languages.
 
 `IDE` - integrated development environment. Usually an advanced code editor with autocomplete and rich refactor features integrated with build system, compiler and debugger.

@@ -292,6 +292,8 @@ namespace::type
 namespace::type
 namespace::func
 namespace::type
+namespace::type
+namespace::type
 namespace::func
 namespace::type
 namespace::func
@@ -360,6 +362,7 @@ keyword--
 keyword-=
 keyword->
 keyword->*
+keyword,
 keyword!
 keyword!=
 keyword""
