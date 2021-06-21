@@ -12,7 +12,7 @@
 keyword <keyword tparam>
 keyword type : namespace::type {};
 
-3com_multi_dox 6com_tag_dox 0com_single_dox
+3com_multi_dox 6com_tag_dox 0com_multi_dox
 keyword type = namespace::type<keyword, keyword, keyword, namespace::type>;
 
 keyword <keyword... tparam>
