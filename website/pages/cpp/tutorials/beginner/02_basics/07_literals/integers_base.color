@@ -1,0 +1,5 @@
+keyword var_local      = num;       0com_single
+keyword var_local        = num;      0com_single
+keyword var_local = 4num;     0com_single
+keyword var_local = 4num;     0com_single
+keyword var_local       = 8num; 0com_single

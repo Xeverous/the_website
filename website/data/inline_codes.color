@@ -1,4 +1,5 @@
 keyword
+ext
 keyword
 keyword
 keyword
@@ -261,6 +262,7 @@ namespace::namespace::type
 namespace::var_global
 namespace::var_global
 namespace::type
+namespace::var_global
 namespace::type
 namespace::func
 namespace::func
@@ -291,6 +293,7 @@ namespace::func
 namespace::type
 namespace::type
 namespace::func
+namespace::type
 namespace::type
 namespace::type
 namespace::type
@@ -320,6 +323,7 @@ namespace::type
 namespace::type
 namespace::type
 namespace::var_global
+namespace::var_global
 namespace::type
 namespace::type::var_global
 namespace::type::var_global
@@ -337,6 +341,17 @@ str
 &
 &&
 num
+num
+num
+num * num + num
+num * num + num * num
+num
+num
+num
+num
+num
+num
+num
 = keyword
 = keyword
 tparam
@@ -353,8 +368,11 @@ keyword var_local
 keyword<type>(var_local)
 keyword[]
 keyword<type>(var_local)
+keyword keyword keyword keyword
 keyword func(keyword param, keyword* param[])
 keyword func(keyword param, keyword** param)
+keyword keyword
+keyword keyword
 keyword[]
 keyword(var_local)
 keyword-
@@ -398,6 +416,11 @@ keyword|=
 keyword||
 keyword~
 keyword<type>(var_local)
+keyword num;
+keyword keyword
+keyword keyword
+keyword keyword keyword keyword
+keyword keyword keyword
 keyword var_local
 keyword type
 keyword...(var_local)
@@ -406,4 +429,8 @@ keyword<type>(var_local)
 keyword var_local
 keyword(var_local)
 keyword(type)
+keyword keyword
+keyword keyword keyword
+keyword keyword
+keyword keyword keyword
 var_local = -var_local

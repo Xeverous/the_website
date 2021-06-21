@@ -1,0 +1,3 @@
+keyword var_local = num;
+keyword var_local = 11num;
+keyword var_local = 13num;

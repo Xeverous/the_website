@@ -1,4 +1,5 @@
 __attribute__
+__float128
 __restrict
 alignas
 alignof
@@ -261,6 +262,7 @@ std::chrono::seconds
 std::cin
 std::cout
 std::deque
+std::endl
 std::forward_list
 std::fprintf
 std::fscanf
@@ -294,6 +296,7 @@ std::scanf
 std::scoped_allocator_adaptor
 std::scoped_lock
 std::set
+std::size_t
 std::snprintf
 std::span
 std::sprintf
@@ -319,6 +322,7 @@ std::unordered_multimap
 std::unordered_multiset
 std::unordered_set
 std::vector
+std::wcout
 std::weak_order
 std::weak_ordering
 std::weak_ordering::equivalent
@@ -337,6 +341,17 @@ std::weak_ordering::less
 &
 &&
 0
+1
+2
+2 * 3 + 4
+2 * 3 + 4 * 5
+3
+4
+5
+6
+7
+8
+9
 = default
 = delete
 T
@@ -353,8 +368,11 @@ co_yield a
 const_cast<T>(a)
 delete[]
 dynamic_cast<T>(a)
+int long unsigned long
 int main(int argc, char* argv[])
 int main(int argc, char** argv)
+long double
+long long
 new[]
 noexcept(a)
 operator-
@@ -398,6 +416,11 @@ operator|=
 operator||
 operator~
 reinterpret_cast<T>(a)
+return 0;
+short long
+signed char
+signed long long int
+signed short int
 sizeof a
 sizeof T
 sizeof...(a)
@@ -406,4 +429,8 @@ static_cast<T>(a)
 throw a
 typeid(a)
 typeid(T)
+unsigned char
+unsigned long long
+unsigned short
+unsigned short int
 x = -x
