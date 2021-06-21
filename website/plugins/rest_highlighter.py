@@ -28,7 +28,7 @@ try:
 except ImportError:
     pyach = None
 
-VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;suf;label;"
+VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;pref;suf;label;"
 "var_local;var_member;var_global;param;mparam;tparam;concept;problem;num;str;str_esc;chr;chr_esc;"
 "com_single;com_multi;com_tag;com_single_dox;com_multi_dox;com_tag_dox;pp_direct;pp_header;pp_other;"
 "macro_def;macro_ref;asm_direct")

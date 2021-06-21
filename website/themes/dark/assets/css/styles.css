@@ -359,7 +359,8 @@ nav.breadcrumb {
 .code.custom-cpp .enum        { color: #408000 } /* enum values */
 .code.custom-cpp .ext         { color: #ffffff } /* externals */
 .code.custom-cpp .oo,                            /* overloaded operators */
-.code.custom-cpp .suf,                           /* user-defined literal suffix */
+.code.custom-cpp .pref,                          /* literal prefix */
+.code.custom-cpp .suf         { color: #ffffff } /* literal suffix */
 .code.custom-cpp .func        { color: #f7c527 } /* function/method calls and declarations */
 .code.custom-cpp .label       { color: #ffffff } /* labels (jump places in assembly and for goto) */
 .code.custom-cpp .num,                           /* numeric literals */
