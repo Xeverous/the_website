@@ -16,7 +16,7 @@
 Rewritten candidates
 ####################
 
-C++20 has made overload resolution smarter for comparison operators with the feature of *rewritten candidates* - if :cch:`a != b` is not valid, compiler will try :cch:`!(a == b)` and analogically for other operators. Rewritten candidates are considered for both member and non-member overloads.
+C++20 has made overload resolution smarter for comparison operators with the feature of *rewritten candidates* - if :cch:`x != y` is not valid, compiler will try :cch:`!(x == y)` and analogically for other operators. Rewritten candidates are considered for both member and non-member overloads.
 
 Thus:
 
@@ -53,8 +53,8 @@ Equality
 
 There are 2 categories of equality:
 
-- **strong equality** - if ``a == b``, objects are indistinguishable
-- **weak equality** - even if ``a == b``, objects may differ
+- **strong equality** - if ``x == y``, objects are indistinguishable
+- **weak equality** - even if ``x == y``, objects may differ
 
 Examples:
 
@@ -68,14 +68,14 @@ Ordering
 
 There are 3 categories of ordering:
 
-- **strong ordering** - if both ``a < b`` and ``b < a`` are false, objects are indistinguishable
-- **weak ordering** - even if both ``a < b`` and ``b < a`` are false, objects may differ
-- **partial ordering** - there is a possibility that for some ``a`` and ``b`` comparison has no answer
+- **strong ordering** - if both ``x < y`` and ``y < x`` are false, objects are indistinguishable
+- **weak ordering** - even if both ``x < y`` and ``y < x`` are false, objects may differ
+- **partial ordering** - there is a possibility that for some ``x`` and ``y`` comparison has no answer
 
 Examples:
 
-- Integers have strong ordering. If for some integers ``a`` and ``b`` both ``a < b`` and ``b < a`` are false, they are indistinguishable.
-- Case-insensitive strings have weak ordering. Even if for some ``a`` and ``b`` both ``a < b`` and ``b < a`` are false, the strings may differ.
+- Integers have strong ordering. If for some integers ``x`` and ``y`` both ``x < y`` and ``y < x`` are false, they are indistinguishable.
+- Case-insensitive strings have weak ordering. Even if for some ``x`` and ``y`` both ``x < y`` and ``y < x`` are false, the strings may differ.
 - Square roots in real numbers domain: for some real numbers (e.g. ``-4``), there is no square root so for some pairs of numbers the order can not be determined.
 
     How about *partial equality*?
@@ -84,10 +84,10 @@ There is no such thing, at least in C++.
 
 Strong and weak orderings should always satisfy:
 
-- irreflexivity: ``a < a`` is always false
-- asymmetry: if ``a < b`` is true then ``b < a`` is false
-- transitivity: if ``a < b`` and ``b < c`` then ``a < c`` must be true
-- exactly one of ``a < b``, ``a > b``, ``a == b`` must be true for any ``a`` and ``b``
+- irreflexivity: ``x < x`` is always false
+- asymmetry: if ``x < y`` is true then ``y < x`` is false
+- transitivity: if ``x < y`` and ``y < z`` then ``x < z`` must be true
+- exactly one of ``x < y``, ``x > y``, ``x == y`` must be true for any ``x`` and ``y``
 
 Exercise
 ########
@@ -137,13 +137,13 @@ You can call :cch:`operator<=>` and its result (one of standard library ordering
 
 .. code::
 
-    const auto cmp = a <=> b; // cmp will be std::*_ordering
+    const auto cmp = x <=> y; // cmp will be std::*_ordering
     if (cmp < 0)
-        std::cout << "a < b";
+        std::cout << "x < y";
     else if (cmp > 0)
-        std::cout << "a > b";
+        std::cout << "x > y";
     else
-        std::cout << "a == b";
+        std::cout << "x == y";
 
 For the implementation of :cch:`operator<=>`:
 
@@ -305,7 +305,7 @@ For any class type:
 
   - If you want it to compare all members in their order of appearance, you can :cch:`= default` it.
   - If you want to optimize equality checks, you can additionally implement :cch:`operator==`.
-  - Don't define :cch:`operator<=>` with :cch:`std::partial_ordering` return type - it's very surprising when for some pair of objects all :cch:`a < b`, :cch:`a == b` and :cch:`a > b` can return :cch:`false`. Instead, write a free function named exactly ``partial_order`` and use this function.
+  - Don't define :cch:`operator<=>` with :cch:`std::partial_ordering` return type - it's very surprising when for some pair of objects all :cch:`x < y`, :cch:`x == y` and :cch:`x > y` can return :cch:`false`. Instead, write a free function named exactly ``partial_order`` and use this function.
 
 Advanced features
 #################

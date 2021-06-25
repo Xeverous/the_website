@@ -18,140 +18,140 @@ Operators and operator overloading
       - notes
     * - 1
       - scope resolution
-      - ``a::b``, ``::a``
+      - ``x::y``, ``::x``
       - 1-2
       - LtR
       - \-
       -
     * - 2
       - suffix increment
-      - :cch:`a++`
+      - :cch:`x++`
       - 1
       - LtR
       - member
       -
     * - 2
       - suffix decrement
-      - :cch:`a--`
+      - :cch:`x--`
       - 1
       - LtR
       - member
       -
     * - 2
       - functional cast
-      - :cch:`T(a)`
+      - :cch:`T(x)`
       - 1
       - LtR
       - member
       -
     * - 2
       - functional cast
-      - :cch:`T{a}`
+      - :cch:`T{x}`
       - 1
       - LtR
       - member
       - C++11
     * - 2
       - function call
-      - :cch:`a()`
+      - :cch:`x()`
       - 1+
       - LtR
       - member
       -
     * - 2
       - subscript
-      - :cch:`a[]`
+      - :cch:`x[]`
       - 2
       - LtR
       - member
       -
     * - 2
       - member access
-      - :cch:`a.b`
+      - :cch:`x.y`
       - 1
       - LtR
       - \-
       -
     * - 2
       - member access
-      - :cch:`a->b`
+      - :cch:`x->y`
       - 1
       - LtR
       - member
       - has return type restrictions
     * - 3
       - prefix increment
-      - :cch:`++a`
+      - :cch:`++x`
       - 1
       - RtL
       - member
       -
     * - 3
       - prefix decrement
-      - :cch:`--a`
+      - :cch:`--x`
       - 1
       - RtL
       - member
       -
     * - 3
       - unary plus
-      - :cch:`+a`
+      - :cch:`+x`
       - 1
       - RtL
       - free, member
       -
     * - 3
       - unary minus
-      - :cch:`-a`
+      - :cch:`-x`
       - 1
       - RtL
       - free, member
       -
     * - 3
       - logical NOT
-      - :cch:`!a`
+      - :cch:`!x`
       - 1
       - RtL
       - member
       -
     * - 3
       - bitwise NOT
-      - :cch:`~a`
+      - :cch:`~x`
       - 1
       - RtL
       - member
       -
     * - 3
       - C-style cast
-      - :cch:`(T) a`
+      - :cch:`(T) x`
       - 1
       - RtL
       - member
       -
     * - 3
       - dereference
-      - :cch:`*a`
+      - :cch:`*x`
       - 1
       - RtL
       - member
       -
     * - 3
       - address-of
-      - :cch:`&a`
+      - :cch:`&x`
       - 1
       - RtL
       - member
       - overloading discouraged
     * - 3
       - size-of
-      - :cch:`sizeof T`, :cch:`sizeof a`
+      - :cch:`sizeof T`, :cch:`sizeof x`
       - 1
       - RtL
       - \-
       -
     * - 3
       - await expression
-      - :cch:`co_await a`
+      - :cch:`co_await x`
       - 1
       - RtL
       - member
@@ -186,315 +186,315 @@ Operators and operator overloading
       -
     * - 4
       - pointer-to-member access
-      - :cch:`a.*b`
+      - :cch:`x.*y`
       - 1
       - LtR
       - \-
       -
     * - 4
       - pointer-to-member access
-      - :cch:`a->*b`
+      - :cch:`x->*y`
       - 1
       - LtR
       - member
       -
     * - 5
       - multiplication
-      - :cch:`a * b`
+      - :cch:`x * y`
       - 2
       - LtR
       - recommended free
       -
     * - 5
       - division
-      - :cch:`a / b`
+      - :cch:`x / y`
       - 2
       - LtR
       - recommended free
       -
     * - 5
       - remainer
-      - :cch:`a % b`
+      - :cch:`x % y`
       - 2
       - LtR
       - recommended free
       -
     * - 6
       - addition
-      - :cch:`a + b`
+      - :cch:`x + y`
       - 2
       - LtR
       - recommended free
       -
     * - 6
       - subtraction
-      - :cch:`a - b`
+      - :cch:`x - y`
       - 2
       - LtR
       - recommended free
       -
     * - 7
       - bitwise left shift
-      - :cch:`a << b`
+      - :cch:`x << y`
       - 2
       - LtR
       - recommended free
       -
     * - 7
       - bitwise right shift
-      - :cch:`a >> b`
+      - :cch:`x >> y`
       - 2
       - LtR
       - recommended free
       -
     * - 8
       - three-way comparison, spaceship
-      - :cch:`a <=> b`
+      - :cch:`x <=> y`
       - 2
       - LtR
       - free, member
       - C++20
     * - 9
       - less than
-      - :cch:`a < b`
+      - :cch:`x < y`
       - 2
       - LtR
       - recommended free
       -
     * - 9
       - less than or equal to
-      - :cch:`a <= b`
+      - :cch:`x <= y`
       - 2
       - LtR
       - recommended free
       -
     * - 9
       - greater than
-      - :cch:`a > b`
+      - :cch:`x > y`
       - 2
       - LtR
       - recommended free
       -
     * - 9
       - greater than or equal to
-      - :cch:`a >= b`
+      - :cch:`x >= y`
       - 2
       - LtR
       - recommended free
       -
     * - 10
       - equal to
-      - :cch:`a == b`
+      - :cch:`x == y`
       - 2
       - LtR
       - recommended free
       -
     * - 10
       - not equal to
-      - :cch:`a != b`
+      - :cch:`x != y`
       - 2
       - LtR
       - recommended free
       -
     * - 11
       - bitwise AND
-      - :cch:`a & b`
+      - :cch:`x & y`
       - 2
       - LtR
       - recommended free
       -
     * - 12
       - bitwise XOR
-      - :cch:`a ^ b`
+      - :cch:`x ^ y`
       - 2
       - LtR
       - recommended free
       -
     * - 13
       - bitwise OR
-      - :cch:`a | b`
+      - :cch:`x | y`
       - 2
       - LtR
       - recommended free
       -
     * - 14
       - logical AND
-      - :cch:`a && b`
+      - :cch:`x && y`
       - 2
       - LtR
       - recommended free
       - overloads lose short-circuit evaluation
     * - 15
       - logical OR
-      - :cch:`a || b`
+      - :cch:`x || y`
       - 2
       - LtR
       - recommended free
       - overloads lose short-circuit evaluation
     * - 16
       - ternary conditional
-      - :cch:`a ? b : c`
+      - :cch:`x ? y : z`
       - 3
       - RtL
       - \-
       -
     * - 16
       - throw
-      - :cch:`throw`, :cch:`throw a`
+      - :cch:`throw`, :cch:`throw x`
       - 0-1
       - RtL
       - \-
       -
     * - 16
       - yield expression
-      - :cch:`co_yield a`
+      - :cch:`co_yield x`
       - 1
       - RtL
       - \-
       - C++20
     * - 16
       - direct assignment
-      - :cch:`a = b`
+      - :cch:`x = y`
       - 2
       - RtL
       - member
       -
     * - 16
       - compound assignment by sum
-      - :cch:`a += b`
+      - :cch:`x += y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by difference
-      - :cch:`a -= b`
+      - :cch:`x -= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by product
-      - :cch:`a *= b`
+      - :cch:`x *= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by quotient
-      - :cch:`a /= b`
+      - :cch:`x /= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by remainder
-      - :cch:`a %= b`
+      - :cch:`x %= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise left shift
-      - :cch:`a <<= b`
+      - :cch:`x <<= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise right shift
-      - :cch:`a >>= b`
+      - :cch:`x >>= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise AND
-      - :cch:`a &= b`
+      - :cch:`x &= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise XOR
-      - :cch:`a ^= b`
+      - :cch:`x ^= y`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise OR
-      - :cch:`a |= b`
+      - :cch:`x |= y`
       - 2
       - RtL
       - recommended member
       -
     * - 17
       - comma
-      - :cch:`a, b`
+      - :cch:`x, y`
       - 2
       - LtR
       - recommended free
       - overloading discouraged
     * - \-
       - user-defined literal
-      - :cch:`""a`
+      - :cch:`""x`
       - 1
       - \-
       - free
       - C++11
     * - \-
       - static cast
-      - :cch:`static_cast<T>(a)`
+      - :cch:`static_cast<T>(x)`
       - 1
       - \-
       - member
       - C++11
     * - \-
       - dynamic cast
-      - :cch:`dynamic_cast<T>(a)`
+      - :cch:`dynamic_cast<T>(x)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - const cast
-      - :cch:`const_cast<T>(a)`
+      - :cch:`const_cast<T>(x)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - reinterpret cast
-      - :cch:`reinterpret_cast<T>(a)`
+      - :cch:`reinterpret_cast<T>(x)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - size-of parameter pack
-      - :cch:`sizeof...(T)`, :cch:`sizeof...(a)`
+      - :cch:`sizeof...(T)`, :cch:`sizeof...(x)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - typeid
-      - :cch:`typeid(T)`, :cch:`typeid(a)`
+      - :cch:`typeid(T)`, :cch:`typeid(x)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - noexcept
-      - :cch:`noexcept(a)`
+      - :cch:`noexcept(x)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - alignof
-      - :cch:`alignof(T)`, :cch:`alignof(a)`
+      - :cch:`alignof(T)`, :cch:`alignof(x)`
       - 1
       - \-
       - \-
@@ -505,11 +505,11 @@ Legend:
 - **precendence** - C++ has no formal precendence of operators. Their precendence is implicitly defined by the grammar.
   - If multiple operators have the same precedence they are applied according to their associativity.
   - Operators with no precedence in the table are never ambiguous.
-- **arity** - number of operands (including :cch:`*this` if appropriate). In cases like ``a.b`` and ``a->b`` the arity is 1 because ``b`` does not contribute to the operator's output.
+- **arity** - number of operands (including :cch:`*this` if appropriate). In cases like ``x.y`` and ``x->y`` the arity is 1 because ``y`` does not contribute to the operator's output.
 - **associativity**:
 
-  - left-to-right: ``a @ b @ c`` is equivalent to ``(a @ b) @ c``
-  - right-to-left: ``a @ b @ c`` is equivalent to ``a @ (b @ c)``
+  - left-to-right: ``x @ y @ z`` is equivalent to ``(x @ y) @ z``
+  - right-to-left: ``x @ y @ z`` is equivalent to ``x @ (y @ z)``
 
 - **overloading**:
 

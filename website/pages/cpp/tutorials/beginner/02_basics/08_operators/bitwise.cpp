@@ -3,13 +3,13 @@
 
 int main()
 {
-	unsigned a = 0b11101001;
-	unsigned b = 0b01010101;
+	unsigned x = 0b11101001;
+	unsigned y = 0b01010101;
 
-	std::cout << "a      : " << std::bitset<8>(a) << "\n";
-	std::cout << "b      : " << std::bitset<8>(b) << "\n";
+	std::cout << "x      : " << std::bitset<8>(x) << "\n";
+	std::cout << "y      : " << std::bitset<8>(y) << "\n";
 
-	std::cout << "a AND b: " << std::bitset<8>(a & b) << "\n";
-	std::cout << "a  OR b: " << std::bitset<8>(a | b) << "\n";
-	std::cout << "a XOR b: " << std::bitset<8>(a ^ b) << "\n";
+	std::cout << "x AND y: " << std::bitset<8>(x & y) << "\n";
+	std::cout << "x  OR y: " << std::bitset<8>(x | y) << "\n";
+	std::cout << "x XOR y: " << std::bitset<8>(x ^ y) << "\n";
 }

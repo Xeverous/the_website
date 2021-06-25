@@ -3,8 +3,8 @@
 
 int main()
 {
-	unsigned a = 0b01001100;
+	unsigned x = 0b01001100;
 
-	std::cout << " a: " << std::bitset<8>(a)  << "\n";
-	std::cout << "~a: " << std::bitset<8>(~a) << "\n";
+	std::cout << " x: " << std::bitset<8>(x)  << "\n";
+	std::cout << "~x: " << std::bitset<8>(~x) << "\n";
 }

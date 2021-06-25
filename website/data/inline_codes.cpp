@@ -328,28 +328,28 @@ std::weak_ordering
 std::weak_ordering::equivalent
 std::weak_ordering::greater
 std::weak_ordering::less
-!(a == b)
-!a
+!(x == y)
+!x
 ""
-""a
+""x
 "abCD"
 "abc"
 &
 &&
-&a
+&x
 '\0'
 'a'
-(T) a
-(a / b) / c
+(T) x
+(x / y) / z
 (const int*)
 (const int[4])
 (const int[])
-*a
 *this
-++a
-+a
---a
--a
+*x
+++x
++x
+--x
+-x
 0
 1
 2
@@ -365,67 +365,19 @@ std::weak_ordering::less
 = default
 = delete
 T
-T(a)
-T{a}
+T(x)
+T{x}
 U
 V
-a
-a != b
-a % b
-a %= b
-a & b
-a && b
-a &= b
-a * b
-a *= b
-a + b
-a += b
-a - b
-a -= b
-a / b
-a / b / c
-a /= b
-a < b
-a << b
-a <<= b
-a <= b
-a <=> b
-a = (b = c)
-a = -a
-a = a % b
-a = a * b
-a = a + b
-a = b
-a = b = c
-a == b
-a > b
-a >= b
-a >> b
-a >>= b
-a ? b : c
-a ^ b
-a ^= b
-a | b
-a |= b
-a || b
-a()
-a++
-a, b
-a--
-a->*b
-a->b
-a.*b
-a.b
-a[]
 alignof(T)
-alignof(a)
-b
-c = a - b
-co_await a
-co_yield a
-const_cast<T>(a)
+alignof(x)
+y
+z = x - y
+co_await x
+co_yield x
+const_cast<T>(x)
 delete[]
-dynamic_cast<T>(a)
+dynamic_cast<T>(x)
 if (x + 1 < x)
 int long unsigned long
 int main(int argc, char* argv[])
@@ -433,7 +385,7 @@ int main(int argc, char** argv)
 long double
 long long
 new[]
-noexcept(a)
+noexcept(x)
 operator!
 operator!=
 operator""
@@ -474,24 +426,70 @@ operator|
 operator|=
 operator||
 operator~
-reinterpret_cast<T>(a)
+reinterpret_cast<T>(x)
 return 0;
 short long
 signed char
 signed long long int
 signed short int
 sizeof T
-sizeof a
+sizeof x
 sizeof...(T)
-sizeof...(a)
-static_cast<T>(a)
-throw a
+sizeof...(x)
+static_cast<T>(x)
+throw x
 typeid(T)
-typeid(a)
+typeid(x)
 unsigned char
 unsigned long long
 unsigned short
 unsigned short int
 x
+x != y
+x % y
+x %= y
+x & y
+x && y
+x &= y
+x * y
+x *= y
+x + y
+x += y
+x - y
+x -= y
+x / y
+x / y / z
+x /= y
+x < y
+x << y
+x <<= y
+x <= y
+x <=> y
+x = (y = z)
 x = -x
-~a
+x = x % y
+x = x * y
+x = x + y
+x = y
+x = y = z
+x == y
+x > y
+x >= y
+x >> y
+x >>= y
+x ? y : z
+x ^ y
+x ^= y
+x | y
+x |= y
+x || y
+x()
+x++
+x, y
+x--
+x->*y
+x->y
+x.*y
+x.y
+x[]
+~x

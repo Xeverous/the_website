@@ -344,8 +344,8 @@ chr
 (keyword keyword*)
 (keyword keyword[num])
 (keyword keyword[])
-*var_local
 *keyword
+*var_local
 ++var_local
 +var_local
 --var_local
@@ -369,54 +369,6 @@ type(var_local)
 type{var_local}
 tparam
 tparam
-var_local
-var_local != var_local
-var_local % var_local
-var_local %= var_local
-var_local & var_local
-var_local && var_local
-var_local &= var_local
-var_local * var_local
-var_local *= var_local
-var_local + var_local
-var_local += var_local
-var_local - var_local
-var_local -= var_local
-var_local / var_local
-var_local / var_local / var_local
-var_local /= var_local
-var_local < var_local
-var_local << var_local
-var_local <<= var_local
-var_local <= var_local
-var_local <=> var_local
-var_local = (var_local = var_local)
-var_local = -var_local
-var_local = var_local % var_local
-var_local = var_local * var_local
-var_local = var_local + var_local
-var_local = var_local
-var_local = var_local = var_local
-var_local == var_local
-var_local > var_local
-var_local >= var_local
-var_local >> var_local
-var_local >>= var_local
-var_local ? var_local : var_local
-var_local ^ var_local
-var_local ^= var_local
-var_local | var_local
-var_local |= var_local
-var_local || var_local
-var_local()
-var_local++
-var_local, var_local
-var_local--
-var_local->*var_local
-var_local->var_local
-var_local.*var_local
-var_local.var_local
-var_local[]
 keyword(type)
 keyword(var_local)
 var_local
@@ -493,5 +445,51 @@ keyword keyword keyword
 keyword keyword
 keyword keyword keyword
 var_local
+var_local != var_local
+var_local % var_local
+var_local %= var_local
+var_local & var_local
+var_local && var_local
+var_local &= var_local
+var_local * var_local
+var_local *= var_local
+var_local + var_local
+var_local += var_local
+var_local - var_local
+var_local -= var_local
+var_local / var_local
+var_local / var_local / var_local
+var_local /= var_local
+var_local < var_local
+var_local << var_local
+var_local <<= var_local
+var_local <= var_local
+var_local <=> var_local
+var_local = (var_local = var_local)
 var_local = -var_local
+var_local = var_local % var_local
+var_local = var_local * var_local
+var_local = var_local + var_local
+var_local = var_local
+var_local = var_local = var_local
+var_local == var_local
+var_local > var_local
+var_local >= var_local
+var_local >> var_local
+var_local >>= var_local
+var_local ? var_local : var_local
+var_local ^ var_local
+var_local ^= var_local
+var_local | var_local
+var_local |= var_local
+var_local || var_local
+var_local()
+var_local++
+var_local, var_local
+var_local--
+var_local->*var_local
+var_local->var_local
+var_local.*var_local
+var_local.var_local
+var_local[]
 ~var_local

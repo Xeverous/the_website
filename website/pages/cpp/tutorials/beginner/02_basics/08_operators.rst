@@ -21,19 +21,19 @@ Well, don't really be concerned with it for now. As you learn more about functio
 
 Some operators exist with multiple arities. For example:
 
-- unary minus: :cch:`a = -a` (negates number)
-- binary minus :cch:`c = a - b` (performs subtraction)
+- unary minus: :cch:`x = -x` (negates number)
+- binary minus :cch:`z = x - y` (performs subtraction)
 
 Many operators can be chained to form nested expressions, but they may have different **associativity**:
 
-- left-to-right: :cch:`a / b / c` is equivalent to :cch:`(a / b) / c`
-- right-to-left: :cch:`a = b = c` is equivalent to :cch:`a = (b = c)`
+- left-to-right: :cch:`x / y / z` is equivalent to :cch:`(x / y) / z`
+- right-to-left: :cch:`x = y = z` is equivalent to :cch:`x = (y = z)`
 
 For binary operators, there is a syntax sugar available when you want to perform assignment to the first of the operands:
 
-- :cch:`a += b` is the same as :cch:`a = a + b`.
-- :cch:`a *= b` is the same as :cch:`a = a * b`.
-- :cch:`a %= b` is the same as :cch:`a = a % b`.
+- :cch:`x += y` is the same as :cch:`x = x + y`.
+- :cch:`x *= y` is the same as :cch:`x = x * y`.
+- :cch:`x %= y` is the same as :cch:`x = x % y`.
 - and so on...
 
 Much later, you will also learn about **operator overloading**. Because most built-in operators work only with built-in types, C++ allows to define meaning for operators when user-defined types are involved. You have already used overloaded :cch:`operator<<` with :cch:`std::cout`.
@@ -41,12 +41,12 @@ Much later, you will also learn about **operator overloading**. Because most bui
 Comparison
 ##########
 
-- less than: :cch:`a < b`
-- less than or equal: :cch:`a <= b`
-- greater than: :cch:`a > b`
-- greater than or equal: :cch:`a >= b`
-- equal: :cch:`a == b`
-- not equal: :cch:`a != b`
+- less than: :cch:`x < y`
+- less than or equal: :cch:`x <= y`
+- greater than: :cch:`x > y`
+- greater than or equal: :cch:`x >= y`
+- equal: :cch:`x == y`
+- not equal: :cch:`x != y`
 
 All them produce a value of type :cch:`bool`.
 
@@ -55,8 +55,8 @@ All them produce a value of type :cch:`bool`.
 
     Do not mistake ``==`` wih `=`:
 
-    - ``=`` is the assignment operator. :cch:`a = b` assigns value of :cch:`b` to :cch:`a`.
-    - ``==`` is the equality operator, :cch:`a == b` produces a value of type :cch:`bool` informing whether operands are equal.
+    - ``=`` is the assignment operator. :cch:`x = y` assigns value of :cch:`y` to :cch:`x`.
+    - ``==`` is the equality operator, :cch:`x == y` produces a value of type :cch:`bool` informing whether operands are equal.
 
 Arithmetic
 ##########
@@ -66,7 +66,7 @@ There are 5 basic arithmetic operators: ``+``, ``-``, ``*``, ``/``, ``%``. All c
 .. admonition:: note
     :class: note
 
-    There is no operator for powers. :cch:`a ^ b` does not raise :cch:`a` to the power of :cch:`b` but performs *bitwise XOR* instead. Powers and other mathematical operations can be done using functions from the standard library.
+    There is no operator for powers. :cch:`x ^ y` does not raise :cch:`x` to the power of :cch:`y` but performs *bitwise XOR* instead. Powers and other mathematical operations can be done using functions from the standard library.
 
 Arithmetic expressions can generate different machine code depening on types of used variables. Math is done very differently on integer and floating-point types.
 
@@ -202,9 +202,9 @@ Logical operators
 
 3 logical functions are available:
 
-- negation (NOT): :cch:`!a`
-- conjunction (AND): :cch:`a && b`
-- disjunction (OR): :cch:`a || b`
+- negation (NOT): :cch:`!x`
+- conjunction (AND): :cch:`x && y`
+- disjunction (OR): :cch:`x || y`
 
 All of them operate on and produce values of type :cch:`bool`.
 
@@ -320,7 +320,7 @@ This will make reading code easier while also saving you some time from dealing 
 Spacing
 =======
 
-It's intuitive for unary operators to have higher priority than binary operators: `a + !b` is processed as `a + (!b)`. While whitespace characters doesn't matter in this case, it's highly recommended to write spaces around binary operators and stick unary operators to their arguments.
+It's intuitive for unary operators to have higher priority than binary operators: `x + !y` is processed as `x + (!y)`. While whitespace characters doesn't matter in this case, it's highly recommended to write spaces around binary operators and stick unary operators to their arguments.
 
 .. cch::
     :code_path: 08_operators/spacing.cpp
