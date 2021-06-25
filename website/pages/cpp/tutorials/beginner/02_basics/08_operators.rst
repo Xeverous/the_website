@@ -289,7 +289,7 @@ Alignment affects placement of objects in memory. For simplest types, its value 
 
     Why is size of :cch:`bool` equal to 1? Shouldn't it be a single bit? Is it because the operator returns size in bytes?
 
-When stored in memory, :cch:`bool` will occupy a full byte [1]_. This is for multiple reaons:
+When stored in memory, :cch:`bool` will occupy a full byte\ [1]_. This is for multiple reaons:
 
 - Memory is addressed by bytes, not bits. It's not possible to fetch a single bit.
 - Multiple :cch:`bool`\ s could be packed in a byte but then saving and retrieving single bit information would unnecessarily complicate machine code, slowing down the program.

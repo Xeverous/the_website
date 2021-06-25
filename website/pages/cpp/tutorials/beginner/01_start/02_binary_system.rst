@@ -187,7 +187,7 @@ Logic
 
 Logic is a subfield of mathematics. In computer science, boolean algebra plays a huge role - it is used as the theoretical basis of constructing devices that work in the binary system.
 
-When humans add numbers (using decimal system) they do so by applying a set of rules over consecutive digits [1]_. Computers do the same task but in the binary system. The rules are applied on the basis of boolean algebra.
+When humans add numbers (using decimal system) they do so by applying a set of rules over consecutive digits\ [1]_. Computers do the same task but in the binary system. The rules are applied on the basis of boolean algebra.
 
 In boolean algebra, there are only 2 possible states: false and true. 0 and 1. No and yes. Negative and positive. ...and whatever else you like to call them.
 

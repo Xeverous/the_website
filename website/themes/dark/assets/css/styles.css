@@ -303,6 +303,11 @@ nav.breadcrumb {
 	background-color: #e02300;
 }
 
+.footnote-reference {
+	vertical-align: super;
+	font-size: smaller;
+}
+
 .footer {
 	clear: both;
 	overflow: hidden;

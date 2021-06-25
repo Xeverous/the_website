@@ -11,7 +11,7 @@ Programming is the act of making computer programs. A computer program is just a
 - write data
 - move to the next instruction (where move is not necessarily one-by-one in the same direction)
 
-Further developments in engineering led to creation of faster and smaller machines that realize this mathematical concept using electric energy. As you may already know, computers use binary system (base 2, as opposed to humans which primarily [1]_ use base 10) but said shortly, it's only a matter of representation and doesn't affect results at all. Math is the same, it's just a different form of writing. Computers use base 2 due to practical reasons - there were attempts at other systems but ultimately constructing a device that works with only 2 different current states is the simplest of all.
+Further developments in engineering led to creation of faster and smaller machines that realize this mathematical concept using electric energy. As you may already know, computers use binary system (base 2, as opposed to humans which primarily\ [1]_ use base 10) but said shortly, it's only a matter of representation and doesn't affect results at all. Math is the same, it's just a different form of writing. Computers use base 2 due to practical reasons - there were attempts at other systems but ultimately constructing a device that works with only 2 different current states is the simplest of all.
 
 You might wonder why there are multiple programming languages. The reason is similar as to human languages which separately evolved over time but the evolution cause is much different. All widely used programming languages are based on the english language. The main cause of evolution are differing opinions how to best abstract underlying mathematical concepts.
 
