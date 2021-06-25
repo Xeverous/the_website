@@ -7,3 +7,6 @@
 4num1suf       0com_single
 8num1suf   0com_single
 7num     0com_single
+
+macro_ref 0com_single
+0com_single

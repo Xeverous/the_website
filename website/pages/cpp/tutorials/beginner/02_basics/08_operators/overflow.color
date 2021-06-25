@@ -1,0 +1,14 @@
+8pp_direct 0pp_header
+8pp_direct 9pp_header 0com_single
+
+keyword func()
+{
+	namespace::type var_local = num1suf;
+	namespace::var_global << str << var_local << str;
+
+	var_local += num;
+	namespace::var_global << str << var_local << str;
+
+	var_local -= num;
+	namespace::var_global << str << var_local << str;
+}

@@ -7,3 +7,6 @@
 .1E4l       // 1000, long double
 0x10.1p2f   // 64.25, float (uses hexadecimal digits)
 0x1.2p3     // 9 (1.125 * 2^3), double (uses hexadecimal digits)
+
+NAN // NaN, float, macro constant defined in <cmath>
+// it's implementation-defined, may not exist if not supported

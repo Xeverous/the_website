@@ -24,7 +24,7 @@ By default, integer literals are of type :cch:`int`. The type can be changed by 
 - The suffix is not case-sensitive but for :cch:`long long`, it must be either ``ll`` or ``LL``. Mixed (``lL`` or ``Ll``) are not valid. Lowercase is recommended.
 - There is no suffix for :cch:`short`.
 
-The size type is one of integer types which the target platform uses for storing sizes, indexes etc. Its unsigned version has an alias name :cch:`std::size_t` and usually it is :cch:`unsigned long long`.
+The size type is one of integer types which the target platform uses for storing sizes, indexes etc. Its unsigned variant has an alias name :cch:`std::size_t` and usually it is :cch:`unsigned long long`.
 
 Integers may be written using multiple numeric systems:
 
@@ -203,6 +203,26 @@ Other literals
 It's worth noting that not all literals have to be made of characters or digits - some literals are keywords. You already know 2 of them: :cch:`false` and :cch:`true` are literals of type :cch:`bool`.
 
 Later you will be learn about one more keyword literal - :cch:`nullptr`.
+
+Automatic type
+##############
+
+A simple but very useful feature is the type placeholder :cch:`auto`. It will deduce the type based on the expression used in intialization:
+
+.. TOCOLOR
+
+.. code::
+
+    auto b = true; // bool
+    auto i = 1;    // int
+    auto l = 1l;   // long
+    auto f = 1.0f; // float
+    auto x; // error: can't deduce without initializer
+
+.. admonition:: note
+    :class: note
+
+    If :cch:`auto` is used, the value must be initialized.
 
 Exercise
 ########

@@ -329,17 +329,27 @@ std::weak_ordering::equivalent
 std::weak_ordering::greater
 std::weak_ordering::less
 !(a == b)
-'\0'
-'a'
+!a
 ""
-"abc"
+""a
 "abCD"
-(const int[])
-(const int[4])
-(const int*)
-*this
+"abc"
 &
 &&
+&a
+'\0'
+'a'
+(T) a
+(a / b) / c
+(const int*)
+(const int[4])
+(const int[])
+*a
+*this
+++a
++a
+--a
+-a
 0
 1
 2
@@ -355,19 +365,68 @@ std::weak_ordering::less
 = default
 = delete
 T
+T(a)
+T{a}
 U
 V
+a
 a != b
+a % b
+a %= b
+a & b
+a && b
+a &= b
+a * b
+a *= b
+a + b
+a += b
+a - b
+a -= b
+a / b
+a / b / c
+a /= b
 a < b
+a << b
+a <<= b
+a <= b
+a <=> b
+a = (b = c)
+a = -a
+a = a % b
+a = a * b
+a = a + b
+a = b
+a = b = c
 a == b
 a > b
-alignof(a)
+a >= b
+a >> b
+a >>= b
+a ? b : c
+a ^ b
+a ^= b
+a | b
+a |= b
+a || b
+a()
+a++
+a, b
+a--
+a->*b
+a->b
+a.*b
+a.b
+a[]
 alignof(T)
+alignof(a)
+b
+c = a - b
 co_await a
 co_yield a
 const_cast<T>(a)
 delete[]
 dynamic_cast<T>(a)
+if (x + 1 < x)
 int long unsigned long
 int main(int argc, char* argv[])
 int main(int argc, char** argv)
@@ -375,31 +434,28 @@ long double
 long long
 new[]
 noexcept(a)
+operator!
+operator!=
+operator""
+operator%
+operator%=
+operator&
+operator&&
+operator&=
+operator()
+operator*
+operator*=
+operator+
+operator++
+operator+=
+operator,
 operator-
 operator--
 operator-=
 operator->
 operator->*
-operator,
-operator!
-operator!=
-operator""
-operator()
-operator[]
-operator*
-operator*=
 operator/
 operator/=
-operator&
-operator&&
-operator&=
-operator%
-operator%=
-operator^
-operator^=
-operator+
-operator++
-operator+=
 operator<
 operator<<
 operator<<=
@@ -411,6 +467,9 @@ operator>
 operator>=
 operator>>
 operator>>=
+operator[]
+operator^
+operator^=
 operator|
 operator|=
 operator||
@@ -421,16 +480,18 @@ short long
 signed char
 signed long long int
 signed short int
-sizeof a
 sizeof T
-sizeof...(a)
+sizeof a
 sizeof...(T)
+sizeof...(a)
 static_cast<T>(a)
 throw a
-typeid(a)
 typeid(T)
+typeid(a)
 unsigned char
 unsigned long long
 unsigned short
 unsigned short int
+x
 x = -x
+~a

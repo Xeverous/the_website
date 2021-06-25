@@ -1,0 +1,38 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	namespace::var_global << str << keyword(keyword)        << str;
+	namespace::var_global << str << keyword(keyword)         << str;
+	namespace::var_global << str << keyword(keyword)        << str;
+	namespace::var_global << str << keyword(keyword keyword)   << str;
+	namespace::var_global << str << keyword(keyword)        << str;
+	namespace::var_global << str << keyword(keyword)    << str;
+	namespace::var_global << str << keyword(keyword)    << str;
+	namespace::var_global << str << keyword(keyword)     << str;
+	namespace::var_global << str << keyword(keyword)       << str;
+	namespace::var_global << str << keyword(keyword)      << str;
+	namespace::var_global << str << keyword(keyword keyword) << str;
+
+	namespace::var_global << str << keyword(keyword)        << str;
+	namespace::var_global << str << keyword(keyword)         << str;
+	namespace::var_global << str << keyword(keyword)        << str;
+	namespace::var_global << str << keyword(keyword keyword)   << str;
+	namespace::var_global << str << keyword(keyword)        << str;
+	namespace::var_global << str << keyword(keyword)    << str;
+	namespace::var_global << str << keyword(keyword)    << str;
+	namespace::var_global << str << keyword(keyword)     << str;
+	namespace::var_global << str << keyword(keyword)       << str;
+	namespace::var_global << str << keyword(keyword)      << str;
+	namespace::var_global << str << keyword(keyword keyword) << str;
+
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+
+	0com_single
+	0com_single
+	namespace::var_global << str << keyword(namespace::var_global) << str;
+	namespace::var_global << str << keyword(namespace::var_global) << str;
+}

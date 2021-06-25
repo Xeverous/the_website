@@ -25,119 +25,119 @@ Operators and operator overloading
       -
     * - 2
       - suffix increment
-      - ``a++``
+      - :cch:`a++`
       - 1
       - LtR
       - member
       -
     * - 2
       - suffix decrement
-      - ``a--``
+      - :cch:`a--`
       - 1
       - LtR
       - member
       -
     * - 2
       - functional cast
-      - ``T(a)``
+      - :cch:`T(a)`
       - 1
       - LtR
       - member
       -
     * - 2
       - functional cast
-      - ``T{a}``
+      - :cch:`T{a}`
       - 1
       - LtR
       - member
       - C++11
     * - 2
       - function call
-      - ``a()``
+      - :cch:`a()`
       - 1+
       - LtR
       - member
       -
     * - 2
       - subscript
-      - ``a[]``
+      - :cch:`a[]`
       - 2
       - LtR
       - member
       -
     * - 2
       - member access
-      - ``a.b``
+      - :cch:`a.b`
       - 1
       - LtR
       - \-
       -
     * - 2
       - member access
-      - ``a->b``
+      - :cch:`a->b`
       - 1
       - LtR
       - member
       - has return type restrictions
     * - 3
       - prefix increment
-      - ``++a``
+      - :cch:`++a`
       - 1
       - RtL
       - member
       -
     * - 3
       - prefix decrement
-      - ``--a``
+      - :cch:`--a`
       - 1
       - RtL
       - member
       -
     * - 3
       - unary plus
-      - ``+a``
+      - :cch:`+a`
       - 1
       - RtL
       - free, member
       -
     * - 3
       - unary minus
-      - ``-a``
+      - :cch:`-a`
       - 1
       - RtL
       - free, member
       -
     * - 3
       - logical NOT
-      - ``!a``
+      - :cch:`!a`
       - 1
       - RtL
       - member
       -
     * - 3
       - bitwise NOT
-      - ``~a``
+      - :cch:`~a`
       - 1
       - RtL
       - member
       -
     * - 3
       - C-style cast
-      - ``(T) a``
+      - :cch:`(T) a`
       - 1
       - RtL
       - member
       -
     * - 3
       - dereference
-      - ``*a``
+      - :cch:`*a`
       - 1
       - RtL
       - member
       -
     * - 3
       - address-of
-      - ``&a``
+      - :cch:`&a`
       - 1
       - RtL
       - member
@@ -186,154 +186,154 @@ Operators and operator overloading
       -
     * - 4
       - pointer-to-member access
-      - ``a.*b``
+      - :cch:`a.*b`
       - 1
       - LtR
       - \-
       -
     * - 4
       - pointer-to-member access
-      - ``a->*b``
+      - :cch:`a->*b`
       - 1
       - LtR
       - member
       -
     * - 5
       - multiplication
-      - ``a * b``
+      - :cch:`a * b`
       - 2
       - LtR
       - recommended free
       -
     * - 5
       - division
-      - ``a / b``
+      - :cch:`a / b`
       - 2
       - LtR
       - recommended free
       -
     * - 5
       - remainer
-      - ``a % b``
+      - :cch:`a % b`
       - 2
       - LtR
       - recommended free
       -
     * - 6
       - addition
-      - ``a + b``
+      - :cch:`a + b`
       - 2
       - LtR
       - recommended free
       -
     * - 6
       - subtraction
-      - ``a - b``
+      - :cch:`a - b`
       - 2
       - LtR
       - recommended free
       -
     * - 7
       - bitwise left shift
-      - ``a << b``
+      - :cch:`a << b`
       - 2
       - LtR
       - recommended free
       -
     * - 7
       - bitwise right shift
-      - ``a >> b``
+      - :cch:`a >> b`
       - 2
       - LtR
       - recommended free
       -
     * - 8
       - three-way comparison, spaceship
-      - ``a <=> b``
+      - :cch:`a <=> b`
       - 2
       - LtR
       - free, member
       - C++20
     * - 9
       - less than
-      - ``a < b``
+      - :cch:`a < b`
       - 2
       - LtR
       - recommended free
       -
     * - 9
       - less than or equal to
-      - ``a <= b``
+      - :cch:`a <= b`
       - 2
       - LtR
       - recommended free
       -
     * - 9
       - greater than
-      - ``a > b``
+      - :cch:`a > b`
       - 2
       - LtR
       - recommended free
       -
     * - 9
       - greater than or equal to
-      - ``a >= b``
+      - :cch:`a >= b`
       - 2
       - LtR
       - recommended free
       -
     * - 10
       - equal to
-      - ``a == b``
+      - :cch:`a == b`
       - 2
       - LtR
       - recommended free
       -
     * - 10
       - not equal to
-      - ``a != b``
+      - :cch:`a != b`
       - 2
       - LtR
       - recommended free
       -
     * - 11
       - bitwise AND
-      - ``a & b``
+      - :cch:`a & b`
       - 2
       - LtR
       - recommended free
       -
     * - 12
       - bitwise XOR
-      - ``a ^ b``
+      - :cch:`a ^ b`
       - 2
       - LtR
       - recommended free
       -
     * - 13
       - bitwise OR
-      - ``a | b``
+      - :cch:`a | b`
       - 2
       - LtR
       - recommended free
       -
     * - 14
       - logical AND
-      - ``a && b``
+      - :cch:`a && b`
       - 2
       - LtR
       - recommended free
       - overloads lose short-circuit evaluation
     * - 15
       - logical OR
-      - ``a || b``
+      - :cch:`a || b`
       - 2
       - LtR
       - recommended free
       - overloads lose short-circuit evaluation
     * - 16
       - ternary conditional
-      - ``a ? b : c``
+      - :cch:`a ? b : c`
       - 3
       - RtL
       - \-
@@ -354,91 +354,91 @@ Operators and operator overloading
       - C++20
     * - 16
       - direct assignment
-      - ``a = b``
+      - :cch:`a = b`
       - 2
       - RtL
       - member
       -
     * - 16
       - compound assignment by sum
-      - ``a += b``
+      - :cch:`a += b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by difference
-      - ``a -= b``
+      - :cch:`a -= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by product
-      - ``a *= b``
+      - :cch:`a *= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by quotient
-      - ``a /= b``
+      - :cch:`a /= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by remainder
-      - ``a %= b``
+      - :cch:`a %= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise left shift
-      - ``a <<= b``
+      - :cch:`a <<= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise right shift
-      - ``a >>= b``
+      - :cch:`a >>= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise AND
-      - ``a &= b``
+      - :cch:`a &= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise XOR
-      - ``a ^= b``
+      - :cch:`a ^= b`
       - 2
       - RtL
       - recommended member
       -
     * - 16
       - compound assignment by bitwise OR
-      - ``a |= b``
+      - :cch:`a |= b`
       - 2
       - RtL
       - recommended member
       -
     * - 17
       - comma
-      - ``a, b``
+      - :cch:`a, b`
       - 2
       - LtR
       - recommended free
       - overloading discouraged
     * - \-
       - user-defined literal
-      - ``""a``
+      - :cch:`""a`
       - 1
       - \-
       - free

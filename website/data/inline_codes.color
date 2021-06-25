@@ -329,17 +329,27 @@ namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
 !(var_local == var_local)
-chr
-chr
+!var_local
+str
+str1suf
 str
 str
-str
-(keyword keyword[])
-(keyword keyword[num])
-(keyword keyword*)
-*keyword
 &
 &&
+&var_local
+chr
+chr
+(type) var_local
+(var_local / var_local) / var_local
+(keyword keyword*)
+(keyword keyword[num])
+(keyword keyword[])
+*var_local
+*keyword
+++var_local
++var_local
+--var_local
+-var_local
 num
 num
 num
@@ -355,19 +365,68 @@ num
 = keyword
 = keyword
 tparam
+type(var_local)
+type{var_local}
 tparam
 tparam
+var_local
 var_local != var_local
+var_local % var_local
+var_local %= var_local
+var_local & var_local
+var_local && var_local
+var_local &= var_local
+var_local * var_local
+var_local *= var_local
+var_local + var_local
+var_local += var_local
+var_local - var_local
+var_local -= var_local
+var_local / var_local
+var_local / var_local / var_local
+var_local /= var_local
 var_local < var_local
+var_local << var_local
+var_local <<= var_local
+var_local <= var_local
+var_local <=> var_local
+var_local = (var_local = var_local)
+var_local = -var_local
+var_local = var_local % var_local
+var_local = var_local * var_local
+var_local = var_local + var_local
+var_local = var_local
+var_local = var_local = var_local
 var_local == var_local
 var_local > var_local
-keyword(var_local)
+var_local >= var_local
+var_local >> var_local
+var_local >>= var_local
+var_local ? var_local : var_local
+var_local ^ var_local
+var_local ^= var_local
+var_local | var_local
+var_local |= var_local
+var_local || var_local
+var_local()
+var_local++
+var_local, var_local
+var_local--
+var_local->*var_local
+var_local->var_local
+var_local.*var_local
+var_local.var_local
+var_local[]
 keyword(type)
+keyword(var_local)
+var_local
+var_local = var_local - var_local
 keyword var_local
 keyword var_local
 keyword<type>(var_local)
 keyword[]
 keyword<type>(var_local)
+keyword (var_local + num < var_local)
 keyword keyword keyword keyword
 keyword func(keyword param, keyword* param[])
 keyword func(keyword param, keyword** param)
@@ -375,31 +434,28 @@ keyword keyword
 keyword keyword
 keyword[]
 keyword(var_local)
+keyword!
+keyword!=
+keyword""
+keyword%
+keyword%=
+keyword&
+keyword&&
+keyword&=
+keyword()
+keyword*
+keyword*=
+keyword+
+keyword++
+keyword+=
+keyword,
 keyword-
 keyword--
 keyword-=
 keyword->
 keyword->*
-keyword,
-keyword!
-keyword!=
-keyword""
-keyword()
-keyword[]
-keyword*
-keyword*=
 keyword/
 keyword/=
-keyword&
-keyword&&
-keyword&=
-keyword%
-keyword%=
-keyword^
-keyword^=
-keyword+
-keyword++
-keyword+=
 keyword<
 keyword<<
 keyword<<=
@@ -411,6 +467,9 @@ keyword>
 keyword>=
 keyword>>
 keyword>>=
+keyword[]
+keyword^
+keyword^=
 keyword|
 keyword|=
 keyword||
@@ -421,16 +480,18 @@ keyword keyword
 keyword keyword
 keyword keyword keyword keyword
 keyword keyword keyword
-keyword var_local
 keyword type
-keyword...(var_local)
+keyword var_local
 keyword...(type)
+keyword...(var_local)
 keyword<type>(var_local)
 keyword var_local
-keyword(var_local)
 keyword(type)
+keyword(var_local)
 keyword keyword
 keyword keyword keyword
 keyword keyword
 keyword keyword keyword
+var_local
 var_local = -var_local
+~var_local

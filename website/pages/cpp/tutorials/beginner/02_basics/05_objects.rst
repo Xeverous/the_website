@@ -23,12 +23,19 @@ Name is optional because:
 - In some cases temporary (unnamed) objects may be created as a part of evaluation of expressions - e.g. in :cch:`2 * 3 + 4` an unnamed integer object with value :cch:`6` may temporarily appear in memory.
 - In some cases objects can be referred using indirect mechanisms such as pointers and references. This is especially true for any data that has variable size (e.g. an array).
 
-Don't think that an object (some data in memory with certain properties) means the same as a variable (named modifiable entity in code):
+Don't think that an *object* (some data in memory with certain properties) means the same as a *variable* (named modifiable entity in code):
 
 - When using indirect mechanisms such as references and pointers, it's possible to have 2 variables (e.g. 2 references) that refer to the same object in memory.
 - When using variable-size objects such as arrays, it's possible to have multiple objects that are accessed through the same variable.
 
 Of couse we are still pretty far from indirect mechanisms, all of the code now will have 1:1 variable-object relation.
+
+If you are curious for the formal difference:
+
+.. admonition:: definition
+    :class: definition
+
+    A *variable* is an *object* or a *reference* that is not a *non-static data member*, that is introduced by a *declaration*.
 
 Creating objects
 ################
@@ -55,7 +62,7 @@ It's possible to define multiple objects at once:
 
 This is a very common C++ teaching mistake - please point it out by giving link to this article TODO. While I understand the need for mental shortcuts, "type followed by name" is only trapping beginners in incorrect thinking. We wish it worked this way, but it doesn't.
 
-If you really want too see how bad the grammar gets just check this:
+To further prove the argument, take a look at this:
 
 .. code::
 
@@ -71,6 +78,12 @@ In this specific example, only :cch:`int` is "picked up" for every object and an
     :class: tip
 
     Always declare each object in a separate statement. Never declare mutliple objects in one.
+
+..
+
+    Can't these syntax rules be changed?
+
+C++ is a very history-rich language (40+ years) and it also takes backwards compatibility very seriously. C++ inherited a lot from C, including some of its grammar design flaws. Still, it wouldn't be in a place it is today if the language did not appear as an alternative to then very fast growing C. Many of past problems did get "fixed" in C++11 **without breaking backwards compatibility** by adding more alternative subgrammars. This of course spawned a lot of corner cases so if you want some laugh, watch the 7min talk `CppCon 2018: Timur Doumler "Can I has grammar?" <https://www.youtube.com/watch?v=tsG95Y-C14k>`_.
 
 Assignment
 ##########

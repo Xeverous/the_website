@@ -11,22 +11,54 @@ Not really. Additional mechanisms such as registers and caches are not extra mem
 
 Computers read, write and manipulate data in binary. But what does the data represent? How to interpret it? This is what types are for. Since memory by itself has no notion of what data represents, it's all up to the programmer to give it a meaning by specifying a type. A number without a context is just a number. But with specific interpretation, it can mean text (each symbol having unique number), color (numbers stating intensity of RGB components), sound (numbers describing physical attributes of waves) and so on - for this reason files have extensions - a file is nothing more than a sequence of bytes. It's up to the user which program to use to open it and how the program will interpret this sequence.
 
-In C++, every *object* has an associated type. This type determines how the binary representation should be interpreted and what operations can be performed on the data. Two objects with different types may be identical in their binary form, but their meaning can be completely different.
+In C++, every *object* has an associated type. This makes C++ a **strongly-typed programming language**. The type determines how the binary representation should be interpreted and what operations can be performed on the data. Two objects with different types may be identical in their binary form, but their meaning can be completely different.
+
+    What if a language is not strongly-typed?
+
+These that do not are typically named to have **loose** or **dynamic typing**. They not require specifying types of objects. Instead, they dynamically adapt (during program execution) by performing hidden conversions between type-mismatched operations. These languages are typically run on virtual machines or by interpreters - they rarely are transformed into real machine code - generally, they wouldn't be as efficient as a strongly-typed language so instead they go for the benefits of being interpreted (e.g. no compilation required).
+
+C++ is a language which does not do anything unless explicitly asked to (for performance reasons). You have the full control what happens, when and how. If you want extra behavior such as dynamic typing, there are mechanisms in C++ that can be used for it. Otherwise, you don't pay for what you don't use.
+
+Advantages of strong typing:
+
+- Less mistakes: type-mismatched operations result in compiler errors. For interpreted languages, such problems are usually detected only when the program is run and only when the faulty operation is attempted.
+- Faster execution: less convertions are performed.
+- Lower memory usage: each object is stored on fixed amount of memory. With dynamic typing variables are often stored multiple times in different formats.
+- Self-documenting code: you know exactly what you work with. No need to write explanatory comments what types are accepted in specific places.
+- Better optimization: Compilers generate better machine code knowing exactly how memory is used.
+
+The first point might seem trivial but convertion errors are a common source of bugs in software. By specifying types we give variables specific purpose and prevent mistakes from wrong interpretation. This is known as **type safety**. C++ takes type safety very seriously - as a programming language it has one of the richest type systems.
+
+Types in C++
+############
 
 There are 2 kinds of types in C++:
 
 - built-in types - types offered by the language itself, they are denoted with keywords
 - user-defined types - types created by the user (here *user* means user of the language - programmer)
 
-For now, we will stick only to built-in types as defining new types requires much more knowledge. All you need to know for now is that user-defined types allow to specify new meanings for binary data which is extremely useful in making abstractions.
+For now, we will stick to built-in types as defining new types requires much more knowledge. Sometimes we will use user-defined types from the standard library. All you need to know for now is that user-defined types allow to specify new meanings for binary data which is extremely useful in making abstractions.
+
+    Is :cch:`std::cout` such user-defined type?
+
+No. It is an object. A globally accessible object of user-defined type :cch:`std::ostream`.
 
 Most important built-in types:
 
-- :cch:`void` - represents nothingness. You can not create objects of this type - it's only for special purposes like indicating lack of data.
-- :cch:`bool` - represents a single bit of information. Can represent only 2 possible values: :cch:`false` and :cch:`true`.
+- :cch:`void` - represents nothingness. You can not create objects of this type but :cch:`void` can be used in some contexts to express that no data is being used.
+- :cch:`bool` - represents a boolean value.
 - integer types - capable of storing whole numbers.
 - character types - integer types which main purpose is storing text.
 - floating-point types - capable of storing real numbers with fractional and/or exponential part, with limited accuracy.
+
+The type :cch:`bool`
+====================
+
+This type represents a mathematical truth value (AKA logical value). It can hold exactly 1 of 2 possible values: :cch:`false` and :cch:`true`.
+
+:cch:`bool` can be thought as a single bit (0 or 1).
+
+:cch:`bool` will be most often used with :cch:`if` and other control flow statements.
 
 Integer types
 =============
@@ -189,9 +221,9 @@ The simplest integer type is :cch:`int`.
 
 Unnecessary keywords can be skipped so:
 
-- :cch:`unsigned short int` can be written as :cch:`unsigned short`
-- :cch:`signed short int` can be written as :cch:`short`
-- :cch:`signed long long int` can be written as :cch:`long long`
+- :cch:`unsigned short int` can be shortened to :cch:`unsigned short`
+- :cch:`signed short int` can be shortened to :cch:`short`
+- :cch:`signed long long int` can be shortened to :cch:`long long`
 - :cch:`int` can also be written as :cch:`signed`
 
 ..
@@ -307,13 +339,13 @@ Both mantissa and exponent have their own limits, so there is both maximum/minim
 
 **Floating-points store real numbers with limited accurary.** Just like in decimal system ``1/3`` can be approximated as ``0.333`` or ``333 * 10^(-3)``, the same problem exists in floating-point notation - the only difference is that base 2 is used instead of base 10 for the exponent. **There are infinitely many values which can not be precisely represented** - instead, the closest approximations are used.
 
-Shortly speaking, granurality increases (more values can be represented in the given subrange) the closer they are to 0. Analogy: ``100`` and ``101`` can be exactly represented. But in case of ``1000000001``, it might be approximated as ``1 * 10^9`` when mantisa does not have enough bits to support ``1000000001 * 10^1``. As numbers grow, more focus is placed into the exponent which causes magnitude to be more rounded towards specific power.
+Shortly speaking, granurality increases (more values can be represented in the given subrange) the closer they are to 0. The highest precision is in range ``0`` to ``0.1``. Analogy: ``100`` and ``101`` can be exactly represented. But in case of ``1000000001``, it might be approximated as ``1 * 10^9`` when mantisa does not have enough bits to support ``1000000001 * 10^1``. As numbers grow, more focus is placed into the exponent which causes magnitude to be more rounded towards specific power.
 
     If floating-point math has limited accuracy, how do calculators work then? How are various fractional values safely computed?
 
 In places such as finance where accuracy is paramount integers are used for calculations. Monetary amounts like ``1.5`` (in any currency that has denomination of 100) are stored as ``150``. The same method is commonly found in games - various fractional statistics are multiplied by 100 or 1000 so that all math can happen on whole numbers. Math on integer types is also faster.
 
-Calculators with unlimited precision don't use floating-point arithmetic - they store fractions as 2 integers (numerator and denominator), they don't immediately evaluate every function, they don't simplify formula if it would lose accuracy and so on. Basically, they perform operations using methods very similar to humans. This allows to support arbitrarily complex expressions without losing precision, but the logic that handles them is enormously complicated.
+Calculators with unlimited precision don't use floating-point arithmetic. They store integers as arrays which can have arbitrarily large size (each cell does not necessarily represent each digit - it's more complicated). They store fractions as 2 integers (numerator and denominator), they don't immediately evaluate every function, they don't simplify formula if it would lose accuracy and so on. Basically, they store information using complex data structures and perform operations using methods very similar to humans. This allows to support arbitrarily complex expressions without losing precision, but the logic that handles them is enormously complicated.
 
     I'm concerned with limited accuracy. How safe is using floating-point representation?
 

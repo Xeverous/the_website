@@ -1,5 +1,5 @@
-.. title: 02 - theory
-.. slug: 02_theory
+.. title: 03 - theory
+.. slug: 03_theory
 .. description: theory of computer programs
 .. author: Xeverous
 

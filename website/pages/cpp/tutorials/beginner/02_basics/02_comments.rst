@@ -98,3 +98,7 @@ If you happen to split a line, it's recommended to align the code (similarly how
     :class: tip
 
     Pick a style you prefer and use it consistently.
+
+A well-formatted program is easier to understand. This is hilariously explained in `CppCon 2018: James McNellis "The Shape of a Program" <https://www.youtube.com/watch?v=P2lxGnbDkDI>`_.
+
+The presentation mentions some simple refactorings (e.g. extracting :cch:`if` statements to unindent nested code) which will be covered in detail in later lessons. There are many simple code transformations you can apply to reduce code complexity; some IDEs even detect such cases and propose automatic refactorings.
