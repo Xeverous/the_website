@@ -164,6 +164,11 @@ Unlike with integers, there is no way for undefined behavior to occur during flo
 
 Many operations with floating-point types are affected by `floating-point environment <https://en.cppreference.com/w/cpp/numeric/fenv>`_. This is usually a set of CPU settings that affect current thread. Compiler options can also change the environment. This information shouldn't bother you now though, knowledge what happens in typical bad situations (listed above) is much more important.
 
+.. admonition:: note
+    :class: note
+
+    In any comparison, if at least one of operands is NaN, the result is always :cch:`false`.
+
 Underflow
 =========
 
@@ -193,6 +198,13 @@ Short summary of key points in the presentation:
 - Normalize values to range -1 - 1. Calculations in this range have highest precision.
 - Use formulas which don't mix big numbers with small numbers. Separate big with big and small with small operations will achieve more accurate results.
 - Don't ever compare floating-point directly as their equality (except with zero) is basically unachieveable. Instead, make comparisons within +/- epsilon tolerance from expected result.
+- There are multiple ways to round floating-point numbers:
+
+  - towards zero
+  - towards nearest integer
+  - towards positive infinity
+  - towards negative infinity
+
 - If you aren't sure, prefer multiplication over division (``x / y`` can be refactored to ``x * (1 / y)``). It's usually more precise and faster.
 - Avoid accumulation of bias: instead of adding a floating-point constant after every iteration, count number of iterations (as integer) and multiply it with the constant.
 - Check how your hardware treats `denormal numbers <https://en.wikipedia.org/wiki/Denormal_number>`_. Some may feature 100x slowdown in which case you might prefer to change settings to perform underflow.
@@ -280,6 +292,11 @@ Not all operators are written using symbols. Many C++ operators are keywords. Th
 Both always return a non-zero integer of type :cch:`std::size_t`.
 
 Alignment affects placement of objects in memory. For simplest types, its value will usually be the same as size. Explaining it in detail would take some time and would require more knowledge about memory so I'm only mentioning it as an operator example.
+
+.. admonition:: note
+    :class: note
+
+    :cch:`sizeof` and :cch:`alignof` can not be applied to *incomplete types* (this includes :cch:`void`), *bit-fields* and *functions*.
 
 .. cch::
     :code_path: 08_operators/other.cpp
