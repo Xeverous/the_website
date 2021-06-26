@@ -77,7 +77,7 @@ In this specific example, only :cch:`int` is "picked up" for every object and an
 .. admonition:: tip
     :class: tip
 
-    Always declare each object in a separate statement. Never declare mutliple objects in one.
+    Always declare each variable in a separate statement. Never declare mutliple variables in one.
 
 ..
 
@@ -105,7 +105,7 @@ After an object has been created, we can start using it. One of the simplest ope
         std::cout << x << "\n";
     }
 
-You can observe that statements are executed from top to bottom and ``x``'s value is changed.
+You can observe that statements are executed from top to bottom and :cch:`x`'s value is changed.
 
 Initialization
 ##############
@@ -222,3 +222,33 @@ The output of this code is the same, however :cch:`std::endl` is not just a new 
 C++ standard streams automatically flush the buffer when necessary, so you shouldn't really be concerned with what is happening underneath. Using :cch:`std::endl` forces it to flush the buffer more than necessary, which generally only slows down the whole program. If you see examples online which use :cch:`std::endl`, you can simply rewrite them to use new line character.
 
 For now, this should be enough to let you output values of simple variables. Play with different types and values and observe the effect. In later lessons, you will learn about standard input (:cch:`std::cin`) and how to create first user-interactive programs that read text.
+
+Exercise
+########
+
+Is the following code valid?
+
+.. TOCOLOR
+
+.. code::
+
+    int x = 5;
+    x = x * 2;
+    std::cout << x;
+
+.. TODO spoiler element
+
+Yes. Assignments work by evaluating expression on the right before the result is stored in an object. There are no problems if the expression refers to the same object.
+
+Is the following code valid?
+
+.. TOCOLOR
+
+.. code::
+
+    int x = 2 * x;
+    std::cout << x;
+
+.. TODO spoiler element
+
+Technically yes (this will compile) but contains undefined behavior. :cch:`x` here is used (on the right side) before it's initialized. It's not possible to initialize an object with a value that depends on it.
