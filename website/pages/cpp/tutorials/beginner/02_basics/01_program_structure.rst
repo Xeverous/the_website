@@ -51,7 +51,7 @@ In the hello world program we have 2 statements:
 .. admonition:: tip
     :class: tip
 
-    Main function can have its return statement ommited. If it's not present and code reaches end of the function, the behavior is as if had :cch:`return 0;`.
+    Main function can have its return statement omitted. If it's not present and code reaches end of the function, the behavior is as if had :cch:`return 0;`.
 
 ..
 

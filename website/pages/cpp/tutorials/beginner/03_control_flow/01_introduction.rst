@@ -24,7 +24,7 @@ In the machine code, we can differentiate 4 types of instructions:
 
 All that the processor is doing is simply executing instructions one after another and occasionally jumping to a different instruction than the next if some condition has been satisfied.
 
-The same thing could be also done in programming - but - imagine a 10000+ line program containing thousands of instructions and hundreds of statements like "if x is 0, jump to line ...". Humans get lost at roughly 7 (+/- 2) things\ [1]_ they need to focus on. Such program would be orders of magnitude more complex than any human could ever grasp, yet today we have programs containing millions of lines of code and they are still developed further.
+The same thing could be also done in programming - but - imagine a 10000+ line program containing thousands of instructions and hundreds of statements like "if x is 0, jump to line ...". Humans get lost at roughly 7 (+/-2) things\ [1]_ they need to focus on. Such program would be orders of magnitude more complex than any human could ever grasp, yet today we have programs containing millions of lines of code and they are still developed further.
 
 When first high-level programming languages appeared (reminder: low-level means 1:1 transformation of source code to machine code) the abstraction for a jump was very simple: :cch:`goto` keyword or something similar. You just wrote a condition and if it was true, the program would jump to a specified line or label.
 
