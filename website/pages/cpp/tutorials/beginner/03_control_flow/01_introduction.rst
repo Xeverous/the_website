@@ -62,6 +62,8 @@ Apart from these, C++ also contains one more structured form of control flow - e
 
 If you feel overwhelmed by this theory - just move on to the next lesson. For many it's easier to see actual examples than to read theoretical lecture.
 
+TODO scope
+
 ----
 
 .. [1] https://en.wikipedia.org/wiki/The_Magical_Number_Seven,_Plus_or_Minus_Two
