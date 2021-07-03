@@ -38,6 +38,16 @@ Both languages allow to initialize non-const character array with a string liter
 
 There is no undefined behaviour when modifying such array.
 
+Loops
+#####
+
+- In C, the scope of loop *statement* is nested within the scope of *init-statement*.
+- In C++, the scope of *init-statement* and the scope of loop *statement* is one and the same.
+
+.. cch::
+    :code_path: c_cpp_differences/loops.cpp
+    :color_path: c_cpp_differences/loops.color
+
 Type definitions and usage
 ##########################
 

@@ -1,0 +1,6 @@
+keyword (keyword var_local = num; var_local < var_local; ++var_local)
+{
+	0com_single
+	0com_single
+	keyword var_local = num;
+}
