@@ -378,6 +378,7 @@ co_yield x
 const_cast<T>(x)
 delete[]
 dynamic_cast<T>(x)
+for (;;)
 if (x + 1 < x)
 int long unsigned long
 int main(int argc, char* argv[])
@@ -469,7 +470,9 @@ x = (y = z)
 x = -x
 x = x % y
 x = x * y
+x = x + 1
 x = x + y
+x = x - 1
 x = y
 x = y = z
 x == y

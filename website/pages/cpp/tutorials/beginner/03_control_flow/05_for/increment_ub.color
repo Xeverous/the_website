@@ -1,0 +1,10 @@
+keyword var_local = num;
+keyword var_local = ++var_local + var_local++; 0com_single
+
+var_local = ++var_local + num;       0com_single
+var_local = var_local++ + num;       0com_single
+
+namespace::var_global << var_local << var_local++; 0com_single
+func(++var_local, ++var_local);        0com_single
+
+keyword var_local = --var_local + --var_local; 0com_single

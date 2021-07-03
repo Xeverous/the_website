@@ -332,6 +332,10 @@ Exercise
 
 Take the pseudo-calculator from the previous lesson and replace :cch:`if` statement(s) with :cch:`switch` where possible.
 
+.. TODO spoiler element
+
+:cch:`switch` should be used for operation selection.
+
 ----
 
 .. [1] Generally, because in most situations it's not allowed. See `goto documentation <https://en.cppreference.com/w/cpp/language/goto>`_ for details over what transfer of control can jump.

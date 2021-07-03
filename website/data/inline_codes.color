@@ -378,6 +378,7 @@ keyword var_local
 keyword<type>(var_local)
 keyword[]
 keyword<type>(var_local)
+keyword (;;)
 keyword (var_local + num < var_local)
 keyword keyword keyword keyword
 keyword func(keyword param, keyword* param[])
@@ -469,7 +470,9 @@ var_local = (var_local = var_local)
 var_local = -var_local
 var_local = var_local % var_local
 var_local = var_local * var_local
+var_local = var_local + num
 var_local = var_local + var_local
+var_local = var_local - num
 var_local = var_local
 var_local = var_local = var_local
 var_local == var_local
