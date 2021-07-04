@@ -5,6 +5,8 @@
 
 Basic arithmetic operators in C++ are written using symbols like ``+``, ``-``, ``*`` etc. An **operator** can be thought as a *function* (in mathematical sense) - it has certain input and produces certain output. An operator does not mean a symbol - some operators consist of multiple characters and some are even keywords. *Operator* is an abstract term.
 
+In majority of programming languages (including languages of C family), there is no juxtaposition or any implicit use of operators. This means that mathematical expressions like ``2(x + y)`` will create syntax errors - you need to write ``2 * (x + y)``.
+
 The number of inputs (*operands*) an operator takes is **arity**. C++ features operators with many arities:
 
 - nullary - 0
