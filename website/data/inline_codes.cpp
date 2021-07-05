@@ -429,6 +429,7 @@ operator||
 operator~
 reinterpret_cast<T>(x)
 return 0;
+return;
 short long
 signed char
 signed long long int

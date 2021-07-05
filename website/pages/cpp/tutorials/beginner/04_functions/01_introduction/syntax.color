@@ -1,0 +1,30 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+0com_single
+0com_single
+0com_single
+keyword func(keyword param)
+{
+	keyword var_local * var_local;
+}
+
+0com_single
+0com_single
+0com_single
+keyword keyword func(keyword keyword param, keyword keyword param, keyword keyword param)
+{
+	keyword keyword keyword var_local = (param + param + param) / 3num;
+	0com_single
+	keyword namespace::func(var_local * (var_local - param) * (var_local - param) * (var_local - param));
+}
+
+0com_single
+0com_single
+0com_single
+keyword func()
+{
+	namespace::var_global << func(3num) << str;
+	namespace::var_global << func(-3num) << str;
+	namespace::var_global << func(num, num, num) << str;
+}

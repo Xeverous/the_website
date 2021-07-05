@@ -1,0 +1,4 @@
+keyword func()
+{
+	namespace::var_global << str;
+}
