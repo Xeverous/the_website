@@ -344,6 +344,7 @@ std::weak_ordering::less
 (const int*)
 (const int[4])
 (const int[])
+(void)
 *this
 *x
 ++x

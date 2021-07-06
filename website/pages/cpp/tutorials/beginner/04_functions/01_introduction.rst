@@ -54,7 +54,9 @@ In order:
 
     Functions are called (used) by providing arguments between ``()``.
 
-Functions create own scope for their local objects (objects defined inside functions), these objects are destroyed when the function returns - only returned value is retained. You have already used this rule - so far all code has been written inside main function.
+Functions create own scope for their local objects (objects defined inside functions), these objects are destroyed when the function returns - only returned value is retained.
+
+There is no relation between names of function parameters and names of objects that are passed to the function. The compiler only cares whether types match. Names are only an abstraction for the programmer so that it's possible to express what should be done. Function call expressions are a way to connect separate parts of code.
 
 Returning
 #########
@@ -80,6 +82,8 @@ The compiler can not analyze all possible operations and simulate all potential 
 
 The new approach is simpler and more safe: **a function should cover all of its control flow paths (even if they seem to never be possible)**. The compiler can not simulate the function, but it simply checks whether all branches of any conditional instructions end in return statements. For backwards compatibility, C and C++ still allow functions with missing return statements, but compilers issue a warning.
 
+Remember that main function has an exception: if control flow reaches its end, it's assumed to be :cch:`return 0;`.
+
 Void functions
 ##############
 
@@ -103,6 +107,14 @@ There is no lower limit on size and arguments. Many useful functions can be as s
 .. cch::
     :code_path: 01_introduction/one_line.cpp
     :color_path: 01_introduction/one_line.color
+
+Terminology
+###########
+
+A common mistake is to assume that function *arguments* means the same as function *parameters*.
+
+- Function parameters are what function definition expects to be passed in (seen from inside the function).
+- Function arguments are expressions that are given for specific function call (seen from outside of the function).
 
 Recommendations
 ###############

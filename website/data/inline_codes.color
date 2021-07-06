@@ -344,6 +344,7 @@ chr
 (keyword keyword*)
 (keyword keyword[num])
 (keyword keyword[])
+(keyword)
 *keyword
 *var_local
 ++var_local
