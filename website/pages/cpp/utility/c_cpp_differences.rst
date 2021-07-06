@@ -122,6 +122,11 @@ C explicitly allows to take adresses of standard library functions (with excepti
 
 C++ explicitly disallows to take addresses of standard library functions (with exceptions). One of the reasons is that C++ allows or requires multiple overloads for many functions, many of which can be implemented through templates and can change with standard library updates. Workaround: make a wrapper around standard library function and use the address of the wrapper.
 
+Main function
+#############
+
+C++ forbids any use of the main function. This includes calling it and taking its address.
+
 Arrays
 ######
 
