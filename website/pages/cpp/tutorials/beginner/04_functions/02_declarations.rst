@@ -83,10 +83,8 @@ Necessary declarations are often called *forward declarations*.
 
 Then both functions would end up calling each other endlessly. Potential outcomes are:
 
-- Value reaches end of signed integer range, which is undefined behavior (only unsigned numbers have well-defined overflow).
-- Function call stack exhausts stack memory space, which is undefined behavior.
-
-.. TODO function call stack when?
+- Value reaches end of signed integer range which is undefined behavior (only unsigned numbers have well-defined overflow).
+- Function call stack exhausts stack memory space which causes stack overflow which is undefined behavior.
 
 :cch:`(void)` declarations
 ##########################

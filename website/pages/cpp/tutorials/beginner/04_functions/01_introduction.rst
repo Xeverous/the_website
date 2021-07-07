@@ -28,6 +28,17 @@ In programming:
 
     Functions are one of fundamental programming elements. They allow to build complex programs while reducing code duplication. In practice, almost every function calls other functions forming deep chains of code reuse.
 
+..
+
+    What if I really want to return multiple objects? I can imagine various situations where some computation could produce multiple results.
+
+Functions by their core definition always return a single object. The trick is that the object can be of any type.
+
+- In mathematics, a function can return a complex number or a matrix. These can hold multiple numbers.
+- In programming, a function can return an object of user-defined type. Such type can consist of multiple other types.
+
+.. TODO structs when?
+
 Syntax
 ######
 
@@ -54,7 +65,7 @@ In order:
 
     Functions are called (used) by providing arguments between ``()``.
 
-Functions create own scope for their local objects (objects defined inside functions), these objects are destroyed when the function returns - only returned value is retained.
+Functions create own scope for their local objects (objects defined inside functions), these objects are destroyed when the function returns - only returned value is retained. If the caller does not use the result (e.g. :cch:`f(x);` instead of :cch:`y = f(x);`) function still works the same but the returned data is lost.
 
 There is no relation between names of function parameters and names of objects that are passed to the function. The compiler only cares whether types match. Names are only an abstraction for the programmer so that it's possible to express what should be done. Function call expressions are a way to connect separate parts of code.
 
@@ -108,6 +119,8 @@ There is no lower limit on size and arguments. Many useful functions can be as s
     :code_path: 01_introduction/one_line.cpp
     :color_path: 01_introduction/one_line.color
 
+.. TODO constexpr functions when?
+
 Terminology
 ###########
 
@@ -115,6 +128,81 @@ A common mistake is to assume that function *arguments* means the same as functi
 
 - Function parameters are what function definition expects to be passed in (seen from inside the function).
 - Function arguments are expressions that are given for specific function call (seen from outside of the function).
+
+Implementation
+##############
+
+When compiled, functions are separate blocks of reusable machine code. Calling a function could be thought as just a jump instruction, but this is not enough. Unlike conditional statements and loops, functions do not jump ahead - they jump to separate blocks of instructions. Function calls are subexpressions within other code, so when a function finishes (returns) it must jump back to the place from where it was called.
+
+When a function is called, the place where it should return is pushed onto the *stack*. This data is also accompanied by function arguments (unless the compiler decided to pass them through registers). Stack is a special memory region where function-local data is stored. Simplified diagram:
+
+.. image:: https://upload.wikimedia.org/wikipedia/commons/8/8a/ProgramCallStack2_en.png
+    :alt: program call stack
+
+*Active frame* is the range of stack memory that holds information relevant to the function currently being executed. It contains return address (previous value of *stack pointer*) and any local data (arguments and objects defined inside the function). When this function returns, it will pop current frame (remove it from the stack), return to frame N-1 and change *stack pointer*.
+
+.. image:: https://upload.wikimedia.org/wikipedia/en/6/60/ProgramCallStack1.png
+    :alt: program call stack after return
+
+The mechanism can now repeat: the current function can call another function (which would push new frame with return address equal to current *stack pointer*) or return (which would pop current frame and revert *stack pointer*). As the program is executed and functions are called and return, the stack goes up and down constantly reusing stack space.
+
+The main function would be the closest one to the stack origin, since this is the first function to be called within a program. This also means that the main function is the last function to return.
+
+.. admonition:: note
+    :class: note
+
+    Various programming tools (especially debuggers) work in terms of inspecting *function call stack*. Below is an example of a possible call stack printed by `AddressSanitizer/LeakSanitizer <https://en.wikipedia.org/wiki/AddressSanitizer>`_ when it detects a *memory leak* bug:
+
+    .. code::
+
+        ==26475==ERROR: LeakSanitizer: detected memory leaks
+
+        Direct leak of 5 byte(s) in 1 object(s) allocated from:
+            #0 0x44f2de in malloc /usr/home/hacker/llvm/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:74
+            #1 0x464e86 in baz (/usr/home/hacker/a.out+0x464e86)
+            #2 0x464fb4 in main (/usr/home/hacker/a.out+0x464fb4)
+            #3 0x7f7e760b476c in __libc_start_main /build/buildd/eglibc-2.15/csu/libc-start.c:226
+
+    Main function may not be actually first due to implementation-specific reasons. Many platforms require extra work to be done before actual code can run. In most situations (without sanitizers) on GNU/Linux systems the first function is named ``_start`` but other magic names (starting with ``_``) can appear too.
+
+.. admonition:: definition
+    :class: definition
+
+    A situation when stack memory is exhausted and an attempt is made to occupy even more is **stack overflow**. This has undefined behavior.
+
+On GNU/Linux systems, Bash shell has a built-in command that can be used to check various resource limits, including stack memory. Example done on a 64-bit PC:
+
+.. code::
+
+    $ ulimit -a
+    core file size          (blocks, -c) 0
+    data seg size           (kbytes, -d) unlimited
+    scheduling priority             (-e) 0
+    file size               (blocks, -f) unlimited
+    pending signals                 (-i) 15450
+    max locked memory       (kbytes, -l) 65536
+    max memory size         (kbytes, -m) unlimited
+    open files                      (-n) 1024
+    pipe size            (512 bytes, -p) 8
+    POSIX message queues     (bytes, -q) 819200
+    real-time priority              (-r) 0
+    stack size              (kbytes, -s) 8192
+    cpu time               (seconds, -t) unlimited
+    max user processes              (-u) 15450
+    virtual memory          (kbytes, -v) unlimited
+    file locks                      (-x) unlimited
+
+8 MiB doesn't seem to be much but in reality, unless forced on purpose, stack overflow is hard to achieve. Most complex programs I have seen nest few hundred function calls. Stack pointer is the same size as the architecture (8 bytes on 64-bit CPU), adding this to other control data and average few function parameters and average few local variables we get a guesstimate of 64-128 bytes of stack data per function. Assuming few hundred nested function calls, we get at most few hundred kilobytes. That's far less than 8 MiB.
+
+    How then can programs process gigabytes (or even more) of data?
+
+So far everything done in the tutorial was using *local variables* with *automatic storage* which use *stack memory*. All the actual interesting data (and any large data) is pretty much always allocated dynamically, using *heap memory*. Functions can work on this data but the data itself is allocated separately. This is related to indirect mechanisms (e.g. arrays, references, pointers) where a single variable (allocated on the stack) can refer to a huge block of memory (allocated on the heap). This single variable can then be used to refer to an arbitrary amount of objects.
+
+    How is stack and heap memory related to RAM?
+
+Both are a part of RAM, where stack memory is a small selected region. The selection (for each program and for itself) is made by the operating system. RAM itself is only a one huge array of memory cells with nothing predefined. It's up to the software (especially OS) to form some structure and give meaning to specific ranges of memory cells.
+
+Processors contain SRAM (static RAM) which is a much faster memory than main RAM (dynamic RAM or DRAM). SRAM is typically used for the cache and internal registers of a CPU. Cache is closely related to currently executed function and its data so very often it will contain copies of the stack memory.
 
 Recommendations
 ###############
@@ -127,4 +215,4 @@ Exercise
 ########
 
 - Compile the function with missing return statement and observe any compiler warnings. Don't try calling it - you should never expect anything meaningful from undefined behavior.
-- Remember Collatz conjecture from control flow chapter? Now write a function that given a number, returns the next number. Modify the program from that lesson to use this function.
+- Remember Collatz conjecture from the control flow chapter? Now write a function that given a number, returns the next number. Modify the program from that lesson to use this function.

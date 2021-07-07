@@ -372,13 +372,12 @@ U
 V
 alignof(T)
 alignof(x)
-y
-z = x - y
 co_await x
 co_yield x
 const_cast<T>(x)
 delete[]
 dynamic_cast<T>(x)
+f(x);
 for (;;)
 if (x + 1 < x)
 int long unsigned long
@@ -497,4 +496,7 @@ x->y
 x.*y
 x.y
 x[]
+y
+y = f(x);
+z = x - y
 ~x
