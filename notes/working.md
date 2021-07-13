@@ -95,6 +95,40 @@ Default metadata fields for a new index page:
 .. index_path: .
 ```
 
+### writing pages - code snippets
+
+Support enabled through `rest_highlighter` plugin.
+
+Specified paths are mandatory. If the path begins with `/`, it is relative to the `conf.py` file, otherwise it is relative to the file containing the directive.
+
+#### custom code highlight
+
+TODO describe `cch` (inline role and directive).
+
+#### ANSI highlight
+
+How to embed:
+
+```
+.. ansi::
+    :ansi_path: path/to/file.txt
+```
+
+How to generate rich text with ANSI escapes:
+
+```
+# run the command in a separate typescript shell
+script -q -c "command that prints colored text" output.txt
+# remove script opening and closing logs
+gawk -i inplace 'NR>2 {print last} {last=$0}' output.txt
+# trim trailing lines (https://stackoverflow.com/a/44850844/4818802)
+sed -n '/^$/ !{x;/\n/{s/^\n//;p;s/.*//;};x;p;}; /^$/H' -i output.txt
+# remove ^M (CR, \r) from the file
+sed 's/\r//g' -i output.txt
+```
+
+This requires gawk (GNU awk) 4.1.0+ and GNU sed.
+
 ## working with CSS
 
 Use root-relative paths when linking global stylesheets to avoid problems in nested pages. For example, `foo/bar/page.html` would need to use `../../styles.css` to reference `styles.css` file, and the path to CSS could break every time the page is moved. `/assets/css/styles.css` will always work as long as assets themselves are not moved.

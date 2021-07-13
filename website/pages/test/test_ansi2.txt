@@ -1,0 +1,17 @@
+[01m[Kmain.cpp:[m[K In function ‘[01m[Kint func(int&)[m[K’:
+[01m[Kmain.cpp:7:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K
+[01m[Kmain.cpp:3:15:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kx[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+ int func([01;35m[Kint& x[m[K)
+          [01;35m[K~~~~~^[m[K
+[01m[Kmain.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[Kmain.cpp:12:25:[m[K [01;31m[Kerror: [m[K‘[01m[Kx[m[K’ was not declared in this scope
+  std::cout << "x = " << [01;31m[Kx[m[K << "\n";
+                         [01;31m[K^[m[K
+[01m[Kmain.cpp:13:7:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kint&[m[K’ to an rvalue of type ‘[01m[Kint[m[K’
+  func([01;31m[K123[m[K);
+       [01;31m[K^~~[m[K
+[01m[Kmain.cpp:3:5:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kint func(int&)[m[K’
+ int [01;36m[Kfunc[m[K(int& x)
+     [01;36m[K^~~~[m[K

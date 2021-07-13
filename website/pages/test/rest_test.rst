@@ -492,6 +492,15 @@ Custom code highlight
    :code_path: test_code.cpp
    :color_path: test_code.color
 
+Custom ANSI highlight
+---------------------
+
+.. ansi::
+    :ansi_path: test_ansi1.txt
+
+.. ansi::
+    :ansi_path: test_ansi2.txt
+
 More advanced directives
 ========================
 

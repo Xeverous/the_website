@@ -1,0 +1,32 @@
+In file included from [01m[K/usr/include/c++/8/algorithm:62[m[K,
+                 from [01m[Kmain.cpp:1[m[K:
+/usr/include/c++/8/bits/stl_algo.h: In instantiation of ‘[01m[Kvoid std::__sort(_RandomAccessIterator, _RandomAccessIterator, _Compare) [with _RandomAccessIterator = std::_List_iterator<int>; _Compare = __gnu_cxx::__ops::_Iter_less_iter][m[K’:
+[01m[K/usr/include/c++/8/bits/stl_algo.h:4834:18:[m[K   required from ‘[01m[Kvoid std::sort(_RAIter, _RAIter) [with _RAIter = std::_List_iterator<int>][m[K’
+[01m[Kmain.cpp:7:30:[m[K   required from here
+[01m[K/usr/include/c++/8/bits/stl_algo.h:1969:22:[m[K [01;31m[Kerror: [m[Kno match for ‘[01m[Koperator-[m[K’ (operand types are ‘[01m[Kstd::_List_iterator<int>[m[K’ and ‘[01m[Kstd::_List_iterator<int>[m[K’)
+     std::__lg([01;31m[K__last - __first[m[K) * 2,
+               [01;31m[K~~~~~~~^~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/8/bits/stl_algobase.h:67[m[K,
+                 from [01m[K/usr/include/c++/8/algorithm:61[m[K,
+                 from [01m[Kmain.cpp:1[m[K:
+[01m[K/usr/include/c++/8/bits/stl_iterator.h:392:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IteratorL, class _IteratorR> constexpr decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)[m[K’
+     [01;36m[Koperator[m[K-(const reverse_iterator<_IteratorL>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/8/bits/stl_iterator.h:392:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+In file included from [01m[K/usr/include/c++/8/algorithm:62[m[K,
+                 from [01m[Kmain.cpp:1[m[K:
+[01m[K/usr/include/c++/8/bits/stl_algo.h:1969:22:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::_List_iterator<int>[m[K’ is not derived from ‘[01m[Kconst std::reverse_iterator<_Iterator>[m[K’
+     std::__lg([01;36m[K__last - __first[m[K) * 2,
+               [01;36m[K~~~~~~~^~~~~~~~~[m[K
+In file included from [01m[K/usr/include/c++/8/bits/stl_algobase.h:67[m[K,
+                 from [01m[K/usr/include/c++/8/algorithm:61[m[K,
+                 from [01m[Kmain.cpp:1[m[K:
+[01m[K/usr/include/c++/8/bits/stl_iterator.h:1188:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _IteratorL, class _IteratorR> constexpr decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)[m[K’
+     [01;36m[Koperator[m[K-(const move_iterator<_IteratorL>& __x,
+     [01;36m[K^~~~~~~~[m[K
+[01m[K/usr/include/c++/8/bits/stl_iterator.h:1188:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
+In file included from [01m[K/usr/include/c++/8/algorithm:62[m[K,
+                 from [01m[Kmain.cpp:1[m[K:
+[01m[K/usr/include/c++/8/bits/stl_algo.h:1969:22:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd::_List_iterator<int>[m[K’ is not derived from ‘[01m[Kconst std::move_iterator<_IteratorL>[m[K’
+     std::__lg([01;36m[K__last - __first[m[K) * 2,
+               [01;36m[K~~~~~~~^~~~~~~~~[m[K

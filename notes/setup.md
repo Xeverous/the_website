@@ -30,7 +30,7 @@ source ./venv/bin/activate
 ## when already in virtual environment
 
 ```sh
-pip install Nikola jinja2 aiohttp watchdog
+pip install Nikola jinja2 aiohttp watchdog ansi2html
 ```
 
 ## build C++ plugin code

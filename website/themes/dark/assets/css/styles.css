@@ -396,3 +396,60 @@ nav.breadcrumb {
 .code.custom-cpp .macro-def   { color: #f7c527 } /* macro definitions */
 .code.custom-cpp .macro-ref   { color: #ffffff } /* macro references */
 .code.custom-cpp .asm-direct  { color: #ec691e } /* directives in assembly */
+
+/*
+ * styles for ANSI-escaped text
+ * https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_(Select_Graphic_Rendition)_parameters
+ * https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+ * https://github.com/pycontribs/ansi2html/blob/1ca0e862dda765c55e9124bf50a06a3e2f769521/ansi2html/style.py
+ *
+ * normally ansi1 does font-weight: bold but rules have been changed to use bright colors instead
+ */
+
+.ansi { color: #bbbbbb; }
+.ansi1 { color: #ffffff; }
+.ansi2 { font-weight: lighter; }
+.ansi3 { font-style: italic; }
+.ansi4 { text-decoration: underline; }
+.ansi5 { text-decoration: blink; }
+.ansi6 { text-decoration: blink; }
+.ansi8 { visibility: hidden; }
+.ansi9 { text-decoration: line-through; }
+
+/* colors used by PuTTY */
+
+.ansi30 { color: #000000; } /* black */
+.ansi31 { color: #bb0000; } /* red */
+.ansi32 { color: #00bb00; } /* green */
+.ansi33 { color: #bbbb00; } /* yellow */
+.ansi34 { color: #0000bb; } /* blue */
+.ansi35 { color: #bb00bb; } /* magenta */
+.ansi36 { color: #00bbbb; } /* cyan */
+.ansi37 { color: #bbbbbb; } /* white */
+
+.ansi90, .ansi1.ansi30 { color: #555555; } /* black */
+.ansi91, .ansi1.ansi31 { color: #ff5555; } /* red */
+.ansi92, .ansi1.ansi32 { color: #55ff55; } /* green */
+.ansi93, .ansi1.ansi33 { color: #ffff55; } /* yellow */
+.ansi94, .ansi1.ansi34 { color: #5555ff; } /* blue */
+.ansi95, .ansi1.ansi35 { color: #ff55ff; } /* magenta */
+.ansi96, .ansi1.ansi36 { color: #55ffff; } /* cyan */
+.ansi97, .ansi1.ansi37 { color: #ffffff; } /* white */
+
+.ansi40 { background-color: #000000; } /* black */
+.ansi41 { background-color: #bb0000; } /* red */
+.ansi42 { background-color: #00bb00; } /* green */
+.ansi43 { background-color: #bbbb00; } /* yellow */
+.ansi44 { background-color: #0000bb; } /* blue */
+.ansi45 { background-color: #bb00bb; } /* magenta */
+.ansi46 { background-color: #00bbbb; } /* cyan */
+.ansi47 { background-color: #bbbbbb; } /* white */
+
+.ansi100 { background-color: #555555; } /* black */
+.ansi101 { background-color: #ff5555; } /* red */
+.ansi102 { background-color: #55ff55; } /* green */
+.ansi103 { background-color: #ffff55; } /* yellow */
+.ansi104 { background-color: #5555ff; } /* blue */
+.ansi105 { background-color: #ff55ff; } /* magenta */
+.ansi106 { background-color: #55ffff; } /* cyan */
+.ansi107 { background-color: #ffffff; } /* white */

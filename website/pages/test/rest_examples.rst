@@ -332,8 +332,21 @@ Support through ``rest_highlighter`` plugin.
 - Paths to code and color spec are mandatory. If paths begin with ``/``, they are relative to the ``conf.py`` file, otherwise they are relative to the file containing the directive.
 
 .. cch::
-   :code_path: test_code.cpp
-   :color_path: test_code.color
+    :code_path: test_code.cpp
+    :color_path: test_code.color
+
+Custom ANSI highlight
+---------------------
+
+Support through ``rest_highlighter`` plugin.
+
+- Path to ANSI text is mandatory. If the path begins with ``/``, it is relative to the ``conf.py`` file, otherwise it is relative to the file containing the directive.
+
+.. ansi::
+    :ansi_path: test_ansi1.txt
+
+.. ansi::
+    :ansi_path: test_ansi2.txt
 
 Admonitions
 -----------
