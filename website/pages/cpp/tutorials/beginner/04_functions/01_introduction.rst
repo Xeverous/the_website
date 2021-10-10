@@ -91,7 +91,7 @@ The function below does not return on all control flow paths. If at runtime this
 
 The compiler can not analyze all possible operations and simulate all potential function usages - there are simply too many of them and many of them may be impossible or simply never happen. For these reasons, in the past it was generally accepted that a function may have hypothetical control flow path that results in reaching end of its body without hitting any return statement. Over time, it turned out that such approach is generally unsafe (bug prone) and results in code that is hard to read and reason about.
 
-The new approach is simpler and more safe: **a function should cover all of its control flow paths (even if they seem to never be possible)**. The compiler can not simulate the function, but it simply checks whether all branches of any conditional instructions end in return statements. For backwards compatibility, C and C++ still allow functions with missing return statements, but compilers issue a warning.
+The new approach is simpler and more safe: **a function should cover all of its control flow paths (even if they seem to never be possible)**. The compiler can not simulate the function, so it simply checks whether all branches of any conditional instructions end in return statements. For backwards compatibility, C and C++ still allow functions with missing return statements, but compilers issue a warning.
 
 Remember that main function has an exception: if control flow reaches its end, it's assumed to be :cch:`return 0;`.
 
@@ -132,7 +132,7 @@ A common mistake is to assume that function *arguments* means the same as functi
 Implementation
 ##############
 
-When compiled, functions are separate blocks of reusable machine code. Calling a function could be thought as just a jump instruction, but this is not enough. Unlike conditional statements and loops, functions do not jump ahead - they jump to separate blocks of instructions. Function calls are subexpressions within other code, so when a function finishes (returns) it must jump back to the place from where it was called.
+Conditional statements and loops are jumps ahead/behind in machine code. Because compiled functions are separate blocks of reusable machine code, there must be 2 jumps for each function: one in (the call instruction), one out (the return instruction). The same function can be called from different places so it also needs to know where to jump back when it returns - the execution should continue in the place where the function was called.
 
 When a function is called, the place where it should return is pushed onto the *stack*. This data is also accompanied by function arguments (unless the compiler decided to pass them through registers). Stack is a special memory region where function-local data is stored. Simplified diagram:
 
@@ -146,24 +146,38 @@ When a function is called, the place where it should return is pushed onto the *
 
 The mechanism can now repeat: the current function can call another function (which would push new frame with return address equal to current *stack pointer*) or return (which would pop current frame and revert *stack pointer*). As the program is executed and functions are called and return, the stack goes up and down constantly reusing stack space.
 
-The main function would be the closest one to the stack origin, since this is the first function to be called within a program. This also means that the main function is the last function to return.
+The stack operates in LIFO manner (last in, first out) - latest objects put on top are also the first objects to be removed.
+
+The main function would be the closest one to the stack origin (the bottom), since this is the first function to be called within a program. This also means that the main function is the last function to return.
+
+    Why is the stack upside down? Shouldn't the origin be at memory address 0?
+
+It could be, but that's how some (if not most) systems implement the stack. The stack memory moves downward from the end and the *heap memory* moves upward from the beginning. The memory in the middle can become whatever is needed.
+
+Call stack in tools
+===================
+
+Various programming tools (especially debuggers) work in terms of inspecting *function call stack*. Below is an example of a possible call stack printed by `AddressSanitizer/LeakSanitizer <https://en.wikipedia.org/wiki/AddressSanitizer>`_ when it detects a *memory leak* bug:
+
+.. code::
+
+    ==26475==ERROR: LeakSanitizer: detected memory leaks
+
+    Direct leak of 5 byte(s) in 1 object(s) allocated from:
+        #0 0x44f2de in malloc /usr/home/hacker/llvm/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:74
+        #1 0x464e86 in baz (/usr/home/hacker/a.out+0x464e86)
+        #2 0x464fb4 in main (/usr/home/hacker/a.out+0x464fb4)
+        #3 0x7f7e760b476c in __libc_start_main /build/buildd/eglibc-2.15/csu/libc-start.c:226
 
 .. admonition:: note
     :class: note
 
-    Various programming tools (especially debuggers) work in terms of inspecting *function call stack*. Below is an example of a possible call stack printed by `AddressSanitizer/LeakSanitizer <https://en.wikipedia.org/wiki/AddressSanitizer>`_ when it detects a *memory leak* bug:
-
-    .. code::
-
-        ==26475==ERROR: LeakSanitizer: detected memory leaks
-
-        Direct leak of 5 byte(s) in 1 object(s) allocated from:
-            #0 0x44f2de in malloc /usr/home/hacker/llvm/projects/compiler-rt/lib/asan/asan_malloc_linux.cc:74
-            #1 0x464e86 in baz (/usr/home/hacker/a.out+0x464e86)
-            #2 0x464fb4 in main (/usr/home/hacker/a.out+0x464fb4)
-            #3 0x7f7e760b476c in __libc_start_main /build/buildd/eglibc-2.15/csu/libc-start.c:226
-
     Main function may not be actually first due to implementation-specific reasons. Many platforms require extra work to be done before actual code can run. In most situations (without sanitizers) on GNU/Linux systems the first function is named ``_start`` but other magic names (starting with ``_``) can appear too.
+
+The call stack alone is often enough to identify the problem. Through this information alone, you know which function called which and through that you can reason about control flow paths that the program has gone through. The source of a bug is usually found just before first unexpected function call.
+
+Stack overflow
+==============
 
 .. admonition:: definition
     :class: definition
@@ -196,7 +210,7 @@ On GNU/Linux systems, Bash shell has a built-in command that can be used to chec
 
     How then can programs process gigabytes (or even more) of data?
 
-So far everything done in the tutorial was using *local variables* with *automatic storage* which use *stack memory*. All the actual interesting data (and any large data) is pretty much always allocated dynamically, using *heap memory*. Functions can work on this data but the data itself is allocated separately. This is related to indirect mechanisms (e.g. arrays, references, pointers) where a single variable (allocated on the stack) can refer to a huge block of memory (allocated on the heap). This single variable can then be used to refer to an arbitrary amount of objects.
+So far everything done in the tutorial was using *local variables* with *automatic storage* which use *stack memory*. Any large data is pretty much always allocated dynamically, using *heap memory*. Functions can work on this data but the data itself is allocated separately. This is related to indirect mechanisms (e.g. arrays, references, pointers) where a single variable (allocated on the stack) can refer to a huge block of memory (allocated on the heap). This single variable can then be used to refer to an arbitrary amount of objects.
 
     How is stack and heap memory related to RAM?
 

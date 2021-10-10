@@ -21,14 +21,9 @@ The reason for this behavior is that functions do not work directly on objects p
 
     Isn't this approach inefficient?
 
-At the machine instruction level, all that a processor can do is:
+At the machine instruction level, everything that the processor does is based on copying data between memory cells and/or registers. These copies are one of the fastest operations.
 
-- copy contents of specified memory to other memory
-- copy value specified in the instruction to specified memory
-
-So in short, everything that the processor does is based on copying data between memory cells. These copies are one of the fastest operations.
-
-Lifetime of local objects is related to the existence of current stack frame. If a function would like to modify an object that lives in a different frame, it needs to know where exactly that object is stored. In such case the object will not be copied but its memory address will be. However the function works, something must be copied - either the data itself or memory address of the data.
+Lifetime of local objects is related to the existence of current stack frame. If a function would like to modify an object that lives in a different frame, it needs to know where exactly that object is stored. In such case the object will not be copied into the frame but its memory address will be. **However the function works, something must be copied - either the data itself or memory address of the data.** For lightweight types (described more precisely later) it's more efficient to copy the data than to use any indirect mechanism.
 
 References
 ##########
@@ -65,7 +60,7 @@ There are actually 2 types of references:
 - *lvalue references*, denoted with ``&``
 - *rvalue references*, denoted with ``&&``
 
-rvalue references have different binding (reference initialization) rules and will be covered much later.
+rvalue references have different binding (reference initialization) rules and will be covered much later. You can assume that the term *reference* (with no further context) means *lvalue reference*.
 
 References can be used to modify objects that are defined elsewhere. Creating a reference is always very cheap because references copy memory addresses of other objects, not objects themselves. The actual objects can be arbitrarily large but a *pointer* (memory address) at the machine code level is always a single integer of the architecture size (8 bytes on 64-bit).
 
