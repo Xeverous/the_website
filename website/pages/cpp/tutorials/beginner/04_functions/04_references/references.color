@@ -1,0 +1,32 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	keyword var_local = num;
+	keyword var_local = num;
+
+	0com_single
+	0com_single
+	keyword& var_local = var_local; 0com_single
+
+	0com_single
+	0com_single
+	++var_local;
+	namespace::var_global << str << var_local << str;
+	namespace::var_global << str << var_local << str;
+
+	0com_single
+	0com_single
+	0com_single
+	++var_local;
+	namespace::var_global << str << var_local << str;
+	namespace::var_global << str << var_local << str;
+
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+	var_local = var_local; 0com_single
+	namespace::var_global << str << var_local << str;
+	namespace::var_global << str << var_local << str;
+}

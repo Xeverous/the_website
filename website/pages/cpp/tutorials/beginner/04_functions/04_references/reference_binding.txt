@@ -1,0 +1,10 @@
+[01m[Kmain.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[Kmain.cpp:11:7:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kint&[m[K’ to an rvalue of type ‘[01m[Kint[m[K’
+  func([01;31m[K10[m[K);
+       [01;31m[K^~[m[K
+[01m[Kmain.cpp:3:6:[m[K [01;36m[Knote: [m[K  initializing argument 1 of ‘[01m[Kvoid func(int&)[m[K’
+ void [01;36m[Kfunc[m[K(int& x)
+      [01;36m[K^~~~[m[K
+[01m[Kmain.cpp:13:13:[m[K [01;31m[Kerror: [m[Kcannot bind non-const lvalue reference of type ‘[01m[Kint&[m[K’ to an rvalue of type ‘[01m[Kint[m[K’
+  int& ref = [01;31m[K10[m[K;
+             [01;31m[K^~[m[K

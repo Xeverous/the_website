@@ -11,7 +11,7 @@ However, a function *definition* is not required at the point of calling it. A *
     :code_path: 02_declarations/syntax.cpp
     :color_path: 02_declarations/syntax.color
 
-Despite the fact that function parameter names can be skipped in the declaration, it's still recommended to write them. Function declaration is the place most readers will check for documentation comments and parameters with descriptive names are valuable. Names in the declaration does not have to be the same as in definition (only names in definition affect function body) but in pretty much every case they are written as identical.
+Despite the fact that function parameter names can be skipped in the declaration, it's still recommended to write them. Function declaration is the place most readers will check for documentation comments and parameters with descriptive names are valuable information. Parameter names in the declaration do not have to be the same as in definition (only names in definition affect function body) but in pretty much every case they are written as identical.
 
 As long as the declaration is visible when the function is called, the function definition can be placed later in the code. In fact, it can also be in a separate file!
 
@@ -101,15 +101,15 @@ The :cch:`(void)` thing does not specify an argument of type :cch:`void` (you ca
 
 In other words, since C89 functions can be properly declared (with parameter types) but due to backwards compatibility and the fact that ``()`` already had a meaning, :cch:`(void)` is needed for functions taking 0 parameters.
 
-In C++, there is no such problem. C++ has no *non-prototype function declarations*. :cch:`(void)` is supported only for compatibility.
+**In C++, there is no such problem.** C++ has no *non-prototype function declarations*. :cch:`(void)` is supported only for compatibility.
 
 .. cch::
     :code_path: 02_declarations/void_param.cpp
     :color_path: 02_declarations/void_param.color
 
-Summing it up, writing :cch:`(void)` in C++ is a mistake. It usually comes from misunderstanding how function declarations work in C++.
+Summing it up, writing :cch:`(void)` in C++ is a mistake. It comes from misunderstanding how function declaration syntax evolved in C and how it works in C++.
 
 Exercise
 ########
 
-Take the example of cross-dependent functions and rewrite it so that the other function has to be declared first.
+Take the example of cross-dependent functions and swap their order so that a different function has to be declared first.

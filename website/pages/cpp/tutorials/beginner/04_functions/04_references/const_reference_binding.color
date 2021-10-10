@@ -1,0 +1,9 @@
+0com_single
+keyword& var_local = num;
+
+0com_single
+0com_single
+keyword keyword& var_local = num;
+
+0com_single
+keyword& var_local = var_local;

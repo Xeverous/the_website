@@ -111,7 +111,7 @@ Function size
 
 There have been many guidelines on what's a good size for a function. 20, 50 and even 100 lines of code. **The core principle is that a function should perform exactly 1 task.** If you see an opportunity to split the task into smaller ones, do it even if the function is used only once. Such code is easier to read and test. Functions should be like Lego bricks - they should very easily compose into larger constructions and be easy to modify.
 
-The same principle applies to the amount of function parameters. The reasonable maximum amount is 6, which should be used only for specific algorithms. The more parameters a function has, the harder it's to understand and the more likely a bug can happen and more likely the function can be refactored into multiple smaller ones.
+The same principle applies to the amount of function parameters. 4 is the reasonable maximum amount, however specific algorithms sometimes use up to 6. The more parameters a function has, the harder it's to understand and the more likely it has bugs and more likely the function can be refactored into multiple smaller ones.
 
 There is no lower limit on size and arguments. Many useful functions can be as simple as 1 line:
 
@@ -208,7 +208,7 @@ Recommendations
 ###############
 
 - Unless there is a better reason, function parameters should be ordered in decreasing importance (most important parameters first).
-- Variables are data. Functions are algorithms. Variables should be named as nouns and functions as verbs.
+- Variables are data. Functions are tasks. Variables should be named as nouns and functions as verbs.
 - Before you write a function for some task, check whether it's not already in the standard library. A lot of common mathematical operations are already available in `cmath header <https://en.cppreference.com/w/cpp/header/cmath>`_.
 
 Exercise

@@ -1,0 +1,15 @@
+8pp_direct 0pp_header
+
+keyword func(keyword& param)
+{
+	param *= num;
+	namespace::var_global << str << param << str;
+}
+
+keyword func()
+{
+	keyword var_local = num;
+	namespace::var_global << str << var_local << str;
+	func(var_local);
+	namespace::var_global << str << var_local << str;
+}
