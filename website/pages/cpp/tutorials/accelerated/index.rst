@@ -4,4 +4,4 @@
 .. author: Xeverous
 .. index_path: .
 
-:sc:`{{% generate_index %}}`
+:sc:`{{% generate_index depth=0 %}}`
