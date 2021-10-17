@@ -9,18 +9,34 @@
 
 ### What is *modern* C++?
 
-It's the refreshed version of the language, the 2011 and later updates. C++11 brought many changes and new features - although the language has become more complicated (due to keeping backwards compatibility), the code is now simpler. Modern C++ is about:
+It's the refreshed version of the language, the 2011 and later updates. C++11 brought many changes and new features but most importantly - new idioms. Although the language has become more complicated (due to keeping backwards compatibility), the code is now simpler as a lot of new features are better alternatives to previous ones.
 
-- embracing core C++ idioms such as RAII and the rule of 3/5/0
-- encapsulating error-prone low-level code in high-level APIs such as smart pointers, containers and iterators
-- writing type-safe and exception-safe code
+Modern C++ is about:
+
+- embracing core C++ idioms such as RAII - compile time resource safety
+- encapsulating error-prone low-level code invariants in high-level statically checked interfaces (especially smart pointers, containers and iterators)
+- writing type-safe, resource-safe and exception-safe code
 - avoiding unportable vendor-specific extensions
 - using the standard library, not reinventing the wheel
 - ability to program in various styles, not just object-oriented
+- ability to use generic programming and metaprogramming
+- ability to write simple code thanks to encapsulation in powerful libraries
+
+Aims of modern C++:
+
+- no leaks
+- no memory corruption
+- no garbage collection
+- no limitations of expressibility
+- no performance degradation (zero-overhead abstractions)
+- ISO-standarized code (guuaranteed portability)
+- tool enforced correctness
+
+<!-- Source: 44:30 and 1:04:55 "Bjarne Stroustrup: learning and teaching modern C++". -->
 
 ### What is C++0x?
 
-The old term for C++11. It was initially planned to arrive before 2010, but there was some delay.
+The old term for C++11. It was initially planned to arrive before 2010.
 
 Similarly, for later standards:
 
@@ -34,7 +50,7 @@ Because `this` was introduced before references have been added to the language.
 
 ### Why `constexpr` is not applied automatically anywhere possible?
 
-`constexpr` is applied automatically to aggregate type constructors. Besides this, it would be risky to do so. `constexpr` is a form of explicit promise: the code can be invoked at compile time. If it was not the case (applied automatically) it would be very easy to introduce breaking changes: someone might rely on a particular library version being compile-time compliant but future version could break it while the library author never meant it to be used this way. By having to specify compile-time compliance explictly, code author can clearly express that code can be safely used in compile-time contexts.
+`constexpr` is applied automatically to aggregate type constructors. Besides this, it would be risky to do so. `constexpr` is a form of explicit promise: the code can be invoked at compile time. If it was applied automatically it would be very easy to introduce breaking changes: someone might rely on a particular library version being compile-time compliant but future version could break it while the library author never meant it to be used this way. By having to specify compile-time compliance explictly, code author can clearly express that code can be safely used in compile-time contexts.
 
 Exactly the same principles applies to `noexcept`. This is an explicit promise that the code in the current (and any future) version will not throw exceptions. No keyword means you should not assume such guuarantee.
 
