@@ -42,7 +42,7 @@ Additionally, the C++ standard reserves following names (you should not use them
 
 - ``_X*`` - anything beginning with an underscore followed by an uppercase letter.
 - Global ``_*`` - anything beginning with an underscore, placed at *file/namespace scope* (more on scopes later).
-- ``*__*`` - anything containing 2 concecutive underscores.
+- ``*__*`` - anything containing 2 consecutive underscores.
 - `Keywords <https://en.cppreference.com/w/cpp/keyword>`_.
 
 Keywords
@@ -53,7 +53,7 @@ Keywords are identifiers which have special meaning, e.g. :cch:`if`, :cch:`else`
 Name conflicts
 ##############
 
-In many situations it's possible to use the same identifier for different entities. They usually will be distinguished by syntax or scope. Unless otherwise noted, it's advised to avoid naming different things with identical identifiers.
+In many situations it's possible to use the same identifier for different entities. They usually will be distinguished by syntax or scope. Unless otherwise noted, it's generally advised to avoid giving different things identical identifiers. Depending on the situation, the rules for distinguishing can be pretty complex.
 
 Styles
 ######
@@ -62,8 +62,8 @@ As identifiers can not contain whitespace characters, few core naming styles hav
 
 - ``lowercase_name_style`` (sometimes referred to as snake case)
 - ``UPPERCASE_NAME_STYLE``
-- ``PascalCaseNameStyle`` (sometimes referred to as upper camel case)
-- ``camelCaseNameStyle`` (sometimes referred to as lower camel case)
+- ``PascalCaseNameStyle`` (commonly referred to as upper camel case)
+- ``camelCaseNameStyle`` (commonly referred to as lower camel case)
 
 Generally, it's bad to mix these styles - any of the following names are against convention:
 
@@ -90,11 +90,21 @@ Apart from underscore style, C++ also has a lot of conventions regarding variabl
 
 All of conventional identifiers have been described in `naming article <link://filename/pages/cpp/utility/naming.rst>`_.
 
+Identifiers in examples
+#######################
+
+You may often encouner specific names such as ``foo``, ``bar`` and ``quux``. These do not have any attached meaning, they serve the same purpose as the name "John Doe" etc.
+
+More about these and their history:
+
+- https://en.wikipedia.org/wiki/Metasyntactic_variable
+- `RFC 3092 <https://datatracker.ietf.org/doc/html/rfc3092>`_
+
 Recommendations
 ###############
 
 - A variable name should clearly specify what is refers to. Something like ``mana`` might be ambiguous but ``current_mana`` and ``maximum_mana`` will not.
-- The more broadly something is used, the longer name it should be. Most variables are used in small contexts so anything that gets reused across lots of code should be clearly identifiable and searchable.
+- The more broadly something is used, the longer name it should have. Most variables are used in small contexts so anything that gets reused across lots of code should be clearly identifiable and searchable.
 - If you need to write a comment to describe variable's name, you have choosen a bad name.
 - Variables and types represent data. They should be named using nouns. Functions represent actions. They should be named using verbs.
 - Be consistent. If you like to write ``temperature`` as ``temp`` do it either always or never.
