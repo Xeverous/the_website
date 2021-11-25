@@ -8,7 +8,7 @@ This lesson is aimed at briefly explaining how a C++ program is constructed. A l
 Hello world
 ###########
 
-"Hello world" is a minimal program for the given programming language that can be successfully run and it's result can be observed. This generally causes hello world programs to contain a single *print* statement and any other code necessary to start and finish the program.
+"Hello world" is a minimal program for the given programming language that can be successfully run and its result can be observed. This generally causes hello world programs to contain a single *print* statement and any other code necessary to start and finish the program.
 
 By *print* I mean any form of visual output. Generally it's going to be text displayed in the shell in which the program is run.
 

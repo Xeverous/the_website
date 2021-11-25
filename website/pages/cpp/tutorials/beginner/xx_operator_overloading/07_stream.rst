@@ -63,7 +63,7 @@ Canonical implementation
 
 Standard argument passing recommendations apply:
 
-- In both operators stream is taken by non-const reference because any work on the stream changes it's state.
+- In both operators stream is taken by non-const reference because any work on the stream changes its state.
 - Stream insertion only reads the data so should it should take the object (here: fraction) by value or const reference (here: value because fraction class is cheap to copy).
 - Stream extraction stores the result in the object so the object must be passed by non-const reference.
 

@@ -353,7 +353,7 @@ If both the assignment and the test are desired, major compilers agreed on this 
 
     I don't get the *assignment operator returns first operand* part. What makes ``=`` compile inside :cch:`if`?
 
-You need to understand that :cch:`if` does not see every entity inside the condition, it simply acts as a test of a value of type :cch:`bool`. The whole condition expression is evaluated first and only then it's result is brought to the :cch:`if` logic. Why assignments *return* first operand as the result? This will get clearer once you get familiar with *functions* and the concept of *returning* a result - many parts of C++ work on the basis of functions and most operators (including `=`) too.
+You need to understand that :cch:`if` does not see every entity inside the condition, it simply acts as a test of a value of type :cch:`bool`. The whole condition expression is evaluated first and only then its result is brought to the :cch:`if` logic. Why assignments *return* first operand as the result? This will get clearer once you get familiar with *functions* and the concept of *returning* a result - many parts of C++ work on the basis of functions and most operators (including `=`) too.
 
 Writing
 =======

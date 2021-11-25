@@ -68,7 +68,7 @@ Most numbers will require multiple memory cells. For example, a 32-bit integer w
 Integers have 2 independent properties:
 
 - length - amount of memory cells they occupy. The more memory they occupy, the larger numbers they can represent.
-- signedness - if number is signed, it's first bit does not contribute to its magnitude but is used as +/- sign instead.
+- signedness - if number is signed, its first bit does not contribute to its magnitude but is used as +/- sign instead.
 
 Signed numbers can represent negative values. Unsigned can not, but the extra bit allows twice as many representable magnitudes.
 

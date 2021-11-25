@@ -146,7 +146,7 @@ Escape sequences allow to represent troublesome characters in source code by spe
 
 A very common sequence is ``\0`` (represented as byte 0x00) which is the *null character*, used to denote end of data in various contexts.
 
-``\?`` is not necessary, you can write ``?`` directly too but its kept for backwards compatibility. In the past (before C++17) there was a very weird feature called `trigraphs <https://en.cppreference.com/w/cpp/language/operator_alternative>`_ which allowed 3-character special sequences, parsed even before comments. This feature could accidentally be used by unescaped ``?``.
+``\?`` is not necessary, you can write ``?`` directly too but it's kept for backwards compatibility. In the past (before C++17) there was a very weird feature called `trigraphs <https://en.cppreference.com/w/cpp/language/operator_alternative>`_ which allowed 3-character special sequences, parsed even before comments. This feature could accidentally be used by unescaped ``?``.
 
 Because Unicode is ASCII-compatible and ASCII is backwards compatible with very old telegraph systems, you can see some historical control characters:
 

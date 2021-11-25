@@ -24,7 +24,7 @@ Take notes during learning and if you feel like you can provide some feedback (e
 
     Do I need to spend any money to learn through this site?
 
-Absolutely not. The whole website is a hobby-made open-source project and as someone who strongly supports FOSS (free and open-source software), all of tools recommended by me will be FOSS. C++ is a programming language which is not owned by any company (it's standarized by `ISO <https://en.wikipedia.org/wiki/International_Organization_for_Standardization>`_) and as it's ancestor (the C programming language) it receives significant support from open-source community.
+Absolutely not. The whole website is a hobby-made open-source project and as someone who strongly supports FOSS (free and open-source software), all of tools recommended by me will be FOSS. C++ is a programming language which is not owned by any company (it's standarized by `ISO <https://en.wikipedia.org/wiki/International_Organization_for_Standardization>`_) and as its ancestor (the C programming language) it receives significant support from open-source community.
 
     Do I need to be good in math to program?
 
