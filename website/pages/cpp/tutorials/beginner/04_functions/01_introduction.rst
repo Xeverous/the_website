@@ -7,7 +7,7 @@ You definitely have encountered the *function* term before. It's very likely you
 
 In mathematics, a function is a relation between two sets that associates each element of the first set to exactly one element of the second set.
 
-In programming, a function is a reusable piece of code that given certain set of inputs *returns* (produces) an output (an object).
+In programming, a function is a **reusable piece of code** that given certain set of inputs *returns* (produces) an output (an object).
 
 In both mathematics and programming:
 
@@ -26,7 +26,7 @@ In programming:
 .. admonition:: note
     :class: note
 
-    Functions are one of fundamental programming elements. They allow to build complex programs while reducing code duplication. In practice, almost every function calls other functions forming deep chains of code reuse.
+    Functions are one of fundamental programming elements. They allow to build complex programs without code duplication and letting to focus on small tasks one at a time (divide and conquer). In practice, almost every function calls other functions forming deep chains of code reuse.
 
 ..
 
@@ -35,7 +35,7 @@ In programming:
 Functions by their core definition always return a single object. The trick is that the object can be of any type.
 
 - In mathematics, a function can return a complex number or a matrix. These can hold multiple numbers.
-- In programming, a function can return an object of user-defined type. Such type can consist of multiple other types.
+- In programming, a function can return an object of user-defined type. Such type can consist of multiple types and hold many subobjects.
 
 .. TODO structs when?
 
@@ -67,7 +67,7 @@ In order:
 
 Functions create own scope for their local objects (objects defined inside functions), these objects are destroyed when the function returns - only returned value is retained. If the caller does not use the result (e.g. :cch:`f(x);` instead of :cch:`y = f(x);`) function still works the same but the returned data is lost.
 
-There is no relation between names of function parameters and names of objects that are passed to the function. The compiler only cares whether types match. Names are only an abstraction for the programmer so that it's possible to express what should be done. Function call expressions are a way to connect separate parts of code.
+There is no relation between names of function parameters and names of objects that are passed to the function. The compiler only cares whether types match. Names are only an abstraction for the programmer so that it's possible to express what should be done inside the function. Function call expressions are a way to connect separate parts of code.
 
 Returning
 #########
@@ -104,7 +104,7 @@ Functions can have return type specified as :cch:`void` which means they return 
     :code_path: 01_introduction/void_return.cpp
     :color_path: 01_introduction/void_return.color
 
-Such functions do not need to use :cch:`return` as there is no data to send back to the caller. If you want to exit such function prematurely, you can always write :cch:`return;`.
+Such functions do not need to use :cch:`return` as there is no data to send back to the caller. If you want to exit such function prematurely (eg under specific condition), you can always write :cch:`return;`.
 
 Function size
 #############
@@ -127,12 +127,23 @@ Terminology
 A common mistake is to assume that function *arguments* means the same as function *parameters*.
 
 - Function parameters are what function definition expects to be passed in (seen from inside the function).
-- Function arguments are expressions that are given for specific function call (seen from outside of the function).
+- Function arguments are objects that are given for specific function call (seen from outside of the function).
+
+Since both must match in order for the code to work, these terms usually mean the same thing. But if they don't, an example compiler error could mention that a specific *argument* does not match a type of a specific *parameter*.
 
 Implementation
 ##############
 
 Conditional statements and loops are jumps ahead/behind in machine code. Because compiled functions are separate blocks of reusable machine code, there must be 2 jumps for each function: one in (the call instruction), one out (the return instruction). The same function can be called from different places so it also needs to know where to jump back when it returns - the execution should continue in the place where the function was called.
+
+In the example below, the first function is called from 2 other functions. You should be able to determine what will be the program's output. If not - compile, run and analyze the output. You should be able to build a mental image (a graph) how function calls interact.
+
+.. cch::
+    :code_path: 01_introduction/nested_calls.cpp
+    :color_path: 01_introduction/nested_calls.color
+
+The call stack
+##############
 
 When a function is called, the place where it should return is pushed onto the *stack*. This data is also accompanied by function arguments (unless the compiler decided to pass them through registers). Stack is a special memory region where function-local data is stored. Simplified diagram:
 

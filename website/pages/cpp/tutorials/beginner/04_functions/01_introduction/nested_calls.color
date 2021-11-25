@@ -1,0 +1,34 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	namespace::var_global << str;
+}
+
+keyword func()
+{
+	namespace::var_global << str;
+	func();
+	namespace::var_global << str;
+}
+
+keyword func()
+{
+	namespace::var_global << str;
+	func();
+	namespace::var_global << str;
+}
+
+keyword func()
+{
+	namespace::var_global << str;
+	func();
+	namespace::var_global << str;
+	func();
+	namespace::var_global << str;
+}
+
+keyword func()
+{
+	func();
+}
