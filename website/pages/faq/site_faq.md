@@ -89,7 +89,7 @@ I started with [Jekyll](https://jekyllrb.com/) (static site generator using Ruby
 
 There are tons frameworks, just see [the list of static site generators](https://www.staticgen.com/). But:
 
-- A vast majority of these frameworks are only suited for blogs. That is, you just throw all posts in 1 directory and the framework renders a timeline, RSS feeds etc for you. No way to reorder posts, no way to make framework extensions and sometimes even no or limited ways of customizing HTML and CSS,
+- A vast majority of these frameworks are only suited for blogs. That is, you just throw all posts in 1 directory and the framework renders a timeline, RSS feeds etc. for you. No way to reorder posts, no way to make framework extensions and sometimes even no or limited ways of customizing HTML and CSS.
 - The majority of remaining frameworks are dedicated to generate documentation. Again, not for my needs.
 
 Only few frameworks covered my needs:

@@ -41,7 +41,7 @@ TODO - article with symbol character names.
 
 `IDE` - integrated development environment. Usually an advanced code editor with autocomplete and rich refactor features integrated with build system, compiler and debugger.
 
-`interface` - 1. A type (class) that has no member objects and contains only pure (unimplemented) virtual functions. There is no special notion of interfaces in C++ because there are no restrictions on members and inheritance. See TODO turorial link. 2. (more general) A set of rules defining communication between some systems or humans. For example graphic user interface (layout of buttons on the screen etc), command line interface (a terminal where the user inputs textual commands) and POSIX interface (system-specific C headers offerred by POSIX-compliant systems).
+`interface` - 1. A type (class) that has no member objects and contains only pure (unimplemented) virtual functions. There is no special notion of interfaces in C++ because there are no restrictions on members and inheritance. See TODO turorial link. 2. (more general) A set of rules defining communication between some systems or humans. For example graphic user interface (layout of buttons on the screen etc.), command line interface (a terminal where the user inputs textual commands) and POSIX interface (system-specific C headers offerred by POSIX-compliant systems).
 
 `LEWG`, `LWG` - library (evolution) working groups. Parts of the [C++ Committee](https://isocpp.org/std/the-committee).
 

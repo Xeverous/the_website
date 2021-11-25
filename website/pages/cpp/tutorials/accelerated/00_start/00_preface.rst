@@ -15,8 +15,8 @@ You should already be familiar with:
 - how programs work in general (command line, working directory, return code and related concepts)
 - what is an IDE and what it does for you
 - difference between source code and machine code
-- core concepts behind programming language constructs (loops, user-defined types, functions, etc)
-- some advanced programming language features (polymorphism, exceptions, reflection, etc)
+- core concepts behind programming language constructs (loops, user-defined types, functions, etc.)
+- some advanced programming language features (polymorphism, exceptions, reflection, etc.)
 
 The core idea behind this tutorial is not to explain why/what common features do in C++ (you should already understand them) but *how* they are used and what is C++-specific. Good examples of such things are for-each loops and lambda expressions - while most languages have them each has a different syntax and slightly different semantics.
 

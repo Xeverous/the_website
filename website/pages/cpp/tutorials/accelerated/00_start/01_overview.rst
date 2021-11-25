@@ -33,7 +33,7 @@ Strictly formally, even C is a high-level language because it allows to write mu
 
 Of course just because C++ allows such things it does not mean they should be used all the time. The lower level code, the more it is prone to errors. C++ standard library already takes care of many such tasks. The tutorial will first explain how to use such functionality from the standard library and only then it will move to explaining how to implement it. It is very important that you do not dive deeply into hard topics at the start as they are the main cause of bad teaching and overall frustration with C++.
 
-  Wait, are you saying that we will not learn pointers before using strings, arrays, etc?
+  Wait, are you saying that we will not learn pointers before using strings, arrays, etc.?
 
 Yes. There is a common misconception that you need to learn C before C++. **Doing so is not only unnecessary, but also may be a disadvantage** if a person sticks too hard to idioms learned in C. 99% of C code is valid C++, but in 99% of times it is bad C++ (possibly resulting in compiler warnings). People are learning Python without learning CPython implementation, people are learning Java Script without understanding how browser works, people are using refrigerators without understanding how compressor works, people are driving cars... I think you get the point. The only needed thing is *abstraction* and in your case you should be already familiar with the term.
 
