@@ -104,7 +104,7 @@ Functions can have return type specified as :cch:`void` which means they return 
     :code_path: 01_introduction/void_return.cpp
     :color_path: 01_introduction/void_return.color
 
-Such functions do not need to use :cch:`return` as there is no data to send back to the caller. If you want to exit such function prematurely (eg under specific condition), you can always write :cch:`return;`.
+Such functions do not need to use :cch:`return` as there is no data to send back to the caller. If you want to exit such function prematurely (e.g. under specific condition), you can always write :cch:`return;`.
 
 Function size
 #############

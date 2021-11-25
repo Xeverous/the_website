@@ -97,8 +97,8 @@ Only few frameworks covered my needs:
 - The ability to put articles in any order, including hierarchical structure.
 - The ability to fully customize HTML and CSS templates. No assumptions, no unremoveable parts.
 - No forced JavaScript. No user-side HTML generation.
-- No forced frontend frameworks (eg Bootstrap).
-- **Ability to extend generation mechanism, eg custom templates or extensions to Markdown / Restructured Text format.** Bold, italic and fenced code blocks are not enough for me.
+- No forced frontend frameworks (Bootstrap and similar).
+- **Ability to extend generation mechanism, e.g. custom templates or extensions to Markdown / Restructured Text format.** Bold, italic and fenced code blocks are not enough for me.
 - Ability to store some data (binary assets or configuration files) that can be used during generation.
 
 After filteting all undesired frameworks, I was left only with 3 to choose from:

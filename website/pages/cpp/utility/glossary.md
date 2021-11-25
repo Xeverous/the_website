@@ -13,7 +13,7 @@ TODO - article with symbol character names.
 
 `build` (as a noun) - a ready to use (compiled and linked) program made from source code with certain configuration.
 
-`CMake` - meta build system or build system generator. Used by various C and C++ projects to generate project files and build scripts. Some IDEs use CMake to build projects or to discover dependencies and their properties (eg include paths).
+`CMake` - meta build system or build system generator. Used by various C and C++ projects to generate project files and build scripts. Some IDEs use CMake to build projects or to discover dependencies and their properties (e.g. include paths).
 
 `ctor` - constructor.
 
@@ -93,7 +93,7 @@ TODO - article with symbol character names.
 
 `STL` - 1. Standard template library. A major part of the C++ standard library. Often the C++ standard library itself is (technically incorrectly) referred to as "the STL" - this is due to historical reasons. 2. Stephan T. Lavavej, a member of the C++ committee. https://old.reddit.com/r/cpp/comments/c90sxa/whats_the_difference_between_stl_and_c_standard/
 
-`strict aliasing` - an assumption that pointers to *unfamiliar types* (eg not sharing same inheritance tree) can never point to the same object. All variants of `char` and `void` pointers are excluded from this rule (because they are used for unknown type reads/writes). Strict aliasing allows multiple optimizations because compiler can assume certain data is not overriden between various instructions. Strict aliasing is very highly encouraged by the C++ standard. Enabled by default in all major compilers and requires certain flag to compile code which violates this rule. TODO SA article link
+`strict aliasing` - an assumption that pointers to *unfamiliar types* (mostly classes which do not share a common base) can never point to the same object. All variants of `char` and `void` pointers are excluded from this rule (because they are used for unknown type reads/writes). Strict aliasing allows multiple optimizations because compiler can assume certain data is not overriden between various instructions. Strict aliasing is very highly encouraged by the C++ standard. Enabled by default in all major compilers and requires certain flag to compile code which violates this rule. TODO SA article link
 
 `this` - In C++, a pointer to the object itself, available in any non-static member function. `this` is never null.
 

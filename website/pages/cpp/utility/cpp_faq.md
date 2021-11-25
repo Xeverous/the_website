@@ -68,7 +68,7 @@ No. Correctly written code should be fast in both languages. It's just that misu
 
 There are few things in C that are slower than their relatives in C++. This applies specifically to C standard library which does not have efficient generic abstractions besides macros - for example C functions taking function pointers are far worse optimized than C++ templates.
 
-Even when developing high-performance programs, performance is not needed strictly everywhere. Where possible, convenience features can be used over performance features. It doesn't matter if text entered by the user is processed 10% slower (eg because you used a lot of very-safe-and-convenient-but-somewhat-slower things) but it matters if the full product can be delivered several times faster (because you avoid manually rewriting input processing in C) with the same core performance (where C and C++ code uses very similar or even the same mechanisms).
+Even when developing high-performance programs, performance is not needed strictly everywhere. Where possible, convenience features can be used over performance features. It doesn't matter if text entered by the user is processed 10% slower (e.g. because you used a lot of very-safe-and-convenient-but-somewhat-slower things) but it matters if the full product can be delivered several times faster (because you avoid manually rewriting input processing in C) with the same core performance (where C and C++ code uses very similar or even the same mechanisms).
 
 From Bjarne Stroustrup FAQ:
 
@@ -122,11 +122,11 @@ There is no difference except 1 corner case which was addressed in C++17. Prior 
 
 Historically, the keyword `class` was used first in templates to indicate aliased type. It's a common practice in C and C++ to reuse existing keywords for new contexts to avoid creating new ones that could invalidate existing code. Eventually new keyword was created for templates - `typename` (resembling existing `typedef`) to avoid confusion about `class` (template types do not have to be classes, they can also be trivial built-in types). Funny is that `typename` keyword has been overloaded later anyway, so now both keywords are multi-purpose and have different meanings depending on the context.
 
-Some may use a convention that `typename` aliases any type (for example an array holding objects of any type) and `class` is supposed to be instantiated only on types that match specific criteria (eg concept of an iterator). Some will write `class` because it's shorter. Some will choose the convention to choose one keyword and stick to it for consistency.
+Some may use a convention that `typename` aliases any type (for example an array holding objects of any type) and `class` is supposed to be instantiated only on types that match specific criteria (e.g. concept of an iterator). Some will write `class` because it's shorter. Some will choose the convention to choose one keyword and stick to it for consistency.
 
 There is also a very rare case when unit testing of protected/private inherited classes uses the hack `#define class struct`, `#define protected public`, `#define private public` - it explodes on `template <class>`. You should not be using such hacks anyway, or resort to more non-intrusive ways such as `-fno-access-control`.
 
-I use the designated keyword `typename` everywhere for consistency and to avoid any confusion. Some beginners (eg from Java) incorrectly think that C++ templates work only with classes.
+I use the designated keyword `typename` everywhere for consistency and to avoid any confusion. Some C++ beginners (usually after learning other language) incorrectly think that C++ templates work only with classes.
 
 ### Why `T` in templates?
 
@@ -150,7 +150,7 @@ The committee is divided into groups:
 - Library Evolution Working Group
 - Core Working Group
 - Evolution Working Group
-- Study Groups (more than 15, various topics: eg concurrency, low-latency, database, networking)
+- Study Groups (more than 15, various topics: e.g. concurrency, low-latency, database, networking)
 
 [Committee schema + images](https://isocpp.org/std/the-committee)
 
