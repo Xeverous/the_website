@@ -201,7 +201,7 @@ Function parameters are what function definition expects to be passed in. Functi
 "User-defined type is a very formal name for a class"
 =====================================================
 
-User-defined type is any new type (not an alias of an existing type) that has been defined in code. Standard library classes are also uder-defined types. Apart from classes, C++ has another mechanism for creating new types - enumerations.
+User-defined type is any new type (not an alias of an existing type) that has been defined in code. Standard library classes are also user-defined types. Apart from classes, C++ has another mechanism for creating new types - enumerations.
 
 "Header files are for declarations. Source file are for definitions."
 =====================================================================
