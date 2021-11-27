@@ -115,9 +115,14 @@ Nikola is just a bunch of plugins. They really advertise as such on their homepa
 
 I had to resign from Statik, because it does not support Markdown (or other text format) extensions. And I really really wanted to invoke custom templates from my pages. I was left with Hugo and Nikola. Nikola won because Python.
 
-### Who is behind the site?
+### Who is behind the project?
 
-So far all the content is written by me ([/u/Xeverous](https://www.reddit.com/user/Xeverous/) on reddit, [Xeverous](https://github.com/Xeverous) on GitHub).
+The whole website is a hobby-made open-source project, so far by one person only. No company/organization is involved.
+
+- [/u/Xeverous](https://www.reddit.com/user/Xeverous/) on reddit
+- [Xeverous](https://github.com/Xeverous) on GitHub.
+
+See project description on https://github.com/Xeverous/the_website.
 
 ### Can I post on this site?
 
