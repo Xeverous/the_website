@@ -135,7 +135,7 @@ In the case of a class representing a fraction, there was no need for private fu
 
     What if there are invariants but only between certain fields? What if other fields have no invariants? Should first group of fields be private and the second group be public?
 
-In theory yes, in practice such situation indicates that the class has been badly designed. Very likely, fields with invariants should form a class on their own, and the remaining fields should be added in another class definition through *composition* or *inheritance*.
+Such situation indicates that the class has been badly designed. Very likely, fields with invariants should form a class on their own, and the remaining fields should be added in another class definition through *composition* or *inheritance*.
 
 When in doubt, a good default is to make more smaller classes. Such code is more reusable, modular and testable.
 
@@ -167,6 +167,8 @@ Kitchen (and other household) devices are pretty good examples - they are relati
      - available water, current program stage
      - enable water pump, rotate nozzles
      - switch on/off, set program, open, close
+
+Many devices of the same purpose will share the same interface but may be constructed differently. Another great example of an interface is a power socket. Different devices can access the power from the same interface.
 
 Of course you might have a device that does not match the table above - sometimes it can be quite hard to determine what should be a part of (public) interface and what should be controlled internally.
 

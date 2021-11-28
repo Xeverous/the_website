@@ -1,6 +1,6 @@
 .. title: 03 - const
 .. slug: 03_const
-.. description: accessors and const member function qualifier
+.. description: const member function qualifier
 .. author: Xeverous
 
 So far we have talked about member functions and how they can shield the class from undesirable use. This lesson extends the topic, covering few very common kinds of member functions.
@@ -10,7 +10,7 @@ Setters:
 - primary purpose: change data members (they *set* things)
 - secure class **invariants**.
 - function names usually start with ``set``
-- such functions almost always return :cch:`void`
+- such functions almost always return :cch:`void` (if not, it's usually :cch:`bool` to indicate whether operation succeeded)
 
 Getters:
 
@@ -39,7 +39,7 @@ Action-like functions are the most broad group and usually they will contain mos
 .. admonition:: definition
     :class: definition
 
-    Getters and setters are commonly referred together as **accessors**.
+    Getters are commonly referred as **accessors**. Setters as **mutators**.
 
 Getters and setters do not always come in pairs - getters may combine information from multiple members and setters (and action functions) may change multiple fields. This all depends on class invariants.
 
@@ -176,12 +176,12 @@ Don't get it wrong - do not const-qualify a function just becase it can be. Thin
 
     Does const-qualifying a function helps in optimization?
 
-Generally no. :cch:`const` does not help the compiler except in few corner cases. It's much more of a help for the programmer (to prevent bugs) than the compiler.
+Generally no. :cch:`const` does not help the compiler except in few corner cases. It's much more of a help for the programmer to catch bugs related to object misuse.
 
 Overloading on qualification
 ############################
 
-This style of accessors is very popular in C++ (and often the recommended one):
+This style of a pair of getter and setter is very popular in C++ (and often the recommended one):
 
 .. TOCOLOR
 
@@ -211,10 +211,10 @@ There are few key things here:
 - Member variables are named with some prefix (usually ``m_`` or ``_``):
 
   - This avoids name clashes with method names.
-  - This improves code readability of method implementations.
+  - This improves code readability of method implementations (member variables can be easily distinguished from function-local variables).
   - This helps with tooling (e.g. IDE autocomplete feature)
 
-- Accessors are named as nouns, just like fields.
+- Both functions are named as nouns, just like fields.
 - There are 2 overloads which differ in const qualification and analogically their return type.
 
 Which overload is choosen when a method is called? It depends on the constness of the object on which it is done.
@@ -224,8 +224,8 @@ Which overload is choosen when a method is called? It depends on the constness o
 
 The tradeoffs of this style:
 
-- Accessors expose an implementation detail - the type of the data member is visible in the function. If the class is later refactored to contain fields of different types, code which was using the class also needs to be changed.
+- Such pair of functions exposes an implementation detail - the type of the data member is visible in the function. If the class is later refactored to contain fields of different types, code which was using the class may also need to be changed.
 - Since the setter does not take the value as a parameter but returns a reference to a field:
 
   - ...it no longer can control what is actually written to it. This makes the style undesirable if the class has invariants to enforce.
-  - ...the calling code can access field's methods, which allows significant code reuse.
+  - ...the calling code can access field's methods, which allows significant code reuse. Example above did it with string's assignment operator.
