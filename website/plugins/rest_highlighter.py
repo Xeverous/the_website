@@ -34,6 +34,8 @@ except ImportError:
 import ansi2html
 import pkg_resources
 
+from plugins.html_utils import escape_text_into_html
+
 ##############################################################################
 # common code
 ##############################################################################
@@ -116,11 +118,6 @@ def load_inline_codes() -> Dict[str, str]:
             logger.error(f'inline code line {i}: highlight failed:\n{str(err)}')
 
     return result
-
-def escape_text_into_html(text: str) -> str:
-    # https://stackoverflow.com/a/49329235/4818802
-    return text.replace('&', '&amp;').replace('>', '&gt;').replace('<', '&lt;'
-        ).replace('\'','&#39;').replace('"','&#34;')
 
 def make_not_word(b: bool) -> str:
     if b:

@@ -323,6 +323,23 @@ The "code" directive constructs a literal block. Language and ``number-lines`` o
 Custom directives
 =================
 
+Details element
+---------------
+
+Creates spoiler-like element, using HTML ``<details>`` tag. Support through ``details_element`` plugin.
+
+- Optional option: ``open`` (no arguments), causes the details element to be initially open (``<details open>``).
+- Required option: ``summary``, text to always display (``<summary>``)
+
+.. details::
+    :summary: summary
+
+    content, which may be arbitrary reST content
+
+    - list item A
+    - list item B
+    - list item C
+
 Custom code highlight
 ---------------------
 
