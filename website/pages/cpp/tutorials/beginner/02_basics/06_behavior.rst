@@ -86,8 +86,9 @@ Some situations with ill-formed programs do not require diagnostic, usually beca
 Exercise
 ########
 
-.. TODO spoiler element
-
 What can happen when executing a program with undefined behavior?
 
-Absolutely anything.
+.. details::
+    :summary: Answer
+
+    Absolutely anything.

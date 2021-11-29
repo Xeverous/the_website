@@ -301,25 +301,26 @@ What's wrong with the following code?
         // do other stuff...
     }
 
-.. TODO spoiler element
+.. details::
+    :summary: Answer
 
-There are 2 mistakes:
+    There are 2 mistakes:
 
-- There is ``;`` immediately after the condition (null statement) which acts as the braceless one statement. It will prevent actually intended statements from happening and break the :cch:`else` (either shifting it to a different :cch:`if` or making a compiler error).
-- There are 2 branches but the condition contains a negation. It can be simplified by reversing the condition and swapping branch bodies:
+    - There is ``;`` immediately after the condition (null statement) which acts as the braceless one statement. It will prevent actually intended statements from happening and break the :cch:`else` (either shifting it to a different :cch:`if` or making a compiler error).
+    - There are 2 branches but the condition contains a negation. It can be simplified by reversing the condition and swapping branch bodies:
 
-.. TOCOLOR
+    .. TOCOLOR
 
-.. code::
+    .. code::
 
-    if (x == 0)
-    {
-        // do other stuff...
-    }
-    else
-    {
-        // do stuff...
-    }
+        if (x == 0)
+        {
+            // do other stuff...
+        }
+        else
+        {
+            // do stuff...
+        }
 
 Question 2
 ==========
@@ -333,27 +334,28 @@ What's wrong with the following code?
     if (x = func())
         std::cout << "x is non-zero\n";
 
-.. TODO spoiler element
+.. details::
+    :summary: Answer
 
-The code uses ``=``, not ``==``. This will cause the assignment to take place and because assignment operator returns first operand (it's right-to-left associative) the :cch:`if` statement will evaluate :cch:`x` after the assignment (converting it to :cch:`bool`). All major compilers should warn on this type of mistake.
+    The code uses ``=``, not ``==``. This will cause the assignment to take place and because assignment operator returns first operand (it's right-to-left associative) the :cch:`if` statement will evaluate :cch:`x` after the assignment (converting it to :cch:`bool`). All major compilers should warn on this type of mistake.
 
-.. I have considered to mention Yoda conditions but IMO their benefits are too low. They are rarely used, compilers detect accidental = well and Yoda conditons don't even work for all cases - only when one of operands is read-only.
+    .. I have considered to mention Yoda conditions but IMO their benefits are too low. They are rarely used, compilers detect accidental = well and Yoda conditons don't even work for all cases - only when one of operands is read-only.
 
-If both the assignment and the test are desired, major compilers agreed on this solution:
+    If both the assignment and the test are desired, major compilers agreed on this solution:
 
-.. TOCOLOR
+    .. TOCOLOR
 
-.. code::
+    .. code::
 
-    // extra set of () indicates desirable assignment in subexpression
-    if ((x = func()))
-        std::cout << "x is non-zero\n";
+        // extra set of () indicates desirable assignment in subexpression
+        if ((x = func()))
+            std::cout << "x is non-zero\n";
 
 ..
 
     I don't get the *assignment operator returns first operand* part. What makes ``=`` compile inside :cch:`if`?
 
-You need to understand that :cch:`if` does not see every entity inside the condition, it simply acts as a test of a value of type :cch:`bool`. The whole condition expression is evaluated first and only then its result is brought to the :cch:`if` logic. Why assignments *return* first operand as the result? This will get clearer once you get familiar with *functions* and the concept of *returning* a result - many parts of C++ work on the basis of functions and most operators (including `=`) too.
+You need to understand that :cch:`if` does not see every entity inside the condition, it simply acts as a test of a value of type :cch:`bool`. The whole condition expression is evaluated first and only then its result is brought to the :cch:`if` logic. Why assignments *return* first operand as the result? This will get clearer once you get familiar with *functions* and the concept of *returning* a result - many parts of C++ work on the basis of functions and most operators (including ``=``) too.
 
 Writing
 =======

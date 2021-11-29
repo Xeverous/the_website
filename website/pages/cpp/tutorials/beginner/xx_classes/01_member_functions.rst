@@ -109,10 +109,11 @@ Thanks to member functions, the code is now more object-oriented but it still co
     fraction fr1{2, 0}; // (1)
     fraction fr2{0, 0}; // (2)
 
-.. TODO spoiler directive
+.. details::
+    :summary: Answer
 
-- For (1), the fraction will be simplified to 1/0 because ``gcd(2, 0) == 1``.
-- For (2), the code will invoke undefined behavior because ``gcd(0, 0) == 0`` and integer division by 0 is undefined.
+    - For (1), the fraction will be simplified to 1/0 because ``gcd(2, 0) == 1``.
+    - For (2), the code will invoke undefined behavior because ``gcd(0, 0) == 0`` and integer division by 0 is undefined.
 
 In both cases, the intial problem is that fraction *invariant* was broken - the denominator can not be zero. No matter how well member functions treat the data, we can always use the ``.`` operator to access and modify class members, potentially breaking some conditions on which the methods operate.
 

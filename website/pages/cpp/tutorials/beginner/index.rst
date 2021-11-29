@@ -4,9 +4,10 @@
 .. author: Xeverous
 .. index_path: .
 
-:sc:`{{% generate_index depth=0 %}}`
+.. details::
+    :summary: Index
 
-.. TODO place index in a spoiler
+    :sc:`{{% generate_index depth=0 %}}`
 
 The tutorial is aimed at teaching you the C++ programming language. Core goals:
 

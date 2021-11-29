@@ -67,6 +67,8 @@ Standard argument passing recommendations apply:
 - Stream insertion only reads the data so should it should take the object (here: fraction) by value or const reference (here: value because fraction class is cheap to copy).
 - Stream extraction stores the result in the object so the object must be passed by non-const reference.
 
+..
+
     How about :cch:`operator<<=` and :cch:`operator>>=`?
 
 These operators only make sense when :cch:`operator<<` and :cch:`operator>>` are implemented to perform mathematical operations. If you implementat stream insertion/extraction, these operators should be left unimplemented.
@@ -85,6 +87,7 @@ What's wrong with the implementation below?
         return std::cout << fr.numerator() << "/" << fr.denominator();
     }
 
-.. TODO spoiler element
+.. details::
+    :summary: Answer
 
-The function does not use the stream provided as an argument. Instead, it always inserts data to :cch:`std::cout`. This is a bug because someone might want to output a fraction to a file.
+    The function does not use the stream provided as an argument. Instead, it always inserts data to :cch:`std::cout`. This is a bug because someone might want to output a fraction to a file.

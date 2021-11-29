@@ -332,9 +332,10 @@ Exercise
 
 Take the pseudo-calculator from the previous lesson and replace :cch:`if` statement(s) with :cch:`switch` where possible.
 
-.. TODO spoiler element
+.. details::
+    :summary: Hint
 
-:cch:`switch` should be used for operation selection.
+    :cch:`switch` should be used for operation selection.
 
 ----
 

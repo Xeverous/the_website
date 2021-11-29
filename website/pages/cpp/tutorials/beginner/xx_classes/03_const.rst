@@ -48,11 +48,12 @@ Exercise
 
 Recall fraction class from previous lesson. Can you assign each of its member functions a specific category?
 
-.. TODO spoiler
+.. details::
+    :summary: Answer
 
-- ``set`` - setter
-- ``simplify`` - action
-- ``print`` - getter (although instead of returning it prints the values)
+    - ``set`` - setter
+    - ``simplify`` - action
+    - ``print`` - getter (although instead of returning it prints the values)
 
 Member function qualifiers
 ##########################

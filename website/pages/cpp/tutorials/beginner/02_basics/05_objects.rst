@@ -236,9 +236,10 @@ Is the following code valid?
     x = x * 2;
     std::cout << x;
 
-.. TODO spoiler element
+.. details::
+    :summary: Answer
 
-Yes. Assignments work by evaluating expression on the right before the result is stored in an object. There are no problems if the expression refers to the same object.
+    Yes. Assignments work by evaluating expression on the right before the result is stored in an object. There are no problems if the expression refers to the same object.
 
 Is the following code valid?
 
@@ -249,6 +250,7 @@ Is the following code valid?
     int x = 2 * x;
     std::cout << x;
 
-.. TODO spoiler element
+.. details::
+    :summary: Answer
 
-Technically yes (this will compile) but contains undefined behavior. :cch:`x` here is used (on the right side) before it's initialized. It's not possible to initialize an object with a value that depends on it.
+    Technically yes (this will compile) but contains undefined behavior. :cch:`x` here is used (on the right side) before it's initialized. It's not possible to correctly initialize an object with a value that depends on it.

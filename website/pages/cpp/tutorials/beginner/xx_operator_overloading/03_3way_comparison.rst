@@ -101,14 +101,15 @@ Which comparison categories are present in the following situations?
 - people by their birth date
 - people by their ancestry tree
 
-.. TODO spoiler element
+.. details::
+    :summary: Answers
 
-- weak ordering (points 3,5 and 4,4 are equal)
-- weak ordering (files with same size can be different)
-- weak equality (symlinks can create multiple paths for the same file), weak ordering if we additionally consider sorting paths as strings
-- strong equality (IDs are unique so 2 identical IDs refer to the same user) or strong ordering (if IDs are treated as numbers and can be sorted)
-- weak ordering (date can be the same for different people)
-- partial ordering (for some pairs of people we can not determine their common ancestor)
+    - weak ordering (points 3,5 and 4,4 are equal)
+    - weak ordering (files with same size can be different)
+    - weak equality (symlinks can create multiple paths for the same file), weak ordering if we additionally consider sorting paths as strings
+    - strong equality (IDs are unique so 2 identical IDs refer to the same user) or strong ordering (if IDs are treated as numbers and can be sorted)
+    - weak ordering (date can be the same for different people)
+    - partial ordering (for some pairs of people we can not determine their common ancestor)
 
 Practice
 ########
@@ -149,6 +150,8 @@ For the implementation of :cch:`operator<=>`:
 
 - If it's defaulted and :cch:`operator==` is not declared at all, then :cch:`operator==` is implicitly defaulted.
 - If it's custom then :cch:`operator==` and :cch:`operator!=` are not defined.
+
+..
 
     What's the point of special treatment of :cch:`operator==` in these cases?
 
