@@ -58,7 +58,12 @@ It's possible to define multiple objects at once:
 
     int x, y, z; // 3 objects of type int
 
-...but **such practice is very discouraged**. For historical reasons (mostly backwards compatibility), C++ adopted C grammar which while generally brilliant, has some peculiarities and most of them lie in *decl-specifier-seq* subgrammar, which is used to declare objects. I don't really want to list all possible corner cases (there can be infinitely many of them as the grammar can be nested), I just want to point out that thinking of object declaration syntax as "type followed by name" is fundamentally wrong with how C/C++ grammar works and for this reason you should declare only 1 object per statement.
+...but **such practice is very discouraged**. For historical reasons (mostly backwards compatibility), C++ adopted C grammar which while generally brilliant, has some peculiarities and most of them lie in *decl-specifier-seq* subgrammar, which is used for declarations. I don't really want to list all possible corner cases (there can be infinitely many of them as the grammar can be nested), I just want to point out that thinking of object declaration syntax as "type followed by name" is fundamentally wrong with how C/C++ grammar works and for this reason:
+
+.. admontion:: Tip
+    :class: tip
+
+    Declare only 1 entity per statement.
 
 This is a very common C++ teaching mistake - please point it out by giving link to this article TODO. While I understand the need for mental shortcuts, "type followed by name" is only trapping beginners in incorrect thinking. We wish it worked this way, but it doesn't.
 
@@ -144,9 +149,9 @@ There is nothing wrong in assignment, however the first ever value than an objec
 
     If initialization is so important, why objects aren't intialized automatically by the compiler?
 
-In some programming languages (usually ones which operate on higher abstraction level) they actually are, but C++ (and its ancestor - C) have always fundamentally followed the rule that you don't pay for what you don't use and if something is not absolutely necessary, it shouldn't be done - at least automatically. The performance penalty of "dead writes" (e.g. initializing an object with some value but never reading it before future assignment) is getting lower, but it's still not zero and C++ doesn't like forcing things that hardware does not require.
+In some programming languages (usually ones which operate on higher abstraction level) they actually are, but C++ (and its ancestor - C) have always fundamentally followed the rule that you don't pay for what you don't use and if something is not absolutely necessary, it shouldn't be done - at least automatically. The performance penalty of "dead writes" (e.g. initializing an object with some value but never reading it before future assignment) is getting lower, but it's still not zero and C++ doesn't like forcing things that are not required. A lot of people advocated for a reversed default though, where initialization would be opt-out, not opt-in as in vast majority of cases the programer wants to be warned about missed initialization and the need for optimizing to the point of removing single write instructions is very rare.
 
-Other reasons include inability to provide good defaults. For any numeric type, zero is a very good choice. For :cch:`bool` it's :cch:`false` because it is represented by bit 0. But for a lot of types there is no good default and their bit representation made full of 0s may have no valid interpretation.
+Other reasons include backwards compatibility and the inability to provide good defaults. For any numeric type, zero is a very good choice. For :cch:`bool` it's :cch:`false` because it is represented by bit 0. But for a lot of types there is no good default and their bit representation made full of 0s may have no valid interpretation.
 
 Syntax
 ======

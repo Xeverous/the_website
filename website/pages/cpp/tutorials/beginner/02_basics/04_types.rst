@@ -3,7 +3,7 @@
 .. description: basic types in C++
 .. author: Xeverous
 
-Computer memory has been changing over time and while storage technologies continue to evolve, the way memory is used from software point of view has settled on a very simple and effective design: a flat addressing model. Every cell contains exactly 1 byte (8 bits) of information and has a unique address. There might be a very complex structure in the hardware but as far as software is concerned, it sees memory as one long sequence of cells with growing addresses.
+Computer memory has been changing over time and while storage technologies continue to evolve, the way memory is used from software point of view has settled on a very simple and effective design: a flat addressing model. Every cell contains exactly 1 byte (where for the vast majority of hardware a byte stores 8 bits) of information and has a unique address. There might be a very complex structure in the hardware but as far as software is concerned, it sees memory as one long sequence of cells with growing addresses.
 
     What about CPU cache? Isn't this some other form of memory?
 
@@ -11,19 +11,19 @@ Not really. Additional mechanisms such as registers and caches are not extra mem
 
 Computers read, write and manipulate data in binary. But what does the data represent? How to interpret it? This is what types are for. Since memory by itself has no notion of what data represents, it's all up to the programmer to give it a meaning by specifying a type. A number without a context is just a number. But with specific interpretation, it can mean text (each symbol having unique number), color (numbers stating intensity of RGB components), sound (numbers describing physical attributes of waves) and so on - for this reason files have extensions - a file is nothing more than a sequence of bytes. It's up to the user which program to use to open it and how the program will interpret this sequence.
 
-In C++, every *object* has an associated type. This makes C++ a **strongly-typed programming language**. The type determines how the binary representation should be interpreted and what operations can be performed on the data. Two objects with different types may be identical in their binary form, but their meaning can be completely different.
+In C++, every *object* has an associated type. This makes C++ a **statically typed programming language**. The type determines multiple memory-related properties (including size in bytes) and how the binary representation should be interpreted and what operations can be performed on the data. Two objects with different types may be identical in their binary form, but their meaning can be completely different.
 
-    What if a language is not strongly-typed?
+    What if a language is not statically typed?
 
-These that do not are typically named to have **loose** or **dynamic typing**. They not require specifying types of objects. Instead, they dynamically adapt (during program execution) by performing hidden conversions between type-mismatched operations. These languages are typically run on virtual machines or by interpreters - they rarely are transformed into real machine code - generally, they wouldn't be as efficient as a strongly-typed language so instead they go for the benefits of being interpreted (e.g. no compilation required).
+Such languages have **dynamic typing**. They do not require specifying types of objects. Objects dynamically adapt (during program execution) by performing hidden conversions between type-mismatched operations. These languages are typically run on virtual machines or by interpreters - they rarely are transformed into real machine code - generally, they wouldn't be as efficient as a statically-typed language so instead they go for the benefits of being interpreted (e.g. no compilation required).
 
 C++ is a language which does not do anything unless explicitly asked to (for performance reasons). You have the full control what happens, when and how. If you want extra behavior such as dynamic typing, there are mechanisms in C++ that can be used for it. Otherwise, you don't pay for what you don't use.
 
-Advantages of strong typing:
+Advantages of static typing:
 
 - Less mistakes: type-mismatched operations result in compiler errors. For interpreted languages, such problems are usually detected only when the program is run and only when the faulty operation is attempted.
 - Faster execution: less convertions are performed.
-- Lower memory usage: each object is stored on fixed amount of memory. With dynamic typing variables are often stored multiple times in different formats.
+- Lower memory usage: each object is stored on fixed amount of memory. With dynamic typing variables have to be stored multiple times in different formats or to have prepared extra memory.
 - Self-documenting code: you know exactly what you work with. No need to write explanatory comments what types are accepted in specific places.
 - Better optimization: Compilers generate better machine code knowing exactly how memory is used.
 
@@ -261,14 +261,14 @@ Generally, text is stored as a sequence of numbers where each number has an asso
 Character types in C++:
 
 - exactly one byte: :cch:`char`, :cch:`unsigned char`, :cch:`signed char`
-- :cch:`wchar_t` - size depends on the target platform preferred wide character encoding (16-bit for Windows which uses UTF-16LE encoding, 32-bit for other systems which use UTF-32)
+- :cch:`wchar_t` - size depends on the target platform preferred wide character encoding (16-bit for Windows which uses UTF-16LE encoding, 32-bit for others which use UTF-32)
 - fixed-width (always unsigned):
 
   - :cch:`char8_t` (since C++20)
   - :cch:`char16_t`
   - :cch:`char32_t`
 
-:cch:`char` has the same implementation as one of its variants with specified signedness, but is a distinct type at the language level. Thus, while :cch:`int` is the same as :cch:`signed`, :cch:`char` is a distinct character type from any other.
+:cch:`char` has the same implementation as one of its variants with specified signedness, but is a distinct type at the language level. Thus, while :cch:`int` is the same as :cch:`signed int`, :cch:`char` is a distinct character type from :cch:`signed char` and :cch:`unsigned char`.
 
 Floating-point types
 ####################
