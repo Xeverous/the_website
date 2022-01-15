@@ -60,7 +60,7 @@ It's possible to define multiple objects at once:
 
 ...but **such practice is very discouraged**. For historical reasons (mostly backwards compatibility), C++ adopted C grammar which while generally brilliant, has some peculiarities and most of them lie in *decl-specifier-seq* subgrammar, which is used for declarations. I don't really want to list all possible corner cases (there can be infinitely many of them as the grammar can be nested), I just want to point out that thinking of object declaration syntax as "type followed by name" is fundamentally wrong with how C/C++ grammar works and for this reason:
 
-.. admontion:: Tip
+.. admonition:: tip
     :class: tip
 
     Declare only 1 entity per statement.

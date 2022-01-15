@@ -1,7 +1,12 @@
 .. title: 04 - types
-.. slug: 04_types
+.. slug: index
 .. description: basic types in C++
 .. author: Xeverous
+
+.. admonition:: note
+    :class: note
+
+    This lesson presents a lot of detailed information, which you do not have to remember - it's given for the sake of knowledge/example if one is really interested. You only need to understand concepts behind various types and their main characteristics.
 
 Computer memory has been changing over time and while storage technologies continue to evolve, the way memory is used from software point of view has settled on a very simple and effective design: a flat addressing model. Every cell contains exactly 1 byte (where for the vast majority of hardware a byte stores 8 bits) of information and has a unique address. There might be a very complex structure in the hardware but as far as software is concerned, it sees memory as one long sequence of cells with growing addresses.
 
@@ -24,7 +29,7 @@ Advantages of static typing:
 - Less mistakes: type-mismatched operations result in compiler errors. For interpreted languages, such problems are usually detected only when the program is run and only when the faulty operation is attempted.
 - Faster execution: less convertions are performed.
 - Lower memory usage: each object is stored on fixed amount of memory. With dynamic typing variables have to be stored multiple times in different formats or to have prepared extra memory.
-- Self-documenting code: you know exactly what you work with. No need to write explanatory comments what types are accepted in specific places.
+- Self-documenting code: you know exactly what you work with. No need to write explanatory comments what kind of data is accepted in specific places. Said differently, in statically typed languages you see variable and type names, in dynamically typed languages you see only variable names.
 - Better optimization: Compilers generate better machine code knowing exactly how memory is used.
 
 The first point might seem trivial but convertion errors are a common source of bugs in software. By specifying types we give variables specific purpose and prevent mistakes from wrong interpretation. This is known as **type safety**. C++ takes type safety very seriously - as a programming language it has one of the richest type systems.
@@ -35,7 +40,7 @@ Types in C++
 There are 2 kinds of types in C++:
 
 - built-in types - types offered by the language itself, they are denoted with keywords
-- user-defined types - types created by the user (here *user* means user of the language - programmer)
+- user-defined types - types created by the user (here *user* means user of the language - programmer); these are defined in code using specific keywords (:cch:`struct`, :cch:`class`, :cch:`enum`) and then their name from definition is used
 
 For now, we will stick to built-in types as defining new types requires much more knowledge. Sometimes we will use user-defined types from the standard library. All you need to know for now is that user-defined types allow to specify new meanings for binary data which is extremely useful in making abstractions.
 
@@ -48,7 +53,7 @@ Most important built-in types:
 - :cch:`void` - represents nothingness. You can not create objects of this type but :cch:`void` can be used in some contexts to express that no data is being used.
 - :cch:`bool` - represents a boolean value.
 - integer types - capable of storing whole numbers.
-- character types - integer types which main purpose is storing text.
+- character types - *integral* types which main purpose is storing text.
 - floating-point types - capable of storing real numbers with fractional and/or exponential part, with limited accuracy.
 
 The type :cch:`bool`
@@ -63,11 +68,11 @@ This type represents a mathematical truth value (AKA logical value). It can hold
 Integer types
 =============
 
-Most numbers will require multiple memory cells. For example, a 32-bit integer will occupy 4 consecutive bytes (thus, 4 cells in memory).
+Most numbers will require multiple memory cells. A single byte consisting of 8 bits can only represent 256 (2^8)distinct values - such small range is too low for most situations. Most code will use 32-bit and 64-bit integer types.
 
 Integers have 2 independent properties:
 
-- length - amount of memory cells they occupy. The more memory they occupy, the larger numbers they can represent.
+- length - amount of memory cells they occupy. The more memory they occupy, the wider range of numbers they can represent.
 - signedness - if number is signed, its first bit does not contribute to its magnitude but is used as +/- sign instead.
 
 Signed numbers can represent negative values. Unsigned can not, but the extra bit allows twice as many representable magnitudes.
@@ -188,7 +193,7 @@ Here is a table comparing different interpretations of the same 4-bit pattern:
       - -0
       - -1
 
-.. Generally, ** should be used for emphasis but bolded ' is hardly noticeable so inline code is used instead.
+.. Generally, ** should be used for emphasis but bolded ' is hardly noticeable so inline code is used instead in the question below.
 
 ..
 
@@ -202,14 +207,14 @@ Computer hardware is using two's complement to represent signed numbers. It has 
 - it has very simple convertion to/from unsigned representation
 - multiple math operations have the same implementation for unsigned and two's complement representation, so the same circuit can perform math on numbers in both forms, example:
 
-  - addition of unsigned 127 (0111 1111) and unsigned 128 (1000 0000) is 255 (1111 1111)
-  - addition of two's complement 127 (0111 1111) and two's complement -128 (1000 0000) is -1 (1111 1111)
+  - unsigned: addition of 127 (0111 1111) and 128 (1000 0000) is 255 (1111 1111)
+  - two's complement: addition of 127 (0111 1111) and -128 (1000 0000) is -1 (1111 1111)
 
 ..
 
     Do I need to remmeber all of this?
 
-No. Bit-level knowledge is suplementary and is not required except in bitwise operations, which are rarely used.
+No. Bit-level knowledge is suplementary and is not required except in bitwise operations, which are rarely used. I present this knowledge because the fact that numbers in computers have many limitations (especially floating-point types) was very surprising for me.
 
 Integer types - keywords
 ------------------------
@@ -248,6 +253,8 @@ Most commonly implemented lengths on x86 (32-bit PC), x86-64 (64-bit PC) and 64-
 - :cch:`long long` is 64-bit (if supported by the hardware)
 
 In any case, if you need integer types of certain length - either because you need to ensure that specific range is representable or because you use specific bit-related instructions, you should use `fixed-width integer type aliases found in the standard library <https://en.cppreference.com/w/cpp/header/cstdint>`_. More on this later. For now, just remember you can only vaguely rely on integer lengths.
+
+Additional (non-standard) types may be offered by the compiler (e.g. :cch:`__int128` in GCC).
 
     What integer type should I use when writing code? Is there any guideline?
 
@@ -304,7 +311,7 @@ The bit sign affects mantissa. Exponent does not need a bit sign because its bas
 
     Why signed integers use two's complement but floating-point mix sign and magnitude notation with offset unsigned?
 
-In short, such implementation is the simplest one. Be aware that sign for exponent does not make the number negative but reciprocal instead: ``m * 2^(-p) = 1/m * 2^p``. ``2^5`` is ``32`` but ``2^(-5)`` is ``1/32``. Additionally, floating-point math has significantly different usage. All these factors cause different tradeoffs regarding optimal hardware implementation.
+In short, such implementation is the simplest one. Be aware that sign for exponent does not make the number negative but reciprocal instead: ``m * 2^(-p) = 1/m * 2^p``. ``2^5`` is ``32`` but ``2^(-5)`` is ``1/32``, not ``-32``. Additionally, floating-point math has significantly different usage. All these factors cause different tradeoffs regarding optimal hardware implementation.
 
     Due to separate sign bit, do floating-point types allow positive and negative zero?
 
@@ -326,8 +333,14 @@ Floating-point types support special values. These are mostly intended for mathe
 - infinity - all exponent bits set to ``1`` and all mantissa bits set to ``0``. Instead of treating this as "zero to a very huge power" it is treated as infinitely large number. The existence of infinity helps to detect possible calculation errors. Infinity can also be negative.
 - NaN (not a number) - all exponent bits set to ``1`` and any non-zero mantissa. The purpose of NaNs is to indicate logic errors - for example, a logarithm can not take negative number as an argument, hence ``log(-1) = NaN``.
 
-Floating-point limits
-=====================
+.. cch::
+    :code_path: special_fp_values.cpp
+    :color_path: special_fp_values.color
+
+Operations on special values will generally propagate them further, e.g. infinity +/- any proper value will be infinity, NaN +/- any proper value will be NaN. This is desirable, because if at any point there is a logical mistake it's much better to get clearly meaningless result than to be fooled by something looking valid that came from wrongly written code.
+
+Floating-point limitations
+==========================
 
 Floating-point limits are not so straightforward as for integers due to their complex notation.
 
@@ -335,11 +348,11 @@ Both mantissa and exponent have their own limits, so there is both maximum/minim
 
 - largest representable positive and negative value (+/- sign, max m, max p)
 - smallest representable positive and negative value, different than 0 (+/- sign, min m, min p)
-- granularity: what is the smallest possible difference between 2 consecutive numbers; granularity is not constant
+- granularity: what is the smallest possible difference between 2 consecutive numbers; **granularity is not constant**
 
 **Floating-points store real numbers with limited accurary.** Just like in decimal system ``1/3`` can be approximated as ``0.333`` or ``333 * 10^(-3)``, the same problem exists in floating-point notation - the only difference is that base 2 is used instead of base 10 for the exponent. **There are infinitely many values which can not be precisely represented** - instead, the closest approximations are used.
 
-Shortly speaking, granurality increases (more values can be represented in the given subrange) the closer they are to 0. The highest precision is in range ``0`` to ``0.1``. Analogy: ``100`` and ``101`` can be exactly represented. But in case of ``1000000001``, it might be approximated as ``1 * 10^9`` when mantisa does not have enough bits to support ``1000000001 * 10^1``. As numbers grow, more focus is placed into the exponent which causes magnitude to be more rounded towards specific power.
+Shortly speaking, granurality increases (more values can be represented in the given subrange) the closer they are to 0. The highest precision is in range ``0`` to ``0.1``. Analogy: ``100`` and ``101`` can be exactly represented. But in case of ``1000000001``, it might be approximated as ``1 * 10^9`` when mantisa does not have enough bits to support ``1000000001 * 10^1``. As numbers grow, more focus is placed into the exponent which causes magnitude to be more rounded towards specific power. Past some point, all odd values are approximated to closest even value.
 
     If floating-point math has limited accuracy, how do calculators work then? How are various fractional values safely computed?
 

@@ -1,5 +1,6 @@
 __attribute__
 __float128
+__int128
 __restrict
 alignas
 alignof
@@ -432,6 +433,7 @@ return 0;
 return;
 short long
 signed char
+signed int
 signed long long int
 signed short int
 sizeof T
