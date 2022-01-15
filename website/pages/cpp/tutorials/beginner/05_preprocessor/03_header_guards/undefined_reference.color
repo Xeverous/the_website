@@ -1,0 +1,22 @@
+0com_single
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword func()
+{
+	func();
+	namespace::var_global << str;
+}
+
+0com_single
+keyword func();
+
+0com_single
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+0com_multi
+0com_multi
+0com_multi
+	0com_multi
+0com_multi
+0com_multi

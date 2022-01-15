@@ -335,6 +335,7 @@ std::weak_ordering::less
 ""x
 "abCD"
 "abc"
+#pragma once
 &
 &&
 &x

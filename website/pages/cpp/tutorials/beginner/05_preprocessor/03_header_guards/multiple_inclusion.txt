@@ -1,0 +1,9 @@
+In file included from [01m[Kto_string.hpp:1[m[K,
+                 from [01m[Kmain.cpp:2[m[K:
+[01m[Kpower_state.hpp:1:12:[m[K [01;31m[Kerror: [m[Kmultiple definition of ‘[01m[Kenum class power_state[m[K’
+ enum class [01;31m[Kpower_state[m[K { off, sleep, on };
+            [01;31m[K^~~~~~~~~~~[m[K
+In file included from [01m[Kmain.cpp:1[m[K:
+[01m[Kpower_state.hpp:1:12:[m[K [01;36m[Knote: [m[Kprevious definition here
+ enum class [01;36m[Kpower_state[m[K { off, sleep, on };
+            [01;36m[K^~~~~~~~~~~[m[K

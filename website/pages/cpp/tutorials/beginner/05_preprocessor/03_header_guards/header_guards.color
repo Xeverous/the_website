@@ -1,0 +1,49 @@
+0com_single
+7pp_direct 0macro_def
+7pp_direct 0macro_ref
+
+keyword keyword type { enum, enum, enum };
+
+0pp_direct
+
+0com_single
+7pp_direct 0macro_def
+7pp_direct 0macro_ref
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+namespace::type func(type param);
+
+0pp_direct
+
+0com_single
+8pp_direct 0pp_header
+0com_single
+0com_single
+
+namespace::type func(type param)
+{
+	keyword (param)
+	{
+		keyword type::enum:
+			keyword str;
+		keyword type::enum:
+			keyword str;
+		keyword type::enum:
+			keyword str;
+		0com_single
+		0com_single
+	}
+}
+
+0com_single
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+8pp_direct 0pp_header
+
+keyword func()
+{
+	keyword var_local = type::enum;
+	namespace::var_global << str << func(var_local) << str;
+}
