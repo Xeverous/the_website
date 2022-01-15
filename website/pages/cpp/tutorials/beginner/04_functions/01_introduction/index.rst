@@ -1,5 +1,5 @@
 .. title: 01 - introduction
-.. slug: 01_introduction
+.. slug: index
 .. description: introduction to functions
 .. author: Xeverous
 
@@ -21,7 +21,7 @@ In both mathematics and programming:
 In programming:
 
 - A function can return different value even if given the same input. For example, a date/time function can return different date/time each time it's *called* (used).
-- A function can have side effects, they are never considered to be function's output.
+- A function can have side effects (e.g. logging something to a file on disk), they are never considered to be function's output.
 
 .. admonition:: note
     :class: note
@@ -42,7 +42,7 @@ Functions by their core definition always return a single object. The trick is t
 Syntax
 ######
 
-Vast majority of functions are defined using the syntax below. Other ways (lambda expressions and member functions) will be presented later.
+Vast majority of functions (*free functions*) are defined using the syntax below. Other kinds of functions (lambda expressions and member functions) will be presented later.
 
 In order:
 
@@ -52,8 +52,8 @@ In order:
 - function body
 
 .. cch::
-    :code_path: 01_introduction/syntax.cpp
-    :color_path: 01_introduction/syntax.color
+    :code_path: syntax.cpp
+    :color_path: syntax.color
 
 .. admonition:: note
     :class: note
@@ -69,6 +69,10 @@ Functions create own scope for their local objects (objects defined inside funct
 
 There is no relation between names of function parameters and names of objects that are passed to the function. The compiler only cares whether types match. Names are only an abstraction for the programmer so that it's possible to express what should be done inside the function. Function call expressions are a way to connect separate parts of code.
 
+.. cch::
+    :code_path: demo.cpp
+    :color_path: demo.color
+
 Returning
 #########
 
@@ -82,8 +86,8 @@ Returning is the act of providing function's result. The type of the object at t
 The function below does not return on all control flow paths. If at runtime this function is called with zero, it will cause undefined behavior.
 
 .. cch::
-    :code_path: 01_introduction/missing_return.cpp
-    :color_path: 01_introduction/missing_return.color
+    :code_path: missing_return.cpp
+    :color_path: missing_return.color
 
 ..
 
@@ -101,8 +105,8 @@ Void functions
 Functions can have return type specified as :cch:`void` which means they return no data. This is very useful if the function is used for its side effects:
 
 .. cch::
-    :code_path: 01_introduction/void_return.cpp
-    :color_path: 01_introduction/void_return.color
+    :code_path: void_return.cpp
+    :color_path: void_return.color
 
 Such functions do not need to use :cch:`return` as there is no data to send back to the caller. If you want to exit such function prematurely (e.g. under specific condition), you can always write :cch:`return;`.
 
@@ -116,8 +120,8 @@ The same principle applies to the amount of function parameters. 4 is the reason
 There is no lower limit on size and arguments. Many useful functions can be as simple as 1 line:
 
 .. cch::
-    :code_path: 01_introduction/one_line.cpp
-    :color_path: 01_introduction/one_line.color
+    :code_path: one_line.cpp
+    :color_path: one_line.color
 
 .. TODO constexpr functions when?
 
@@ -139,8 +143,8 @@ Conditional statements and loops are jumps ahead/behind in machine code. Because
 In the example below, the first function is called from 2 other functions. You should be able to determine what will be the program's output. If not - compile, run and analyze the output. You should be able to build a mental image (a graph) how function calls interact.
 
 .. cch::
-    :code_path: 01_introduction/nested_calls.cpp
-    :color_path: 01_introduction/nested_calls.color
+    :code_path: nested_calls.cpp
+    :color_path: nested_calls.color
 
 The call stack
 ##############
@@ -157,7 +161,7 @@ When a function is called, the place where it should return is pushed onto the *
 
 The mechanism can now repeat: the current function can call another function (which would push new frame with return address equal to current *stack pointer*) or return (which would pop current frame and revert *stack pointer*). As the program is executed and functions are called and return, the stack goes up and down constantly reusing stack space.
 
-The stack operates in LIFO manner (last in, first out) - latest objects put on top are also the first objects to be removed.
+The stack operates in LIFO manner (last in, first out) - latest frames put on top are also the first frames to be removed.
 
 The main function would be the closest one to the stack origin (the bottom), since this is the first function to be called within a program. This also means that the main function is the last function to return.
 
@@ -229,15 +233,23 @@ Both are a part of RAM, where stack memory is a small selected region. The selec
 
 Processors contain SRAM (static RAM) which is a much faster memory than main RAM (dynamic RAM or DRAM). SRAM is typically used for the cache and internal registers of a CPU. Cache is closely related to currently executed function and its data so very often it will contain copies of the stack memory.
 
+Common mistakes
+###############
+
+.. :cch::
+    :code_path: common_mistakes.cpp
+    :color_path: common_mistakes.color
+
 Recommendations
 ###############
 
-- Unless there is a better reason, function parameters should be ordered in decreasing importance (most important parameters first).
-- Variables are data. Functions are tasks. Variables should be named as nouns and functions as verbs.
+- Unless there is a better reason, function parameters should be ordered in decreasing importance (most important parameters first). This approach is especially useful for functions with *default parameters*.
+- Variables are data. Functions are tasks. Variables should be named as nouns and functions as verbs. Don't feel bad for using long, multi-word names. Examples here use ``x``, ``y``, ``z`` etc. only because the context is very generic and math typically uses single letters.
 - Before you write a function for some task, check whether it's not already in the standard library. A lot of common mathematical operations are already available in `cmath header <https://en.cppreference.com/w/cpp/header/cmath>`_.
 
 Exercise
 ########
 
 - Compile the function with missing return statement and observe any compiler warnings. Don't try calling it - you should never expect anything meaningful from undefined behavior.
+- Compile code with common mistakes to observe potential compiler errors.
 - Remember Collatz conjecture from the control flow chapter? Now write a function that given a number, returns the next number. Modify the program from that lesson to use this function.

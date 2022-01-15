@@ -3,6 +3,8 @@
 .. description: references and pass by reference
 .. author: Xeverous
 
+.. TODO in-out parameters - seems like unnecessary confusion in this article, move it to later lessons?
+
 Functions output results by their return value. You might have tried to do something like this:
 
 .. cch::
