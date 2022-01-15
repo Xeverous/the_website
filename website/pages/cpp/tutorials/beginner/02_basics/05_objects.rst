@@ -123,7 +123,7 @@ If an object definition is combined with giving it a value, it's called **initia
 
     int x = 1;
 
-It looks like just a shortcut version of previous code (AKA *syntax sugar*) but **initialization is fundamentally different from assignment**:
+It looks just like a shortcut version of previous code (AKA *syntax sugar*) but **initialization is fundamentally different from assignment**:
 
 - an object can be assigned any time after its creation
 - initialization can happen only once: when the object is created
@@ -222,7 +222,7 @@ Sometimes you might also see :cch:`std::endl` (end-line) used instead of new lin
         std::cout << "y = " << y << std::endl;
     }
 
-The output of this code is the same, however :cch:`std::endl` is not just a new line character. It does something more, something which shouldn't really be done explicitly - it flushes the buffer. Outputting any data to the operating system is a task which requires some extra work (very often system-specific). Buffering the output, while not necessary it very often done for performance reasons. C++ standard streams accumulate data as it is passed in and only output it in bulk when needed. The reason for this is that regardless of data size, communication with operating system is an expensive (in computation and/or time) operation so it should be avoided when possible.
+The output of this code is the same, however :cch:`std::endl` is not just a new line character. It does something more, something which shouldn't really be done explicitly - it flushes the buffer. Outputting any data to the operating system is a task which requires some extra work (very often system-specific). Buffering the output, while not necessary is very often done for performance reasons. C++ standard streams accumulate data as it is passed in and only output it in bulk when needed. The reason for this is that regardless of data size, communication with operating system is an expensive (in computation and/or time) operation so it should be avoided when possible.
 
 C++ standard streams automatically flush the buffer when necessary, so you shouldn't really be concerned with what is happening underneath. Using :cch:`std::endl` forces it to flush the buffer more than necessary, which generally only slows down the whole program. If you see examples online which use :cch:`std::endl`, you can simply rewrite them to use new line character.
 
