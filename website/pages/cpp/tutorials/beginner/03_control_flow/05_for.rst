@@ -106,7 +106,7 @@ Now you can notice a repetition within these loops. The full solution is:
     :code_path: 05_for/for_triangle.cpp
     :color_path: 05_for/for_triangle.color
 
-Note when the line break is placed - it's only inside the first loop. When dealing with nested loops it's important to think what actions need to be done when.
+Note when the line break is placed - it's only inside the first loop. When dealing with nested loops it's important to think what actions need to be done at which level.
 
 Exercise
 ########
@@ -148,3 +148,4 @@ Write programs that print these (each can have multiple solutions):
     10 20 30 40 50 60 70 80 90 100
 
 .. TODO unlock fizzbuzz article?
+.. TODO post idiomatic solutions

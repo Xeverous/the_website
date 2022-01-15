@@ -1,0 +1,7 @@
+[01m[Kmain.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[Kmain.cpp:7:2:[m[K [01;35m[Kwarning: [m[Kthis ‘[01m[Kif[m[K’ clause does not guard... [[01;35m[K-Wmisleading-indentation[m[K]
+  [01;35m[Kif[m[K (x % 2 == 0)
+  [01;35m[K^~[m[K
+[01m[Kmain.cpp:10:3:[m[K [01;36m[Knote: [m[K...this statement, but the latter is misleadingly indented as if it were guarded by the ‘[01m[Kif[m[K’
+   [01;36m[Kif[m[K (x % 4 == 0)
+   [01;36m[K^~[m[K

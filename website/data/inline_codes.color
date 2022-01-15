@@ -441,6 +441,7 @@ keyword var_local
 keyword...(type)
 keyword...(var_local)
 keyword<type>(var_local)
+keyword(func())
 keyword var_local
 keyword(type)
 keyword(var_local)

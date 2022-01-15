@@ -10,7 +10,7 @@ Continue statement
 
 :cch:`break` jumps outside of the loop. :cch:`continue` jumps to the end of current iteration (step statement is still executed).
 
-The example below prints different combinations of numbers but only if they are different.
+The example below prints combinations of numbers but only if they are different.
 
 .. cch::
     :code_path: 06_loop_control/continue.cpp
@@ -56,4 +56,4 @@ The preferred option, results in very clean code but it exits a lot more - the e
     :code_path: 06_loop_control/return.cpp
     :color_path: 06_loop_control/return.color
 
-In practice this is not a problem because the loops can be easily moved to a separate function (to alter the scope of return statement), especially local function objects created by *lambda expressions*.
+In practice this is not a problem because loops can be easily moved to a separate function (to alter the scope of return statement), especially local function objects created by *lambda expressions*. Once you learn lambdas, you will understand how useful they are.

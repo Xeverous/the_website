@@ -1,5 +1,5 @@
 .. title: 02 - if
-.. slug: 02_if
+.. slug: index
 .. description: if statements in C++
 .. author: Xeverous
 
@@ -90,7 +90,7 @@ You can omit braces (``{}``) if exactly one statement is used:
 .. admonition:: tip
     :class: tip
 
-    If the code on any branch of :cch:`if` has more than 1 line (e.g. very long statement that has been split to 2 lines or a 1-line statement + 1-line comment) **always use braces, even if you can skip them**. Reason: code readability.
+    If the code on any branch of :cch:`if` has more than 1 line (e.g. very long statement that has been split to 2 lines or a 1-line statement + 1-line comment) **always use braces, even if you can skip them**. Reason: code readability. In other words, be consistent - apply braces to both branches or none.
 
 Some projects take the rule even further and always require braces, even for simplest and shortest 1-line statements - the argument for it is safety as braces prevent situations like this:
 
@@ -113,7 +113,10 @@ Some projects take the rule even further and always require braces, even for sim
             std::cout << x << " is odd\n";
     }
 
-The above program will print that :cch:`x` is both even and odd. The problem is that code has been written assuming that the :cch:`else` will attach to the first :cch:`if` statement, but it attached to the second - formatting does not affect language grammar. Some compilers may print a warning that the code is misleadingly indented.
+The above program will print that :cch:`x` is both even and odd. The problem is that code has been written assuming that the :cch:`else` will attach to the first :cch:`if` statement, but it attached to the second - formatting does not affect language grammar. Some compilers may print a warning that the code is misleadingly indented:
+
+.. ansi::
+    :ansi_path: misindent.txt
 
 .. admonition:: tip
     :class: tip
@@ -145,7 +148,10 @@ This is the minimum to make the code work and be consistent:
         }
     }
 
-Sometimes, thanks to many conditions your code might indent very deeply, `like this <https://i.imgur.com/BtjZedW.jpg>`_ (image shows PHP, not C++).
+Sometimes, thanks to many conditions your code might indent very deeply, like this (image shows PHP, not C++):
+
+.. image:: https://i.imgur.com/BtjZedW.jpg
+    :alt: code Hadouken
 
 There are ways to solve such problems. One of them does not require any additional features so I can present it to you now. If you have an if-else tree that nests only on one end like this:
 
@@ -201,7 +207,7 @@ There are ways to solve such problems. One of them does not require any addition
     else if (x % 11 == 0)
         std::cout << x << " is divisible by 11\n";
 
-Here the rule is not only used for print statements, but it's also between :cch:`else` and :cch:`if` keywords.
+Here braces are not only ommited for print statements, but they are also ommited between :cch:`else` and :cch:`if` keywords.
 
 Syntax sugar
 ############
@@ -278,7 +284,7 @@ and to simply else-if code:
 
 .. TODO const when?
 
-The ``?:`` operator must always have 2 branches. You can get very creative with it's usage (it works as a functional subexpression, not as a full statement) (not only for assignments) but I advise you to not overuse it because (due to grammar and backwards compatibility) `its evaluation rules <https://en.cppreference.com/w/cpp/language/operator_other#Conditional_operator>`_ have gone extremely complex.
+The ``?:`` operator must always have 2 branches. You can get very creative with its usage (it works as a functional subexpression, not as a full statement) (not only for assignments) but I advise you to not overuse it because (due to grammar and backwards compatibility) `its evaluation rules <https://en.cppreference.com/w/cpp/language/operator_other#Conditional_operator>`_ have gone extremely complex.
 
 Exercise
 ########
@@ -364,4 +370,4 @@ Write a simple pseudo-calculator program:
 
 - The user should enter 2 numbers.
 - The user should enter extra number specifying operation to perform (addition, subtraction, multiplication, division, modulus).
-- The program should check validity of the operation (division and modulus by 0 has undefined behavior) and execute it if possible. Print the result.
+- The program should check validity of the operation (division and modulus by 0 have undefined behavior) and execute it if possible. Print the result.

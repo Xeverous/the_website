@@ -7,13 +7,15 @@
 
 The **fallthrough** behavior comes from the fact that unlike :cch:`if` or :cch:`else`, a :cch:`switch` statement can execute multiple sections of code based on a single condition. There is no positive/negative branch. There are only places where execution starts and stops.
 
-Syntax
-######
+Rules
+#####
 
 The syntax is slightly different from :cch:`if`:
 
-- The condition is no longer required to be an expression convertible to :cch:`bool`. It should be comparable with values specified in :cch:`case`\ s. Note that there is no ``==`` - the operator is applied automatically between expression in ``()`` and cases.
+- :cch:`if` requires a value of type :cch:`bool` (or something *contextually convertible* to it), :cch:`switch` requires a value of integral or enumeration type (or something *contextually convertible* to it).
 - Each :cch:`case` must use a *constant expression* (it must be computable at compile time).
+
+Then, the expression in :cch:`switch` is evaluated once and compared for equality with cases in order of their appearance. It's not possible to make a different comparison (e.g. ``!=``).
 
 .. TODO when constexpr?
 
@@ -48,16 +50,20 @@ The **execution starts on first matching case and then goes through all subseque
 
 Said differently, a :cch:`switch` statement has no branches but a point where execution starts.
 
-    Why cases have to have constant expressions?
+    Why case values have to be constant expressions?
 
 Unlike if-else, :cch:`switch` (at least when it was introduced in C) was not only supposed to be a shorter version of if-else but also feature a specific optimization: jump table. The goal was to have only one condition which result affects a jump instruction, which then computes new memory address based on a table build up from constant expressions.
 
 Today, compilers also perform this optimization on if-else blocks if possible.
 
+    What does it mean that the expression inside :cch:`switch` is evaluated once?
+
+It means that any code there will be run once. For example, :cch:`switch(func())` will call the function only once, no matter how many cases are present. This is contrary to loops, where a condition is evaluated once per iteration.
+
 Breaks
 ######
 
-:cch:`break` is where the execution stops.
+:cch:`break` is where the execution stops. In other words, it disables fallthrough.
 
 .. TOCOLOR
 
@@ -165,12 +171,12 @@ While :cch:`if` always introdues an inner scope the :cch:`switch` does not - all
     switch (x)
     {
         case 1:
-            int x = 0; // initialization
-            std::cout << x << '\n';
+            int y = 0; // initialization
+            std::cout << y << '\n';
             break;
         default:
             // compilation error: jump to default would
-            // enter the scope of x without initializing it
+            // enter the scope of y without initializing it
             std::cout << "default\n";
             break;
     }
@@ -185,10 +191,10 @@ To fix it simply introduce a scope:
     {
         case 1:
         {
-            int x = 0; // initialization
-            std::cout << x << '\n';
+            int y = 0; // initialization
+            std::cout << y << '\n';
             break;
-        } // x dies here
+        } // y dies here
         default: // braces not necessary here but use them for consistency
         {
             std::cout << "default\n";
@@ -319,11 +325,11 @@ You might understand the article better after few next lessons. Anyway, this tri
 Summary
 #######
 
-Switch comes from C and features a quite unique behaviour - instead of having positine/negative branches it features execution start and stop, based on a set of possible jumps from a single source of comparisons.
+Switch comes from C and features a quite unique behaviour - instead of having positive/negative branches it features execution start and stop, based on a set of possible jumps from a single source of comparisons.
 
 - all cases must use a constant expression
 - there can be a default case
-- you can only test for equality (tests are implicit)
+- you can only test for equality
 
 Because of these, switch in C++ is used mostly as an alternative, shorter version of if-else blocks, most often for *enumeration types*. The possibility of accidental fallthrough can be a good source of bugs but most compilers warn if any case has no break. If a fallthrough is intentional, it should be stated explicitly.
 

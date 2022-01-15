@@ -441,6 +441,7 @@ sizeof x
 sizeof...(T)
 sizeof...(x)
 static_cast<T>(x)
+switch(func())
 throw x
 typeid(T)
 typeid(x)

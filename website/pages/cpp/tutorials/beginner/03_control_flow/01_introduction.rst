@@ -28,7 +28,7 @@ The same thing could be also done in programming - but - imagine a 10000+ line p
 
 When first high-level programming languages appeared (reminder: low-level means 1:1 transformation of source code to machine code) the abstraction for a jump was very simple: :cch:`goto` keyword or something similar. You just wrote a condition and if it was true, the program would jump to a specified line or label.
 
-As you may guess, it was extremely easy to get lost within such program. After just few :cch:`goto` statements, it was almost impossible to add any new functionality without breaking behavior of existing functionality. There was clearly a need for something more, something that could abstract program's control flow structure so that programmers don't get lost in a web of jump statements.
+As you may guess, it was extremely easy to get lost within such program. After just few :cch:`goto` statements, it was almost impossible to add any new functionality without breaking behavior of existing functionality. There was clearly a need for something more, something that could abstract program's control flow structure so that programmers don't get lost in a web of jump statements. While purely imperative approach is very good for constructing hardware (because it's extremely easy to execute) it's extremely hard to write a sequence of statements (some containing conditional jumps) without getting lost.
 
 Structured programming
 ######################
