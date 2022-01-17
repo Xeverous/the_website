@@ -85,6 +85,8 @@ The example above has 2 translation units:
 - one which contains contents of ``hello.hpp``, ``iostream`` and ``main.cpp`` (in this order)
 - one which contains contents of ``iostream`` and ``hello.cpp`` (in this order)
 
+..
+
     Does order of includes matter?
 
 It should not. Some projects may accidentally make themselves suspectible to it if they rely on transitive includes or other misused preprocessor directives. You will learn about such problems later in this chapter.
@@ -156,6 +158,8 @@ There are no particulary strong advantages/disadvantages in any of these but it'
 - In merged layout, the pair of header+source can be extended to contain even more similarly named files, such as ``meow.test.cpp``.
 - IDEs and other tools work well with both.
 - For many years, there was no significant convention how a C or C++ project should be laid out. You can find many projects which do not stick to any convention. `The Pitchfork proposal <https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs>`_ aims to establish/standarize typical C/C++ project structure.
+
+..
 
     Do header and source files always come in pairs?
 
