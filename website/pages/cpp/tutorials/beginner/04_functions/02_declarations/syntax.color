@@ -7,17 +7,17 @@ keyword func(keyword, keyword);
 
 keyword func()
 {
-    0com_single
-    func();
-    namespace::var_global << func(num, num) << str;
+	0com_single
+	func();
+	namespace::var_global << func(num, num) << str;
 }
 
 keyword func(keyword param, keyword param)
 {
-    keyword param * param;
+	keyword param * param;
 }
 
 keyword func()
 {
-    namespace::var_global << str;
+	namespace::var_global << str;
 }

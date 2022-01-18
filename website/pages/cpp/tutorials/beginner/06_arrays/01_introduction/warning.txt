@@ -1,0 +1,4 @@
+[01m[Kmain.cpp:[m[K In function ‘[01m[Kint main()[m[K’:
+[01m[Kmain.cpp:11:20:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Klong unsigned int[m[K’ [[01;35m[K-Wsign-compare[m[K]
+  for (int i = 0; [01;35m[Ki < sz[m[K; ++i)
+                  [01;35m[K~~^~~~[m[K

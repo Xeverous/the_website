@@ -1,0 +1,3 @@
+keyword var_local;
+namespace::var_global >> var_local;
+keyword var_local[var_local];

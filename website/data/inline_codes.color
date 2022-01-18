@@ -293,11 +293,14 @@ namespace::type::var_global
 namespace::func
 namespace::type
 namespace::type
+namespace::type
 namespace::func
 namespace::type
 namespace::type
 namespace::type
+namespace::func
 namespace::type
+namespace::func
 namespace::func
 namespace::type
 namespace::func
@@ -329,6 +332,7 @@ namespace::type
 namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
+!=
 !(var_local == var_local)
 !var_local
 str
@@ -350,9 +354,13 @@ chr
 *keyword
 *var_local
 ++var_local
+++var_local
 +var_local
 --var_local
+--var_local
 -var_local
+-num
+-num < num1`
 num
 num
 num
@@ -365,8 +373,13 @@ num
 num
 num
 num
+<
+<=
 = keyword
 = keyword
+==
+>
+>=
 tparam
 type(var_local)
 type{var_local}
@@ -381,6 +394,8 @@ keyword[]
 keyword<type>(var_local)
 func(var_local);
 keyword (;;)
+var_local
+var_local >= num
 keyword (var_local + num < var_local)
 keyword keyword keyword keyword
 keyword func(keyword param, keyword* param[])

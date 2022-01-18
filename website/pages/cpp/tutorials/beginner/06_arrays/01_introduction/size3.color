@@ -1,0 +1,5 @@
+keyword <keyword tparam, namespace::type tparam>
+keyword namespace::type func(keyword tparam (&)[tparam]) keyword
+{
+	keyword tparam;
+}

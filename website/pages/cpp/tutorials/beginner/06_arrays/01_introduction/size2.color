@@ -1,0 +1,2 @@
+0com_single
+keyword keyword var_local = namespace::func(var_local);

@@ -1,0 +1,9 @@
+keyword var_local = num;
+keyword var_local = num;
+keyword var_local = num;
+
+keyword var_local = func(var_local);
+keyword var_local = func(var_local);
+keyword var_local = func(var_local);
+
+0com_single

@@ -1,0 +1,11 @@
+keyword keyword var_local = num;
+keyword keyword var_local = num;
+keyword keyword var_local = func();
+
+keyword var_local[var_local]; 0com_single
+keyword var_local[var_local]; 0com_single
+keyword var_local[var_local]; 0com_single
+
+keyword var_local = num;
+keyword keyword var_local = var_local; 0com_single
+keyword var_local[var_local]; 0com_single

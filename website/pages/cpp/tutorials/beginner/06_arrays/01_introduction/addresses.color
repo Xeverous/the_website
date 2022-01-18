@@ -1,0 +1,12 @@
+8pp_direct 8pp_header 0com_single
+8pp_direct 0pp_header
+
+keyword func()
+{
+	keyword var_local[num] = {num, num, num};
+
+	namespace::var_global << namespace::func(var_local) << str;
+	namespace::var_global << namespace::func(var_local[num]) << str;
+	namespace::var_global << namespace::func(var_local[num]) << str;
+	namespace::var_global << namespace::func(var_local[num]) << str;
+}

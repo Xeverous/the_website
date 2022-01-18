@@ -1,0 +1,8 @@
+keyword keyword var_local = num;
+keyword var_local[var_local]; 0com_single
+keyword var_local[var_local] = {}; 0com_single
+keyword var_local[var_local] = {num, num}; 0com_single
+keyword var_local[var_local] = {num, num, num, num, num, num}; 0com_single
+
+0com_single
+keyword var_local[] = {num, num, num}; 0com_single

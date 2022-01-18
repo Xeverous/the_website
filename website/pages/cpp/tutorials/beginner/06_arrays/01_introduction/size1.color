@@ -1,0 +1,3 @@
+keyword var_local[] = {num, num, num};
+0com_single
+keyword keyword var_local = keyword(var_local) / keyword(var_local[num]);

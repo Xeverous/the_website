@@ -7,17 +7,17 @@ int test(int, int);
 
 int main()
 {
-    // ok, functions were declared
-    greet();
-    std::cout << test(2, 3) << "\n";
+	// ok, functions were declared
+	greet();
+	std::cout << test(2, 3) << "\n";
 }
 
 int test(int x, int y)
 {
-    return x * y;
+	return x * y;
 }
 
 void greet()
 {
-    std::cout << "hello, world\n";
+	std::cout << "hello, world\n";
 }

@@ -292,13 +292,16 @@ std::partial_ordering::less
 std::partial_ordering::unordered
 std::printf
 std::priority_queue
+std::ptrdiff_t
 std::queue
 std::scanf
 std::scoped_allocator_adaptor
 std::scoped_lock
 std::set
+std::size
 std::size_t
 std::snprintf
+std::ssize
 std::span
 std::sprintf
 std::sscanf
@@ -329,6 +332,7 @@ std::weak_ordering
 std::weak_ordering::equivalent
 std::weak_ordering::greater
 std::weak_ordering::less
+!=
 !(x == y)
 !x
 ""
@@ -349,10 +353,14 @@ std::weak_ordering::less
 (void)
 *this
 *x
+++i
 ++x
 +x
+--i
 --x
 -x
+-1
+-1 < 1u
 0
 1
 2
@@ -365,8 +373,13 @@ std::weak_ordering::less
 7
 8
 9
+<
+<=
 = default
 = delete
+==
+>
+>=
 T
 T(x)
 T{x}
@@ -381,6 +394,8 @@ delete[]
 dynamic_cast<T>(x)
 f(x);
 for (;;)
+i
+i >= 0
 if (x + 1 < x)
 int long unsigned long
 int main(int argc, char* argv[])
