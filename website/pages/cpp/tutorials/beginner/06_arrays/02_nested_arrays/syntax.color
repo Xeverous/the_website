@@ -1,0 +1,7 @@
+keyword var_local[num][num] = {{num, num, num}, {num, num, num}};
+keyword var_local[num][num][num] = {
+	{{num, num,  num}, { num,  num,  num}},
+	{{num, num,  num}, { num, num, num}},
+	{{num, num,  num}, {num, num, num}},
+	{{num, num, num}, {num, num, num}}
+};
