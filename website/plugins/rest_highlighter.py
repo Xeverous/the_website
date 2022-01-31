@@ -117,6 +117,17 @@ def load_inline_codes() -> Dict[str, str]:
         except RuntimeError as err:
             logger.error(f'inline code line {i}: highlight failed:\n{str(err)}')
 
+    # workaround for some totally obscure bug, probably within docutils
+    # problem: some inline directives with backslashes are incorrectly parsed,
+    # they contain additional null characters for no reason
+    # example: :directive:`'\0'`    gives ["'", "\0", "0", "'"]
+    # example: :directive:`'\\0'`   gives ["'", "\0", "\\", "0", "'"]
+    # example: :directive:`'\\\0'`  gives ["'", "\0", "\\", "\0", "0", "'"]
+    # example: :directive:`'\\\\0'` gives ["'", "\0", "\\", "\0", "\\" ,"0", "'"]
+    # right now there is only 1 affected string so just adding its corrupted version
+    # as a copy of the proper one
+    result["'\0\\0'"] = result.get("'\\0'")
+
     return result
 
 def make_not_word(b: bool) -> str:
