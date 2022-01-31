@@ -254,6 +254,7 @@ sscanf
 strlen
 void*
 void* const
+boost::container::small_vector
 std
 std::array
 std::atomic
@@ -332,6 +333,7 @@ std::weak_ordering
 std::weak_ordering::equivalent
 std::weak_ordering::greater
 std::weak_ordering::less
+std::wstring
 !=
 !(x == y)
 !x
@@ -457,6 +459,8 @@ sizeof x
 sizeof...(T)
 sizeof...(x)
 static_cast<T>(x)
+std::vector<char>
+std::vector<wchar_t>
 switch(func())
 throw x
 typeid(T)

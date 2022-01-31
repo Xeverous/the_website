@@ -254,6 +254,7 @@ func
 func
 keyword*
 keyword* keyword
+namespace::namespace::type
 namespace
 namespace::type
 namespace::type
@@ -332,6 +333,7 @@ namespace::type
 namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
+namespace::type
 !=
 !(var_local == var_local)
 !var_local
@@ -457,6 +459,8 @@ keyword var_local
 keyword...(type)
 keyword...(var_local)
 keyword<type>(var_local)
+namespace::type<keyword>
+namespace::type<keyword>
 keyword(func())
 keyword var_local
 keyword(type)

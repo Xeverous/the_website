@@ -1,0 +1,16 @@
+keyword namespace {
+
+keyword <keyword tparam, namespace::type tparam>
+keyword type
+{
+	tparam var_member[tparam];
+
+	keyword keyword tparam& keyword[](namespace::type param) keyword { keyword var_member[param]; }
+	keyword       tparam& keyword[](namespace::type param)       { keyword var_member[param]; }
+
+	0com_single
+	0com_single
+	0com_single
+};
+
+}
