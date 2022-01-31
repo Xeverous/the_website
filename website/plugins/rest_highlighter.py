@@ -178,7 +178,7 @@ class CustomCodeHighlight(Directive):
 
         if is_code_path_relative != is_color_path_relative:
             logger = get_logger(__name__)
-            logger.warn(f'{rst_code_path} called CCH extension with inconsistent paths: '
+            logger.warn(f'{rst_source_path} called CCH extension with inconsistent paths: '
                 f'{code_path} is {make_not_word(is_code_path_relative)} relative but '
                 f'{color_path} is {make_not_word(is_color_path_relative)} relative')
 
