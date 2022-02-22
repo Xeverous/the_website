@@ -96,6 +96,11 @@ DATA_FILES_PATH = "data"
 INLINE_CODES_CODE_PATH = DATA_FILES_PATH + "/inline_codes.cpp"
 INLINE_CODES_COLOR_PATH = DATA_FILES_PATH + "/inline_codes.color"
 
+def run_highlighter_inline(code: str, color: str) -> str:
+    highlighted = pyach.run_highlighter(code, color,
+        replace=True, valid_css_classes=VALID_CSS_CLASSES)
+    return f'<code class="code custom-cpp">{highlighted}</code>'
+
 def load_inline_codes() -> Dict[str, str]:
     code_lines = read_file_split_lines(INLINE_CODES_CODE_PATH)
     color_lines = read_file_split_lines(INLINE_CODES_COLOR_PATH)
@@ -111,9 +116,7 @@ def load_inline_codes() -> Dict[str, str]:
         try:
             if result.get(code):
                 logger.error(f'duplicate inline code defined: "{code}"')
-            highlighted = pyach.run_highlighter(code, color,
-                replace=True, valid_css_classes=VALID_CSS_CLASSES)
-            result[code] = f'<code class="code custom-cpp">{highlighted}</code>'
+            result[code] = run_highlighter_inline(code, color)
         except RuntimeError as err:
             logger.error(f'inline code line {i}: highlight failed:\n{str(err)}')
 
@@ -137,6 +140,7 @@ def make_not_word(b: bool) -> str:
         return "not "
 
 class CustomCodeHighlightInline:
+    # inline_codes should be already a mapping of code strings to output strings
     def __init__(self, inline_codes: Optional[Dict[str, str]]):
         self.inline_codes = inline_codes
 
@@ -147,12 +151,29 @@ class CustomCodeHighlightInline:
             result = f"<code>{escape_text_into_html(text)}</code>"
             return [nodes.raw('', result, format='html')], []
 
+        # inline code with explicit color specification
+        if "$$$" in text:
+            l = text.split("$$$")
+            if len(l) != 2:
+                msg = inliner.reporter.error(
+                    f'code "{text}" should contain exactly one $$$ token', line=lineno)
+                prb = inliner.problematic(rawtext, rawtext, msg)
+                return [prb], [msg]
+            try:
+                html_output = run_highlighter_inline(l[0], l[1])
+                return [nodes.raw('', html_output, format='html')], []
+            except RuntimeError as err:
+                get_logger(__name__).error(f'inline code with $$$: highlight failed:\n{str(err)}')
+                msg = inliner.reporter.error(
+                    f'inline code "{text}" failed to highlight', line=lineno)
+                prb = inliner.problematic(rawtext, rawtext, msg)
+                return [prb], [msg]
+
         html_output = self.inline_codes.get(text)
         if html_output is None:
             msg = inliner.reporter.error(f'code "{text}" was not found in inline codes', line=lineno)
             prb = inliner.problematic(rawtext, rawtext, msg)
             return [prb], [msg]
-
         return [nodes.raw('', html_output, format='html')], []
 
 class CustomCodeHighlight(Directive):

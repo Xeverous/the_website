@@ -68,7 +68,10 @@ Interpreted text
 
 Interpreted text (text surrounded by single `````) is not intended for literal text but for domain- or application-specific meaning. So far there is only 1 use of interpretext text - custom code highlight. Search (unwanted) uses of interpreted text by ``grep -rn "[^\`:]\`[A-Za-z0-9_ ]\+\`[^_\`]" --include="*.rst" website/pages/`` (the only results should be on the |RST| test page).
 
-Custom code highlight: :cch:`std::string::npos`. This works due to ``rest_highlighter`` plugin. The code must be defined in ``data/inline_codes.cpp`` and its highlight in ``data/inline_codes.color``, matching line number. The code need not to be C++, the source file has just ``cpp`` extension for better editor support.
+Custom code highlight is implemented in ``rest_highlighter`` plugin. The interpreted text must either:
+
+- The code must be defined in ``data/inline_codes.cpp`` and its highlight in ``data/inline_codes.color``, matching line number. The code in interpreted text must be exact copy of a specific line. The code need not to be C++, the source file has just ``cpp`` extension for better editor support. Example: :cch:`std::string::npos`.
+- The code and color are written together in one interpreted text call, separated by ``$$$`` token. Example: :cch:`std::holds_alternative<typename T::value_type>(v)$$$namespace::func<keyword tparam::type>(var_local)`.
 
 Inline markup - escaping
 ========================
