@@ -13,7 +13,7 @@ It's astonishing for me how many tutorials on the web do not post common mistake
 Q&A style
 #########
 
-Majority of Q&A are actually fake. Only some of them have been experienced by me when explaining something to others. But the style often lets me to demonstrate how to ask questions (many are much more detailed and technically correct than an average student would state them) and create a feeling of a real class, as if some student did ask such question. Many of the questions predict what would be asked, some readers may be very satisfied by the feeling of a teacher that predicted what the student would want to ask for (but could not formulate the thought).
+Majority of Q&A are actually fake. Only some of them have been experienced by me when explaining something to others. But the style often lets me demonstrate how to ask questions (many are much more detailed and technically correct than an average student would state them) and create a feeling of a real class, as if some student did ask such question. Many of the questions predict what would be asked, some readers may be very satisfied by the feeling of a teacher that predicted what the student would want to ask for (but could not formulate the thought).
 
 I do say rhetorical and non-rhetorical questions in real conversations too. This + technically-rich vocabulary + the way I structure my content (I pay huge attention how it's written, often rereading and rewriting paragraphs multiple times) are probably the primary features identifying my unique prose.
 
