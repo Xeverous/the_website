@@ -1,0 +1,60 @@
+keyword <keyword>
+keyword type; 0com_single
+
+keyword <keyword tparam, keyword... tparam>
+keyword type<tparam(tparam...)> 0com_single
+{
+	keyword type = tparam;
+
+	~type();
+
+	type();               0com_single
+	type(namespace::type); 0com_single
+
+	type(keyword type& param); 0com_single
+	type(type&& param);      0com_single
+
+	keyword <keyword tparam>
+	type(tparam&& param); 0com_single
+
+	type& keyword=(keyword type& param);
+	type& keyword=(type&& param); 0com_single
+	type& keyword=(namespace::type) keyword; 0com_single
+
+	0com_single
+	keyword <keyword tparam>
+	type& keyword=(tparam&& param);
+	keyword <keyword tparam>
+	type& keyword=(namespace::type<tparam> param) keyword;
+
+	keyword func(type& param) keyword;
+
+	0com_single
+	0com_single
+	keyword keyword keyword() keyword keyword;
+
+	0com_single
+	0com_single
+	tparam keyword()(tparam... param) keyword;
+
+	0com_single
+	0com_single
+	keyword namespace::type& func() keyword keyword;
+
+	0com_single
+	0com_single
+	keyword <keyword tparam>
+	tparam* func() keyword;
+	keyword <keyword tparam>
+	keyword tparam* func() keyword keyword;
+};
+
+0com_single
+keyword <keyword tparam, keyword... tparam>
+keyword keyword==(keyword namespace::type<tparam(tparam...)>& param, namespace::type) keyword;
+keyword <keyword tparam, keyword... tparam>
+keyword keyword==(namespace::type, keyword namespace::type<tparam(tparam...)>& param) keyword;
+keyword <keyword tparam, keyword... tparam>
+keyword keyword!=(keyword namespace::type<tparam(tparam...)>& param, namespace::type) keyword;
+keyword <keyword tparam, keyword... tparam>
+keyword keyword!=(namespace::type, keyword namespace::type<tparam(tparam...)>& param) keyword;

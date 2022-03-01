@@ -258,6 +258,8 @@ namespace::namespace::type
 namespace
 namespace::type
 namespace::type
+namespace::type
+namespace::func
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::namespace::type
@@ -272,6 +274,7 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
+namespace::type
 namespace::func
 namespace::func
 namespace::func
@@ -281,6 +284,7 @@ namespace::func
 namespace::type
 namespace::func
 namespace::func
+namespace::type
 namespace::type
 namespace::type
 namespace::type
@@ -292,6 +296,7 @@ namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
 namespace::func
+namespace::type
 namespace::type
 namespace::type
 namespace::type
@@ -459,6 +464,7 @@ keyword var_local
 keyword...(type)
 keyword...(var_local)
 keyword<type>(var_local)
+namespace::type<tparam>
 namespace::type<keyword>
 namespace::type<keyword>
 keyword(func())

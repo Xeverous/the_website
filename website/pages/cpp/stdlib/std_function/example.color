@@ -1,0 +1,47 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword func(keyword param, keyword param)
+{
+	keyword param * param;
+}
+
+keyword type
+{
+	keyword keyword()(keyword param, keyword param) keyword
+	{
+		keyword param * param;
+	}
+};
+
+keyword type
+{
+	keyword func(keyword param, keyword param) keyword
+	{
+		keyword param * param + var_member;
+	}
+
+	keyword var_member;
+};
+
+keyword func()
+{
+	0com_single
+	namespace::type<keyword(keyword, keyword)> var_local = func;
+	namespace::var_global << var_local(num, num) << str;
+
+	0com_single
+	var_local = [](keyword param, keyword param) { keyword param * param; };
+	namespace::var_global << var_local(num, num) << str;
+
+	0com_single
+	var_local = type{};
+	namespace::var_global << var_local(num, num) << str;
+
+	0com_single
+	0com_single
+	type var_local{num};
+	var_local = namespace::func(&type::func, &var_local, num, num);
+	namespace::var_global << var_local(num, num) << str;
+	0com_single
+}

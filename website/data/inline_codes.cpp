@@ -258,6 +258,8 @@ boost::container::small_vector
 std
 std::array
 std::atomic
+std::bad_function_call
+std::bind
 std::basic_string_view<char>
 std::basic_string<char>
 std::chrono::seconds
@@ -269,6 +271,7 @@ std::forward_list
 std::fprintf
 std::fscanf
 std::fstream
+std::function
 std::ifstream
 std::istream
 std::list
@@ -281,6 +284,7 @@ std::make_unique
 std::map
 std::max
 std::min
+std::move_only_function
 std::multimap
 std::multiset
 std::ofstream
@@ -295,6 +299,7 @@ std::printf
 std::priority_queue
 std::ptrdiff_t
 std::queue
+std::reference_wrapper
 std::scanf
 std::scoped_allocator_adaptor
 std::scoped_lock
@@ -459,6 +464,7 @@ sizeof x
 sizeof...(T)
 sizeof...(x)
 static_cast<T>(x)
+std::vector<T>
 std::vector<char>
 std::vector<wchar_t>
 switch(func())
