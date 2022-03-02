@@ -397,6 +397,8 @@ alignof(x)
 co_await x
 co_yield x
 const_cast<T>(x)
+decltype(entity)
+decltype(expression)
 delete[]
 dynamic_cast<T>(x)
 f(x);

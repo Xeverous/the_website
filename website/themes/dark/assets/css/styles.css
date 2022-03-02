@@ -398,6 +398,7 @@ nav.breadcrumb {
 /* custom vibrant ink theme - mostly for C++ */
 
 .code.custom-cpp              { color: #ffffff } /* default color */
+.code.custom-cpp .spec        { color: #808080; font-style: italic; } /* specification */
 .code.custom-cpp .keyword     { color: #ec691e } /* keywords */
 .code.custom-cpp .namespace,                     /* namespace names */
 .code.custom-cpp .type        { color: #9cf828 } /* classes, structs, unions, enum types, type aliases, etc */
