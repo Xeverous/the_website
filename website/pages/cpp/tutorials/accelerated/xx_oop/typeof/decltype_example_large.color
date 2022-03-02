@@ -1,0 +1,12 @@
+keyword var_local = num;              0com_single
+keyword(keyword) var_local = var_local;   0com_single
+keyword(keyword) var_local = (var_local); 0com_single
+
+0com_single
+0com_single
+0com_single
+keyword <keyword tparam, keyword... tparam>
+keyword(keyword) func(tparam param, tparam&&... param)
+{
+	keyword param(namespace::func<tparam>(param)...);
+}

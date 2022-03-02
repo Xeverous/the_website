@@ -1,0 +1,5 @@
+keyword type { keyword var_member; };
+keyword type* var_local;
+
+keyword(var_local->var_member) var_local;       0com_single
+keyword((var_local->var_member)) var_local = var_local; 0com_single

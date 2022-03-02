@@ -1,0 +1,60 @@
+keyword namespace {
+
+keyword type
+{
+keyword:
+	0com_single
+	0com_single
+	type() = keyword;
+
+	0com_single
+	keyword ~type();
+
+	type& keyword=(keyword type&) = keyword;
+	type& keyword=(type&&) = keyword;
+
+	0com_single
+	0com_single
+	keyword keyword==(keyword type& param) keyword;
+	keyword keyword!=(keyword type& param) keyword;
+
+	0com_single
+	type func() keyword;
+	keyword keyword* func() keyword;
+	keyword func(keyword type& param) keyword;
+};
+
+0com_single
+0com_single
+keyword type
+{
+keyword:
+	type(keyword type& param) keyword
+	: var_member(&param) {}
+
+	type func() keyword keyword { keyword var_member->func(); }
+	keyword keyword* func() keyword keyword { keyword var_member->func(); }
+
+	keyword keyword==(keyword type& param) keyword keyword;
+	keyword keyword!=(keyword type& param) keyword keyword;
+	keyword keyword< (keyword type& param) keyword keyword;
+	keyword keyword<=(keyword type& param) keyword keyword;
+	keyword keyword> (keyword type& param) keyword keyword;
+	keyword keyword>=(keyword type& param) keyword keyword;
+	0com_single
+	type keyword<=>(keyword type& param) keyword keyword;
+
+keyword:
+	type* var_member;
+};
+
+keyword <>
+keyword type<type>
+{
+	type keyword()(type param) keyword keyword
+	{
+		keyword param.func();
+	}
+};
+
+}

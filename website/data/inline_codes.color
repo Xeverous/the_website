@@ -101,6 +101,7 @@ keyword
 keyword
 keyword
 keyword
+keyword
 0pp_direct
 0pp_direct
 0pp_direct
@@ -259,6 +260,7 @@ namespace
 namespace::type
 namespace::type
 namespace::type
+namespace::type
 namespace::func
 namespace::type<keyword>
 namespace::type<keyword>
@@ -332,6 +334,8 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
+namespace::type
+namespace::type
 namespace::var_global
 namespace::var_global
 namespace::type
@@ -388,6 +392,8 @@ num
 >
 >=
 tparam
+tparam&
+tparam&&
 tparam(var_local)
 tparam{var_local}
 tparam
@@ -396,8 +402,11 @@ keyword(tparam)
 keyword(var_local)
 keyword var_local
 keyword var_local
+keyword namespace::type&
 keyword<tparam>(var_local)
+keyword(keyword)
 keyword(spec)
+keyword((spec))
 keyword(spec)
 keyword[]
 keyword<tparam>(var_local)
@@ -472,6 +481,7 @@ namespace::type<keyword>
 keyword(func())
 keyword var_local
 keyword(tparam)
+keyword(var_local)
 keyword(var_local)
 keyword keyword
 keyword keyword keyword

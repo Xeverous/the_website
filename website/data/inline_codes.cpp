@@ -90,6 +90,7 @@ try
 typedef
 typeid
 typename
+typeof
 union
 unsigned
 using
@@ -259,6 +260,7 @@ std
 std::array
 std::atomic
 std::bad_function_call
+std::bad_typeid
 std::bind
 std::basic_string_view<char>
 std::basic_string<char>
@@ -327,6 +329,8 @@ std::to_address
 std::to_chars
 std::to_string
 std::tuple
+std::type_index
+std::type_info
 std::unordered_map
 std::unordered_multimap
 std::unordered_multiset
@@ -388,6 +392,8 @@ std::wstring
 >
 >=
 T
+T&
+T&&
 T(x)
 T{x}
 U
@@ -396,9 +402,12 @@ alignof(T)
 alignof(x)
 co_await x
 co_yield x
+const std::type_info&
 const_cast<T>(x)
+decltype(auto)
 decltype(entity)
-decltype(expression)
+decltype((expr))
+decltype(expr)
 delete[]
 dynamic_cast<T>(x)
 f(x);
@@ -472,6 +481,7 @@ std::vector<wchar_t>
 switch(func())
 throw x
 typeid(T)
+typeid(obj)
 typeid(x)
 unsigned char
 unsigned long long
