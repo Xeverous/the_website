@@ -352,7 +352,7 @@ str
 &var_local
 chr
 chr
-(type) var_local
+(tparam) var_local
 (var_local / var_local) / var_local
 (keyword keyword*)
 (keyword keyword[num])
@@ -388,19 +388,19 @@ num
 >
 >=
 tparam
-type(var_local)
-type{var_local}
+tparam(var_local)
+tparam{var_local}
 tparam
 tparam
-keyword(type)
+keyword(tparam)
 keyword(var_local)
 keyword var_local
 keyword var_local
-keyword<type>(var_local)
+keyword<tparam>(var_local)
 keyword(spec)
 keyword(spec)
 keyword[]
-keyword<type>(var_local)
+keyword<tparam>(var_local)
 func(var_local);
 keyword (;;)
 var_local
@@ -453,7 +453,7 @@ keyword|
 keyword|=
 keyword||
 keyword~
-keyword<type>(var_local)
+keyword<tparam>(var_local)
 keyword num;
 keyword;
 keyword keyword
@@ -461,17 +461,17 @@ keyword keyword
 keyword keyword
 keyword keyword keyword keyword
 keyword keyword keyword
-keyword type
+keyword tparam
 keyword var_local
-keyword...(type)
+keyword...(tparam)
 keyword...(var_local)
-keyword<type>(var_local)
+keyword<tparam>(var_local)
 namespace::type<tparam>
 namespace::type<keyword>
 namespace::type<keyword>
 keyword(func())
 keyword var_local
-keyword(type)
+keyword(tparam)
 keyword(var_local)
 keyword keyword
 keyword keyword keyword
