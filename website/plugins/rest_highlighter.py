@@ -127,9 +127,11 @@ def load_inline_codes() -> Dict[str, str]:
     # example: :directive:`'\\0'`   gives ["'", "\0", "\\", "0", "'"]
     # example: :directive:`'\\\0'`  gives ["'", "\0", "\\", "\0", "0", "'"]
     # example: :directive:`'\\\\0'` gives ["'", "\0", "\\", "\0", "\\" ,"0", "'"]
-    # right now there is only 1 affected string so just adding its corrupted version
-    # as a copy of the proper one
+    # right now there are only 3 affected strings so just adding their corrupted versions
+    # as a copies of the proper ones
     result["'\0\\0'"] = result.get("'\\0'")
+    result["'\0\\n'"] = result.get("'\\n'")
+    result["'\0\\r'"] = result.get("'\\r'")
 
     return result
 

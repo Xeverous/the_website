@@ -1,0 +1,46 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword func()
+{
+	keyword var_local = num;
+	keyword var_local = num;
+
+	keyword (keyword)
+	{
+		keyword var_local;
+		keyword (namespace::var_global >> var_local)
+		{
+			0com_single
+			var_local += var_local;
+			++var_local;
+		}
+
+		keyword (namespace::var_global.func())
+		{
+			namespace::var_global << str;
+			keyword;
+		}
+
+		0com_single
+		0com_single
+		keyword (namespace::var_global.func())
+		{
+			namespace::var_global << str;
+			keyword;
+		}
+
+		keyword (namespace::var_global.func())
+		{
+			namespace::var_global << str;
+			namespace::var_global.func();
+			0com_single
+			0com_single
+			namespace::var_global.func(namespace::type<namespace::type>::func(), chr);
+		}
+	}
+
+	namespace::var_global << str << var_local << str;
+	keyword (var_local != num)
+		namespace::var_global << str << var_local / var_local << str;
+}

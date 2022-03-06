@@ -1,0 +1,19 @@
+keyword (namespace::var_global >> var_local)
+{
+	0com_single
+}
+
+0com_single
+keyword (keyword)
+{
+	namespace::var_global >> var_local;
+
+	keyword (namespace::var_global)
+	{
+		0com_single
+	}
+	keyword
+	{
+		keyword;
+	}
+}
