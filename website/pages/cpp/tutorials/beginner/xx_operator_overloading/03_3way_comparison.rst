@@ -350,6 +350,11 @@ When writing generic code, it is recommended not to use :cch:`operator<=>` as no
     using synth_three_way_category
         = decltype(synth_three_way(std::declval<const T&>(), std::declval<const U&>()));
 
+Trivia
+######
+
+There was an idea to use the name :cch:`<=>$$$0pp_header` for the header :cch:`<compare>`\ [citation needed] but it was ultimately resigned from due to concern that ``=`` may not be in the set of supported characters for paths on some implementations.
+
 ----
 
 This lesson has been based on:
