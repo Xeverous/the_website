@@ -1,0 +1,7 @@
+8pp_direct 0pp_header
+
+0com_single
+type func(keyword param, keyword* param, type param);
+
+0com_single
+type func(keyword param, keyword keyword* param, type param);

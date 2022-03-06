@@ -243,6 +243,9 @@ realloc()
 scanf
 snprintf
 sprintf
+stderr
+stdin
+stdout
 sscanf
 strlen
 boost::container::small_vector
@@ -259,7 +262,9 @@ std::bit_cast
 std::basic_string_view<char>
 std::basic_string<char>
 std::chrono::seconds
+std::cerr
 std::cin
+std::clog
 std::cout
 std::deque
 std::endl
@@ -350,6 +355,8 @@ std::wstring
 &&
 &x
 '\0'
+'\n'
+'\r'
 'a'
 (T) expression
 (T) x

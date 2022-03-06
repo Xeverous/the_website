@@ -38,6 +38,12 @@ For binary operators, there is a syntax sugar available when you want to perform
 - :cch:`x %= y` is the same as :cch:`x = x % y`.
 - and so on...
 
+..
+
+    What if I write :cch:`z *= y + x$$$var_local *= var_local + var_local`? How it is processed?
+
+It works as :cch:`z = z * (x + y)$$$var_local = var_local * (var_local + var_local)`. The entire right side is always evaluated first.
+
 Much later, you will also learn about **operator overloading**. Because most built-in operators work only with built-in types, C++ allows to define meaning for operators when user-defined types are involved. You have already used overloaded :cch:`operator<<` with :cch:`std::cout`.
 
 Comparison

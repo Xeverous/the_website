@@ -363,6 +363,20 @@ What's wrong with the following code?
 
 You need to understand that :cch:`if` does not see every entity inside the condition, it simply acts as a test of a value of type :cch:`bool`. The whole condition expression is evaluated first and only then its result is brought to the :cch:`if` logic. Why assignments *return* first operand as the result? This will get clearer once you get familiar with *functions* and the concept of *returning* a result - many parts of C++ work on the basis of functions and most operators (including ``=``) too.
 
+Question 3
+==========
+
+Simplify this code:
+
+.. TOCOLOR
+
+.. code::
+
+    if (a == f(b))
+        x = std::make_pair(true, a);
+    else
+        x = std::make_pair(false, f(b));
+
 Writing
 =======
 

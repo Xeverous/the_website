@@ -243,6 +243,9 @@ func()
 func
 func
 func
+var_global
+var_global
+var_global
 func
 func
 namespace::namespace::type
@@ -259,6 +262,8 @@ namespace::func
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::namespace::type
+namespace::var_global
+namespace::var_global
 namespace::var_global
 namespace::var_global
 namespace::type
@@ -349,6 +354,8 @@ str
 &
 &&
 &var_local
+chr
+chr
 chr
 chr
 (tparam) spec
