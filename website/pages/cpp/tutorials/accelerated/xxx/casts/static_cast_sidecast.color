@@ -1,0 +1,14 @@
+keyword type {};
+keyword type : type {};
+keyword type : type {};
+keyword type : type, type {};
+
+type var_local;
+type& var_local = var_local;
+keyword<type&>(var_local); 0com_single
+
+0com_single
+0com_single
+0com_single
+0com_single
+(type&) var_local;

@@ -1,0 +1,9 @@
+0com_single
+keyword keyword type : keyword { enum = num, enum, enum, enum = num };
+0com_single
+keyword keyword type { enum = num, enum, enum, enum = num };
+
+keyword var_local = keyword<type>(num);     0com_single
+keyword var_local = keyword<type>(num);     0com_single
+keyword var_local = keyword<type>(num); 0com_single
+keyword var_local = keyword<type>(num); 0com_single

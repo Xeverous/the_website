@@ -1,0 +1,4 @@
+keyword keyword* var_global = str;
+keyword func(keyword* param); 0com_single
+
+keyword var_local = func(keyword<keyword*>(var_global)); 0com_single

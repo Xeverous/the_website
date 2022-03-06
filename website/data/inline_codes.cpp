@@ -256,12 +256,16 @@ strlen
 void*
 void* const
 boost::container::small_vector
+boost::lexical_cast
+boost::numeric_cast
 std
 std::array
 std::atomic
+std::bad_cast
 std::bad_function_call
 std::bad_typeid
 std::bind
+std::bit_cast
 std::basic_string_view<char>
 std::basic_string<char>
 std::chrono::seconds
@@ -275,6 +279,7 @@ std::fscanf
 std::fstream
 std::function
 std::ifstream
+std::intptr_t
 std::istream
 std::list
 std::make_error_code
@@ -331,6 +336,8 @@ std::to_string
 std::tuple
 std::type_index
 std::type_info
+std::uintmax_t
+std::uintptr_t
 std::unordered_map
 std::unordered_multimap
 std::unordered_multiset
@@ -356,12 +363,14 @@ std::wstring
 &x
 '\0'
 'a'
+(T) expression
 (T) x
 (x / y) / z
 (const int*)
 (const int[4])
 (const int[])
 (void)
+(void) expression
 *this
 *x
 ++i
@@ -394,7 +403,9 @@ std::wstring
 T
 T&
 T&&
+T(expression)
 T(x)
+T*
 T{x}
 U
 V
@@ -403,17 +414,21 @@ alignof(x)
 co_await x
 co_yield x
 const std::type_info&
+const_cast<T>(expression)
 const_cast<T>(x)
 decltype(auto)
 decltype(entity)
-decltype((expr))
-decltype(expr)
+decltype((expression))
+decltype(expression)
 delete[]
+dynamic_cast<T>(expression)
 dynamic_cast<T>(x)
+explicit operator bool
 f(x);
 for (;;)
 i
 i >= 0
+if (obj)
 if (x + 1 < x)
 int long unsigned long
 int main(int argc, char* argv[])
@@ -422,6 +437,7 @@ long double
 long long
 new[]
 noexcept(x)
+operator T
 operator!
 operator!=
 operator""
@@ -462,6 +478,7 @@ operator|
 operator|=
 operator||
 operator~
+reinterpret_cast<T>(expression)
 reinterpret_cast<T>(x)
 return 0;
 return;
@@ -474,6 +491,7 @@ sizeof T
 sizeof x
 sizeof...(T)
 sizeof...(x)
+static_cast<T>(expression)
 static_cast<T>(x)
 std::vector<T>
 std::vector<char>

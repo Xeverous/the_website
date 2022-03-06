@@ -1,0 +1,21 @@
+keyword type { keyword ~func() = keyword; };
+keyword type : keyword type {};
+keyword type : keyword type
+{
+	func(type* param, type* param)
+	{
+		0com_single
+
+		0com_single
+		keyword<type*>(param);
+
+		0com_single
+		0com_single
+		keyword<type*>(param);
+	}
+};
+
+keyword type : type, type
+{
+	func() : type(keyword<type*>(keyword), keyword) {}
+};

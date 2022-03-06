@@ -113,7 +113,7 @@ The keyword has 2 usages:
   - for lvalue, yields :cch:`T&`
   - for xvalue, yields :cch:`T&&`
 
-Because the first point applies only to limited set of expressions, :cch:`decltype(expr)` and :cch:`decltype((expr))` can yield distinct types (first the type of the entity, second the type of the expression).
+Because the first point applies only to limited set of expressions, :cch:`decltype(expression)` and :cch:`decltype((expression))` can yield distinct types (first the type of the entity, second the type of the expression).
 
 .. cch::
     :code_path: decltype_example_parenthesis.cpp
@@ -123,7 +123,7 @@ Like other operator keywords, it has *unevaluated context* (the code is not run)
 
 :cch:`decltype` is used almost exclusively in templates, usually to denote function return type or an alias that would otherwise be impossible or complex to express. In non-template code, the need is usually accompanied by an initialization, thus such code typically uses :cch:`auto`.
 
-Since C++14 both keywords can be combined as a single constituent for type declaration: :cch:`decltype(auto)` for initialization or function return type. In such case instead of template type deduction, the resulting type is :cch:`decltype(expr)` where *expr* is the initializer.
+Since C++14 both keywords can be combined as a single constituent for type declaration: :cch:`decltype(auto)` for initialization or function return type. In such case instead of template type deduction, the resulting type is :cch:`decltype(expression)` where *expression* is the initializer.
 
 .. cch::
     :code_path: decltype_example_large.cpp

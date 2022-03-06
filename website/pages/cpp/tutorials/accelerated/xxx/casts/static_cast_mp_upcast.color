@@ -1,0 +1,10 @@
+keyword type {};
+keyword type : type { keyword var_member = num; };
+
+type var_local;
+keyword type::* var_local = &type::var_member;
+keyword var_local = keyword<keyword type::*>(var_local); 0com_single
+var_local.*var_local; 0com_single
+
+type var_local;
+var_local.*var_local; 0com_single
