@@ -20,7 +20,7 @@ Every object has:
 
 Name is optional because:
 
-- In some cases temporary (unnamed) objects may be created as a part of evaluation of expressions - e.g. in :cch:`2 * 3 + 4` an unnamed integer object with value :cch:`6` may temporarily appear in memory.
+- In some cases temporary (unnamed) objects may be created as a part of evaluation of expressions - e.g. in :cch:`2 * 3 + 4$$$num * num + num` an unnamed integer object with value :cch:`6` may temporarily appear in memory.
 - In some cases objects can be referred using indirect mechanisms such as pointers and references. This is especially true for any data that has variable size (e.g. an array).
 
 Don't think that an *object* (some data in memory with certain properties) means the same as a *variable* (named modifiable entity in code):

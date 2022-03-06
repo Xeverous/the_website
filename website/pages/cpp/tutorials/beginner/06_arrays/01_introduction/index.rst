@@ -215,7 +215,7 @@ Some algorithms need to work on the array in reverse order. A typical loop would
     :code_path: loop_backwards1.cpp
     :color_path: loop_backwards1.color
 
-This is fine, but breaks when :cch:`i` is of unsigned type as for unsigned types condition :cch:`i >= 0` is always true as they can not represent negative numbers (:cch:`--i` on zero will overflow to the largest possible value).
+This is fine, but breaks when :cch:`i` is of unsigned type as for unsigned types condition :cch:`i >= 0$$$var_local >= num` is always true as they can not represent negative numbers (:cch:`--i` on zero will overflow to the largest possible value).
 
 It's possible to loop backward on an unsigned control variable, but one needs to do a little trick to change the order of operations:
 

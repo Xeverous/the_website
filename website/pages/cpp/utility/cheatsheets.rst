@@ -39,21 +39,21 @@ Operators and operator overloading
       -
     * - 2
       - functional cast
-      - :cch:`T(x)`
+      - :cch:`T(x)$$$tparam(var_local)`
       - 1
       - LtR
       - member
       -
     * - 2
       - functional cast
-      - :cch:`T{x}`
+      - :cch:`T{x}$$$tparam{var_local}`
       - 1
       - LtR
       - member
       - C++11
     * - 2
       - function call
-      - :cch:`x()`
+      - :cch:`x()$$$var_local()`
       - 1+
       - LtR
       - member
@@ -123,7 +123,7 @@ Operators and operator overloading
       -
     * - 3
       - C-style cast
-      - :cch:`(T) x`
+      - :cch:`(T) x$$$(tparam) var_local`
       - 1
       - RtL
       - member
@@ -144,14 +144,14 @@ Operators and operator overloading
       - overloading discouraged
     * - 3
       - size-of
-      - :cch:`sizeof T`, :cch:`sizeof x`
+      - :cch:`sizeof T`, :cch:`sizeof x$$$keyword var_local`
       - 1
       - RtL
       - \-
       -
     * - 3
       - await expression
-      - :cch:`co_await x`
+      - :cch:`co_await x$$$keyword var_local`
       - 1
       - RtL
       - member
@@ -333,21 +333,21 @@ Operators and operator overloading
       - overloads lose short-circuit evaluation
     * - 16
       - ternary conditional
-      - :cch:`x ? y : z`
+      - :cch:`x ? y : z$$$var_local ? var_local : var_local`
       - 3
       - RtL
       - \-
       -
     * - 16
       - throw
-      - :cch:`throw`, :cch:`throw x`
+      - :cch:`throw`, :cch:`throw x$$$keyword var_local`
       - 0-1
       - RtL
       - \-
       -
     * - 16
       - yield expression
-      - :cch:`co_yield x`
+      - :cch:`co_yield x$$$keyword var_local`
       - 1
       - RtL
       - \-
@@ -438,63 +438,63 @@ Operators and operator overloading
       - overloading discouraged
     * - \-
       - user-defined literal
-      - :cch:`""x`
+      - :cch:`""x$$$str1suf`
       - 1
       - \-
       - free
       - C++11
     * - \-
       - static cast
-      - :cch:`static_cast<T>(x)`
+      - :cch:`static_cast<T>(x)$$$keyword<tparam>(var_local)`
       - 1
       - \-
       - member
       - C++11
     * - \-
       - dynamic cast
-      - :cch:`dynamic_cast<T>(x)`
+      - :cch:`dynamic_cast<T>(x)$$$keyword<tparam>(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - const cast
-      - :cch:`const_cast<T>(x)`
+      - :cch:`const_cast<T>(x)$$$keyword<tparam>(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - reinterpret cast
-      - :cch:`reinterpret_cast<T>(x)`
+      - :cch:`reinterpret_cast<T>(x)$$$keyword<tparam>(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - size-of parameter pack
-      - :cch:`sizeof...(T)`, :cch:`sizeof...(x)`
+      - :cch:`sizeof...(T)`, :cch:`sizeof...(x)$$$keyword...(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - typeid
-      - :cch:`typeid(T)`, :cch:`typeid(x)`
+      - :cch:`typeid(T)`, :cch:`typeid(x)$$$keyword(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - noexcept
-      - :cch:`noexcept(x)`
+      - :cch:`noexcept(x)$$$keyword(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - alignof
-      - :cch:`alignof(T)`, :cch:`alignof(x)`
+      - :cch:`alignof(T)`, :cch:`alignof(x)$$$keyword(var_local)`
       - 1
       - \-
       - \-

@@ -92,7 +92,7 @@ For beginners, Allman will usually be better as with it it's easier to reason ab
 
 A different issue is maximum allowed line length. There is no technical limit, but most people break long lines once they become too long - vertical scrolling is fine but hardly anyone likes horizontal scrolling. Sticking to a line length limit lets people open multiple editors side by side. Recommendations vary. In the past it was 80, partially due to technical reasons but now it's not rare to find projects with maximum 120 or 150 characters in line.
 
-If you happen to split a line, it's recommended to align the code (similarly how you can find aligned comments in the tutorial lessons) and place the operator on the next line - if expression like :cch:`2 * 3 + 4 * 5` is split over ``+``, the ``+`` character should be first on the next line, not last on the previous line (this increases readability).
+If you happen to split a line, it's recommended to align the code (similarly how you can find aligned comments in the tutorial lessons) and place the operator on the next line - if expression like :cch:`2 * 3 + 4 * 5$$$num * num + num * num` is split over ``+``, the ``+`` character should be first on the next line, not last on the previous line (this increases readability).
 
 .. admonition:: tip
     :class: tip

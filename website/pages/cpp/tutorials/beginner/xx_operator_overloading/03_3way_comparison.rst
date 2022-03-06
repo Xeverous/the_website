@@ -155,7 +155,7 @@ For the implementation of :cch:`operator<=>`:
 
     What's the point of special treatment of :cch:`operator==` in these cases?
 
-Optimization. Take strings as an example. Determining which of :cch:`"abc"` and :cch:`"abCD"` is greater requires a loop that goes through multiple characters. Determining whether they are equal is instant because equality can start by comparing length and only consider looping through characters if lengths are the same.
+Optimization. Take strings as an example. Determining which of :cch:`"abc"` and :cch:`"abCD"$$$str` is greater requires a loop that goes through multiple characters. Determining whether they are equal is instant because equality can start by comparing length and only consider looping through characters if lengths are the same.
 
 Fraction class
 ##############

@@ -230,10 +230,10 @@ The myth comes from very often forgotten implicit convertion caused by *decay*:
 .. admonition:: Note
     :class: note
 
-    Decay happens whenever arguments are passed by value to a function (only *perfect forwarding* will prevent decay). This means that functions having array types as paramaters, such as :cch:`(const int[4])` and :cch:`(const int[])` are equivalent to :cch:`(const int*)`. If you want type-safe array function parameters (that do not lose type information), you will need to use abstractions like :cch:`std::array` and :cch:`std::span`.
+    Decay happens whenever arguments are passed by value to a function (only *perfect forwarding* will prevent decay). This means that functions having array types as paramaters, such as :cch:`const int[N]` and :cch:`const int[]` are equivalent to :cch:`const int*`. If you want type-safe array function parameters (that do not lose type information), you will need to use abstractions like :cch:`std::array` and :cch:`std::span`.
 
-":cch:`typedef` declaration syntax is ``typedef <type_name> <new_name>``"
-=========================================================================
+":cch:`typedef` declaration syntax is :cch:`typedef type identifier$$$keyword spec spec`"
+=========================================================================================
 
 .. cch::
     :code_path: on_teaching_cpp/typedef.cpp

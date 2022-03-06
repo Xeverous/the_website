@@ -45,7 +45,7 @@ Behaviour that varies between implementations (mostly between compilers) but the
 
 This covers situations in which there is no single good answer. There are multiple valid solutions, you just don't know which one is used by the given implementation as it can depend on a lot of factors including applied optimizations, hardware characteristics and operating system decisions.
 
-Example - in the expression :cch:`2 * 3 + 4 * 5` it's *unspecified* which multiplication is done first. As long as specification and mathematical laws are concerned, the only guuarantee is that the addition will be done last. But since both multiplications are independent, there is no obligation for the compiler to write machine code that performs them in certain order.
+Example - in the expression :cch:`2 * 3 + 4 * 5$$$num * num + num * num` it's *unspecified* which multiplication is done first. As long as specification and mathematical laws are concerned, the only guuarantee is that the addition will be done last. But since both multiplications are independent, there is no obligation for the compiler to write machine code that performs them in certain order.
 
 Unspecified behavior is mostly useful for optimizations because it allows some freedom for the compiler - usually being able to replace and/or reorder some machine instructions.
 

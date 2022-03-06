@@ -23,13 +23,13 @@ Well, don't really be concerned with it for now. As you learn more about functio
 
 Some operators exist with multiple arities. For example:
 
-- unary minus: :cch:`x = -x` (negates number)
-- binary minus :cch:`z = x - y` (performs subtraction)
+- unary minus: :cch:`x = -x$$$var_local = -var_local` (negates number)
+- binary minus :cch:`z = x - y$$$var_local = var_local - var_local` (performs subtraction)
 
 Many operators can be chained to form nested expressions, but they may have different **associativity**:
 
-- left-to-right: :cch:`x / y / z` is equivalent to :cch:`(x / y) / z`
-- right-to-left: :cch:`x = y = z` is equivalent to :cch:`x = (y = z)`
+- left-to-right: :cch:`x / y / z$$$var_local / var_local / var_local` is equivalent to :cch:`(x / y) / z$$$(var_local / var_local) / var_local`
+- right-to-left: :cch:`x = y = z$$$var_local = var_local = var_local` is equivalent to :cch:`x = (y = z)$$$var_local = (var_local = var_local)`
 
 For binary operators, there is a syntax sugar available when you want to perform assignment to the first of the operands:
 
@@ -125,7 +125,7 @@ During overflow, the most significant digit is lost. In binary system, the wrapp
 - For unsigned integers, this behavior is very desirable. Various formulas intentionally use wrapping behavior to form cycles or some pattern of repetition in output. Cryptography, hashing, control checksums and compression are very prominent users of overflow wrapping.
 - For signed integers, the behavior has no good use because the lowest representatable value is not zero, but some negative number. So instead of starting over from zero, it starts over from some huge negative value. Such behavior has no practical use. Even worse, it's a very good source of bugs, most commonly found in games. If players find an overflow bug within a tycoon-style game, they can try to form a construction so expensive that its total cost overflows, which then causes the cost to be negative which then causes the game to subtract negative amount of in-game currency from their inventory, effectively giving them money instead of spending it.
 
-Undefined behavior gives the compiler infinite freedom for optimization. Since anything can happen, any machine code will be fine as long as other requirements are fulfilled. This lets compilers optimize away code like :cch:`if (x + 1 < x)` as the only situation in which the statement could be triggered is overflow. If :cch:`x` is a signed number, compiler can assume overflow never happens (programs should be free of undefined behavior) and remove dead code.
+Undefined behavior gives the compiler infinite freedom for optimization. Since anything can happen, any machine code will be fine as long as other requirements are fulfilled. This lets compilers optimize away code like :cch:`if (x + 1 < x)$$$keyword (var_local + num < var_local)` as the only situation in which the statement could be triggered is overflow. If :cch:`x` is a signed number, compiler can assume overflow never happens (programs should be free of undefined behavior) and remove dead code.
 
     But who would write such nonsensical code?
 

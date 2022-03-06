@@ -234,14 +234,6 @@ xor_eq
 <version>
 <wchar.h>
 <wctype.h>
-char const*
-char const* const
-char*
-char* const
-const char*
-const char* const
-const void*
-const void* const
 fprintf
 free()
 fscanf
@@ -253,8 +245,6 @@ snprintf
 sprintf
 sscanf
 strlen
-void*
-void* const
 boost::container::small_vector
 boost::lexical_cast
 boost::numeric_cast
@@ -354,8 +344,6 @@ std::wstring
 !(x == y)
 !x
 ""
-""x
-"abCD"
 "abc"
 #pragma once
 &
@@ -365,10 +353,6 @@ std::wstring
 'a'
 (T) expression
 (T) x
-(x / y) / z
-(const int*)
-(const int[4])
-(const int[])
 (void)
 (void) expression
 *this
@@ -384,8 +368,6 @@ std::wstring
 0
 1
 2
-2 * 3 + 4
-2 * 3 + 4 * 5
 3
 4
 5
@@ -404,39 +386,44 @@ T
 T&
 T&&
 T(expression)
-T(x)
 T*
-T{x}
+T{expression}
 U
 V
 alignof(T)
-alignof(x)
-co_await x
-co_yield x
+char const*
+char const* const
+char*
+char* const
+co_await expression
+co_yield expression
+const char*
+const char* const
+const int*
+const int* const
+const int[N]
+const int[]
 const std::type_info&
+const void*
+const void* const
 const_cast<T>(expression)
-const_cast<T>(x)
 decltype(auto)
 decltype(entity)
 decltype((expression))
 decltype(expression)
 delete[]
 dynamic_cast<T>(expression)
-dynamic_cast<T>(x)
 explicit operator bool
 f(x);
 for (;;)
 i
-i >= 0
 if (obj)
-if (x + 1 < x)
 int long unsigned long
 int main(int argc, char* argv[])
 int main(int argc, char** argv)
 long double
 long long
 new[]
-noexcept(x)
 operator T
 operator!
 operator!=
@@ -479,7 +466,6 @@ operator|=
 operator||
 operator~
 reinterpret_cast<T>(expression)
-reinterpret_cast<T>(x)
 return 0;
 return;
 short long
@@ -488,23 +474,19 @@ signed int
 signed long long int
 signed short int
 sizeof T
-sizeof x
 sizeof...(T)
-sizeof...(x)
 static_cast<T>(expression)
-static_cast<T>(x)
 std::vector<T>
 std::vector<char>
 std::vector<wchar_t>
-switch(func())
-throw x
 typeid(T)
 typeid(obj)
-typeid(x)
 unsigned char
 unsigned long long
 unsigned short
 unsigned short int
+void*
+void* const
 x
 x != y
 x % y
@@ -519,14 +501,12 @@ x += y
 x - y
 x -= y
 x / y
-x / y / z
 x /= y
 x < y
 x << y
 x <<= y
 x <= y
 x <=> y
-x = (y = z)
 x = -x
 x = x % y
 x = x * y
@@ -534,19 +514,16 @@ x = x + 1
 x = x + y
 x = x - 1
 x = y
-x = y = z
 x == y
 x > y
 x >= y
 x >> y
 x >>= y
-x ? y : z
 x ^ y
 x ^= y
 x | y
 x |= y
 x || y
-x()
 x++
 x, y
 x--
@@ -557,5 +534,4 @@ x.y
 x[]
 y
 y = f(x);
-z = x - y
 ~x

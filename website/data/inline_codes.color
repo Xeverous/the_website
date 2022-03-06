@@ -234,14 +234,6 @@ keyword
 0pp_header
 0pp_header
 0pp_header
-keyword keyword*
-keyword keyword* keyword
-keyword*
-keyword* keyword
-keyword keyword*
-keyword keyword* keyword
-keyword keyword*
-keyword keyword* keyword
 func
 func()
 func
@@ -253,8 +245,6 @@ func
 func
 func
 func
-keyword*
-keyword* keyword
 namespace::namespace::type
 namespace::func
 namespace::func
@@ -354,8 +344,6 @@ namespace::type
 !(var_local == var_local)
 !var_local
 str
-str1suf
-str
 str
 7pp_direct 0pp_other
 &
@@ -365,10 +353,6 @@ chr
 chr
 (tparam) spec
 (tparam) var_local
-(var_local / var_local) / var_local
-(keyword keyword*)
-(keyword keyword[num])
-(keyword keyword[])
 (keyword)
 (keyword) spec
 *keyword
@@ -384,8 +368,6 @@ chr
 num
 num
 num
-num * num + num
-num * num + num * num
 num
 num
 num
@@ -404,39 +386,44 @@ tparam
 tparam&
 tparam&&
 tparam(spec)
-tparam(var_local)
 tparam*
-tparam{var_local}
+tparam{spec}
 tparam
 tparam
 keyword(tparam)
-keyword(var_local)
-keyword var_local
-keyword var_local
+keyword keyword*
+keyword keyword* keyword
+keyword*
+keyword* keyword
+keyword spec
+keyword spec
+keyword keyword*
+keyword keyword* keyword
+keyword keyword*
+keyword keyword* keyword
+keyword keyword[tparam]
+keyword keyword[]
 keyword namespace::type&
+keyword keyword*
+keyword keyword* keyword
 keyword<tparam>(spec)
-keyword<tparam>(var_local)
 keyword(keyword)
 keyword(spec)
 keyword((spec))
 keyword(spec)
 keyword[]
 keyword<tparam>(spec)
-keyword<tparam>(var_local)
 keyword keyword keyword
 func(var_local);
 keyword (;;)
 var_local
-var_local >= num
 keyword (var_local)
-keyword (var_local + num < var_local)
 keyword keyword keyword keyword
 keyword func(keyword param, keyword* param[])
 keyword func(keyword param, keyword** param)
 keyword keyword
 keyword keyword
 keyword[]
-keyword(var_local)
 keyword tparam
 keyword!
 keyword!=
@@ -479,7 +466,6 @@ keyword|=
 keyword||
 keyword~
 keyword<tparam>(spec)
-keyword<tparam>(var_local)
 keyword num;
 keyword;
 keyword keyword
@@ -488,23 +474,19 @@ keyword keyword
 keyword keyword keyword keyword
 keyword keyword keyword
 keyword tparam
-keyword var_local
 keyword...(tparam)
-keyword...(var_local)
 keyword<tparam>(spec)
-keyword<tparam>(var_local)
 namespace::type<tparam>
 namespace::type<keyword>
 namespace::type<keyword>
-keyword(func())
-keyword var_local
 keyword(tparam)
 keyword(var_local)
-keyword(var_local)
 keyword keyword
 keyword keyword keyword
 keyword keyword
 keyword keyword keyword
+keyword*
+keyword* keyword
 var_local
 var_local != var_local
 var_local % var_local
@@ -519,14 +501,12 @@ var_local += var_local
 var_local - var_local
 var_local -= var_local
 var_local / var_local
-var_local / var_local / var_local
 var_local /= var_local
 var_local < var_local
 var_local << var_local
 var_local <<= var_local
 var_local <= var_local
 var_local <=> var_local
-var_local = (var_local = var_local)
 var_local = -var_local
 var_local = var_local % var_local
 var_local = var_local * var_local
@@ -534,19 +514,16 @@ var_local = var_local + num
 var_local = var_local + var_local
 var_local = var_local - num
 var_local = var_local
-var_local = var_local = var_local
 var_local == var_local
 var_local > var_local
 var_local >= var_local
 var_local >> var_local
 var_local >>= var_local
-var_local ? var_local : var_local
 var_local ^ var_local
 var_local ^= var_local
 var_local | var_local
 var_local |= var_local
 var_local || var_local
-var_local()
 var_local++
 var_local, var_local
 var_local--
@@ -557,5 +534,4 @@ var_local.var_local
 var_local[]
 var_local
 var_local = func(var_local);
-var_local = var_local - var_local
 ~var_local

@@ -58,7 +58,7 @@ Today, compilers also perform this optimization on if-else blocks if possible.
 
     What does it mean that the expression inside :cch:`switch` is evaluated once?
 
-It means that any code there will be run once. For example, :cch:`switch(func())` will call the function only once, no matter how many cases are present. This is contrary to loops, where a condition is evaluated once per iteration.
+It means that any code there will be run once. For example, :cch:`switch (func())$$$keyword (func())` will call the function only once, no matter how many cases are present. This is contrary to loops, where a condition is evaluated once per iteration.
 
 Breaks
 ######
