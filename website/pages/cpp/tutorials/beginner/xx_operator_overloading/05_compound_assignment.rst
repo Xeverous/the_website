@@ -5,8 +5,8 @@
 
 Compound assignment operators can be defined both as free functions and as member functions. Member functions are preferred for 2 reasons:
 
-- The operation has no symmetry (``a += b`` is not the same as ``b += a``).
-- A free function must return by value (recall problems with references to temporaries). Member functions can return a reference to :cch:`*this`, which is useful for chained operations like ``a = b = c = d``.
+- The operation has no symmetry (:cch:`a += b$$$var_local += var_local` is not the same as :cch:`b += a$$$var_local += var_local`).
+- A free function must return by value (recall problems with references to temporaries). Member functions can return a reference to :cch:`*this`, which is useful for chained operations like :cch:`a = b = c = d$$$var_local = var_local = var_local = var_local`.
 
 To avoid code duplication, there are 2 choices:
 

@@ -313,6 +313,6 @@ In simpler words:
 
 - :cch:`typedef` declaration expects only 1 subexpression which is also a part of a larger grammar used for declarations.
 - :cch:`typedef` declaration recursively reuses other grammars and treats a specific subpart as the newly declared type.
-- It is not ``typedef A B`` (where A and B are disjoint grammars) but ``typedef X`` where ``X`` is a recursive grammar, part of which will be treated as the newly introduced type alias identifier.
+- It is not :cch:`typedef A B$$$keyword spec spec` (where :cch:`A$$$spec` and :cch:`A$$$spec` are disjoint grammars) but :cch:`typedef X$$$keyword spec` where :cch:`X$$$spec` is a recursive grammar, part of which will be treated as the newly introduced type alias identifier.
 
 I know it would be really hard (and pretty much pointless) to explain grammar for beginners (especially this heavily-recursive case) but **do not explain** :cch:`typedef` **syntax using mental shortcut mentioned above**. It leads people to a very false thinking. It's much better explained as ":cch:`typedef` reuses declaration grammar but the identifier instead of being a new object is treated as a newly introduced type alias".

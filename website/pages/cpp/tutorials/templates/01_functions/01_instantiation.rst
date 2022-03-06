@@ -6,7 +6,7 @@
 Using templates
 ###############
 
-Template code is used just like any other code except that the compiler needs to know what to substitute in place of specified aliases (here ``T``). Function templates have special feature called **template argument deduction** which lets the compiler figure it out.
+Template code is used just like any other code except that the compiler needs to know what to substitute in place of specified aliases (here :cch:`T`). Function templates have special feature called **template argument deduction** which lets the compiler figure it out.
 
 .. TODO compile example
 
@@ -66,7 +66,7 @@ Is there any need though? A full definition is required to use the template. Do 
 In practice, both of these situations are rare so template declarations are rarely seen. Some projects which have a lot of templates use them to split code in a special way:
 
 - template declarations (usually with lots of documentation comments) in a header file
-- template definitions (usually lots of code) in a separate file (usually the same name but with an ``.inc``, ``.inl`` extension) that is :cch:`#include`\ d at the end of the header.
+- template definitions (usually lots of code) in a separate file (usually the same name but with an ``inc``, ``inl`` extension) that is :cch:`#include`\ d at the end of the header.
 
 This practice allows to reduce noise in headers (especially if they are indended to be read by project users) while still technically delivering all required code in a header file.
 
