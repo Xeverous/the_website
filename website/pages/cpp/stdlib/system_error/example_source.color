@@ -1,0 +1,55 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword namespace {
+
+keyword {
+
+keyword func(keyword type) keyword
+{
+	keyword (param)
+	{
+		keyword num: keyword num;
+		keyword num: keyword num;
+		// ...
+		keyword num: keyword macro_ref;
+		keyword num: keyword macro_ref;
+		keyword num: keyword macro_ref;
+		// ...
+		keyword: keyword macro_ref; 0com_single
+	}
+}
+
+keyword type : keyword namespace::type
+{
+	keyword keyword* func() keyword keyword keyword { keyword str; }
+
+	0com_single
+	namespace::type func(keyword param) keyword keyword keyword
+	{
+		keyword namespace::type(func(param), namespace::func());
+	}
+
+	namespace::type func(keyword param) keyword keyword
+	{
+		keyword (param)
+		{
+			keyword num: keyword str;
+			keyword num: keyword str;
+			0com_single
+			keyword num: keyword str;
+			keyword num: keyword str;
+			keyword num: keyword str;
+			keyword num: keyword str;
+			0com_single
+			keyword: keyword str;
+		}
+	}
+};
+keyword type var_global;
+
+}
+
+keyword namespace::type& func() keyword { keyword var_global; }
+
+}

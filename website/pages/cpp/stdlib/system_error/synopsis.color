@@ -1,0 +1,122 @@
+keyword namespace {
+
+keyword keyword type { 57com_multi };
+
+keyword <keyword tparam>
+keyword type : type {};
+keyword <keyword tparam>
+keyword type : type {};
+0com_single
+keyword <>
+keyword type<type> : type {};
+
+keyword type
+{
+keyword:
+	keyword ~func();
+	type& keyword=(keyword type&) = keyword;
+
+	keyword keyword keyword* func() keyword keyword = num;
+
+	keyword type func(keyword param) keyword keyword
+	{ keyword type(param, *keyword); }
+
+	keyword keyword func(keyword param, keyword type& param) keyword keyword
+	{ keyword func(param) == param; }
+
+	keyword keyword func(keyword type& param, keyword param) keyword keyword
+	{ keyword *keyword == param.func() && param.func() == param; }
+
+	keyword type func(keyword param) keyword = num;
+
+	0com_single
+	0com_single
+	type keyword<=>(keyword type& param) keyword keyword;
+};
+
+keyword type& func() keyword; 0com_single
+keyword type& func() keyword; 0com_single
+
+keyword type
+{
+keyword:
+	func() keyword : type(num, func()) {}
+	func(keyword param, keyword type& param) keyword : var_member(param), var_member(&param) {}
+	keyword <
+		keyword tparam,
+		keyword type<type<tparam>::var_global>::type* = keyword
+	>
+	func(tparam param) keyword;
+
+	keyword <
+		keyword tparam,
+		keyword type<type<tparam>::var_global>::type* = keyword
+	>
+	type& keyword=(tparam param) keyword;
+
+	keyword func(keyword param, keyword type& param) keyword
+	{
+		keyword->var_member = param;
+		keyword->var_member = &param;
+	}
+
+	keyword func() keyword { *keyword = type(); }
+
+	keyword func() keyword keyword { keyword var_member; }
+	keyword type& func() keyword keyword { keyword *var_member; }
+
+	type func() keyword keyword
+	{ keyword func().func(func()); }
+
+	type func() keyword { keyword func().func(func()); }
+
+	keyword keyword keyword() keyword keyword { keyword func() != num; }
+
+keyword:
+	keyword var_member;
+	keyword type* var_member;
+};
+
+0com_single
+0com_single
+type keyword<=>(keyword type& param, keyword type& param) keyword;
+
+keyword <keyword tparam, keyword tparam>
+type<tparam, tparam>& keyword<<(type<tparam, tparam>& param, keyword type& param)
+{
+	keyword param << param.func().func() << chr << param.func();
+}
+
+keyword type
+{
+	0com_single
+	0com_single
+	0com_single
+};
+
+type func(type param) keyword
+{ keyword type(keyword<keyword>(param), func()); }
+type func(type param) keyword
+{ keyword type(keyword<keyword>(param), func()); }
+
+keyword <>
+keyword type<type>
+{
+	type keyword()(type param) keyword;
+}
+
+keyword type : keyword type
+{
+keyword:
+	func(type param, keyword type& param);
+	func(type param, keyword keyword* param);
+	func(type param);
+	func(keyword param, keyword type& param, keyword type& param);
+	func(keyword param, keyword type& param, keyword keyword* param);
+	func(keyword param, keyword type& param);
+
+	keyword type& func() keyword keyword;
+	keyword keyword* func() keyword keyword keyword;
+};
+
+} 0com_single

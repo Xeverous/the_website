@@ -219,6 +219,7 @@ xor_eq
 <string.h>
 <strstream>
 <syncstream>
+<system_error>
 <tgmath.h>
 <thread>
 <threads.h>
@@ -268,6 +269,8 @@ std::clog
 std::cout
 std::deque
 std::endl
+std::error_code
+std::error_condition
 std::forward_list
 std::fprintf
 std::fscanf
@@ -301,6 +304,8 @@ std::ios_base::iostate
 std::ios_base::openmode
 std::ios_base::out
 std::ios_base::trunc
+std::is_error_code_enum
+std::is_error_condition_enum
 std::istream
 std::list
 std::make_error_code
@@ -350,6 +355,7 @@ std::strong_ordering::equal
 std::strong_ordering::equivalent
 std::strong_ordering::greater
 std::strong_ordering::less
+std::system_error
 std::tie
 std::to_address
 std::to_chars
@@ -498,6 +504,7 @@ operator|
 operator|=
 operator||
 operator~
+override
 reinterpret_cast<T>(expression)
 return 0;
 return;

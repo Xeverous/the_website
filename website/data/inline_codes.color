@@ -234,6 +234,7 @@ keyword
 0pp_header
 0pp_header
 0pp_header
+0pp_header
 func
 func()
 func
@@ -269,6 +270,8 @@ namespace::var_global
 namespace::type
 namespace::var_global
 namespace::type
+namespace::type
+namespace::type
 namespace::func
 namespace::func
 namespace::type
@@ -301,6 +304,8 @@ namespace::type::type
 namespace::type::type
 namespace::type::var_global
 namespace::type::var_global
+namespace::type
+namespace::type
 namespace::type
 namespace::type
 namespace::func
@@ -350,6 +355,7 @@ namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
+namespace::type
 namespace::func
 namespace::func
 namespace::func
@@ -498,6 +504,7 @@ keyword|
 keyword|=
 keyword||
 keyword~
+keyword
 keyword<tparam>(spec)
 keyword num;
 keyword;

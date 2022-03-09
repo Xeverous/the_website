@@ -1,0 +1,34 @@
+8pp_direct 0pp_header
+
+keyword namespace {
+
+keyword keyword type
+{
+	enum = num,
+
+	enum = num,
+	0com_single
+	enum = num,
+	enum = num,
+	enum = num,
+	enum = num,
+	0com_single
+	enum = num,
+	0com_single
+};
+
+keyword namespace::type& func() keyword;
+
+0com_single
+namespace::type func(type param) keyword
+{ keyword namespace::type(keyword<keyword>(param), func()); }
+
+} 0com_single
+
+keyword namespace {
+
+0com_single
+keyword <>
+keyword type<namespace::type> : namespace::type {};
+
+}
