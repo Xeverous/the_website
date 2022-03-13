@@ -88,9 +88,9 @@ def read_file_split_lines(path: str) -> List[str]:
 ##############################################################################
 
 VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;pref;suf;label;spec;"
-"var_local;var_member;var_global;param;mparam;tparam;concept;problem;num;str;str_esc;chr;chr_esc;"
+"var_local;var_member;var_global;param;outparam;tparam;concept;problem;num;str;str_esc;chr;chr_esc;"
 "com_single;com_multi;com_tag;com_single_dox;com_multi_dox;com_tag_dox;pp_direct;pp_header;pp_other;"
-"macro_def;macro_ref;asm_direct")
+"macro_def;macro_ref;macro_param;macro_body;asm_direct")
 
 DATA_FILES_PATH = "data"
 INLINE_CODES_CODE_PATH = DATA_FILES_PATH + "/inline_codes.cpp"

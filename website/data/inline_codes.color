@@ -1,6 +1,16 @@
+macro_ref
+macro_ref
+macro_ref
+macro_ref
+macro_ref
+macro_ref
 keyword
+macro_ref
 ext
 ext
+macro_ref
+macro_ref
+ext
 keyword
 keyword
 keyword
@@ -102,6 +112,10 @@ keyword
 keyword
 keyword
 keyword
+0pp_direct
+0pp_direct
+0pp_direct
+0pp_direct
 0pp_direct
 0pp_direct
 0pp_direct
@@ -383,6 +397,8 @@ namespace::type
 str
 str
 7pp_direct 0pp_other
+7pp_direct 0pp_other
+7pp_direct 0pp_other
 &
 &&
 &var_local
@@ -415,11 +431,13 @@ num
 num
 num
 <
+<<
 <=
 = keyword
 = keyword
 ==
 >
+>>
 >=
 tparam
 tparam&
@@ -438,6 +456,7 @@ keyword spec
 keyword spec
 keyword keyword*
 keyword keyword* keyword
+keyword keyword
 keyword keyword*
 keyword keyword* keyword
 keyword keyword[tparam]
@@ -453,6 +472,8 @@ keyword(spec)
 keyword[]
 keyword<tparam>(spec)
 keyword keyword keyword
+func
+func()
 func(var_local);
 keyword (;;)
 var_local

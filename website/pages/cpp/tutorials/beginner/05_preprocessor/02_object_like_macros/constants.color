@@ -1,0 +1,11 @@
+0com_single
+7pp_direct macro_def num
+keyword var_local[macro_ref]; 0com_single
+keyword (keyword var_local = num; var_local < macro_ref; ++var_local)
+	0com_single
+
+0com_single
+keyword keyword var_local = num; 0com_single
+keyword var_local[var_local]; 0com_single
+keyword (keyword var_local = num; var_local < var_local; ++var_local)
+	0com_single

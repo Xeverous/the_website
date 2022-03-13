@@ -1,0 +1,8 @@
+7pp_direct macro_def(macro_param) 3num * macro_param + num
+
+keyword var_local = macro_ref(num + num);
+
+0com_single
+keyword var_local = 3num * num + num;
+0com_single
+keyword var_local = 3num * num + num + num;

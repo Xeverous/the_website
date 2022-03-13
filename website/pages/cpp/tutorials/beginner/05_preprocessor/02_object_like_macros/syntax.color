@@ -1,0 +1,9 @@
+0com_single
+7pp_direct spec 0spec
+0com_single
+7pp_direct spec(spec) 0spec
+7pp_direct spec(spec, ...) 0spec
+7pp_direct spec(...) 0spec
+
+0com_single
+6pp_direct 0spec

@@ -1,0 +1,4 @@
+0com_single
+7pp_direct macro_def(macro_param) 1macro_body`3num 3macro_body`macro_param3macro_body num1macro_body
+0com_single
+keyword var_local = (3num * (num + num) + num);

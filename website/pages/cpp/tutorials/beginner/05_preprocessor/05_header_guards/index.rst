@@ -1,14 +1,14 @@
-.. title: 03 - header guards
+.. title: 05 - header guards
 .. slug: index
 .. description: header (include) guards
 .. author: Xeverous
 
-Let's recall the example multi-file program from a past lesson. This time we will introduce multiple problems into the project in order to observe build errors and explain certain aspects of C/C++ build process.
+Let's recall the example multi-file program from the previous lesson. This time we will introduce multiple problems into the project in order to observe build errors and explain certain aspects of the C/C++ build process.
 
 .. admonition:: warning
-    :class: warning
+  :class: warning
 
-    Multiple examples in this lesson intentionally violate ODR (One Definition Rule). Most of such violations are technically undefined behavior so a conforming implementation may not detect all such problems or produce very different errors.
+  Multiple examples in this lesson intentionally violate ODR (One Definition Rule). Most of such violations are technically *undefined behavior* so a conforming implementation may not detect all such problems or produce very different errors.
 
 Build process
 #############
@@ -19,21 +19,21 @@ Simplified list (very detailed list on `cppreference page <https://en.cppreferen
 
 - comments are removed
 - preprocessor: code (treated as text) is altered and loses all preprocessor directives
-- compilation: source files are transformed to intermediate build object files (usually named ``*.o`` or ``*.obj``)
+- compilation: translation units are transformed to intermediate build object files (usually named ``*.o`` or ``*.obj``)
 - linking: separate object files are merged by the linker to form an executable or a static/dynamic library file
 
-In most implementations, ODR violations are caught on the linking step, as most ODR violations happen between different translation units.
+If you define something non-:cch:`inline` multiple times in the same file, you will get a compilation error. But if such problem is across files, in most implementations such ODR violation will be caught on the linking step - in such case the problem happens between different translation units.
 
 .. admonition:: note
-    :class: note
+  :class: note
 
-    Many linking stage errors mention the term *reference*. This is different from C++ reference qualifiers (:cch:`&` and :cch:`&&`). By *reference*, the linker means "usage of specific *symbol*".
+  Many linking stage errors mention the term *reference*. This is different from C++ reference qualifiers (:cch:`&` and :cch:`&&`). By *reference*, the linker means "usage of specific *symbol*".
 
 ..
 
     What is a symbol?
 
-A symbol is a single entity for the linker, usually *mangled name* of a specific C/C++ entity that needs compilation. So if the linker outputs an error "undefined reference to ..." it means that a definition of specific entity was not found.
+A symbol is a single entity for the linker, usually some intermediate code attached to a *mangled name* of a specific C/C++ entity that needs compilation. So if the linker outputs an error "undefined reference to ..." it means that a definition of specific entity was not found.
 
     What is name mangling?
 
@@ -57,9 +57,9 @@ To trigger this linker error a single file is enough but to illustrate a more re
 The error appears because some entity (a function in this case) was ODR-used (used in a way which requires definition) but the definition was not provided. The same error can appear if you try to use an external library and do not link to library's compiled code in the build process.
 
 .. admonition:: note
-    :class: note
+  :class: note
 
-    Compilers and linkers typically automatically link C++ standard library and require a specific option to disable it. For any other library, the situation is reverse (specific option required to link it).
+  Compilers and linkers typically automatically link C++ standard library and require a specific option to disable it. For any other library, the situation is reverse (an option required to link it).
 
 Multiple reference
 ##################
@@ -68,7 +68,7 @@ This error usually appears when:
 
 - Some code refactoring has been done and 2 copies of the same entity were left present in different files.
 - 2 different functions accidentally have been given the same name.
-- The project contains multiple subprojects and at least 2 of them link to the same external library.
+- The project contains multiple subprojects and at least 2 of them link to the same external library with incompatible settings.
 
 To trigger the error, we will simulate a mistake in refactoring and attempt to compile 2 files with definition of the same function:
 
@@ -109,9 +109,7 @@ To illustrate, here is an example that defines a type and accidentally includes 
 
 The main file included ``power_state.hpp`` and ``to_string.hpp`` which indirectly included ``power_state.hpp`` too. This resulted in having duplicate contents of ``power_state.hpp`` in ``main.cpp`` file.
 
-You could probably think of a convention how to split/separate code so that such situations don't arise but it would be very annoying in practice.
-
-.. TODO explain #ifdef earlier, when explaining #include and compiler options
+You could probably think of a convention how to split/separate code so that such situations don't arise but it would be very annoying in practice to track code dependencies of each file.
 
 Header guards
 #############
@@ -125,15 +123,15 @@ We can create a mechanism that automatically prevents accidental duplicate inclu
 How it works? Each time a file is included, the preprocessor is required to check if a specific identifier has been defined. At first inclusion, it's not. At any later inclusion, it has been defined so entire content of the file is skipped. Because each header was given a unique identifier and separate translation units have separate preprocessing, any header content is parsed exactly once.
 
 .. admonition:: note
-    :class: note
+  :class: note
 
-    This specific form of preprocessor directives is known as **header guards** or **include guards**.
+  This specific form of preprocessor directives is known as **header guards** and **include guards**.
 
 The identifier must be unique for each header, so to guuarantee uniqueness it usually consists of the company name and/or project name, root-relative file path and sometimes a date/time when it was created.
 
     Why source files did not get these directives?
 
-Because only header files are supposed to be included.
+Because only header files are supposed to be included. Only header files are shared between *translation units*.
 
 Alternative guards
 ##################

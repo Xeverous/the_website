@@ -1,0 +1,6 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	namespace::var_global << str << macro_ref / num % num;
+}

@@ -1,5 +1,15 @@
+__DATE__
+__FILE__
+__LINE__
+__TIME__
+__VA_ARGS__
+__VA_OPT__
 __attribute__
+__cplusplus
 __float128
+__func__
+__has_cpp_attribute
+__has_include
 __int128
 __restrict
 alignas
@@ -105,6 +115,9 @@ xor_eq
 #
 ##
 #define
+#elif
+#elifdef
+#elifndef
 #else
 #endif
 #error
@@ -114,6 +127,7 @@ xor_eq
 #include
 #line
 #pragma
+#undef
 #warning
 <algorithm>
 <any>
@@ -383,6 +397,8 @@ std::wstring
 ""
 "abc"
 #pragma once
+#pragma pop
+#pragma push
 &
 &&
 &x
@@ -415,11 +431,13 @@ std::wstring
 8
 9
 <
+<<
 <=
 = default
 = delete
 ==
 >
+>>
 >=
 T
 T&
@@ -438,6 +456,7 @@ co_await expression
 co_yield expression
 const char*
 const char* const
+const int
 const int*
 const int* const
 const int[N]
@@ -453,6 +472,8 @@ decltype(expression)
 delete[]
 dynamic_cast<T>(expression)
 explicit operator bool
+f
+f()
 f(x);
 for (;;)
 i

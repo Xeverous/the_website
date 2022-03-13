@@ -401,9 +401,9 @@ nav.breadcrumb {
 .code.custom-cpp .spec        { color: #808080; font-style: italic; } /* specification */
 .code.custom-cpp .keyword     { color: #ec691e } /* keywords */
 .code.custom-cpp .namespace,                     /* namespace names */
-.code.custom-cpp .type        { color: #9cf828 } /* classes, structs, unions, enum types, type aliases, etc */
+.code.custom-cpp .type        { color: #9cf828 } /* classes, structs, unions, enum types, type aliases, etc. */
 .code.custom-cpp .enum        { color: #408000 } /* enum values */
-.code.custom-cpp .ext         { color: #ffffff } /* externals */
+.code.custom-cpp .ext         { color: #ffffff } /* extensions, e.g. __builtin_* stuff */
 .code.custom-cpp .oo,                            /* overloaded operators */
 .code.custom-cpp .pref,                          /* literal prefix */
 .code.custom-cpp .suf         { color: #ffffff } /* literal suffix */
@@ -419,23 +419,25 @@ nav.breadcrumb {
 .code.custom-cpp .chr-esc     { color: #868613 } /* character literals (escaped content) */
 
 .code.custom-cpp .param       { color: #408000 } /* parameters (to functions) */
-.code.custom-cpp .mparam      { color: #c86496 } /* mutable parameters (passed by non-const reference) */
+.code.custom-cpp .outparam    { color: #c86496 } /* out parameters (passed by non-const reference) */
 .code.custom-cpp .tparam,                        /* template parameters */
 .code.custom-cpp .concept     { color: #ffaf7b } /* C++ concept (constrained template) */
-.code.custom-cpp .problem     { color: #ff0000 } /* compiler errors etc */
+.code.custom-cpp .problem     { color: #ff0000 } /* compiler errors etc. */
 
 .code.custom-cpp .com-single     { color: #af47ff } /* single-line comment */
 .code.custom-cpp .com-multi      { color: #be68ff } /* multi-line comment */
-.code.custom-cpp .com-tag        { color: #c402c4 } /* tags in comments, eg @todo */
+.code.custom-cpp .com-tag        { color: #c402c4 } /* tags in comments, e.g. @todo */
 .code.custom-cpp .com-single-dox,                   /* Doxygen single-line comment */
 .code.custom-cpp .com-multi-dox  { color: #4b71e3 } /* Doxygen multi-line comment */
 .code.custom-cpp .com-tag-dox    { color: #c402c4 } /* Doxygen tag in comment */
 
-.code.custom-cpp .pp-direct   { color: #ec691e } /* preprocessor directives (includes, pragmas, etc) */
+.code.custom-cpp .pp-direct   { color: #ec691e } /* preprocessor directives (includes, pragmas, etc.) */
 .code.custom-cpp .pp-header   { color: #319bbe } /* preprocessor header names */
-.code.custom-cpp .pp-other    { color: #ffffff } /* other preprocessor instructions */
+.code.custom-cpp .pp-other    { color: #ffffff } /* e.g. text after #pragma and #error */
 .code.custom-cpp .macro-def   { color: #f7c527 } /* macro definitions */
 .code.custom-cpp .macro-ref   { color: #ffffff } /* macro references */
+.code.custom-cpp .macro-param { color: #408000 } /* function-like macro parameters */
+.code.custom-cpp .macro-body  { color: #aaaaaa } /* macro body */
 .code.custom-cpp .asm-direct  { color: #ec691e } /* directives in assembly */
 
 /*

@@ -1,0 +1,5 @@
+7pp_direct macro_def(macro_param, macro_param) macro_param < macro_param ? macro_param : macro_param
+
+keyword var_local = num;
+keyword var_local = num;
+keyword var_local = macro_ref(var_local, var_local);
