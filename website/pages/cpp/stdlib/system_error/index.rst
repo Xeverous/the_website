@@ -63,8 +63,8 @@ Implementation
   - (optional) :cch:`override` the :cch:`default_error_condition$$$func` function if you wish to translate errors to a more generic category (such as :cch:`std::generic_category()$$$namespace::func()`), by default the function does not change the category
 
 - (if error numbers are enumeration) specialize :cch:`std::is_error_code_enum`
-- (optional) add `make_error_code$$$func` in the same namespace as the definition of error numbers
-- when reporting errors use :cch:`std::error_code` constructor or call `make_error_code$$$func`
+- (optional) add :cch:`make_error_code$$$func` in the same namespace as the definition of error numbers
+- when reporting errors use :cch:`std::error_code` constructor or call :cch:`make_error_code$$$func`
 
 The last 3 steps can be repeated analogically for :cch:`std::error_condition`.
 
