@@ -3,19 +3,34 @@
 .. description: include directive and header files
 .. author: Xeverous
 
-So far all presented programs were single-file and only specific examples of multi-file projects were mentioned - mostly being able to write function declaration in one file and its definition in another.
+So far all presented programs were written in a single file. Most examples will still be (for practical reasons) but it's pretty obvious that any larger, actual program (again, for practical reasons) can not be written in a single file.
 
-But there is much more than that.
+So how is it done exactly?
 
-Header and source files
+Surprisingly, both C and C++ specifications do not define how code can/should/must be split and/or how it cooperates between different files. The only real thing that governs compilation process is **ODR** (one definition rule). As long as ODR is satisfied, any form of separation of code into different files is valid.
+
+History
+#######
+
+At first, at times of C being developed (before any standard was made) computers were not sufficiently powerful to compile large (at that time) programs. The solution was to not write too many function definitions in a single file. Each file was compiled separately and then compiled files (containing some intermediate representation) were merged to an executable program with actual machine code.
+
+The compiler was performing many operations blindly - if a function call was encountered and the function was not defined in the current file, it was simply assumed that such function existed somewhere else. If there was any kind of mismatch that wasn't detected during compilation and machine code generation (e.g. different number of arguments given to the function than it expects) it was simply undefined behavior.
+
+Such situation could not last long. It was simply too error-prone. Later function declarations became popular, but just the name and return type, e.g. :cch:`int func();$$$keyword func();` (in C empty parentheses mean *unspecified* parameters). Then *function prototypes* - function declarations that specify parameters, e.g. :cch:`int func(int, int);$$$keyword func(keyword, keyword);`). Compilers started to verify that function calls match their expectations. I have no knowledge where (on the timeline of C's development) C++ started exactly (early as an extension to C) but in C++ fully-informational function declarations existed and were mandatory since the beginning.
+
+To simplify the work and avoid code duplication, people started writing files which contained just function declarations and used the preprocessor :cch:`#include` directive to paste their contents into other files (intended for compilation) that needed these declarations. That's how **header files** were born.
+
+The C/C++ build process
 #######################
 
-You already know that you need to include certain files in order to use certain parts of the C++ standard library. The same thing applies for your code.
+There are 2 types of files for C and C++ code:
 
-There are 2 types of files for C++ code:
+- header files, which main purpose is to provide necessary information for other files (source files or other headers)
+- source files, which main purpose is to implement various compilable entities (mostly functions) that have been declared elsewhere
 
-- headers, which main purpose is to provide necessary information for other files (source files or other headers)
-- sources, which main purpose is to implement various compilable entities (mostly functions) that have been declared elsewhere
+The build process instructs the compiler only to compile source files. Each source file :cch:`#include`\ s headers to satisfy ODR (basically provide necessary information) and implements entities which are transformed to machine code.
+
+In other words, headers are files for code shared between source files.
 
 ..
 
@@ -23,12 +38,31 @@ There are 2 types of files for C++ code:
 
 No. This is an incorrect mental shortcut.
 
-- Some things should be defined in headers. The best example are user-defined types. Almost all code which uses new types defined in code needs to see their definition, otherwise the compiler will not be able to generate machine code to handle them. Types themselves do not form compilable code, but their use in functions does.
+- Some things should be defined in headers. The best example are *user-defined types*. Almost all code which uses new types defined in code needs to see their definition, otherwise the compiler will not be able to generate machine code to handle them. Types themselves do not form compilable code, but their use in functions does.
 - Some things can be declared in sources (or not declared at all), mostly because they are used only within a single file.
 
-Instead, I propose to think of headers and sources in more generic terms such as specification and implementation. The mechanism is quite flexible - **C++ does not impose any strict rules what needs to be in which file. The language doesn't even define what a header or a source file is** - these are just a very strong convention (which results from `somewhat complex compilation process <https://en.cppreference.com/w/cpp/language/translation_phases>`_) to make the best use of the preprocessor.
+Instead, I propose to think of headers and sources in more generic terms such as specification and implementation. The mechanism is quite flexible - **C++ does not impose any strict rules what needs to be in which file. The language doesn't even define what a header or a source file is** - this is just a very strong convention that was formed through practice. All that really matters is that when code is compiled, ODR is satisfied.
 
-    How are header and source files differentiated?
+    So which entities are put where? Is there any convention for it?
+
+There is some convention but nothing is strict. Generally:
+
+- header files:
+
+  - type *definitions*
+  - global object *declarations*
+  - function *declarations*
+  - templates - both *declarations* and *definitions*
+
+- source files:
+
+  - function *definitions*
+  - global object *definitions*
+
+This is only a rough guideline, details for specific entities are explained in respective lessons. There is also a detailed cheatsheet. TODO link
+
+File naming
+###########
 
 The C language uses ``h`` extension for header files and ``c`` for source files.
 

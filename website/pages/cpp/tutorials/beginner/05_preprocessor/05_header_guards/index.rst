@@ -8,7 +8,7 @@ Let's recall the example multi-file program from the previous lesson. This time 
 .. admonition:: warning
   :class: warning
 
-  Multiple examples in this lesson intentionally violate ODR (One Definition Rule). Most of such violations are technically *undefined behavior* so a conforming implementation may not detect all such problems or produce very different errors.
+  Multiple examples in this lesson intentionally violate ODR (One Definition Rule). Some of such violations are technically *undefined behavior* or *ill-formed no diagnostic required* so a conforming implementation may not detect all such problems or produce very different errors.
 
 Build process
 #############
@@ -82,6 +82,8 @@ To trigger the error, we will simulate a mistake in refactoring and attempt to c
     hello.cpp:(.text+0x0): multiple definition of `write_hello()'
     /tmp/ccfsecFJ.o:main.cpp:(.text+0x0): first defined here
     collect2: error: ld returned 1 exit status
+
+Even in the case where both definitions are identical, it's not a good thing just to discard one definition and go further. While there is everything needed to form an executable, such situation indicates there is a configuration or code problem. For safety, build tools consider such situation as an error.
 
 In such situation the programmer must figure out what's causing multiple definitions as it will affect the solution:
 
