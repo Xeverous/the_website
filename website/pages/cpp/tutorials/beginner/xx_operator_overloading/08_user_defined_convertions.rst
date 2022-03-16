@@ -63,7 +63,7 @@ Example usage:
     fb(f1); // error if "explicit" is used
     fb(static_cast<bool>(fr)); // ok
 
-    if (fr) // fine, "if" acts as an explicit convention to bool
+    if (fr) // fine, "if" acts as an explicit convertion to bool
         // ...
 
     if (!fr) // also fine; since C++11 bool convertion is enough

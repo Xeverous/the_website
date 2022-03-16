@@ -86,11 +86,13 @@ More information:
 - https://en.wikipedia.org/wiki/Spirit_Parser_Framework
 - https://en.wikipedia.org/wiki/Domain-specific_language
 
+..
+
     Is there a project where overloading :cch:`operator,` made sense?
 
-Yes. C++ is a fun language where even the most obscure "features" will be found by someone to be useful. :cch:`operator,` is overloaded in `Boost Assign <http://www.boost.org/doc/libs/release/libs/assign/doc/index.html#intro>`_ to extend interface of STL containers. This library is somewhat old (pre modern C++ era); since C++11 there are much better (and less confusing) ways to do things what the library provides.
+Yes. C++ is a fun language where even the most obscure features will be found by someone to be useful. :cch:`operator,` is overloaded in `Boost Assign <http://www.boost.org/doc/libs/release/libs/assign/doc/index.html#intro>`_ to extend interface of STL containers. This library is somewhat old (pre modern C++ era); since C++11 there are much better (and less confusing) ways to do things what the library provides.
 
 Practice
 ########
 
-In practice, very few classes have overloaded operators other than ``=``, ``==`` and ``!=``. Thus, **you can skip this chapter and come back later. Vast majority of code does not need to overload any operators** so there is no significant value in trying to remember all possible recommendations for each operator mentioned in this chapter.
+In practice, very few classes have overloaded operators other than ``=``, ``==`` and ``!=`` or user-defined convertion. Thus, **you can skip this chapter and come back later. Vast majority of code does not need to overload any operators** so there is no significant value in trying to remember all possible recommendations for each operator mentioned in this chapter.
