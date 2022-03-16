@@ -18,10 +18,12 @@ Every object has:
 - (optionally) a name (identifier)
 - some memory-related properties (address, size, alignment, storage duration) that won't be interesting for now
 
-Name is optional because:
+Note that most of these are purely an abstraction on which the programming language is built. Hardware only performs computations, read and write operations and doesn't know about types - it only sees data as different memory cells, each being one byte.
+
+The name is optional because:
 
 - In some cases temporary (unnamed) objects may be created as a part of evaluation of expressions - e.g. in :cch:`2 * 3 + 4$$$num * num + num` an unnamed integer object with value :cch:`6` may temporarily appear in memory.
-- In some cases objects can be referred using indirect mechanisms such as pointers and references. This is especially true for any data that has variable size (e.g. an array).
+- In some cases objects can be referred using indirect mechanisms such as *pointers* and *references*. This is especially true for any data that has variable size (e.g. an array).
 
 Don't think that an *object* (some data in memory with certain properties) means the same as a *variable* (named modifiable entity in code):
 
@@ -58,7 +60,7 @@ It's possible to define multiple objects at once:
 
     int x, y, z; // 3 objects of type int
 
-...but **such practice is very discouraged**. For historical reasons (mostly backwards compatibility), C++ adopted C grammar which while generally brilliant, has some peculiarities and most of them lie in *decl-specifier-seq* subgrammar, which is used for declarations. I don't really want to list all possible corner cases (there can be infinitely many of them as the grammar can be nested), I just want to point out that thinking of object declaration syntax as "type followed by name" is fundamentally wrong with how C/C++ grammar works and for this reason:
+...but **such practice is very discouraged**. For historical reasons (mostly backwards compatibility), C++ adopted C grammar which while generally brilliant, has some peculiarities and most of them lie in *decl-specifier-seq* subgrammar, which is used for declarations. I just want to point out that thinking of object declaration syntax as "type followed by name" is fundamentally wrong with how C/C++ grammar works and for this reason:
 
 .. admonition:: tip
     :class: tip
@@ -89,6 +91,8 @@ In this specific example, only :cch:`int` is "picked up" for every object and an
     Can't these syntax rules be changed?
 
 C++ is a very history-rich language (40+ years) and it also takes backwards compatibility very seriously. C++ inherited a lot from C, including some of its grammar design flaws. Still, it wouldn't be in a place it is today if the language did not appear as an alternative to then very fast growing C. Many of past problems did get "fixed" in C++11 **without breaking backwards compatibility** by adding more alternative subgrammars. This of course spawned a lot of corner cases so if you want some laugh, watch the 7min talk `CppCon 2018: Timur Doumler "Can I has grammar?" <https://www.youtube.com/watch?v=tsG95Y-C14k>`_.
+
+Don't be intimitated by the C declaration grammar. Majority of C++ code uses types which are very easy to read. The ones that aren't easily readable have multiple ways to workaround it such as type name aliases.
 
 Assignment
 ##########
@@ -228,6 +232,13 @@ C++ standard streams automatically flush the buffer when necessary, so you shoul
 
 For now, this should be enough to let you output values of simple variables. Play with different types and values and observe the effect. In later lessons, you will learn about standard input (:cch:`std::cin`) and how to create first user-interactive programs that read text.
 
+Watch out for these syntax problems:
+
+- double operator: :cch:`std::cout << << "text";$$$namespace::var_global << 2problem str;`
+- unwanted semicolon: :cch:`std::cout << "text"; << "text";$$$namespace::var_global << str1problem << str;`
+- operator with no operand: :cch:`std::cout << "text" <<;$$$namespace::var_global << str 2problem;`
+- wrong operator: :cch:`std::cout >> "text";$$$namespace::var_global 2problem str;`
+
 Exercise
 ########
 
@@ -258,4 +269,4 @@ Is the following code valid?
 .. details::
     :summary: Answer
 
-    Technically yes (this will compile) but contains undefined behavior. :cch:`x` here is used (on the right side) before it's initialized. It's not possible to correctly initialize an object with a value that depends on it.
+    Technically yes (this will compile) but contains *undefined behavior*. :cch:`x` here is used (on the right side) before it's initialized. It's not possible to correctly initialize an object with a value that depends on it.

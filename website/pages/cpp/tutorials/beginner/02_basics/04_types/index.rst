@@ -16,7 +16,7 @@ Not really. Additional mechanisms such as registers and caches are not extra mem
 
 Computers read, write and manipulate data in binary. But what does the data represent? How to interpret it? This is what types are for. Since memory by itself has no notion of what data represents, it's all up to the programmer to give it a meaning by specifying a type. A number without a context is just a number. But with specific interpretation, it can mean text (each symbol having unique number), color (numbers stating intensity of RGB components), sound (numbers describing physical attributes of waves) and so on - for this reason files have extensions - a file is nothing more than a sequence of bytes. It's up to the user which program to use to open it and how the program will interpret this sequence.
 
-In C++, every *object* has an associated type. This makes C++ a **statically typed programming language**. The type determines multiple memory-related properties (including size in bytes) and how the binary representation should be interpreted and what operations can be performed on the data. Two objects with different types may be identical in their binary form, but their meaning can be completely different.
+In C++, every *object* has an associated type. This makes C++ a **statically typed programming language**. The type determines multiple memory-related properties (including size in bytes) and how the binary representation should be interpreted and what operations can be performed on the data. Two objects with different types may be identical in their binary form (the same bit pattern), but their meaning can be completely different.
 
     What if a language is not statically typed?
 
@@ -40,9 +40,9 @@ Types in C++
 There are 2 kinds of types in C++:
 
 - built-in types - types offered by the language itself, they are denoted with keywords
-- user-defined types - types created by the user (here *user* means user of the language - programmer); these are defined in code using specific keywords (:cch:`struct`, :cch:`class`, :cch:`enum`) and then their name from definition is used
+- user-defined types - types created by the user (here *user* means a user of the language - programmer); these are defined in code using specific keywords (:cch:`struct`, :cch:`class`, :cch:`enum`) and then their name from definition is used
 
-For now, we will stick to built-in types as defining new types requires much more knowledge. Sometimes we will use user-defined types from the standard library. All you need to know for now is that user-defined types allow to specify new meanings for binary data which is extremely useful in making abstractions.
+For now, we will stick to built-in types as defining new types requires more knowledge. Sometimes we will use user-defined types from the standard library. All you need to know for now is that user-defined types allow to specify new meanings for binary data which is extremely useful in making abstractions.
 
     Is :cch:`std::cout` such user-defined type?
 
@@ -68,7 +68,7 @@ This type represents a mathematical truth value (AKA logical value). It can hold
 Integer types
 =============
 
-Most numbers will require multiple memory cells. A single byte consisting of 8 bits can only represent 256 (2^8)distinct values - such small range is too low for most situations. Most code will use 32-bit and 64-bit integer types.
+Most numbers will require multiple memory cells. A single byte consisting of 8 bits can only represent 256 (2^8) distinct values - such small range is too low for most situations. Most code will use 32-bit and 64-bit integer types.
 
 Integers have 2 independent properties:
 
@@ -100,7 +100,7 @@ Signed numbers can represent negative values. Unsigned can not, but the extra bi
 
     Why signed integers have 1 more possible negative value? Shouldn't this be e.g. -127 - 127?
 
-It actually could be that way if hardware used *sign and magnitude* notation to represent negative numbers. This is what most people think of - basically, all bits except one would mean the number magnitude (written similarly as humans do, but in base 2 instead of base 10) and the last bit meaning + or - sign. However, there is one huge problem with this notation - it allows 2 representations for zero: +0 and -0. Having 2 different possible representations for the same value is very undesirable - it would significantly complicate electrical circuits to support comparison and other mathematical operations.
+It actually could be that way if hardware used *sign and magnitude* notation to represent negative numbers. Basically, all bits except one would mean the number magnitude (written similarly as humans do, but in base 2 instead of base 10) and the last bit meaning + or - sign. However, there is one huge problem with this notation - it allows 2 representations for zero: +0 and -0. Having 2 different possible representations for the same value is very undesirable - it would significantly complicate electrical circuits to support comparison and other mathematical operations.
 
 Here is a table comparing different interpretations of the same 4-bit pattern:
 
@@ -352,7 +352,7 @@ Both mantissa and exponent have their own limits, so there is both maximum/minim
 
 **Floating-points store real numbers with limited accurary.** Just like in decimal system ``1/3`` can be approximated as ``0.333`` or ``333 * 10^(-3)``, the same problem exists in floating-point notation - the only difference is that base 2 is used instead of base 10 for the exponent. **There are infinitely many values which can not be precisely represented** - instead, the closest approximations are used.
 
-Shortly speaking, granurality increases (more values can be represented in the given subrange) the closer they are to 0. The highest precision is in range ``0`` to ``0.1``. Analogy: ``100`` and ``101`` can be exactly represented. But in case of ``1000000001``, it might be approximated as ``1 * 10^9`` when mantisa does not have enough bits to support ``1000000001 * 10^1``. As numbers grow, more focus is placed into the exponent which causes magnitude to be more rounded towards specific power. Past some point, all odd values are approximated to closest even value.
+Shortly speaking, granurality increases (more values can be represented in the given subrange) the closer they are to 0. The highest precision is in range ``-0.1`` to ``0.1``. Analogy: ``100`` and ``101`` can be exactly represented. But in case of ``1000000001``, it might be approximated as ``1 * 10^9`` when mantisa does not have enough bits to support ``1000000001 * 10^1``. As numbers grow, more focus is placed into the exponent which causes magnitude to be more rounded towards specific power. Past some point, all odd values are approximated to closest even value.
 
     If floating-point math has limited accuracy, how do calculators work then? How are various fractional values safely computed?
 

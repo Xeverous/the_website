@@ -23,15 +23,16 @@ This is an example of **undefined behavior**. It's unknown what will actually ha
 
 If you try to compile this program, you might get a warning from the compiler about use of uninitialized object. Because compilers optimize code during many transformation steps from source code to machine code, programs containing undefined behavior might be deformed even further, amplifying problems. This is a very simple case but as the code gets larger and more complex, it gets really hard to predict and search for potential errors. Many optimizations transform machine code based on the assumption that the program has no bugs - if they didn't there would be no sense in optimizing malfunctioning code.
 
-As a result, any C++ program containing undefined behavior can exhibit one or more of the following:
+As a result, any C or C++ program containing undefined behavior can exhibit one or more of the following:
 
 - unpredictable random crashes
 - crashes under certain scenarios
 - program freezes or slows down significantly
 - program continues but does not behave as expected
 - program works correctly (or at least seems to)
+- program doesn't build or doesn't start
 
-Basically, there are no limits on what can happen. For this reason, you should always try to make your programs free of undefined behavior.
+Basically, there are no limits on what can happen. For this reason, **you should always try to make your programs free of undefined behavior**.
 
 Other behaviors
 ###############
@@ -46,6 +47,8 @@ Behaviour that varies between implementations (mostly between compilers) but the
 This covers situations in which there is no single good answer. There are multiple valid solutions, you just don't know which one is used by the given implementation as it can depend on a lot of factors including applied optimizations, hardware characteristics and operating system decisions.
 
 Example - in the expression :cch:`2 * 3 + 4 * 5$$$num * num + num * num` it's *unspecified* which multiplication is done first. As long as specification and mathematical laws are concerned, the only guuarantee is that the addition will be done last. But since both multiplications are independent, there is no obligation for the compiler to write machine code that performs them in certain order.
+
+Similarly, in the expression :cch:`foo(bar(), baz())$$$func(func(), func())` it's *unspecified* which of :cch:`bar$$$func` and :cch:`baz$$$func` is called first. By analyzing parentheses (``()``) we can clearly see that the function :cch:`foo$$$func` requires results of 2 other functions as its input. But these 2 functions have no determined order - the compiler is free to decide. The code should not rely on specific order between :cch:`bar$$$func` and :cch:`baz$$$func`.
 
 Unspecified behavior is mostly useful for optimizations because it allows some freedom for the compiler - usually being able to replace and/or reorder some machine instructions.
 

@@ -1,5 +1,5 @@
 .. title: 07 - literals
-.. slug: 07_literals
+.. slug: index
 .. description: C++ literals
 .. author: Xeverous
 
@@ -18,8 +18,8 @@ Integer literals
 By default, integer literals are of type :cch:`int`. The type can be changed by applying specific suffix:
 
 .. cch::
-    :code_path: 07_literals/integers_suffix.cpp
-    :color_path: 07_literals/integers_suffix.color
+    :code_path: integers_suffix.cpp
+    :color_path: integers_suffix.color
 
 - The suffix is not case-sensitive but for :cch:`long long`, it must be either ``ll`` or ``LL``. Mixed (``lL`` or ``Ll``) are not valid. Lowercase is recommended.
 - There is no suffix for :cch:`short`.
@@ -29,16 +29,16 @@ The size type is one of integer types which the target platform uses for storing
 Integers may be written using multiple numeric systems:
 
 .. cch::
-    :code_path: 07_literals/integers_base.cpp
-    :color_path: 07_literals/integers_base.color
+    :code_path: integers_base.cpp
+    :color_path: integers_base.color
 
 All of the above represent the same value.
 
 Since C++14 numbers may use single quotes to separate digit groups. There are no requirements on grouping, all quotes are simply ignored.
 
 .. cch::
-    :code_path: 07_literals/integers_quotes.cpp
-    :color_path: 07_literals/integers_quotes.color
+    :code_path: integers_quotes.cpp
+    :color_path: integers_quotes.color
 
 ..
 
@@ -56,8 +56,8 @@ Character literals use prefixes. They are case-sensitive.
 It's possible to write character value directly (in hexadecimal system) by using ``\U`` character.
 
 .. cch::
-    :code_path: 07_literals/characters.cpp
-    :color_path: 07_literals/characters.color
+    :code_path: characters.cpp
+    :color_path: characters.color
 
 Don't worry if you don't get UTF information right now, it will be useful later once you learn more about Unicode.
 
@@ -75,8 +75,8 @@ String literal concatenation
 If multiple string literals are next to each other, only with whitespace between, they behave as if one long string literal. This allows splitting and formatting large blocks of text embedded in code without introducing unwanted line breaks.
 
 .. cch::
-    :code_path: 07_literals/concatenation.cpp
-    :color_path: 07_literals/concatenation.color
+    :code_path: concatenation.cpp
+    :color_path: concatenation.color
 
 Each quoted string can have own prefix. If one prefix is present, the concatenated string will have the type specified by prefix. If multiple prefixes are present, they all must be the same.
 
@@ -174,8 +174,8 @@ The syntax is:
 Example:
 
 .. cch::
-    :code_path: 07_literals/raw_strings.cpp
-    :color_path: 07_literals/raw_strings.color
+    :code_path: raw_strings.cpp
+    :color_path: raw_strings.color
 
 Raw string literals may span multiple code lines (without concatenation) and they will contain all characters between delimeters, including whitespace such as line breaks.
 
@@ -194,8 +194,8 @@ Floating point literals support various formats, including expotential notation 
 Examples:
 
 .. cch::
-    :code_path: 07_literals/floating_point.cpp
-    :color_path: 07_literals/floating_point.color
+    :code_path: floating_point.cpp
+    :color_path: floating_point.color
 
 Other literals
 ##############

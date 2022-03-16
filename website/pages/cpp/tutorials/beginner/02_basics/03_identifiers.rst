@@ -81,14 +81,14 @@ correct names:
 - ``PrintHttpDocument``
 - ``printHttpDocument``
 
-C++ (following C convention) uses ``UPPERCASE_NAME_STYLE`` for macros and ``lowercase_name_style`` for almost everything else. All tutorial content on this website uses relevant styles - just simply follow them.
+C++ (following C convention) uses ``UPPERCASE_NAME_STYLE`` for *macros* and ``lowercase_name_style`` for almost everything else. All tutorial content on this website uses relevant styles - just simply follow them.
 
 Conventions
 ###########
 
-Apart from underscore style, C++ also has a lot of conventions regarding variables with certain purpose. For example, if you are iterating over multiple elements, a variable containing the index of the current element will very often be named ``i``. Throughout the tutorial, you will find many examples featuring idiomatic code and they will very often present commonly used identifiers.
+Apart from underscore style, C++ also has a lot of conventions regarding variables with certain purpose. For example, if you are iterating over multiple elements, a variable containing the index of the current element will very often be named ``i``. If a function is supposed to create an object from (usually multiple) smaller objects, it's name will typically begin with ``make_``. Throughout the tutorial, you will find many examples featuring idiomatic code and they will very often present commonly used identifiers.
 
-All of conventional identifiers have been described in `naming article <link://filename/pages/cpp/utility/naming.rst>`_.
+All of conventional identifiers have been described in `naming article <link://filename/pages/cpp/utility/naming.rst>`_. But don't try to memorize them now - you will start to remember them with no effort once you start writing code.
 
 Identifiers in examples
 #######################
@@ -105,7 +105,7 @@ Recommendations
 
 - A variable name should clearly specify what is refers to. Something like ``mana`` might be ambiguous but ``current_mana`` and ``maximum_mana`` will not.
 - The more broadly something is used, the longer name it should have. Most variables are used in small contexts so anything that gets reused across lots of code should be clearly identifiable and searchable.
-- If you need to write a comment to describe variable's name, you have choosen a bad name.
+- If you need to write a comment to describe a variable's name, you have choosen a bad name.
 - Variables and types represent data. They should be named using nouns. Functions represent actions. They should be named using verbs.
 - Be consistent. If you like to write ``temperature`` as ``temp`` do it either always or never.
 - Avoid using shortcuts, unless they are related to the project. It's hard to specify a clear border here as the topic is very subjective. Many projects include a glossary with explanations on shortcuts that appear in their documentation and code.

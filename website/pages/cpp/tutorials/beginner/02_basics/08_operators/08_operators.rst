@@ -1,5 +1,5 @@
 .. title: 08 - operators
-.. slug: 08_operators
+.. slug: index
 .. description: basic operators C++
 .. author: Xeverous
 
@@ -61,7 +61,7 @@ All them produce a value of type :cch:`bool`.
 .. admonition:: warning
     :class: warning
 
-    Do not mistake ``==`` wih `=`:
+    Do not mistake ``==`` wih ``=``:
 
     - ``=`` is the assignment operator. :cch:`x = y` assigns value of :cch:`y` to :cch:`x`.
     - ``==`` is the equality operator, :cch:`x == y` produces a value of type :cch:`bool` informing whether operands are equal.
@@ -107,7 +107,7 @@ Integer division is done ... on integers. The result is also an integer so any f
 .. admonition:: warning
     :class: warning
 
-    Integer division and modulo where second operand is zero is undefined behavior.
+    Integer division and modulo where second operand is zero is *undefined behavior*.
 
 The above warning should be self-explanatory. Such operations have no definition in mathematical world, and the same happens in C++. If you perform these operations and can not guuarantee what the second operand is (e.g. it's provided by the user of the program) you should definitely check it to prevent any potential bugs.
 
@@ -142,10 +142,10 @@ You can see the difference on `compiler explorer <https://godbolt.org/#z:OYLghAF
 Overflow is reversible:
 
 .. cch::
-    :code_path: 08_operators/overflow.cpp
-    :color_path: 08_operators/overflow.color
+    :code_path: overflow.cpp
+    :color_path: overflow.color
 
-.. the example above should not use uint8_t because it usually is an alias for unsigned char and prints value as text instead
+.. the example above does not use uint8_t because it usually is an alias for unsigned char and prints value as text instead
 
 Summing it up:
 
@@ -193,8 +193,8 @@ First, some clarity as this term often gets misunderstood. There is a common mis
 Underflow occurs when the value is so small that the closest representatable value is zero. The following program continuously divides the same variable untill its value underflows:
 
 .. cch::
-    :code_path: 08_operators/underflow.cpp
-    :color_path: 08_operators/underflow.color
+    :code_path: underflow.cpp
+    :color_path: underflow.color
 
 More floating point shenanigans
 ===============================
@@ -236,8 +236,8 @@ Bit negation
 ``~`` flips all bits. This operator is unary.
 
 .. cch::
-    :code_path: 08_operators/bit_negation.cpp
-    :color_path: 08_operators/bit_negation.color
+    :code_path: bit_negation.cpp
+    :color_path: bit_negation.color
 
 .. admonition:: note
     :class: note
@@ -260,8 +260,8 @@ Bitwise operators
 These operators apply specific logical function bitwise. That is, for 2 inputs, each having the same amount of bits, each of the output bits is a result of separate logical function applied to consecutive pairs of input bits.
 
 .. cch::
-    :code_path: 08_operators/bitwise.cpp
-    :color_path: 08_operators/bitwise.color
+    :code_path: bitwise.cpp
+    :color_path: bitwise.color
 
 Bit shift operators
 ###################
@@ -269,8 +269,8 @@ Bit shift operators
 Move bits left or right. Bits going out are discarded and new bits are 0s.
 
 .. cch::
-    :code_path: 08_operators/bit_shift.cpp
-    :color_path: 08_operators/bit_shift.color
+    :code_path: bit_shift.cpp
+    :color_path: bit_shift.color
 
 This is also a good example how the same operator (``<<`` and ``>>`` in this case) can perform different task depending on what it's being used with (here: bit shifts and stream insertion).
 
@@ -307,8 +307,8 @@ Alignment affects placement of objects in memory. For simplest types, its value 
     :cch:`sizeof` and :cch:`alignof` can not be applied to *incomplete types* (this includes :cch:`void`), *bit-fields* and *functions*.
 
 .. cch::
-    :code_path: 08_operators/other.cpp
-    :color_path: 08_operators/other.color
+    :code_path: other.cpp
+    :color_path: other.color
 
 ..
 
@@ -337,19 +337,19 @@ Some operators have higher priority than others. Because C++ has over 40 differe
 Therefore, it's highly recommended to wrap complex subexpressions in parentheses:
 
 .. cch::
-    :code_path: 08_operators/precedence.cpp
-    :color_path: 08_operators/precedence.color
+    :code_path: precedence.cpp
+    :color_path: precedence.color
 
 This will make reading code easier while also saving you some time from dealing with unexpected bugs.
 
 Spacing
 =======
 
-It's intuitive for unary operators to have higher priority than binary operators: `x + !y` is processed as `x + (!y)`. While whitespace characters doesn't matter in this case, it's highly recommended to write spaces around binary operators and stick unary operators to their arguments.
+It's intuitive for unary operators to have higher priority than binary operators: ``x + !y`` is processed as ``x + (!y)``. While whitespace characters doesn't matter in this case, it's highly recommended to write spaces around binary operators and stick unary operators to their arguments.
 
 .. cch::
-    :code_path: 08_operators/spacing.cpp
-    :color_path: 08_operators/spacing.color
+    :code_path: spacing.cpp
+    :color_path: spacing.color
 
 In other words, operators which are applied first should be closer to the object.
 

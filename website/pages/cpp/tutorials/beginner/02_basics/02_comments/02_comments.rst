@@ -1,5 +1,5 @@
 .. title: 02 - comments
-.. slug: 02_comments
+.. slug: index
 .. description: C++ comments
 .. author: Xeverous
 
@@ -8,11 +8,14 @@ C++ supports 2 different ways of writing comments:
 - Single-line - they start with ``//`` and span until end of line.
 - Multi-line: they start with ``/*`` and span until ``*/``. Both of these can be on the same line, so multi-line comments can also be used as very short comments, mixed with code on the same line.
 
-Multi-line comments are sometimes called C-style comments as this syntax originally appeared in C++ ancestor - the C language. Since 1999 standard C also supports single-line (C++-style) comments.
+The C++ ancestor, C, originally supported only multi-line comments. In 1999 standard (referred to as C99) it adopted single-line comments from C++. Thus:
+
+- ``/*`` ``*/`` are sometimes referred to as "C-style comments"
+- ``//`` are sometimes referred to as "C++-style commnents"
 
 .. cch::
-    :code_path: 02_comments/syntax.cpp
-    :color_path: 02_comments/syntax.color
+    :code_path: syntax.cpp
+    :color_path: syntax.color
 
 Multi-line comments can be used to disable multiple lines of code at once. Just wrap the code in them and the code will no longer be considered code but a comment. You can also notice that multi-line comments can contain single-line comments - in other words, multi-line comments can "eat" any other text between their start and end tokens.
 
@@ -21,7 +24,7 @@ Multi-line comments can be used to disable multiple lines of code at once. Just 
 
     Multi-line comments can not be nested. Some compilers may emit a warning if they encounter multiple ``/*`` without ``*/`` between.
 
-If you try to nest such comments (e.g. ``/* /* ... */ */``):
+If you try to nest such comments (e.g. :cch:`/* /* ... */ */$$$12com_multi 2problem`):
 
 - the first ``/*`` will begin multi-line comment
 - the second ``/*`` will be already a part of the comment text and be ignored
@@ -29,62 +32,69 @@ If you try to nest such comments (e.g. ``/* /* ... */ */``):
 - the second ``*/`` will likely be a syntax error
 
 Backslash at the end of line
-============================
+############################
 
 Watch out for accidental ``\`` at the end of a line. It extends it to the next one, even in the case of single-line comments:
 
 .. cch::
-    :code_path: 02_comments/backslash1.cpp
-    :color_path: 02_comments/backslash.color
+    :code_path: backslash1.cpp
+    :color_path: backslash.color
 
 It's advised to just write 2 comments instead (or 1 multi-line):
 
 .. cch::
-    :code_path: 02_comments/backslash2.cpp
-    :color_path: 02_comments/backslash.color
+    :code_path: backslash2.cpp
+    :color_path: backslash.color
 
 Documentation comments
-======================
+######################
 
 Some tools may automatically help writing pretty comments like this:
 
 .. cch::
-    :code_path: 02_comments/doxygen.cpp
-    :color_path: 02_comments/doxygen.color
+    :code_path: doxygen.cpp
+    :color_path: doxygen.color
 
-By convention, multi-line comments beginning with ``/**`` (or single-line comments beginning with ``///``) are comments for code-analyzing tools. Compilers ignore text inside comments, but some tools expect certain syntax inside them - e.g. tags denoted with ``@`` are searched by documentation tools like Doxygen which generate documentation from code. Some IDEs may also display help boxes by relying on these tags.
+By convention, multi-line comments beginning with ``/**`` and single-line comments beginning with ``///`` are comments for code-analyzing tools. Compilers ignore text inside comments, but some tools expect certain syntax inside them - e.g. tags denoted with ``@`` are searched by documentation tools like `Doxygen <https://www.doxygen.nl/index.html>`_ which generate documentation from code. Some IDEs may also display help boxes by relying on these tags.
 
-Purpose of comments
-===================
+The purpose of comments
+#######################
 
-In ordinary code the main purpose of comments is documentation and explaining *why* something is done, not *how*. Very often there are many ways to do certain task. Code will describe *how* to do this task. But *why* this particular way? This should be written in the comment so that when the code is read the decision about particular solution is understood.
+In ordinary code the main purpose of comments is documentation and explaining **why** something is done, not **how**. Very often there are many ways to do certain task. The code describes *how* to do this task. But *why* this particular way? This should be written in the comment.
 
 Example, bad:
 
 .. cch::
-    :code_path: 02_comments/bargain_bad.cpp
-    :color_path: 02_comments/bargain.color
+    :code_path: bargain_bad.cpp
+    :color_path: bargain.color
 
 Example, good:
 
 .. cch::
-    :code_path: 02_comments/bargain_good.cpp
-    :color_path: 02_comments/bargain.color
+    :code_path: bargain_good.cpp
+    :color_path: bargain.color
 
 In the example above the comment should not explain math (reducing amount by percents is pretty straightforward) but why there is a special case for bargains exceeding 100% - in such cases the player could abuse the game by reducing price to negative numbers, potentially ending up earning money while buying the item.
 
-In the tutorial this rule will obviously be violated as the goal here is to teach you programming. Just be aware that in professional code comments should not explain code as we should assume the reader is already familiar with the language. It's more important to save what can not be stated in the code so if you think something is significant - write it down. At first it might seem trivial and you will remember it but once you start making bigger projects or work with other people you will realize how unlikely it is that someone will remember all of the obvious things in the program that has multiple thousand lines of code.
+In professional code comments should not explain code as we should assume the reader is already familiar with the language. It's more important to document *why* a specific block of code exists and *why* a particular solution was choosen. Once you start making bigger projects or work with other people you will realize how unlikely it is that someone will remember all of "the obvious things" in the program that has multiple thousand lines of code.
+
+.. admonition:: tip
+  :class: tip
+
+  When writing comments, document *why*, not *how*.
+
+In the tutorial this rule will obviously be violated as the goal here is to teach you programming. Very likely you will also make some notes with explanatory comments. Just be aware that in the actual job the purpose of comments is much different.
 
 Formatting
 ##########
 
 A battle almost as old as deciding which side toiler paper should go on is code formatting, especially braces (``{}``).
 
-Below I present 2 most common formatting styles found in C and C++ code:
+Below I present 2 most common formatting styles found in C and any other language based on C's grammar (such as C++, Java, JavaScript, C#):
 
 .. cch::
-    :code_path: 02_comments/formatting.cpp
-    :color_path: 02_comments/formatting.color
+    :code_path: formatting.cpp
+    :color_path: formatting.color
 
 A much larger list can be found on https://en.wikipedia.org/wiki/Indentation_style.
 
@@ -95,9 +105,9 @@ A different issue is maximum allowed line length. There is no technical limit, b
 If you happen to split a line, it's recommended to align the code (similarly how you can find aligned comments in the tutorial lessons) and place the operator on the next line - if expression like :cch:`2 * 3 + 4 * 5$$$num * num + num * num` is split over ``+``, the ``+`` character should be first on the next line, not last on the previous line (this increases readability).
 
 .. admonition:: tip
-    :class: tip
+  :class: tip
 
-    Pick a style you prefer and use it consistently.
+  Pick a style you prefer and use it consistently.
 
 A well-formatted program is easier to understand. This is hilariously explained in `CppCon 2018: James McNellis "The Shape of a Program" <https://www.youtube.com/watch?v=P2lxGnbDkDI>`_.
 
