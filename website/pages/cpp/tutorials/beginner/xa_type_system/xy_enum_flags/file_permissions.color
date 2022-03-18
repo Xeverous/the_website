@@ -1,0 +1,41 @@
+keyword namespace::namespace {
+
+keyword keyword type
+{
+	enum = num,
+
+	enum = num,
+	enum = num,
+	enum = num,
+	enum = enum | enum | enum,
+
+	enum = num,
+	enum = num,
+	enum = num,
+	enum = enum | enum | enum,
+
+	enum = num,
+	enum = num,
+	enum = num,
+	enum = enum | enum | enum,
+
+	enum = enum | enum | enum,
+
+	enum = num,
+	enum = num,
+	enum = num,
+
+	enum = enum | enum | enum | enum
+};
+
+type keyword&(type param, type param);
+type keyword|(type param, type param);
+type keyword^(type param, type param);
+
+type& keyword&=(type& param, type param);
+type& keyword|=(type& param, type param);
+type& keyword^=(type& param, type param);
+
+type keyword~(type param);
+
+}

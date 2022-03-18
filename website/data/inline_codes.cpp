@@ -430,6 +430,7 @@ std::wstring
 7
 8
 9
+::
 <
 <<
 <=
@@ -471,6 +472,8 @@ decltype((expression))
 decltype(expression)
 delete[]
 dynamic_cast<T>(expression)
+enum class
+enum struct
 explicit operator bool
 extern "C"
 extern "C++"

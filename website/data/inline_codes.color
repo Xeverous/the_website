@@ -430,6 +430,7 @@ num
 num
 num
 num
+::
 <
 <<
 <=
@@ -471,6 +472,8 @@ keyword((spec))
 keyword(spec)
 keyword[]
 keyword<tparam>(spec)
+keyword keyword
+keyword keyword
 keyword keyword keyword
 keyword str
 keyword str
