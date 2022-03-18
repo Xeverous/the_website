@@ -1,0 +1,5 @@
+keyword func(keyword keyword param);
+keyword func(keyword param); 0com_single
+
+keyword func(keyword keyword* keyword param);
+keyword func(keyword keyword* param); 0com_single

@@ -3,15 +3,6 @@
 .. description: standard library array type
 .. author: Xeverous
 
-Limitations of raw arrays
-#########################
-
-The syntax of arrays in C++ has been inherited from C and various rules regarding array-related operations were too.
-
-.. cch::
-    :code_path: raw_array_problems.cpp
-    :color_path: raw_array_problems.color
-
 :cch:`std::array`
 #################
 

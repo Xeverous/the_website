@@ -33,6 +33,8 @@ The example above aims to present that a working set of nested loops may cause v
 
 For this reason, when looping over nested arrays you should start with outer layers first and go into inner layers in nested loops.
 
+.. TODO add infographic
+
 Translated indexes
 ##################
 

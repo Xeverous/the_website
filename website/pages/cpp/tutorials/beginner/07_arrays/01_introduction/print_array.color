@@ -1,0 +1,25 @@
+8pp_direct 0pp_header
+
+0com_single
+keyword <keyword tparam, keyword tparam>
+keyword keyword func(keyword tparam (&)[tparam]) keyword
+{
+	keyword tparam;
+}
+
+keyword func(keyword keyword* param, keyword param)
+{
+	keyword (keyword var_local = num; var_local < param; ++var_local)
+		namespace::var_global << param[var_local] << str;
+
+	namespace::var_global << str;
+}
+
+keyword func()
+{
+	keyword var_local[] = {num, num, num};
+	keyword var_local[] = {num, num, num, num, num};
+
+	func(var_local, func(var_local));
+	func(var_local, func(var_local));
+}

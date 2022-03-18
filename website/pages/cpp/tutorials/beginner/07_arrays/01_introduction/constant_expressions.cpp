@@ -8,4 +8,4 @@ int arr3[n3]; // error: size not a constant expression
 
 int n4 = 10;
 const int n5 = n4; // const, but not compile-time
-int arr5[n5]; // error: n5 is no a constant expression
+int arr5[n5]; // error: n5 is not a constant expression

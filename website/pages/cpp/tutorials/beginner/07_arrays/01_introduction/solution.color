@@ -1,0 +1,33 @@
+keyword func(keyword keyword* param, keyword* param, keyword param)
+{
+	keyword (keyword var_local = num; var_local < param; ++var_local)
+		param[var_local] = param[var_local];
+}
+
+keyword func(keyword* param, keyword param)
+{
+	keyword keyword var_local = param / num;
+	keyword (keyword var_local = num; var_local < var_local; ++var_local)
+	{
+		keyword var_local = param[var_local];
+		param[var_local] = param[param - var_local - num];
+		param[param - var_local - num] = var_local;
+
+		0com_single
+		0com_single
+	}
+}
+
+keyword func(keyword keyword* param, keyword param, keyword keyword* param, keyword param)
+{
+	0com_single
+	keyword (param != param)
+		keyword keyword;
+
+	0com_single
+	keyword (keyword var_local = num; var_local < param; ++var_local)
+		keyword (param[var_local] != param[var_local])
+			keyword keyword;
+
+	keyword keyword;
+}

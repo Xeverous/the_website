@@ -72,7 +72,7 @@ An array starts at a specific memory address and it's first element is placed ri
     0x7ffdc1562d08
     0x7ffdc1562d0c
 
-Standard streams print memory addresses using base 16 (extra 6 digits are denoted with a-f) but you can clearly see that the address of the first array element is the same as the address of the array. Obviously if you run the same program the output may be different but **first 2 lines should always be identical**. This lack of difference is the reason for 0 based numbering - during *pointer arithmetics* (which are far from this lesson) the index is used to calculate memory address of specific object and if it wasn't 0-based indexing, the math would simply not work.
+Standard streams print memory addresses using base 16 (extra 6 digits are denoted with a-f) but you can clearly see that the address of the first array element is the same as the address of the array. Obviously if you run the same program the output may be different but **first 2 lines will always be identical**. This lack of difference is the reason for 0 based numbering - during *pointer arithmetics* (which are far from this lesson) the index is used to calculate memory address of specific object and if it wasn't 0-based indexing, the math would simply not work.
 
 .. admonition:: error
     :class: error
@@ -202,7 +202,7 @@ The cause are convertion rules. Promotion is preferred so if you compare e.g. :c
 - convert to signed: huge values will not fit
 - convert to unsigned: negative values will not fit
 
-For historical reasons, convertion to :cch:`unsigned` takes place. Because of how integer convertions work, value :cch:`-1` will be interpreted as the largest possible value representable in unsigned type (modulo 2 arithmetic), causing an operation like 4294967296 < 1. In other words: if you compare signed with unsigned and the signed value is negative, the comparison will evaluate to :cch:`false`. This is a common source of bugs in loops.
+For historical reasons, convertion to :cch:`unsigned` takes place. Because of how integer convertions work, value :cch:`-1` will be interpreted as the largest possible value representable in unsigned type (modulo 2 arithmetic), causing an operation like 4294967296 < 1. In other words: **if you compare signed with unsigned and the signed value is negative, the comparison will evaluate to :cch:`false`**. This is a common source of bugs in loops.
 
 The solution is simple: make sure both comparison operands are of the same type. Usually it's as simple as changing the type of :cch:`i`, which is on the same line as the warning. Since C++20 there is also another small help: :cch:`std::ssize` member functions with the same name. These work just like :cch:`std::size` but their return type is a signed version of `std::size_t`, called :cch:`std::ptrdiff_t` (pointer difference type). Later you will also learn about other typical forms of loops (range-based, iterator-based) which do not have this problem.
 
@@ -222,3 +222,81 @@ It's possible to loop backward on an unsigned control variable, but one needs to
 .. cch::
     :code_path: loop_backwards2.cpp
     :color_path: loop_backwards2.color
+
+Passing arrays
+##############
+
+Do you remember that function argument types strip top-level :cch:`const` (a part of a set of implicit convertions, known as *decay*)?
+
+.. cch::
+    :code_path: decay_reminder.cpp
+    :color_path: decay_reminder.color
+
+This is also true for array types. The array type itself (including size information) is removed and the only thing that is left is a pointer:
+
+.. cch::
+    :code_path: array_decay.cpp
+    :color_path: array_decay.color
+
+The function declaration can use array declaration syntax for informational purposes but it has no semantic difference.
+
+Since the array type is lost, the convention of passing arrays to functions is to pass the pointer and a size (often :cch:`std::size_t`). A benefit of this approach is that a function can work with multiple arrays of different sizes, only the type of objects within the array must match. In C++20 there is also a dedicated type for it - :cch:`std::span`.
+
+Pointers are a complicated topic that will be explained later. For now, it's enough to understand that:
+
+- arrays *decay* into pointers
+- operator ``[]`` is actually defined for pointers, not arrays
+
+This means that once within a function, you can work with arrays exactly the same way:
+
+.. cch::
+    :code_path: print_array.cpp
+    :color_path: print_array.color
+
+.. admonition:: error
+    :class: error
+
+    When writing a function that takes an array, never assume it's of certain size. Always pass array size to the function. Otherwise code clarity and flexibility is significantly reduced.
+
+You might wonder why. After all, it's possible to compute array size with the :cch:`sizeof` operator, right? That's true, **but only for array types**. Inside the function you don't have an array, only a pointer!
+
+.. cch::
+    :code_path: sizeof_pointer.cpp
+    :color_path: sizeof_pointer.color
+
+Array limitations
+#################
+
+The syntax of arrays in C++ has been inherited from C and various rules regarding array-related operations were too. Sadly, for backward compatibility reasons they have to remain as they were specified in C.
+
+.. cch::
+    :code_path: array_limitations.cpp
+    :color_path: array_limitations.color
+
+Arrays can not be copied, but structures can. Yes, kind of stupid. Soon you will learn about :cch:`std::array` (the proper C++ array) which does not have such limitations.
+
+Exercise
+########
+
+- Write a function that copies contents of one array to another.
+- Write a function that reverses order of elements in an array.
+- Write a function that compares whether 2 arrays are identical.
+- Call :cch:`reverse$$$func` twice and verify that array is identical to the state before reversal.
+
+.. cch::
+    :code_path: exercise.cpp
+    :color_path: exercise.color
+
+The :cch:`compare$$$func` takes 2 sizes intentionally. In practice, if you are copying you must be sure that the output array is at least as large as the input array. But for comparison, you could obtain 2 different arrays from 2 different places. This extra check is not needed for this exercise but all functions showcase canonical way they would be defined.
+
+.. details::
+    :summary: reversal algorithm hint
+
+    Inside the function, you don't need to make array copy or anything similar. Just swap pairs of elements that have identical distance from array ends.
+
+.. details::
+    :summary: solution
+
+    .. cch::
+        :code_path: solution.cpp
+        :color_path: solution.color

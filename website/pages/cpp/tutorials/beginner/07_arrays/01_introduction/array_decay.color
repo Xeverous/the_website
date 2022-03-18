@@ -1,0 +1,9 @@
+keyword func(keyword param[num]); 0com_single
+keyword func(keyword param[]);  0com_single
+
+0com_single
+keyword func(keyword* param); 0com_single
+
+0com_single
+0com_single
+keyword func(keyword param[*]);
