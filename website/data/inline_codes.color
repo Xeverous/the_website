@@ -472,6 +472,9 @@ keyword(spec)
 keyword[]
 keyword<tparam>(spec)
 keyword keyword keyword
+keyword str
+keyword str
+keyword keyword
 func
 func()
 func(var_local);
@@ -536,6 +539,7 @@ keyword keyword keyword keyword
 keyword keyword keyword
 keyword tparam
 keyword...(tparam)
+keyword keyword
 keyword<tparam>(spec)
 namespace::type<tparam>
 namespace::type<keyword>

@@ -1,0 +1,7 @@
+In file included from [01m[Kmain.cpp:1[m[K:
+[01m[Kgreet.hpp:3:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid greet()[m[K’ used but never defined
+ static void [01;35m[Kgreet[m[K();
+             [01;35m[K^~~~~[m[K
+/tmp/ccmydgVK.o: In function `main':
+main.cpp:(.text+0x5): undefined reference to `greet()'
+collect2: error: ld returned 1 exit status

@@ -1,0 +1,5 @@
+0com_single
+keyword keyword var_global;
+
+0com_single
+keyword var_global = num;

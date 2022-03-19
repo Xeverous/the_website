@@ -1,4 +1,4 @@
-.. title: 07 - streams
+.. title: 08 - streams
 .. slug: index
 .. description: beginner C++ tutorial - streams
 .. author: Xeverous

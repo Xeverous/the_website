@@ -1,4 +1,4 @@
-.. title: 06 - arrays
+.. title: 07 - arrays
 .. slug: index
 .. description: beginner C++ tutorial - arrays
 .. author: Xeverous

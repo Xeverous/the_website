@@ -472,6 +472,9 @@ decltype(expression)
 delete[]
 dynamic_cast<T>(expression)
 explicit operator bool
+extern "C"
+extern "C++"
+extern thread_local
 f
 f()
 f(x);
@@ -536,6 +539,7 @@ signed long long int
 signed short int
 sizeof T
 sizeof...(T)
+static thread_local
 static_cast<T>(expression)
 std::vector<T>
 std::vector<char>
