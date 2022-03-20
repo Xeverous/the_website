@@ -125,7 +125,16 @@ This mini project should compile and build fine, but it can be improved - ``hell
 
   If a source file has respective header for its contents, the header should always be included in this source file even if it's not strictly necessary. This allows the compiler to detect many problems.
 
-..
+There are no requirements for specific order of included heades (we just list dependencies and if they have their own dependencies *header guards* make redundant includes empty) but there are some benefits for inside-out order - mostly hitting any build errors sooner than later and preventing code from accidentally relying on dependencies of dependencies.
+
+Therefore, I recommend the following order:
+
+- (if the current file is a source file) associated header file
+- any header closely related to the code (usually headers from your own project)
+- any external library headers if needed in this file
+- any standard library headers if needed in this file
+
+This way your project headers will be always parsed first, making sure they are self-contained. If they need some library that you did not include in themselves, build will appropriately fail.
 
     What if there is a loop within includes (e.g. A includes B which includes A)?
 
