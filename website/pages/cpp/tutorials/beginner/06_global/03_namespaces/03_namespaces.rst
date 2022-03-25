@@ -28,7 +28,7 @@ The keyword has 4 possible meanings, depending on the context:
 - using-declaration, outside classes (shortens names)
 - using-directive (shortens names)
 
-This article explains last 2.
+This article explains the last 2.
 
 Using-declaration
 #################
