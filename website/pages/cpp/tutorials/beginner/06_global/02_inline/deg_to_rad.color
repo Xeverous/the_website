@@ -1,0 +1,12 @@
+keyword keyword var_global = 20num;
+
+0com_single
+keyword keyword func(keyword param)
+{
+	keyword param * (var_global / 5num);
+}
+
+keyword keyword func(keyword param)
+{
+	keyword param * (5num / var_global);
+}

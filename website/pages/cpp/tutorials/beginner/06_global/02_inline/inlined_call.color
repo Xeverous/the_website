@@ -1,0 +1,4 @@
+0com_single
+keyword var_local = func(var_local);
+0com_single
+keyword var_local = var_local * (var_global / 5num);
