@@ -28,8 +28,8 @@ How exactly a path is interpreted depends on the platform and its file system - 
 - If an absolute path is given (e.g. ``/etc/ssh/shh_config``) the file will be searched at this exact location.
 - If a relative path is given (e.g. ``ssh_config`` or ``ssh/shh_config`` - basically any path without root (root is ``/`` on unix systems, drive letter with ``:`` on Windows)) a file will be searched at the location that is combined from executable's *working directory* and the given path.
 
-.. admonition:: info
-    :class: info
+.. admonition:: note
+    :class: note
 
     Working directory may not be the same as the directory where the executable is placed (though it often is). If the program is launched from a terminal, the working directory is usually a part of the shell's prompt (on many shells it can be changed by the ``cd`` command and can also be checked by the ``pwd`` command). If the program is launched from a graphical interface, typical implementation sets working directory to the same where executable is.
 
