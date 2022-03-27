@@ -61,6 +61,8 @@ TODO - article with symbol character names.
 
 `MSYS2` (minimal system) - package manager for GNU toolchains for Windows. [Used by Qt](https://wiki.qt.io/MSYS2).
 
+`NTBS` - null-terminated byte string.
+
 `nullptr`, `NULL`, (in other languages `null` or `nil`) - the lack of object, a null (empty, invalid) memory address. On practically every (if not every) hardware represented by address `0x00000000`. Using (dereferencing) a null pointer is undefined behaviour in some languages (C, C++) and an exception in higher level ones.
 
 `OSS` - open source software.
@@ -98,6 +100,8 @@ TODO - article with symbol character names.
 `this` - In C++, a pointer to the object itself, available in any non-static member function. `this` is never null.
 
 `toolchain` - a set of tools (programs, scripts, files) used to build a project. The typical minimal toolchain would invole a text editor, compiler and debugger. Bigger projects additionally use documentation tools, static analyzers, continuous integration tools and more.
+
+`UDL` - *user-defined literal*. A C++11 feature that allows to define custom suffixes for literals. Explained in TODO link.
 
 `Qt` (cute) - One of the biggest C++ GUI frameworks and set of GUI-related libraries. Loved by many for its backwards compatibility, large libraries, advanced tooling and rich platform support. Hated by many for its non-idiomatic/non-conventional use of C++, complicated build system which often involves code generation and unportable language extensions.
 
