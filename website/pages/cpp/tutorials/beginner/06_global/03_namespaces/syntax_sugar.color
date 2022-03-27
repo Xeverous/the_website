@@ -1,0 +1,14 @@
+0com_single
+keyword ::func; keyword namespace::func; keyword namespace::func;
+keyword ::func, namespace::func, namespace::func;
+
+0com_single
+keyword namespace { keyword namespace { keyword namespace { 9com_multi }}}
+keyword namespace::namespace::namespace { 9com_multi } 0com_single
+
+0com_single
+keyword namespace::namespace { keyword keyword namespace { 9com_multi }}
+keyword namespace::namespace::keyword namespace { 9com_multi }
+
+keyword namespace { keyword keyword namespace { keyword namespace { 9com_multi }}}
+keyword namespace::keyword namespace::namespace { 9com_multi }

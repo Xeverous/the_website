@@ -1,0 +1,63 @@
+keyword namespace
+{
+	keyword var_global = num;
+	keyword func(keyword);
+}
+
+keyword namespace
+{
+	keyword var_global = num;
+	keyword var_global = num;
+
+	keyword namespace
+	{
+		keyword namespace
+		{
+			0com_single
+			0com_single
+			keyword keyword namespace;
+
+			keyword var_global = num;
+			keyword var_global = num;
+			keyword var_global = var_global; 0com_single
+		}
+
+		0com_single
+		0com_single
+		keyword keyword namespace;
+
+		keyword var_global = var_global; 0com_single
+		keyword var_global = num; 0com_single
+		keyword var_global = problem; 0com_single
+		keyword var_global = var_global; 0com_single
+		keyword var_global = var_global; 0com_single
+	}
+}
+
+keyword keyword namespace;
+
+keyword namespace
+{
+	keyword var_global = num;
+	keyword func(keyword);
+}
+
+keyword namespace
+{
+	keyword var_global = num;
+	keyword keyword namespace;
+	keyword func(keyword);
+}
+
+keyword var_global = num;
+
+keyword func()
+{
+	++problem;      0com_single
+	++::var_global;    0com_single
+	++namespace::var_global; 0com_single
+	++var_global;      0com_single
+
+	problem(num);     0com_single
+	func(chr);   0com_single
+}

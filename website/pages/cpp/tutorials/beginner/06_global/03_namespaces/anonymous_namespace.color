@@ -1,0 +1,14 @@
+0com_single
+namespace::type func(keyword param, keyword param, keyword param)
+
+0com_single
+keyword {
+	0com_single
+	0com_single
+	0com_single
+}
+
+namespace::type func(keyword param, keyword param, keyword param)
+{
+	0com_single
+}

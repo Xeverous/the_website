@@ -1,0 +1,55 @@
+0com_single
+keyword namespace {
+
+	keyword keyword namespace {
+		0com_single
+
+		keyword keyword namespace {
+			keyword type keyword""suf(keyword keyword* param, type param); 0com_single
+		}
+
+		keyword keyword namespace {
+			keyword namespace::type keyword""suf(keyword keyword keyword param);
+		}
+	}
+
+	keyword namespace {
+		keyword keyword namespace::namespace;
+	}
+
+}
+
+0com_single
+{
+	keyword keyword namespace; 0com_single
+	keyword var_local = str1suf; 0com_single
+	keyword var_local = num1suf;    0com_single
+}
+
+{
+	keyword keyword namespace::namespace; 0com_single
+	keyword var_local = str1suf;
+	keyword var_local = num1suf;
+}
+
+{
+	keyword namespace::keyword""s; 0com_single
+	keyword var_local = str1suf;
+	keyword var_local = num1suf;
+}
+
+{
+	keyword keyword namespace::namespace; 0com_single
+	keyword var_local = str1suf;
+}
+
+{
+	keyword keyword namespace::namespace; 0com_single
+	keyword var_local = num1suf;
+}
+
+{
+	keyword keyword namespace::namespace; 0com_single
+	keyword var_local = num1suf;
+	keyword var_local = type(num); 0com_single
+}

@@ -278,6 +278,7 @@ namespace::type<keyword>
 namespace::type<keyword>
 namespace::namespace::type
 namespace::var_global
+namespace::namespace
 namespace::var_global
 namespace::var_global
 namespace::var_global
@@ -484,11 +485,13 @@ func(var_local);
 keyword (;;)
 var_local
 keyword (var_local)
+keyword keyword
 keyword keyword keyword keyword
 keyword func(keyword param, keyword* param[])
 keyword func(keyword param, keyword** param)
 keyword keyword
 keyword keyword
+keyword namespace
 keyword[]
 keyword tparam
 keyword!
@@ -553,6 +556,10 @@ keyword keyword
 keyword keyword keyword
 keyword keyword
 keyword keyword keyword
+keyword keyword
+keyword keyword
+keyword keyword namespace;
+keyword namespace::var_global;
 keyword*
 keyword* keyword
 var_local

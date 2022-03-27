@@ -1,0 +1,29 @@
+keyword namespace
+{
+	keyword func(keyword);
+	keyword func(keyword);
+
+	keyword func(keyword);
+}
+
+keyword namespace
+{
+	keyword func(keyword);
+	keyword func(keyword);
+	keyword func(keyword);
+}
+
+keyword func();
+0com_single
+
+0com_single
+keyword namespace::func;
+keyword namespace::func;
+
+0com_single
+
+keyword func()
+{
+	func(chr); 0com_single
+	func(3num); 0com_single
+}

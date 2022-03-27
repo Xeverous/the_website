@@ -1,0 +1,20 @@
+keyword namespace {
+	keyword keyword namespace {
+		keyword func();
+
+		keyword keyword namespace {
+			keyword func();
+		}
+	}
+}
+
+keyword func()
+{
+	0com_single
+	namespace::namespace::func();
+	namespace::namespace::namespace::func();
+
+	0com_single
+	namespace::func();
+	namespace::func();
+}

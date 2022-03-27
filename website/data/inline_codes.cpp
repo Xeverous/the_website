@@ -278,6 +278,7 @@ std::basic_string_view<char>
 std::basic_string<char>
 std::chrono::seconds
 std::cerr
+std::chrono
 std::cin
 std::clog
 std::cout
@@ -484,11 +485,13 @@ f(x);
 for (;;)
 i
 if (obj)
+inline namespace
 int long unsigned long
 int main(int argc, char* argv[])
 int main(int argc, char** argv)
 long double
 long long
+namespace std
 new[]
 operator T
 operator!
@@ -553,6 +556,10 @@ unsigned char
 unsigned long long
 unsigned short
 unsigned short int
+using enum
+using namespace
+using namespace std;
+using std::cout;
 void*
 void* const
 x
