@@ -527,6 +527,13 @@ Notes:
 Initialization
 ##############
 
-- https://josuttis.com/cpp/c++initialization.pdf
-- http://randomcat.org/cpp_initialization/initialization.png
-- http://randomcat.org/cpp_initialization/initialization.svg
+- meme summary: https://i.imgur.com/3wlxtI0.gifv
+- rules cheatsheets:
+
+  - https://josuttis.com/cpp/c++initialization.pdf
+  - https://twitter.com/timur_audio/status/1119160309573242880?s=21
+
+- actual specification cheatsheets:
+
+  - http://randomcat.org/cpp_initialization/initialization.png
+  - http://randomcat.org/cpp_initialization/initialization.svg
