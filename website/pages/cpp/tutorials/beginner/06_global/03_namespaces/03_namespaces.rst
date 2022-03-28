@@ -33,7 +33,7 @@ This article explains last 2.
 Using-declaration
 #################
 
-Introduces names from other namespaces to current namespace or block scope (if used inside a function). Since C++20 there is also :cch:`using enum` (explained in lesson about :cch:`enum`).
+Introduces names from other namespaces to current namespace or block scope (if used inside a function).
 
 .. cch::
     :code_path: using_declaration.cpp
@@ -68,6 +68,15 @@ Similar to *using-declaration*, but introduces all names from specified namespac
 ===========================
 
 Shortly speaking, one of the most overused statements in C++. There is so much to say about it that **I wrote a separate article about it**. TOLINK
+
+:cch:`using enum`
+#################
+
+Since C++20 it's also possile to bring enumerator names into enclosing scope.
+
+.. cch::
+    :code_path: using_enum.cpp
+    :color_path: using_enum.color
 
 Anonymous namespaces
 ####################

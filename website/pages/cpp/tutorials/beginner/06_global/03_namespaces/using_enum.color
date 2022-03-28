@@ -1,0 +1,23 @@
+keyword keyword type { enum, enum };
+keyword keyword type { enum, enum, enum };
+
+keyword type
+{
+	keyword keyword type;
+};
+
+keyword func()
+{
+	0com_single
+	keyword var_local = type::enum;
+	0com_single
+	0com_single
+	type var_local;
+	keyword var_local = var_local.enum;
+}
+
+keyword func()
+{
+	keyword keyword type; 0com_single
+	keyword keyword type; 0com_single
+}
