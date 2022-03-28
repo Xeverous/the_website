@@ -3,18 +3,21 @@
 .. description: standard library array type
 .. author: Xeverous
 
-:cch:`std::array`
-#################
+By the time you are reading this you should understand:
 
-Changing any such rules would be very risky (and also breaking backwards compatibility) so C++11 came up with a better alternative that has been defined mostly like this:
+- how arrays work (size and indexing)
+- how to pass and use arrays in functions
+- array limitations (no easy way to compare and copy)
+
+The arrays presented so far are often called "raw arrays", "built-in arrays" or "C arrays". This is because they are one of fundamental parts of the C language, one which C++ inherited, including it's limitations and problematic language rules. Since majority of rules regarding arrays can not be changed (too much code breakage), C++11 added an alternative.
+
+Originally :cch:`boost::array`, `std::array` is a wrapper type build on top of C arrays. It's core definition looks roughly like this:
 
 .. cch::
     :code_path: std_array_pseudodef.cpp
     :color_path: std_array_pseudodef.color
 
-You likely won't get templates and most of the code from this example but to put it shortly - :cch:`std::array` is a wrapper type that has been defined on top of already existing arrays (sometimes called C-arrays to differentiate them from the standard library array type).
-
-The type syntax of the standard library type is different due to templates, but **all other operations have been defined to be very intuitive and reuse existing operators**. The specific feature in play here is *operator overloading* and its core idea is to allow to reuse operators for custom types so that they can be used just like built-in types (e.g. :cch:`int`). The feature is explained in its own chapter.
+The type syntax of this standard library type is slightly different because here the stored type and array size are specified as template parameters. **All typical operations have been defined to be very intuitive by reusing existing operators.** The specific feature in play here is *operator overloading* which allows to define meanings for operators for *user-defines types* so that they can be used just like built-in types. The feature is explained in its own chapter.
 
 .. cch::
     :code_path: std_array_example.cpp
@@ -22,10 +25,10 @@ The type syntax of the standard library type is different due to templates, but 
 
 Main benefits of using :cch:`std::array` are:
 
-- type safety
-- support for common operators
-- additional *member functions*
-- support for ranged-based loops and iterators
+- type safety - unline C arrays, this type does not *decay*
+- support for common operations such as comparison and copying
+- support for range-based loops and iterators
+- additional *member functions* such as :cch:`.size()$$$.func()`
 
-.. TODO where to actually explain ranged loops?
-.. functions chapter should already cover const reference
+range-based loops
+#################

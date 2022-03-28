@@ -20,7 +20,8 @@ int main()
 	// member functions
 	std::cout << arr2.size() << "\n"; // 5
 
-	// ranged loops
+	// ranged loops (known as for-each loops in other languages)
+	// syntax sugar when compared to writing logic on an i variable
 	for (int value : arr2)
 		std::cout << value << " ";
 }
