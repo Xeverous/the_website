@@ -1,0 +1,20 @@
+keyword type
+{
+0com_single
+	type var_member;
+	type var_member;
+};
+
+keyword type
+{
+keyword:
+	type var_member;
+	type var_member;
+};
+
+keyword type
+{
+keyword:
+	type var_member;
+	type var_member;
+};

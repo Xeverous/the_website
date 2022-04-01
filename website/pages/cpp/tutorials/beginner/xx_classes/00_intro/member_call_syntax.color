@@ -1,0 +1,2 @@
+func(var_local, str); 0com_single
+var_local.func(str);  0com_single
