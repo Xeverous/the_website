@@ -1,0 +1,8 @@
+0com_single
+keyword type { enum, enum, enum };
+keyword type { enum, enum, enum }; 0com_single
+
+0com_single
+keyword func(type param);
+type var_local = enum;
+func(var_local); 0com_single

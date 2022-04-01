@@ -1,0 +1,12 @@
+keyword keyword type
+{
+	enum,         0com_single
+	enum,         0com_single
+	enum,         0com_single
+	enum = num,     0com_single
+	enum,         0com_single
+	enum,         0com_single
+	enum = enum + num, 0com_single
+	enum,         0com_single
+	enum          0com_single
+};

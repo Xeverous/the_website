@@ -1,0 +1,8 @@
+keyword keyword type { enum, enum, enum };
+keyword keyword type { enum, enum, enum }; 0com_single
+
+keyword func(type param);
+type var_local = enum;        0com_single
+type var_local = type::enum; 0com_single
+keyword var_local = type::enum;  0com_single
+func(var_local);   0com_single

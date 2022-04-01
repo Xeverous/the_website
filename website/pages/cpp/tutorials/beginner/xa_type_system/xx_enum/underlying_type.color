@@ -1,0 +1,6 @@
+0com_single
+keyword keyword type : keyword { enum, enum, enum, enum };
+0com_single
+keyword keyword type : keyword keyword { enum, enum, enum, enum = 2problem };
+0com_single
+keyword keyword type : problem { enum, enum, enum, enum };
