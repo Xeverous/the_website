@@ -451,6 +451,7 @@ tparam{spec}
 tparam
 tparam
 keyword(tparam)
+func()
 keyword keyword*
 keyword keyword* keyword
 keyword*
@@ -474,6 +475,7 @@ keyword((spec))
 keyword(spec)
 keyword[]
 keyword<tparam>(spec)
+func()
 keyword keyword
 keyword keyword
 keyword keyword keyword
@@ -536,7 +538,9 @@ keyword|=
 keyword||
 keyword~
 keyword
+func()
 keyword<tparam>(spec)
+func()
 keyword num;
 keyword;
 keyword keyword

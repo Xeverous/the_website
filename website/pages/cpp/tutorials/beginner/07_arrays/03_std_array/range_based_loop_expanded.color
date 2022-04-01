@@ -1,0 +1,17 @@
+{ 0com_single
+	keyword&& var_local = 16spec;
+	keyword (keyword var_local = spec, var_local = spec; var_local != var_local; ++var_local) {
+		17spec = *var_local;
+		14spec
+	}
+}
+{ 0com_single
+	14spec 0com_single
+	keyword&& var_local = 16spec;
+	keyword var_local = spec;
+	keyword var_local = spec;
+	keyword (; var_local != var_local; ++var_local) {
+		17spec = *var_local;
+		14spec
+	}
+}

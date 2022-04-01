@@ -1,0 +1,29 @@
+keyword var_local[num] = {3num, 3num, 3num, 3num, 3num};
+
+keyword (keyword& var_local : var_local)
+	var_local *= num;
+0com_single
+{
+	keyword&& var_local = var_local; 0com_single
+	keyword var_local = var_local;   0com_single
+	keyword var_local = var_local + num; 0com_single
+	keyword (; var_local != var_local; ++var_local) {
+		keyword& var_local = *var_local;
+		var_local *= num;
+	}
+}
+
+namespace::type<keyword, num> var_local = {3num, 3num, 3num, 3num, 3num};
+
+keyword (keyword& var_local : var_local)
+	var_local *= num;
+0com_single
+{
+	keyword&& var_local = var_local;       0com_single
+	keyword var_local = var_local.func(); 0com_single
+	keyword var_local = var_local.func()      0com_single
+	keyword (; var_local != var_local; ++var_local) {
+		keyword& var_local = *var_local;
+		var_local *= num;
+	}
+}

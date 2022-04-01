@@ -451,6 +451,7 @@ T{expression}
 U
 V
 alignof(T)
+begin()
 char const*
 char const* const
 char*
@@ -474,6 +475,7 @@ decltype((expression))
 decltype(expression)
 delete[]
 dynamic_cast<T>(expression)
+end()
 enum class
 enum struct
 explicit operator bool
@@ -536,7 +538,9 @@ operator|=
 operator||
 operator~
 override
+rbegin()
 reinterpret_cast<T>(expression)
+rend()
 return 0;
 return;
 short long
