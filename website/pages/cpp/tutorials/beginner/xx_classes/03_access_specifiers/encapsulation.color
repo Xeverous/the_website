@@ -1,0 +1,64 @@
+8pp_direct 0pp_header
+
+0com_single
+0com_single
+keyword func(keyword param, keyword param)
+{
+	keyword (param == num)
+		keyword param;
+	keyword
+		keyword func(param, param % param);
+}
+
+keyword type
+{
+keyword:
+	keyword var_local = num;
+	keyword var_local = num;
+
+keyword:
+	keyword func(keyword param, keyword param)
+	{
+		var_member = param;
+
+		keyword (param == num)
+			var_member = num;
+		keyword
+			var_member = param;
+	}
+
+	keyword func()
+	{
+		keyword keyword var_local = func(var_member, var_member);
+		var_member /= var_local;
+		var_member /= var_local;
+	}
+
+	keyword func()
+	{
+		namespace::var_global << var_member << str << var_member << str;
+	}
+};
+
+keyword func()
+{
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+
+	type var_local; 0com_single
+	var_local.func(num, num);
+	type var_local;
+	var_local.func(num, num);
+
+	0com_single
+
+	var_local.func();
+	var_local.func();
+	var_local.func();
+	var_local.func();
+	var_local.func();
+	var_local.func();
+}

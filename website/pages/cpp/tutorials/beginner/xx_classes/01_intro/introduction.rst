@@ -70,7 +70,7 @@ So far we relied on implicit :cch:`public` access default in structures. Because
 
 .. cch::
     :code_path: identical_definitions.cpp
-    :color_path: indentical_definitions.color
+    :color_path: identical_definitions.color
 
 ----
 
