@@ -45,55 +45,56 @@ Any file intended to be compiled must have metadata specified (https://getnikola
 Mandatory metadata fields:
 
 - `title` - will be used in `<title>` in generated HTML.
-- `slug` - used as the last component of the page URL, should be short, only consist of `a-z0-9-_` and match the source file name.
+- `slug` - used as the component of the page URL, should be short and consist only of `a-z0-9-_`. Usually based on the title.
 - `description` - will be used used in `<meta>` in generated HTML for SEO.
-- `author` - author name (string), will be used in generated HTML.
+- `author` - author name (string), will be used in generated HTML. Not required for *index pages*.
 
-Extra metadata fields:
+Extra metadata fields (generally not needed):
 
 - `date` - creation time (ISO 8601).
 - `updated` - last modification time (ISO 8601).
 - `template` - override default HTML template used to render the page.
 - `pretty_url` - this site has globally enabled generation of pretty urls (`foo/index.html` instead of `foo.html`). This metadata tag overrides the setting for the given page. Note that pages with slug `index` will implicitly have pretty URL disabled. Setting this field to `False` should only be needed for special pages (e.g. 404 page).
 - `breadcrumb` (custom) - set to `False` if for some reason the page should not get a breadcrumb (e.g. 404 page).
-- `index_path` - makes the page an index page and allows to use `generate_index` *shortcode*.
+- `index_path` - makes the page an **index page** and allows to use `generate_index` *shortcode*.
 
 Unused metadata fields:
 
 - `tags` - comma-separated lists of tags (no uses found yet, might be used in the future).
 - `category` - like tags, but a page/post can have only one (no uses found yet, might be used in the future).
 - `status` - one of: `published` (default) / `featured` / `draft` / `private`; can be used to disable page generation.
-- `has_math` - enables Nikola's built-in support of MathJax and KaTeX.
+- `has_math` - enables Nikola's built-in support of MathJax and KaTeX. Currently not used.
 - `guid` - for RSS and Atom feeds.
 - `link` - link to original source content - not used because:
   - This allows only 1 external source link per page/post.
   - reST offers better mechanism for referencing external sources.
-- `type` - type of the post, affects Nikola's generation but note that this site completely replaces Nikola's default templates, therefore it not needed.
-- `data` - path to a JSON/YAML/TOML file that will be mapped to Python for the given `nikola.post.Post` instance; accessible by `.data('key')`, no use found so far.
+- `type` - type of the post, affects Nikola's generation but note that this site completely replaces Nikola's default templates, therefore it would not work.
+- `data` - path to a JSON/YAML/TOML file that will be mapped to Python for the given `nikola.post.Post` instance; accessible by `.data('key')`, no use found so far. I prefer to write reST plugins which take input from directive calls within the text than to rely on Nikola-specific mechanisms.
 - `filters` - optional post-processing stuff built-in into Nikola.
 - `hidetitle` - no use since this site has own templates.
 - `nocomments` - this site currently does not use any comment system.
 
-Pages with slug "index" are special-treated and always have `pretty_url` disabled for them, see https://github.com/getnikola/nikola/issues/3287 for more information.
-
-Default metadata fields for a new page:
+**Index pages** are special pages intended to act as the equivalent of directories. They exist so that users can "move up" (by clicking links in the breadcrumb or trimming URL) to get a list of pages with the same prefix instead of a 404 error. A typical index page should be named `index.rst` and look as follows:
 
 ```
-.. title: <TITLE>
-.. slug: <SAME AS FILENAME>
-.. description: <DESC>
-.. author: <NAME>
-```
-
-Default metadata fields for a new index page:
-
-```
-.. title: <TITLE>
+.. title: <TITLE BASED ON PARENT DIRECTORY NAME>
 .. slug: index
 .. description: <DESC>
-.. author: <NAME>
 .. index_path: .
+
+:sc:`{{% generate_index %}}`
 ```
+
+A typical normal page (no requirements on the file name - the slug will be used to generate URL):
+
+```
+.. title: <TITLE>
+.. slug: <SLUG>
+.. description: <DESC>
+.. author: <NAME>
+```
+
+The slug should be `index` if the page lies in its own directory (not sharing this directory with any other page). This is so for pages that contain calls to `cch` and `ansi` plugins. The directory name already specifies the title so the `index` will enable pretty URL.
 
 ### writing pages - code snippets
 
@@ -128,6 +129,18 @@ sed 's/\r//g' -i output.txt
 ```
 
 This requires gawk (GNU awk) 4.1.0+ and GNU sed.
+
+### other notes
+
+I have noticed several typos, below is a list of correct expressions:
+
+- e.g.
+- i.e.
+- etc.
+- it's (short for it is) vs its (describes ownership)
+- advised (verb) vs adviced (noun) (common phrase: it's advi**s**ed)
+- reminder (to not forget) vs remainder (result of modulo)
+- `admonition:: info` should be `admonition:: note`
 
 ## working with CSS
 
