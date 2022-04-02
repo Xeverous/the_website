@@ -263,6 +263,7 @@ var_global
 var_global
 func
 func
+namespace::type
 namespace::namespace::type
 namespace::func
 namespace::func

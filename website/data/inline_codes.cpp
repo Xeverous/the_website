@@ -263,6 +263,7 @@ stdin
 stdout
 sscanf
 strlen
+boost::array
 boost::container::small_vector
 boost::lexical_cast
 boost::numeric_cast

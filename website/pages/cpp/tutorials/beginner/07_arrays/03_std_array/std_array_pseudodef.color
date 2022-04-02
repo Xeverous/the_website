@@ -8,6 +8,8 @@ keyword type
 	keyword keyword tparam& keyword[](type param) keyword { keyword var_member[param]; }
 	keyword       tparam& keyword[](type param)       { keyword var_member[param]; }
 
+	keyword type func() keyword keyword { keyword tparam; }
+
 	0com_single
 };
 
