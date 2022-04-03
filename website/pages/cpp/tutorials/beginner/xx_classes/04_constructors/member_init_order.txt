@@ -1,0 +1,10 @@
+[01m[Kmain.cpp:[m[K In constructor ‘[01m[Kpoint::point(int)[m[K’:
+[01m[Kmain.cpp:6:6:[m[K [01;35m[Kwarning: [m[K‘[01m[Kpoint::z[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+  int [01;35m[Kz[m[K;
+      [01;35m[K^[m[K
+[01m[Kmain.cpp:4:6:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kint point::x[m[K’ [[01;35m[K-Wreorder[m[K]
+  int [01;35m[Kx[m[K;
+      [01;35m[K^[m[K
+[01m[Kmain.cpp:12:2:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+  [01;35m[Kpoint[m[K(int value)
+  [01;35m[K^~~~~[m[K

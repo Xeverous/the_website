@@ -1,5 +1,5 @@
-.. title: 06 - destructors
-.. slug: 06_destructors
+.. title: ?? - destructors
+.. slug: destructors
 .. description: destructors
 .. author: Xeverous
 

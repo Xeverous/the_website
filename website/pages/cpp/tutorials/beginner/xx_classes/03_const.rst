@@ -5,6 +5,8 @@
 
 So far we have talked about member functions and how they can shield the class from undesirable use. This lesson extends the topic, covering few very common kinds of member functions.
 
+.. The only exception is that constructors can not have any member function qualifiers - they would not make any sense anyway since at the point of the call no object exists yet.
+
 Setters:
 
 - primary purpose: change data members (they *set* things)
@@ -21,13 +23,13 @@ Getters:
 Question-like functions (a subset of getters):
 
 - very often return :cch:`bool`
-- names usually start with ``is`` or ``has`` - for example: ``is_ready()``, ``is_full()``, ``is_open()``, ``has_completed()``,
+- names usually start with ``is`` or ``has`` - for example: ``is_ready``, ``is_full``, ``is_open``, ``has_completed``,
 - almost always are read-only operations that do not change data members
 
 Action-like functions:
 
 - primary purpose: modify the object to complete specific task
-- names are formed like orders - for example: ``next_item()``, ``load_file()``, ``refresh()``
+- names are formed like orders - for example: ``next_item``, ``load_file``, ``refresh``
 - typically return one of:
 
   - :cch:`void`
@@ -164,7 +166,7 @@ Let's have an example:
         test(fr);
     }
 
-It's important to note that const-qualifying a function changes its type. If you would like to form a reference (or a pointer) to such function (references and pointers to member functions are also possible) you need to take it into account. Analogical convertion rules apply - a reference/pointer to a less cv-qualified function can be converted to a reference/pointer to a more cv-qualified function but not vice versa.
+ If you would like to form a reference (or a pointer) to such function (references and pointers to member functions are also possible) you need to take it into account. Analogical convertion rules apply - a reference/pointer to a less cv-qualified function can be converted to a reference/pointer to a more cv-qualified function but not vice versa.
 
 .. TODO should the above info be moved elsewhere?
 
@@ -182,7 +184,7 @@ Generally no. :cch:`const` does not help the compiler except in few corner cases
 Overloading on qualification
 ############################
 
-This style of a pair of getter and setter is very popular in C++ (and often the recommended one):
+Const-qualifying a function changes its type. This in turn allows overloading based on constness of the object. The following style of getters and setters is very popular in C++ (and often the recommended one):
 
 .. TOCOLOR
 

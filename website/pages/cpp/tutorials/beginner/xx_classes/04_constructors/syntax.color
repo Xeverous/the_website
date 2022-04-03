@@ -1,0 +1,40 @@
+8pp_direct 0pp_header
+
+keyword func(keyword param)
+{
+	keyword (param == num)
+		keyword num;
+	keyword
+		keyword param;
+}
+
+keyword type
+{
+keyword:
+	keyword var_member = num;
+	keyword var_member = num;
+
+keyword:
+	0com_single
+	func(keyword param, keyword param)
+	{
+		func(param, param);
+	}
+
+	keyword func(keyword param, keyword param)
+	{
+		var_member = param;
+		var_member = func(param);
+	}
+};
+
+keyword func()
+{
+	0com_single
+	type var_local(num, num);
+
+	0com_single
+	0com_single
+	0com_single
+	keyword var_local = type(num, num);
+}

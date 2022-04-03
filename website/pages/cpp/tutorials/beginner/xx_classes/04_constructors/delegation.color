@@ -1,0 +1,38 @@
+0com_single
+
+func()
+: var_member(num)
+, var_member(num)
+{}
+
+func(keyword param)
+: var_member(param)
+, var_member(num)
+{}
+
+func(keyword param, keyword param)
+: var_member(param)
+, var_member(func(param))
+{}
+
+0com_single
+
+func()
+: type(num, num)
+{}
+
+func(keyword param)
+: type(param, num)
+{}
+
+func(keyword param, keyword param)
+: var_member(param)
+, var_member(func(param))
+{}
+
+0com_single
+
+func(keyword param = num, keyword param = num)
+: var_member(param)
+, var_member(func(param))
+{}
