@@ -1,0 +1,10 @@
+8pp_direct 0pp_header
+
+keyword <keyword tparam> keyword
+keyword namespace::type<tparam>::type& func(tparam& param) keyword
+{
+	keyword param;
+}
+
+keyword <keyword tparam>
+keyword func(keyword tparam&&) = keyword; 0com_single

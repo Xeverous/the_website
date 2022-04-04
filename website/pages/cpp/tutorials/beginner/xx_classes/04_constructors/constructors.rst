@@ -3,6 +3,8 @@
 .. description: constructors
 .. author: Xeverous
 
+.. TODO explain explicit
+
 Remember recent problem of being unable to create objects with custom initial values? This lesson will solve it.
 
 Constructors are one of **special member functions**. They are automatically called whenever an object of their type is created. They have 2 main purposes:

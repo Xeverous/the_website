@@ -1,0 +1,30 @@
+keyword type
+{
+keyword:
+	0com_single
+	keyword keyword[](keyword param) keyword
+	{
+		0com_single
+		keyword var_member->var_member[param];
+	}
+
+	0com_single
+	keyword& keyword[](keyword param)
+	{
+		0com_single
+		keyword (var_member->var_member > num)
+		{
+			0com_single
+			0com_single
+			--var_member->var_member;
+			var_member = func(func());
+		}
+
+		0com_single
+		0com_single
+		keyword var_member->var_member[param];
+	}
+
+keyword:
+	type* var_member;
+};

@@ -269,6 +269,7 @@ boost::lexical_cast
 boost::numeric_cast
 std
 std::array
+std::as_const
 std::atomic
 std::bad_cast
 std::bad_function_call
@@ -353,6 +354,7 @@ std::scanf
 std::scoped_allocator_adaptor
 std::scoped_lock
 std::set
+std::shared_ptr
 std::size
 std::size_t
 std::snprintf
@@ -381,6 +383,7 @@ std::type_index
 std::type_info
 std::uintmax_t
 std::uintptr_t
+std::unique_ptr
 std::unordered_map
 std::unordered_multimap
 std::unordered_multiset

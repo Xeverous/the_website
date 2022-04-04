@@ -1,0 +1,21 @@
+keyword type
+{
+keyword:
+	      namespace::type& func()       { keyword var_member; }
+	keyword namespace::type& func() keyword { keyword var_member; }
+
+	0com_single
+
+keyword:
+	namespace::type var_member;
+	0com_single
+};
+
+0com_single
+0com_single
+0com_single
+type var_local(9com_multi);
+var_local.func() = str;
+
+keyword type var_local(9com_multi);
+var_local.func() = str; 0com_single

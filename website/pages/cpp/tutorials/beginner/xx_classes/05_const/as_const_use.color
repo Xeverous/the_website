@@ -1,0 +1,16 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	type var_local = func();
+
+	keyword (var_local.func())
+		keyword chr;
+
+	0com_single
+	0com_single
+
+	0com_single
+	0com_single
+	keyword namespace::func(var_local)[num];
+}
