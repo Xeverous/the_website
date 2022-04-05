@@ -1,0 +1,13 @@
+keyword type {
+	keyword keyword var_global;
+};
+
+keyword type {
+	keyword keyword var_global;
+};
+
+0com_single
+keyword type::var_global = num;
+
+0com_single
+keyword type::var_global = type::var_global;

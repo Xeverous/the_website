@@ -1,0 +1,12 @@
+keyword type {
+	func(keyword param): var_member(param), var_member(param) {}
+
+	keyword var_member;
+	keyword var_member;
+};
+
+keyword type {
+	keyword type var_global;
+};
+
+type type::var_global(num);

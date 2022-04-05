@@ -1,0 +1,43 @@
+0com_single
+keyword type
+{
+	func(keyword param): var_member(param) {}
+
+	keyword var_member = num;
+	keyword keyword var_global; 0com_single
+};
+
+0com_single
+keyword type::var_global = num; 0com_single
+
+0com_single
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword func()
+{
+	type var_local(num);
+	type var_local(num);
+
+	0com_single
+	namespace::var_global << str << var_local.var_global << str;
+	namespace::var_global << str << var_local.var_global << str;
+
+	++var_local.var_global;
+
+	namespace::var_global << str << var_local.var_global << str;
+	namespace::var_global << str << var_local.var_global << str;
+
+	0com_single
+	namespace::var_global << str << namespace::func(var_local.var_global) << str;
+	namespace::var_global << str << namespace::func(var_local.var_global) << str;
+
+	0com_single
+	0com_single
+	namespace::var_global << str << keyword(keyword) << str;
+	namespace::var_global << str << keyword(type) << str;
+
+	0com_single
+	++type::var_global;
+	namespace::var_global << str << type::var_global << str;
+}

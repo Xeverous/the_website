@@ -252,6 +252,8 @@ xor_eq
 fprintf
 free()
 fscanf
+main
+main()
 malloc()
 printf
 realloc()
