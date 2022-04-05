@@ -30,15 +30,15 @@ User-defined literals are defined by overloading :cch:`operator""` (free functio
 
 .. code::
 
-    class celcius { /* ... */ };
+    class celsius { /* ... */ };
 
-    constexpr celcius operator""_C(long double x)
+    constexpr celsius operator""_C(long double x)
     {
-        return celcius(x);
+        return celsius(x);
     }
 
     // example use
-    constexpr auto human_body_temperature = 36.6_C; // auto deduced to celcius
+    constexpr auto human_body_temperature = 36.6_C; // auto deduced to celsius
 
 To avoid confusion and conflicts with the standard library suffixes, suffixes must begin with ``_``. Literal suffixes have significant parsing priority which:
 

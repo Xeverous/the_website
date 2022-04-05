@@ -1,0 +1,10 @@
+keyword type
+{
+keyword:
+	keyword keyword func(keyword param);
+	keyword keyword func(keyword param);
+	0com_single
+	0com_single
+
+	0com_single
+};

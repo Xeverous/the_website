@@ -1,0 +1,6 @@
+keyword namespace
+{
+	keyword func(keyword param);
+	keyword func(keyword param);
+	0com_single
+}

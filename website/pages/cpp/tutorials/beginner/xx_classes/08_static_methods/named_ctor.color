@@ -1,0 +1,56 @@
+keyword keyword func(keyword param)
+{
+	keyword 3num * param + num;
+}
+
+keyword keyword func(keyword param)
+{
+	keyword (param - num) / 3num;
+}
+
+0com_single
+keyword keyword var_global = -6num;
+
+keyword keyword func(keyword param)
+{
+	keyword param - var_global;
+}
+
+keyword keyword func(keyword param)
+{
+	keyword param + var_global;
+}
+
+keyword type
+{
+keyword:
+	keyword type func(keyword param)
+	{
+		keyword type(param);
+	}
+
+	keyword type func(keyword param)
+	{
+		keyword func(func(param));
+	}
+
+	keyword type func(keyword param)
+	{
+		keyword func(func(param));
+	}
+
+	0com_single
+
+keyword:
+	func(keyword param)
+	: var_member(param) {}
+
+	keyword var_member;
+};
+
+keyword func()
+{
+	0com_single
+	keyword var_local = type::func(num);
+	keyword var_local = type::func(num);
+}

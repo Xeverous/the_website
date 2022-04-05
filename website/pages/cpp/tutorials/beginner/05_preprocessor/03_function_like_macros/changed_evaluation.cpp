@@ -1,4 +1,4 @@
-#define TO_FAHRENHEIT(celsius) 1.8 * celcius + 32
+#define TO_FAHRENHEIT(celsius) 1.8 * celsius + 32
 
 double temp = TO_FAHRENHEIT(20 + 80);
 

@@ -1,0 +1,18 @@
+keyword type
+{
+keyword:
+	func(keyword param)
+	: var_member(param) {}
+
+	0com_single
+
+keyword:
+	keyword var_member;
+};
+
+keyword func()
+{
+	0com_single
+	0com_single
+	type var_local = 3num;
+}

@@ -1,0 +1,23 @@
+keyword type
+{
+keyword:
+	type& func()
+	{
+		keyword type var_local(13com_multi);
+		keyword var_local;
+	}
+
+	0com_single
+	0com_single
+	func(keyword type&) = keyword;
+	type& keyword=(keyword type&) = keyword;
+	func(type&&) = keyword;
+	type& keyword=(type&&) = keyword;
+
+	0com_single
+
+keyword:
+	func(23com_multi);
+
+	0com_single
+};

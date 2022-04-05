@@ -137,6 +137,7 @@ I have noticed several typos, below is a list of correct expressions:
 - e.g.
 - i.e.
 - etc.
+- Cel**s**ius
 - it's (short for it is) vs its (describes ownership)
 - advised (verb) vs adviced (noun) (common phrase: it's advi**s**ed)
 - reminder (to not forget) vs remainder (result of modulo)
