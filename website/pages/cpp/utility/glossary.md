@@ -35,11 +35,15 @@ TODO - article with symbol character names.
 
 `final` - A keyword which has practically the same functionality in many languages. In C++ it is not technically a "keyword" but that is a minor detail. Depending on the context it is either preventing a class to be inherited from or preventing a virtual function to be overriden in descendant classes. In Java, it has additional functionality of preventing assignments (similar to `const` in other languages).
 
-`FOSS` - free and open-source software. "free" here can have 2 meanings: zero price but more importantly freedom - the fact that FOSS is done for users and should not contain any aritifcial limitations (e.g. constantly requiring internet connection to send usage statistics).
+`FOSS` - free and open-source software. The word "free" here [means freedom, not price](https://www.gnu.org/philosophy/free-sw.html).
 
 `framework` - a prepared set of tools and code base for certain purpose. Differs from library that it requires a certain application structure and can not be customized beyond creator's intent. Frameworks are more popular in higher level languages while libraries in lower level ones, although both are widely used in various languages.
 
 `IDE` - integrated development environment. Usually an advanced code editor with autocomplete and rich refactor features integrated with build system, compiler and debugger.
+
+`idempotent` - operation that when applied multiple times has the same effect as applied only once. Can be used to describe both functional programming (a function where output depends only on the input) and high-level concepts (transactions in online shops should be idempotent to prevent cases where accidentally sent multiple identical requests would commit multiple transactions).
+
+`immutable` - Something unchangeable, usually some data. In OOP means that a type by design has unchangeable state once constructed. This approach is very common for strings - they are often implemented with [copy-on-write](https://en.wikipedia.org/wiki/Copy-on-write) technique. Since C++11 the specification for `std::basic_string` API (on which `std::string` is based on) implicitly bans COW technique (non-const overloads of `operator[]` must be O(1)) in favor of *small buffer optimization*.
 
 `interface` - 1. A type (class) that has no member objects and contains only pure (unimplemented) virtual functions. There is no special notion of interfaces in C++ because there are no restrictions on members and inheritance. See TODO turorial link. 2. (more general) A set of rules defining communication between some systems or humans. For example graphic user interface (layout of buttons on the screen etc.), command line interface (a terminal where the user inputs textual commands) and POSIX interface (system-specific C headers offerred by POSIX-compliant systems).
 
@@ -52,6 +56,8 @@ TODO - article with symbol character names.
 [`LLVM`](https://en.wikipedia.org/wiki/LLVM) - low level virtual machine. An open-source library for building compilers and related tools. Backend of the Clang compiler. https://stackoverflow.com/questions/2354725/what-exactly-is-llvm
 
 `makefile` - a file with incremental build directives used by GNU make command line program. Various IDEs and other tools create makefiles and then call make which calls compiler and linker with appropriate arguments. Makefiles can also be used for other incremental command build tasks, for example LaTeX document generation.
+
+`memoization` - caching (possibly intermediate) function results. Useful for operations where multiple subtasks may be identical, as is in some recursive functions - e.g. Fibonacci function can result in identical recursive calls multiple times.
 
 `MinGW` - Minimalist GNU for Windows. `MinGW-w64` is the most commonly used GCC toolchain port for Windows. Builds native Windows 32 and 64 bit executables without MSVC-specific code required such as `WinMain` entry function.
 
