@@ -337,6 +337,7 @@ std::min
 std::move_only_function
 std::multimap
 std::multiset
+std::mutex
 std::ofstream
 std::ostream
 std::partial_order

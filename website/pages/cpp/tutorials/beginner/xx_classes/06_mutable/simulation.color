@@ -1,0 +1,37 @@
+keyword type
+{
+keyword:
+	keyword func(keyword param)
+	{
+		keyword (param < num)
+			keyword keyword;
+
+		var_member = param;
+		keyword keyword;
+	}
+
+	keyword func(keyword param)
+	{
+		keyword (param < 3num)
+			keyword keyword;
+
+		var_member = param;
+		keyword keyword;
+	}
+
+	keyword func(keyword param)
+	{
+		var_member = param;
+		keyword keyword;
+	}
+
+	0com_single
+
+	type func() keyword; 0com_single
+
+keyword:
+	keyword var_member;
+	keyword var_member;
+	keyword var_member;
+	0com_single
+};

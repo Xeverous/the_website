@@ -1,0 +1,9 @@
+keyword type
+{
+	keyword       keyword* var_member;       0com_single
+	keyword keyword keyword* var_member;       0com_single
+	keyword       keyword* problem var_member; 0com_single
+	keyword keyword keyword* problem var_member; 0com_single
+	keyword keyword1problem       var_member;        0com_single
+	keyword problem keyword var_member;        0com_single
+};

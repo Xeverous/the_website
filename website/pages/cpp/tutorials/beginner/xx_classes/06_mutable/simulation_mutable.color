@@ -1,0 +1,62 @@
+keyword type
+{
+keyword:
+	keyword func(keyword param)
+	{
+		keyword (param < num)
+			keyword keyword;
+
+		keyword (param != var_member)
+		{
+			var_member = param;
+			var_member = namespace::var_global;
+		}
+
+		keyword keyword;
+	}
+
+	keyword func(keyword param)
+	{
+		keyword (param < 3num)
+			keyword keyword;
+
+		keyword (param != var_member)
+		{
+			var_member = param;
+			var_member = namespace::var_global;
+		}
+
+		keyword keyword;
+	}
+
+	keyword func(keyword param)
+	{
+		keyword (param != var_member)
+		{
+			var_member = param;
+			var_member = namespace::var_global;
+		}
+
+		keyword keyword;
+	}
+
+	0com_single
+
+	type func() keyword
+	{
+		keyword (!var_member)
+			var_member = func();
+
+		keyword var_member.func();
+	}
+
+keyword:
+	type func() keyword;
+
+	keyword var_member;
+	keyword var_member;
+	keyword var_member;
+	0com_single
+
+	keyword namespace::type<type> var_member;
+};
