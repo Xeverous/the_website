@@ -296,6 +296,7 @@ std::fscanf
 std::fstream
 std::function
 std::ifstream
+std::initializer_list
 std::intptr_t
 std::ios
 std::ios::app

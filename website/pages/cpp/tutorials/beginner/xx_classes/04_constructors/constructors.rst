@@ -44,6 +44,11 @@ You might have also noticed a surprising thing - **parameter names are identical
 
 The list does not have to contain all class members - if any of them already have an initializer defined in the class body, they can be skipped. If a member is present in the list, its initialization code simply overrides the default initializer.
 
+.. admonition:: info
+  :class: info
+
+  :cch:`const` members and reference members always have to be initialized.
+
 Initialization order
 ####################
 
@@ -118,9 +123,24 @@ There are 2 other ways to call constructors:
     :code_path: calling_ctors_other.cpp
     :color_path: calling_ctors_other.color
 
+``=`` is very convenient when you want to call a constructor with exactly 1 argument (the specific constructor overload can take more arguments as long as they have default values). For the :cch:`fraction$$$type` class this allows very intuitive statements like :cch:`fraction fr = 5;$$$type var_local = num;` (here creating a fraction 5/1). This form is not allowed if the constructor is :cch:`explicit`.
+
 ``{}`` places additional requirement: no *narrowing convertions*. So giving a :cch:`long` would not work because convertion from :cch:`long` to :cch:`int` is considered *narrowing*.
 
-``=`` is very convenient when you want to call a constructor with exactly 1 argument. For the :cch:`fraction$$$type` class this allows very intuitive statements like :cch:`fraction fr = 5;$$$type var_local = num;` (here creating a fraction 5/1).
+.. admonition:: note
+  :class: note
+
+  If a class contains a constructor that takes an object of type :cch:`std::initializer_list` as the first argument, such overload has higher priority and individual values are treated as list elements, not constructor arguments.
+
+  This can be particulary surprising when a type has many overloads:
+
+  .. cch::
+    :code_path: init_list_ctor.cpp
+    :color_path: init_list_ctor.color
+
+  In such case my recommendation is to write :cch:`v2 = {5, 2}$$$var_local = {num, num}` which is much clearer about intent.
+
+.. TODO std::initializer_list explanation when?
 
 Default constructor
 ###################
