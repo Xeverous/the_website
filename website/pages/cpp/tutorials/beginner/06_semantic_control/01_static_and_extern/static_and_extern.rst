@@ -1,6 +1,6 @@
-.. title: 01 - static
+.. title: 01 - static and extern
 .. slug: index
-.. description: static non-member objects
+.. description: storage duration and linkage
 .. author: Xeverous
 
 :cch:`static` is a pretty overloaded keyword in C++. It's meaning depends on the context:
