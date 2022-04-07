@@ -14,7 +14,7 @@ A class can contain :cch:`static` members: variables (fields) and functions (met
 
   :cch:`static` members are not tied to any particular instance of the class. They are shared for all instances.
 
-Said differently, :cch:`static` fields are just global objects that are placed inside class name scope.
+Said differently, :cch:`static` fields are just global objects that are placed inside class namespace.
 
 .. cch::
     :code_path: example.cpp

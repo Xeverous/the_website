@@ -1,0 +1,15 @@
+keyword type = keyword;
+keyword type {};
+keyword type {};
+
+keyword type
+{
+keyword: 0com_single
+	keyword type; 0com_single
+	keyword problem;  0com_single
+	keyword type;  0com_single
+	keyword keyword type; 0com_single
+	keyword keyword type; 0com_single
+
+	keyword keyword type 2problem; 0com_single
+};

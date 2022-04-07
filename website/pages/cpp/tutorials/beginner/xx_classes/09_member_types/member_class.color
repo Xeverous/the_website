@@ -1,0 +1,19 @@
+keyword type
+{
+	keyword type
+	{
+		keyword func() {}
+		keyword func();
+	};
+
+	keyword type; 0com_single
+};
+
+keyword type::type
+{
+	keyword func() {}
+	keyword func();
+};
+
+keyword type::type::func() {}
+keyword type::type::func() {}

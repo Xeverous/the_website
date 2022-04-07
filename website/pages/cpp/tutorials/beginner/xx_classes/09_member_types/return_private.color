@@ -1,0 +1,22 @@
+keyword type
+{
+keyword:
+	keyword type
+	{
+		keyword func() {}
+	};
+
+keyword:
+	keyword type func() { keyword type{}; }
+};
+
+keyword func()
+{
+	type::problem var_local = type::func(); 0com_single
+	keyword var_local = type::func(); 0com_single
+	var_local.func();               0com_single
+	type::func().func();       0com_single
+
+	keyword type = keyword(type::func()); 0com_single
+	type{}.func(); 0com_single
+}

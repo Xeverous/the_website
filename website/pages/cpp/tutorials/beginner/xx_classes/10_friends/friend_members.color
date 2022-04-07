@@ -1,0 +1,19 @@
+keyword type
+{
+keyword:
+	keyword type { 9com_multi };
+	keyword func() keyword;
+keyword:
+	keyword func() keyword;
+};
+
+keyword type
+{
+	0com_single
+	keyword type::func();
+
+	keyword type::type; 0com_single
+
+	keyword keyword type::func() keyword;  0com_single
+	keyword keyword type::problem() keyword; 0com_single
+};

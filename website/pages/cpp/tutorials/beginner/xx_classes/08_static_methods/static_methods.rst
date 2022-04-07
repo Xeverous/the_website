@@ -3,7 +3,7 @@
 .. description: class static function members
 .. author: Xeverous
 
-Just like :cch:`static` fields, :cch:`static` methods are not tied to any particular instance of the class. They are essentially global (free) functions in the class name scope.
+Just like :cch:`static` fields, :cch:`static` methods are not tied to any particular instance of the class. They are essentially global (free) functions in the class namespace.
 
 - :cch:`static` methods can not access non-static class fields.
 - :cch:`static` methods can not have any qualifiers (:cch:`const`, :cch:`volatile`, :cch:`&`, :cch:`&&`). Since they do not work on any object, there is no point in declaring any object-specific behavior.

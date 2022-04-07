@@ -1,0 +1,25 @@
+keyword type
+{
+keyword:
+	keyword type = namespace::type<namespace::type, namespace::namespace::type<keyword>>;
+
+	keyword func()
+	{
+		var_member = var_member;
+	}
+
+	keyword func()
+	{
+		func();
+		var_member = var_member;
+	}
+
+	      type& func()       { keyword var_member; }
+	keyword type& func() keyword { keyword var_member; }
+
+keyword:
+	func();
+
+	type var_member;
+	type var_member;
+};

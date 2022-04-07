@@ -1,0 +1,14 @@
+keyword type
+{
+keyword:
+	keyword type
+	{
+		keyword func(type& param)
+		{
+			param.func(); 0com_single
+		}
+	};
+
+keyword:
+	keyword func() {}
+};

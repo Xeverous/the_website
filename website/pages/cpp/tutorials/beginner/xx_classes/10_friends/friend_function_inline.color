@@ -1,0 +1,18 @@
+8pp_direct 0pp_header
+
+keyword type
+{
+keyword:
+	keyword var_member = num;
+
+	keyword keyword func(type param) 0com_single
+	{
+		namespace::var_global << str << param.var_member << str;
+	}
+};
+
+keyword func()
+{
+	type var_local;
+	func(var_local);
+}
