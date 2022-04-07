@@ -59,3 +59,21 @@ The correct code for the example above is:
     :color_path: namespace_for_functions.color
 
 Notice that after refactoring, function calls would remain the same: :cch:`math::sin(angle)$$$namespace::func(var_local)` etc. If the class had any :cch:`private` methods as implementation detail, they can be moved to an anonymous namespace.
+
+Corner cases
+############
+
+Pretty much no one writes code like this so it's more of a fun fact than any rule worth remembering.
+
+.. admonition:: note
+  :class: note
+
+  Local classes (1) (classes defined inside functions) and unnamed classes (2), including member classes of unnamed classes (3), cannot have *static data members*.
+
+  .. cch::
+    :code_path: corner_cases.cpp
+    :color_path: corner_cases.color
+
+Why ban *static data members* in these cases? I don't really know, my guess is that it simplifies the job of compiler writers.
+
+Why are such definitions even possible? Perhaps some consistency reason and maybe backwards compatibility, but I remember that once being able to define an :cch:`enum` inside a function was useful. Note that *lambda expressions* technically each create a new type and by design they are intended to be defined locally.

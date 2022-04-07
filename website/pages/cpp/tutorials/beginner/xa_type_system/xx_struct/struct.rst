@@ -5,6 +5,7 @@
 
 .. TOCOLOR all examples in this article
 .. TODO explain why not to use typedef struct approach from C
+.. TODO explain unnamed structs: struct {} object;
 
 It's quite common to have a few closely related variables. The :cch:`struct` keyword allows you to define a new type that consists of multiple objects.
 

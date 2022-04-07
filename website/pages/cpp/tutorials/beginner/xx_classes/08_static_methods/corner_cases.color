@@ -1,0 +1,11 @@
+keyword func()
+{
+	keyword type { 38com_multi }; 0com_single
+}
+
+keyword
+{
+	38com_multi 0com_single
+
+	keyword type { 38com_multi }; 0com_single
+} var_global;
