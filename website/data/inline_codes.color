@@ -256,6 +256,7 @@ func
 func()
 func()
 func
+func
 func()
 func
 func
@@ -263,6 +264,8 @@ func
 var_global
 var_global
 var_global
+func
+func
 func
 func
 namespace::type

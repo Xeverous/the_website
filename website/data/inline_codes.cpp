@@ -255,6 +255,7 @@ fscanf
 main
 main()
 malloc()
+memcmp
 printf
 realloc()
 scanf
@@ -264,7 +265,9 @@ stderr
 stdin
 stdout
 sscanf
+strcmp
 strlen
+strncmp
 boost::array
 boost::container::small_vector
 boost::lexical_cast

@@ -1,16 +1,16 @@
 .. title: 02 - 2-way comparison
-.. slug: 02_2way_comparison
+.. slug: index
 .. description: 2-way comparison operators
 .. author: Xeverous
 
-We start at the simplest operators - ones which do not need to modify the object
+We start with the simplest operators - ones which do not need to modify the object.
 
 Equality
 ########
 
 .. TOCOLOR
 
-.. code::
+.. code:: cpp
 
     #include <iostream>
     #include <cassert>
@@ -146,20 +146,10 @@ Free function implementation has easier to read code but more importantly, it tr
 
 .. TOCOLOR
 
-.. code::
+.. code:: cpp
 
     #include <iostream>
     #include <cassert>
-
-    // (greatest common divisor)
-    // if you have C++17, you can remove this function and use std::gcd from <numeric>
-    int gcd(int a, int b)
-    {
-        if (b == 0)
-            return a;
-        else
-            return gcd(b, a % b);
-    }
 
     class fraction
     {
@@ -181,20 +171,8 @@ Free function implementation has easier to read code but more importantly, it tr
         , m_denominator(make_valid_denominator(denominator))
         {}
 
-        void simplify()
-        {
-            const int n = gcd(m_numerator, m_denominator);
-            m_numerator /= n;
-            m_denominator /= n;
-        }
-
         int numerator() const { return m_numerator; }
         int denominator() const { return m_denominator; }
-
-        void print() const
-        {
-            std::cout << m_numerator << "/" << m_denominator;
-        }
 
         // BAD: don't overload comparison operators as members
 
@@ -221,11 +199,11 @@ Free function implementation has easier to read code but more importantly, it tr
         assert(fr.operator==(2));
 
         // bad: first operand can not undergo implicit convertion
-        assert(2 == fr);
-        assert(2.operator==(fr));
+        assert(2 == fr);          // compiler error: no match for operator==(int, fraction)
+        assert(2.operator==(fr)); // syntax error
     }
 
-The cause of this assymetry is the fact that if you call a member function, it's already known on what object the function is called. The reverse situation - searching for member functions on a different type is not possible.
+The cause of this assymetry is the fact that if you call a member function, it's already known on what type of the object the function is called. The reverse situation - searching for member functions on a non-class type is not possible.
 
 Thus, "symmetrical" (commutative binary) operators should be implemented as free functions.
 
@@ -234,13 +212,11 @@ Mixed-type comparisons
 
 Sometimes you might also want to compare 2 different types, usually one is a subset of another.
 
-A good example is a game where every player has unique ID:
-
-.. TODO friend explanation when?
+Example: a game where every player has unique ID:
 
 .. TOCOLOR
 
-.. code::
+.. code:: cpp
 
     class player
     {
@@ -251,6 +227,7 @@ A good example is a game where every player has unique ID:
     public:
         // [...]
 
+        // reminder: friend functions defined inside classes are not members
         friend bool operator==(const player& lhs, const player& rhs)
         {
             return lhs.id == rhs.id;
@@ -266,7 +243,7 @@ Then you simply need to provide extra overloads:
 
 .. TOCOLOR
 
-.. code::
+.. code:: cpp
 
     // inside class definition
     friend bool operator==(const player& lhs, int id)
@@ -287,17 +264,19 @@ Then you simply need to provide extra overloads:
 
     bool operator!=(int id, const player& rhs)
     {
-        return rhs != id;
+        return !(id == rhs);
     }
 
-The benefit of writing such extra operators is that if you have an ID and a player, you don't need to construct a temporary player object only to compare them. If object construction is expensive, this extra code improves performance.
+The benefit of writing such extra operators is that if you have an ID and a player, you don't need to construct a temporary player object only to compare them. If object construction is expensive, this extra code improves performance. If multiple types share a common subobject that needs to be compared, the most resonable implementation would be to add `int get_id() const;$$$keyword func() keyword;` to every type.
 
-There is no need to do such thing with the fraction class - we can rely on implicit construction from integers. Fraction is a very cheap type to construct and copy so there is no benefit in writing extra comparison operators.
+:cch:`std::string`, :cch:`std::string_view` and :cch:`const char*` do not share a common member (each refers to a sequence of characters differently) so instead many operator overloads are present to support every combination.
+
+There is no need to do such thing with the :cch:`fraction$$$type` class - we can rely on implicit construction from integers. Fraction is a very cheap type to construct and copy (it's just 2 integers) so there is no benefit in writing extra comparison operators. Very likely each comparison call is inlined and any temporary objects optimized out.
 
 3-way helpers
 #############
 
-Sometimes you might already have a comparison helper in the form of a 2-argument function, which returns negative, zero or positive number depending on the ordering between elements. In such case, all comparison operators can use the helper:
+Sometimes you might already have a comparison helper in the form of a 2-argument function, which returns negative, zero or positive number depending on the ordering between elements - this style is very popular in C, including standard library functions :cch:`memcmp`, :cch:`strcmp`, :cch:`strncmp`. In such case, all comparison operators can use the helper:
 
 .. TOCOLOR
 
@@ -316,7 +295,7 @@ Sometimes you might already have a comparison helper in the form of a 2-argument
 Lexicographical comparison
 ##########################
 
-If you have a type with multiple members and need to implement lexicographical comparison, you can use :cch:`std::tie` (which creates :cch:`std::tuple` of lvalue references) and rely on tuple's comparison operators:
+If you have a type with multiple members and need to implement lexicographical comparison, you can use :cch:`std::tie` (which creates :cch:`std::tuple` of references) and rely on tuple's comparison operators:
 
 .. TOCOLOR
 
@@ -331,7 +310,7 @@ If you have a type with multiple members and need to implement lexicographical c
         int position;
     };
 
-    // bug-prone implementation
+    // bug-prone manual implementation
     bool operator<(package lhs, package rhs)
     {
         if (lhs.rack != rhs.rack)
@@ -347,6 +326,7 @@ If you have a type with multiple members and need to implement lexicographical c
     bool operator<(package lhs, package rhs)
     {
         // orders elements by rack first, then by shelf, then by position
+        // this will call bool operator<(std::tuple<int&, int&, int&>, std::tuple<int&, int&, int&>)
         return std::tie(lhs.rack, lhs.shelf, lhs.position)
              < std::tie(rhs.rack, rhs.shelf, rhs.position);
     }
