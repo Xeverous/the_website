@@ -1,0 +1,54 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword type
+{
+keyword:
+	keyword var_member = num;
+	keyword var_member = num;
+
+	keyword keyword func(keyword param)
+	{
+		keyword (param == num)
+			keyword num;
+		keyword
+			keyword param;
+	}
+
+keyword:
+	func(keyword param = num, keyword param = num)
+	: var_member(param)
+	, var_member(func(param))
+	{}
+
+	keyword func() keyword { keyword var_member; }
+	keyword func() keyword { keyword var_member; }
+
+	0com_single
+
+	keyword keyword==(type param) keyword
+	{
+		keyword (func() == param.func())
+			keyword func() == param.func();
+
+		keyword func() * param.func() == param.func() * func();
+	}
+
+	keyword keyword!=(type param) keyword
+	{
+		keyword !(*keyword == param);
+	}
+};
+
+keyword func()
+{
+	type var_local(num, num);
+
+	0com_single
+	macro_ref(var_local == num);
+	macro_ref(var_local.keyword==(num));
+
+	0com_single
+	macro_ref(num 2problem var_local);          0com_single
+	macro_ref(2problem`problem==(var_local)); 0com_single
+}

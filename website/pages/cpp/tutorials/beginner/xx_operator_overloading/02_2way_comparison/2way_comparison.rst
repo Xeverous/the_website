@@ -3,115 +3,16 @@
 .. description: 2-way comparison operators
 .. author: Xeverous
 
+.. TODO this lesson requires explanation of assert macro
+
 We start with the simplest operators - ones which do not need to modify the object.
 
 Equality
 ########
 
-.. TOCOLOR
-
-.. code:: cpp
-
-    #include <iostream>
-    #include <cassert>
-
-    // (greatest common divisor)
-    // if you have C++17, you can remove this function and use std::gcd from <numeric>
-    int gcd(int a, int b)
-    {
-        if (b == 0)
-            return a;
-        else
-            return gcd(b, a % b);
-    }
-
-    class fraction
-    {
-    private:
-        int m_numerator = 0;
-        int m_denominator = 1;
-
-        static int make_valid_denominator(int value)
-        {
-            if (value == 0)
-                return 1;
-            else
-                return value;
-        }
-
-    public:
-        fraction(int numerator = 0, int denominator = 1)
-        : m_numerator(numerator)
-        , m_denominator(make_valid_denominator(denominator))
-        {}
-
-        void simplify()
-        {
-            const int n = gcd(m_numerator, m_denominator);
-            m_numerator /= n;
-            m_denominator /= n;
-        }
-
-        int numerator() const { return m_numerator; }
-        int denominator() const { return m_denominator; }
-
-        void print() const
-        {
-            std::cout << m_numerator << "/" << m_denominator;
-        }
-    };
-
-    bool operator==(fraction lhs, fraction rhs)
-    {
-        if (lhs.denominator() == rhs.denominator())
-            return lhs.numerator() == rhs.numerator();
-
-        // a/b == c/d is same as ad/bd == bc/bd
-        // we don't need to compute new denominators, just compare ad and bc
-        return lhs.numerator() * rhs.denominator() == rhs.numerator() * lhs.denominator();
-    }
-
-    bool operator!=(fraction lhs, fraction rhs)
-    {
-        return !(lhs == rhs);
-    }
-
-    bool operator<(fraction lhs, fraction rhs)
-    {
-        if (lhs.denominator() == rhs.denominator())
-        {
-            // if denominator is negative, result must be reversed
-            if (lhs.denominator() > 0) // e.g. 2/4 < 3/4
-                return lhs.numerator() < rhs.numerator();
-            else // e.g. 3/-4 < 2/-4
-                return rhs.numerator() < lhs.numerator();
-        }
-
-        // if denominator signs differ, result must be reversed
-        if ((lhs.denominator() > 0) == (rhs.denominator() > 0))
-            return lhs.numerator() * rhs.denominator() < rhs.numerator() * lhs.denominator();
-        else
-            return rhs.numerator() * lhs.denominator() < lhs.numerator() * rhs.denominator();
-    }
-
-    bool operator> (fraction lhs, fraction rhs) { return rhs < lhs; }
-    bool operator<=(fraction lhs, fraction rhs) { return !(lhs > rhs); }
-    bool operator>=(fraction lhs, fraction rhs) { return !(lhs < rhs); }
-
-    int main()
-    {
-        assert(fraction(1, 2) == fraction(2, 4));
-        assert(fraction(1, 2) != fraction(-1, 2));
-        assert(fraction(1, 2) != fraction(1, -2));
-        assert(fraction(1, 2) == fraction(-1, -2));
-
-        assert(fraction(2, 6) == fraction(3, 9));
-
-        assert(fraction(3, 5) < fraction(2, 3));
-        assert(fraction(3, 5) > fraction(-2, 3));
-        assert(fraction(3, 5) > fraction(2, -3));
-        assert(fraction(3, 5) < fraction(-2, -3));
-    }
+.. cch::
+    :code_path: equality.cpp
+    :color_path: equality.color
 
 Notes:
 
@@ -144,64 +45,9 @@ Member overloads
 
 Free function implementation has easier to read code but more importantly, it treats both arguments the same way. Member operator overloads do not, because **second operand can be implicitly converted while first not**.
 
-.. TOCOLOR
-
-.. code:: cpp
-
-    #include <iostream>
-    #include <cassert>
-
-    class fraction
-    {
-    private:
-        int m_numerator = 0;
-        int m_denominator = 1;
-
-        static int make_valid_denominator(int value)
-        {
-            if (value == 0)
-                return 1;
-            else
-                return value;
-        }
-
-    public:
-        fraction(int numerator = 0, int denominator = 1)
-        : m_numerator(numerator)
-        , m_denominator(make_valid_denominator(denominator))
-        {}
-
-        int numerator() const { return m_numerator; }
-        int denominator() const { return m_denominator; }
-
-        // BAD: don't overload comparison operators as members
-
-        bool operator==(fraction rhs) const
-        {
-            if (denominator() == rhs.denominator())
-                return numerator() == rhs.numerator();
-
-            return numerator() * rhs.denominator() == rhs.numerator() * denominator();
-        }
-
-        bool operator!=(fraction rhs) const
-        {
-            return !(*this == rhs);
-        }
-    };
-
-    int main()
-    {
-        fraction fr(2, 1);
-
-        // fine: second operand undergoes implicit convertion (2 is treated as fraction(2))
-        assert(fr == 2);
-        assert(fr.operator==(2));
-
-        // bad: first operand can not undergo implicit convertion
-        assert(2 == fr);          // compiler error: no match for operator==(int, fraction)
-        assert(2.operator==(fr)); // syntax error
-    }
+.. cch::
+    :code_path: member_overloads.cpp
+    :color_path: member_overloads.color
 
 The cause of this assymetry is the fact that if you call a member function, it's already known on what type of the object the function is called. The reverse situation - searching for member functions on a non-class type is not possible.
 
@@ -214,60 +60,17 @@ Sometimes you might also want to compare 2 different types, usually one is a sub
 
 Example: a game where every player has unique ID:
 
-.. TOCOLOR
-
-.. code:: cpp
-
-    class player
-    {
-    private:
-        int id;
-        // lots of other fields... (potentially expensive to construct)
-
-    public:
-        // [...]
-
-        // reminder: friend functions defined inside classes are not members
-        friend bool operator==(const player& lhs, const player& rhs)
-        {
-            return lhs.id == rhs.id;
-        }
-    };
-
-    bool operator!=(const player& lhs, const player& rhs)
-    {
-        return !(lhs == rhs);
-    }
+.. cch::
+    :code_path: player_id.cpp
+    :color_path: player_id.color
 
 Then you simply need to provide extra overloads:
 
-.. TOCOLOR
+.. cch::
+    :code_path: player_id_extra_overloads.cpp
+    :color_path: player_id_extra_overloads.color
 
-.. code:: cpp
-
-    // inside class definition
-    friend bool operator==(const player& lhs, int id)
-    {
-        return lhs.id == id;
-    }
-
-    // outside class definition
-    bool operator==(int id, const player& rhs)
-    {
-        return rhs == id;
-    }
-
-    bool operator!=(const player& lhs, int id)
-    {
-        return !(lhs == id);
-    }
-
-    bool operator!=(int id, const player& rhs)
-    {
-        return !(id == rhs);
-    }
-
-The benefit of writing such extra operators is that if you have an ID and a player, you don't need to construct a temporary player object only to compare them. If object construction is expensive, this extra code improves performance. If multiple types share a common subobject that needs to be compared, the most resonable implementation would be to add `int get_id() const;$$$keyword func() keyword;` to every type.
+The benefit of writing such extra operators is that if you have an ID and a player, you don't need to construct a temporary player object only to compare them. If object construction is expensive, this extra code improves performance. If multiple types share a common subobject that needs to be compared, the most resonable implementation would be to add :cch:`int get_id() const;$$$keyword func() keyword;` to every type.
 
 :cch:`std::string`, :cch:`std::string_view` and :cch:`const char*` do not share a common member (each refers to a sequence of characters differently) so instead many operator overloads are present to support every combination.
 
@@ -278,58 +81,18 @@ There is no need to do such thing with the :cch:`fraction$$$type` class - we can
 
 Sometimes you might already have a comparison helper in the form of a 2-argument function, which returns negative, zero or positive number depending on the ordering between elements - this style is very popular in C, including standard library functions :cch:`memcmp`, :cch:`strcmp`, :cch:`strncmp`. In such case, all comparison operators can use the helper:
 
-.. TOCOLOR
-
-.. code::
-
-    class report;
-    int compare(const report& lhs, const report& rhs);
-
-    bool operator==(const report& lhs, const report& rhs) { return compare(lhs, rhs) == 0; }
-    bool operator!=(const report& lhs, const report& rhs) { return compare(lhs, rhs) != 0; }
-    bool operator< (const report& lhs, const report& rhs) { return compare(lhs, rhs) <  0; }
-    bool operator> (const report& lhs, const report& rhs) { return compare(lhs, rhs) >  0; }
-    bool operator<=(const report& lhs, const report& rhs) { return compare(lhs, rhs) <= 0; }
-    bool operator>=(const report& lhs, const report& rhs) { return compare(lhs, rhs) >= 0; }
+.. cch::
+    :code_path: 3way_helper.cpp
+    :color_path: 3way_helper.color
 
 Lexicographical comparison
 ##########################
 
 If you have a type with multiple members and need to implement lexicographical comparison, you can use :cch:`std::tie` (which creates :cch:`std::tuple` of references) and rely on tuple's comparison operators:
 
-.. TOCOLOR
-
-.. code::
-
-    #include <tuple>
-
-    struct package
-    {
-        int rack;
-        int shelf;
-        int position;
-    };
-
-    // bug-prone manual implementation
-    bool operator<(package lhs, package rhs)
-    {
-        if (lhs.rack != rhs.rack)
-            return lhs.rack < rhs.rack;
-
-        if (lhs.shelf != rhs.shelf)
-            return lhs.shelf < rhs.shelf;
-
-        return lhs.position < rhs.position;
-    }
-
-    // same behavior, but much cleaner
-    bool operator<(package lhs, package rhs)
-    {
-        // orders elements by rack first, then by shelf, then by position
-        // this will call bool operator<(std::tuple<int&, int&, int&>, std::tuple<int&, int&, int&>)
-        return std::tie(lhs.rack, lhs.shelf, lhs.position)
-             < std::tie(rhs.rack, rhs.shelf, rhs.position);
-    }
+.. cch::
+    :code_path: tuple_comparison.cpp
+    :color_path: tuple_comparison.color
 
 Recommendation
 ##############

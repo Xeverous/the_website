@@ -1,0 +1,20 @@
+keyword type
+{
+keyword:
+	keyword var_member;
+	0com_single
+
+keyword:
+	0com_single
+
+	0com_single
+	keyword keyword keyword==(keyword type& param, keyword type& param)
+	{
+		keyword param.var_member == param.var_member;
+	}
+};
+
+keyword keyword!=(keyword type& param, keyword type& param)
+{
+	keyword !(param == param);
+}

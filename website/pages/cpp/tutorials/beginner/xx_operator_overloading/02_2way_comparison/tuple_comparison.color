@@ -1,0 +1,29 @@
+8pp_direct 0pp_header
+
+keyword type
+{
+	keyword var_member;
+	keyword var_member;
+	keyword var_member;
+};
+
+0com_single
+keyword keyword<(type param, type param)
+{
+	keyword (param.var_member != param.var_member)
+		keyword param.var_member < param.var_member;
+
+	keyword (param.var_member != param.var_member)
+		keyword param.var_member < param.var_member;
+
+	keyword param.var_member < param.var_member;
+}
+
+0com_single
+keyword keyword<(type param, type param)
+{
+	0com_single
+	0com_single
+	keyword namespace::func(param.var_member, param.var_member, param.var_member)
+	     < namespace::func(param.var_member, param.var_member, param.var_member);
+}
