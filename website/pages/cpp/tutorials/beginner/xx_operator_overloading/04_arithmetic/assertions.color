@@ -1,0 +1,3 @@
+macro_ref(type(num, num) == +type(num, num));
+macro_ref(type(num, num) == -type(-num, num));
+macro_ref(type(num, num) == -type(num, -num));

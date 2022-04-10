@@ -1,0 +1,21 @@
+0com_single
+type keyword+() keyword
+{
+	keyword *keyword;
+}
+
+type keyword-() keyword
+{
+	keyword {-func(), func()};
+}
+
+0com_single
+type keyword+(type param)
+{
+	keyword param;
+}
+
+type keyword-(type param)
+{
+	keyword {-param.func(), param.func()};
+}

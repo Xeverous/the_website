@@ -1,0 +1,137 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+0com_single
+0com_single
+keyword func(keyword param, keyword param)
+{
+	keyword (param == num)
+		keyword param;
+	keyword
+		keyword func(param, param % param);
+}
+
+keyword type
+{
+keyword:
+	keyword var_member;
+	keyword var_member;
+
+	keyword keyword func(keyword param)
+	{
+		keyword (param == num)
+			keyword num;
+		keyword
+			keyword param;
+	}
+
+keyword:
+	func(keyword param = num, keyword param = num)
+	: var_member(param)
+	, var_member(func(param))
+	{}
+
+	keyword func()
+	{
+		keyword keyword var_local = func(var_member, var_member);
+		var_member /= var_local;
+		var_member /= var_local;
+	}
+
+	keyword func() keyword { keyword var_member; }
+	keyword func() keyword { keyword var_member; }
+
+	type& keyword+=(type param)
+	{
+		var_member = func() * param.func() + param.func() * func();
+		var_member = func() * param.func();
+
+		func();
+		keyword *keyword;
+	}
+
+	type& keyword-=(type param)
+	{
+		var_member = func() * param.func() - param.func() * func();
+		var_member = func() * param.func();
+
+		func();
+		keyword *keyword;
+	}
+
+	type& keyword*=(type param)
+	{
+		var_member *= param.func();
+		var_member *= param.func();
+
+		func();
+		keyword *keyword;
+	}
+
+	type& keyword/=(type param)
+	{
+		0com_single
+		0com_single
+		0com_single
+		macro_ref(param.func() != num);
+		var_member *= param.func();
+		var_member *= param.func();
+
+		func();
+		keyword *keyword;
+	}
+
+	type& keyword%=(type param)
+	{
+		macro_ref(param.func() != num);
+		var_member = (func() * param.func()) % (param.func() * func());
+		var_member *= param.func();
+
+		func();
+		keyword *keyword;
+	}
+};
+
+keyword keyword==(type param, type param)
+{
+	keyword (param.func() == param.func())
+		keyword param.func() == param.func();
+
+	0com_single
+	0com_single
+	keyword param.func() * param.func() == param.func() * param.func();
+}
+
+keyword keyword!=(type param, type param)
+{
+	keyword !(param == param);
+}
+
+0com_single
+0com_single
+0com_single
+0com_single
+0com_single
+type keyword+(type param, type param) { keyword param += param; }
+type keyword-(type param, type param) { keyword param -= param; }
+type keyword*(type param, type param) { keyword param *= param; }
+type keyword/(type param, type param) { keyword param /= param; }
+type keyword%(type param, type param) { keyword param %= param; }
+
+keyword func()
+{
+	macro_ref(type(num, num) + type(num, num) == type(num, num));
+	macro_ref(type(num, num) - type(num, num) == type(num, num));
+
+	macro_ref(type(num, num) * type(num, num) == type(num, num));
+	macro_ref(type(num, num) / type(num, num) == type(num, num));
+
+	macro_ref(type(num, num) * type(num, -num) == type(-num, num));
+	macro_ref(type(num, num) / type(num, -num) == type(-num, num));
+
+	macro_ref(type(num, num) % type(num, num) == type(num, num));
+	macro_ref(type(num, num) % type(num, -num) == type(num, num));
+	macro_ref(type(num, num) % type(-num, num) == type(num, num));
+	macro_ref(type(-num, num) % type(num, num) == type(-num, num));
+	macro_ref(type(num, -num) % type(num, num) == type(-num, num));
+}

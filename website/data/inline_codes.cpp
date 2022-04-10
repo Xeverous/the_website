@@ -286,8 +286,10 @@ std::basic_string<char>
 std::chrono::seconds
 std::cerr
 std::chrono
+std::chrono::duration
 std::cin
 std::clog
+std::complex
 std::cout
 std::deque
 std::endl
@@ -551,6 +553,7 @@ override
 rbegin()
 reinterpret_cast<T>(expression)
 rend()
+return *this;
 return 0;
 return;
 short long

@@ -1,0 +1,18 @@
+keyword type {};
+
+keyword type
+{
+	func() = keyword;
+	func(type) {} 0com_single
+
+	0com_single
+	0com_single
+};
+
+0com_single
+0com_single
+
+keyword func()
+{
+	+type{}; 0com_single
+}

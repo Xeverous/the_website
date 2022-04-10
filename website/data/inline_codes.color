@@ -286,8 +286,10 @@ namespace::type<keyword>
 namespace::namespace::type
 namespace::var_global
 namespace::namespace
+namespace::namespace::type
 namespace::var_global
 namespace::var_global
+namespace::type
 namespace::var_global
 namespace::type
 namespace::var_global
@@ -551,6 +553,7 @@ keyword
 func()
 keyword<tparam>(spec)
 func()
+keyword *keyword;
 keyword num;
 keyword;
 keyword keyword
