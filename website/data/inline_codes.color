@@ -373,9 +373,10 @@ namespace::func
 namespace::func
 namespace::type
 namespace::type
+namespace::type::var_global
 namespace::type
 namespace::type::func
-namespace::type::var_global
+namespace::type
 namespace::var_global
 namespace::type
 namespace::type::var_global

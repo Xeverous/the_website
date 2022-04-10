@@ -1,0 +1,4 @@
+namespace::type& keyword<<(namespace::type& param, type param)
+{
+	keyword namespace::var_global << param.func() << str << param.func();
+}

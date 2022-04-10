@@ -1,0 +1,5 @@
+namespace::type var_local(str); 0com_single
+type var_local;
+type var_local;
+var_local >> var_local >> var_local;
+namespace::var_global << var_local << str << var_local;

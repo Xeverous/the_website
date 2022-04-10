@@ -373,9 +373,10 @@ std::sprintf
 std::sscanf
 std::stack
 std::string
+std::string::npos
 std::string_view
 std::string_view::size
-std::string::npos
+std::stringstream
 std::strong_order
 std::strong_ordering
 std::strong_ordering::equal

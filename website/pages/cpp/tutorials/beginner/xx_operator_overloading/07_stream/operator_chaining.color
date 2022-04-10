@@ -1,0 +1,7 @@
+keyword x = num + num + num + num;
+keyword y = ((num + num) + num) + num; 0com_single
+keyword y = keyword+(keyword+(keyword+(num, num), num), num); 0com_single
+
+namespace::var_global << num << num << num << num;
+(((namespace::var_global << num) << num) << num) << num; 0com_single
+keyword<<(keyword<<(keyword<<(keyword<<(namespace::var_global, num), num), num), num); 0com_single

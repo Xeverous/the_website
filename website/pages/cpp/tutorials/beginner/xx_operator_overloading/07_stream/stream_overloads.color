@@ -1,0 +1,17 @@
+namespace::type& keyword<<(namespace::type& param, type param)
+{
+	keyword param << param.func() << str << param.func();
+}
+
+namespace::type& keyword>>(namespace::type& param, type& param)
+{
+	0com_single
+	0com_single
+	keyword var_local = num;
+	param >> var_local;
+	param.func(var_local);
+	param.func(); 0com_single
+	param >> var_local;
+	param.func(var_local);
+	keyword param;
+}
