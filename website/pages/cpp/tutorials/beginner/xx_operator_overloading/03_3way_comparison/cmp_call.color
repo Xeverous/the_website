@@ -1,0 +1,7 @@
+keyword keyword var_local = var_local <=> var_local; 0com_single
+keyword (var_local < num)
+	namespace::var_local << str;
+keyword keyword (var_local > num)
+	namespace::var_local << str;
+keyword
+	namespace::var_local << str;

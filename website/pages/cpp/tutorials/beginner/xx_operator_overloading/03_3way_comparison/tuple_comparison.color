@@ -1,0 +1,15 @@
+8pp_direct 0pp_header
+
+keyword type
+{
+	keyword var_member;
+	keyword var_member;
+	keyword var_member;
+	0com_single
+
+	keyword keyword<=>(type param) keyword
+	{
+		keyword namespace::func(var_member, var_member, var_member)
+		   <=> namespace::func(param.var_member, param.var_member, param.var_member);
+	}
+};

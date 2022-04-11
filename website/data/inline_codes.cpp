@@ -471,6 +471,7 @@ char*
 char* const
 co_await expression
 co_yield expression
+const T
 const char*
 const char* const
 const int
@@ -481,6 +482,7 @@ const int[]
 const std::type_info&
 const void*
 const void* const
+const volatile T
 const_cast<T>(expression)
 decltype(auto)
 decltype(entity)
@@ -581,6 +583,7 @@ using namespace std;
 using std::cout;
 void*
 void* const
+volatile T
 x
 x != y
 x % y

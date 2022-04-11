@@ -471,6 +471,7 @@ keyword*
 keyword* keyword
 keyword spec
 keyword spec
+keyword tparam
 keyword keyword*
 keyword keyword* keyword
 keyword keyword
@@ -481,6 +482,7 @@ keyword keyword[]
 keyword namespace::type&
 keyword keyword*
 keyword keyword* keyword
+keyword keyword tparam
 keyword<tparam>(spec)
 keyword(keyword)
 keyword(spec)
@@ -581,6 +583,7 @@ keyword keyword namespace;
 keyword namespace::var_global;
 keyword*
 keyword* keyword
+keyword tparam
 var_local
 var_local != var_local
 var_local % var_local

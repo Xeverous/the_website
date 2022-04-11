@@ -1,0 +1,28 @@
+0com_single
+
+keyword keyword==(type param) keyword
+{
+	keyword (func() == param.func())
+		keyword func() == param.func();
+
+	keyword func() * param.func() == param.func() * func();
+}
+
+namespace::type keyword<=>(type param) keyword
+{
+	keyword (func() == param.func())
+	{
+		keyword (func() > num)
+			keyword func() <=> param.func();
+		keyword
+			keyword param.func() <=> func();
+	}
+
+	keyword keyword var_local = func() * param.func();
+	keyword keyword var_local = param.func() * func();
+
+	keyword ((func() > num) == (param.func() > num))
+		keyword var_local <=> var_local;
+	keyword
+		keyword var_local <=> var_local;
+}

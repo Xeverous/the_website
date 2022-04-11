@@ -1,0 +1,30 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword type
+{
+	keyword <keyword tparam, namespace::concept<tparam> tparam>
+	keyword keyword keyword()(keyword tparam& param, keyword tparam& param) keyword
+	{
+		keyword keyword (namespace::concept<tparam, tparam>)
+		{
+			keyword param <=> param;
+		}
+		keyword
+		{
+			0com_single
+			0com_single
+			keyword (param == param)
+				keyword namespace::type::var_global;
+			keyword keyword (param < param)
+				keyword namespace::type::var_global;
+			keyword
+				keyword namespace::type::var_global;
+		}
+	}
+};
+keyword keyword type var_global;
+
+keyword <keyword tparam, keyword tparam = tparam>
+keyword type
+	= keyword(var_global(namespace::func<keyword tparam&>(), namespace::func<keyword tparam&>()));
