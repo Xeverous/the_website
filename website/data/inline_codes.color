@@ -512,6 +512,7 @@ keyword keyword
 keyword namespace
 keyword[]
 keyword tparam
+keyword keyword
 keyword!
 keyword!=
 keyword""

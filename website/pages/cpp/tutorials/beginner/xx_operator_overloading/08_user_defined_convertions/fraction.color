@@ -1,0 +1,27 @@
+0com_single
+
+keyword keyword keyword() keyword
+{
+	keyword keyword<keyword>(func()) / func();
+}
+
+keyword keyword keyword() keyword
+{
+	keyword keyword<keyword>(func()) / func();
+}
+
+keyword keyword keyword keyword() keyword
+{
+	keyword keyword<keyword keyword>(func()) / func();
+}
+
+keyword keyword keyword() keyword
+{
+	keyword func() != num;
+}
+
+0com_single
+keyword keyword!() keyword
+{
+	keyword !keyword keyword();
+}

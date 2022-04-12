@@ -512,6 +512,7 @@ long long
 namespace std
 new[]
 operator T
+operator bool
 operator!
 operator!=
 operator""

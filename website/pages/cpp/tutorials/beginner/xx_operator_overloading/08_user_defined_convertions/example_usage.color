@@ -1,0 +1,20 @@
+keyword func(keyword);
+keyword func(keyword);
+type var_local(num, num);
+
+keyword var_local = var_local; 0com_single
+keyword var_local = keyword<keyword>(var_local); 0com_single
+func(var_local); 0com_single
+func(keyword<keyword>(var_local)); 0com_single
+
+keyword var_local = var_local; 0com_single
+keyword var_local = keyword<keyword>(var_local); 0com_single
+func(var_local); 0com_single
+func(keyword<keyword>(var_local)); 0com_single
+
+0com_single
+keyword (var_local) {}
+
+0com_single
+0com_single
+keyword (!var_local) {}
