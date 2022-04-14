@@ -29,6 +29,8 @@ As numbers grow, digits are replaced (0 with 1, 1 with 2, 2 with 3, ...). When m
 
 The table below showcases natural numbers written in different systems:
 
+.. The table has been generated from a python script.
+
 .. TODO it would be nice to right-align text in this table
 
 .. list-table::
