@@ -78,6 +78,8 @@ Since C++20 it's also possile to bring enumerator names into enclosing scope.
     :code_path: using_enum.cpp
     :color_path: using_enum.color
 
+It's also possible to do it for single enumerators by writing code like :cch:`using color::red$$$keyword type::enum`.
+
 Anonymous namespaces
 ####################
 
