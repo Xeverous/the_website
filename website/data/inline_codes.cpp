@@ -480,6 +480,7 @@ char* const
 co_await expression
 co_yield expression
 const T
+const T&
 const char*
 const char* const
 const int

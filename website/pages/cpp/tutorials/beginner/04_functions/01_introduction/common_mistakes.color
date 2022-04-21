@@ -17,7 +17,7 @@ keyword func()
 	0com_single
 	0com_single
 	0com_single
-	namespace::var_global << func();
+	namespace::var_global 2problem func();
 
 	0com_single
 	0com_single

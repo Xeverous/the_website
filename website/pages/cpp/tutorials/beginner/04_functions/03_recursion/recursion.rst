@@ -1,5 +1,5 @@
 .. title: 03 - recursion
-.. slug: 03_recursion
+.. slug: index
 .. description: recursive functions
 .. author: Xeverous
 
@@ -20,13 +20,13 @@ Factorial
 Factorial is a prime example of a recursive function. It's definition can be written in multiple ways, including:
 
 - iterative: ``n! = 1 * 2 * 3 * ... * (n - 2) * (n - 1) * n``
-- recursive: ``n! = 1 for n = 0, n * (n - 1)! otherwise``
+- recursive: ``n! = 1 if n = 0, n * (n - 1)! otherwise``
 
 Both of these can also be expressed in code:
 
 .. cch::
-    :code_path: 03_recursion/factorial.cpp
-    :color_path: 03_recursion/factorial.color
+    :code_path: factorial.cpp
+    :color_path: factorial.color
 
 .. admonition:: note
     :class: note
@@ -48,8 +48,8 @@ Each number in the Fibonacci sequence is the sum of 2 previous numbers: 1, 1, 2,
 Just like factorial, the function can be defined in both iterative and recursive ways:
 
 .. cch::
-    :code_path: 03_recursion/fibonacci.cpp
-    :color_path: 03_recursion/fibonacci.color
+    :code_path: fibonacci.cpp
+    :color_path: fibonacci.color
 
 Recursion vs iteration
 ######################
@@ -57,7 +57,7 @@ Recursion vs iteration
 - When a function calls another function at its end, it's known as *tail call*.
 - When a function calls itself at its end, it's known as *tail recursion*.
 
-Compilers have special optimizations for tail calls. Their main purpose is to avoid adding new *stack frames* to the *call stack* because if the tail call is the last thing a function needs to do, there is no reason to return to the function when the nested call finishes. Instead of pushing new stack frame, machine code performs a jump to the beginning of the function. This creates a loop which reuses current stack frame and works on the same memory. Factorial function is not tail recursive because it needs to perform multiplication after nested call returns.
+Compilers have special optimizations for tail calls. Their main purpose is to avoid adding new *stack frames* to the *call stack* because if the tail call is the last thing a function needs to do, there is no reason to return to the function when the nested call finishes. Instead of pushing new stack frame, machine code performs a jump to the beginning of the function. This creates a loop which reuses current stack frame and works on the same memory. Factorial function is not tail recursive because it needs to perform multiplication after nested call returns (though it could be modified to be tail-recursive).
 
 All of recursive functions can also be written in iterative form. The iterative form is very often faster because calling a function recursively requires some overhead for each call (pushing new stack frame). Additionally, a good iterative implementation can optimize out redundant calculations - in case of recursive Fibonacci implementation you can notice that some function calls might happen multiple times: ``F(5) = F(4) + F(3) = F(3) + F(2) + F(2) + F(1)``. Since recursion does not save the result anywhere, it's being lost and recomputed multiple times. Iterative version stores 2 previous results. Some implementations can go even further as having a table (an array) of precomputed results for common inputs.
 

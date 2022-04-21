@@ -480,6 +480,7 @@ keyword* keyword
 keyword spec
 keyword spec
 keyword tparam
+keyword tparam&
 keyword keyword*
 keyword keyword* keyword
 keyword keyword

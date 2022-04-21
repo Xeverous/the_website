@@ -21,4 +21,11 @@ keyword func()
 	0com_single
 	namespace::var_global << func(num, func(func(-num, num), num)) << str;
 	namespace::var_global << func(func(func(func(num)))) << str;
+
+	0com_single
+	0com_single
+	0com_single
+	keyword var_local = num;
+	keyword var_local = num;
+	func(var_local, var_local); 0com_single
 }

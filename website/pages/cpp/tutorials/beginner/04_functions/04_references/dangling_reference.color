@@ -1,0 +1,5 @@
+keyword& func(keyword param)
+{
+	keyword var_local = param * param;
+	keyword var_local;
+}

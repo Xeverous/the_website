@@ -1,23 +1,23 @@
 .. title: 02 - declarations
-.. slug: 02_declarations
+.. slug: index
 .. description: function declarations and ODR
 .. author: Xeverous
 
-Before any entity is used (actually, *ODR-used*) it must be defined. This was already noticeable with variables (their definition specifies a type) and a similar mechanism exists with functions. So far all functions in example programs were defined before main function, because main function used them.
+Before any entity is used (formally, *ODR-used*) it must be defined. This was already noticeable with variables (their definition specifies a type) and a similar mechanism exists with functions. So far all functions in example programs were defined before main function, because main function used them.
 
 However, a function *definition* is not required at the point of calling it. A *declaration* is enough. It is possible to declare a function and define it's body later:
 
 .. cch::
-    :code_path: 02_declarations/syntax.cpp
-    :color_path: 02_declarations/syntax.color
+    :code_path: syntax.cpp
+    :color_path: syntax.color
 
-Despite the fact that function parameter names can be skipped in the declaration, it's still recommended to write them. Function declaration is the place most readers will check for documentation comments and parameters with descriptive names are valuable information. Parameter names in the declaration do not have to be the same as in definition (only names in definition affect function body) but in pretty much every case they are written as identical.
+Despite the fact that function parameter names can be skipped in the declaration, it's still recommended to write them. Function declaration is the place most readers will check for documentation comments and parameters with descriptive names are valuable information. Parameter names in the declaration do not have to be the same as in definition (only names in definition affect function body) but in pretty much every case they are written as identical for consistency.
 
-As long as the declaration is visible when the function is called, the function definition can be placed later in the code. In fact, it can also be in a separate file!
+As long as the declaration appears before the function is called, the function definition can be placed later in the code. In fact, it can also be in a separate file!
 
     Is this the reason why :cch:`#include`\ s are needed to access standard library functions?
 
-Yes. These files (called headers) contain all the declarations and definitions necessary to use the standard library, which can be implemented elsewhere.
+Yes. These files (called headers) contain all the declarations (and definitions) necessary to use the standard library, which can be implemented elsewhere. Note that header/source files are not strictly declaration/definition separation - the mechanism is a bit different (more like "interface/implementation") and explained in the preprocessor chapter.
 
 ODR
 ###
@@ -50,9 +50,9 @@ The rule specifies *at most once*, not *exactly once* because some entities can 
 
 *Every C++ entity must be defined before it's ODR-used.*
 
-An *ODR-use* is a use of the entity which requires its definition. What requires definition and what only a declaration is very case-specific. Calling functions only requires declaration.
+An *ODR-use* is a use of the entity which requires its definition. What requires definition and what only a declaration is very case-specific. Calling functions only requires declaration. Obviously the final program must have the function defined - if you only declare it and try to build the program it will fail.
 
-ODR is extremely important when separating code into multiple files. C and C++ build process (including the concept of *translation units*) requires ODR to be satisfied. More on multi-file projects later.
+ODR is extremely important when separating code into multiple files. C and C++ build process (including the concept of *translation units*) requires ODR to be satisfied. More on multi-file projects later in the preprocessor chapter.
 
 .. admonition:: error
     :class: error
@@ -74,8 +74,8 @@ The second point is very important. As the program gets more complex sooner or l
 Below is an example of 2 cross-dependent functions which can not be defined without declaring something first. However you would try to reorder the program, at least 1 function needs to be declared first.
 
 .. cch::
-    :code_path: 02_declarations/forward_declaration.cpp
-    :color_path: 02_declarations/forward_declaration.color
+    :code_path: forward_declaration.cpp
+    :color_path: forward_declaration.color
 
 Necessary declarations are often called *forward declarations*.
 
@@ -84,7 +84,7 @@ Necessary declarations are often called *forward declarations*.
 Then both functions would end up calling each other endlessly. Potential outcomes are:
 
 - Value reaches end of signed integer range which is undefined behavior (only unsigned numbers have well-defined overflow).
-- Function call stack exhausts stack memory space which causes stack overflow which is undefined behavior.
+- Function call stack exhausts stack memory space which causes stack overflow which is also undefined behavior.
 
 :cch:`(void)` declarations
 ##########################
@@ -94,18 +94,18 @@ History time. Initially, in C, there was no mechanism of function declarations. 
 It was a big problem that a mistake as simple as mismatched amount and/or types of arguments could result something as bad as undefined behavior. Function declarations have been added but they weren't initially as detailed as today - they only stated function name and return type.
 
 .. cch::
-    :code_path: 02_declarations/non_prototype.c
-    :color_path: 02_declarations/non_prototype.color
+    :code_path: non_prototype.c
+    :color_path: non_prototype.color
 
 The :cch:`(void)` thing does not specify an argument of type :cch:`void` (you can not have objects of this type). It's a special syntax to differentiate it from old *non-prototype function declaration* syntax. Without this rule, both new and old syntax would look the same for functions taking 0 parameters - this would break existing code by changing its meaning.
 
 In other words, since C89 functions can be properly declared (with parameter types) but due to backwards compatibility and the fact that ``()`` already had a meaning, :cch:`(void)` is needed for functions taking 0 parameters.
 
-**In C++, there is no such problem.** C++ has no *non-prototype function declarations*. :cch:`(void)` is supported only for compatibility.
+**In C++, there is no such problem.** C++ has no *non-prototype function declarations*, ``()`` works as expected. :cch:`(void)` is supported only for compatibility with C code imported to C++.
 
 .. cch::
-    :code_path: 02_declarations/void_param.cpp
-    :color_path: 02_declarations/void_param.color
+    :code_path: void_param.cpp
+    :color_path: void_param.color
 
 Summing it up, writing :cch:`(void)` in C++ is a mistake. It comes from misunderstanding how function declaration syntax evolved in C and how it works in C++.
 

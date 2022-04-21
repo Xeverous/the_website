@@ -135,6 +135,8 @@ Example sequences to test:
 - for 7: 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1
 - for 15: 46, 23, 70, 35, 106, 53, 160, 80, 40, 20, 10, 5, 16, 8, 4, 2, 1
 
+Don't input too large numbers though - the data types being used (:cch:`int`, :cch:`long`, :cch:`long long`) have finite range. Too large numbers will invoke *undefined behavior*, typically by performing *overflow*.
+
 Even though huge numbers have been tested, no proof or pattern has been found that would guuarantee that every number reaches 1. If negative numbers are allowed, there are 3 extra known loops:
 
 - -1, -2, -1

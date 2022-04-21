@@ -1,0 +1,4 @@
+[01m[Kmain.cpp:[m[K In function ‘[01m[Kint missing_return(int)[m[K’:
+[01m[Kmain.cpp:7:1:[m[K [01;35m[Kwarning: [m[Kcontrol reaches end of non-void function [[01;35m[K-Wreturn-type[m[K]
+ [01;35m[K}[m[K
+ [01;35m[K^[m[K

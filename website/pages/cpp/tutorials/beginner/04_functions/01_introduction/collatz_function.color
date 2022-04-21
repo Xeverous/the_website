@@ -1,0 +1,7 @@
+keyword keyword func(keyword keyword param)
+{
+	keyword (param % num == num)
+		keyword param / num;
+	keyword
+		keyword num * param + num;
+}
