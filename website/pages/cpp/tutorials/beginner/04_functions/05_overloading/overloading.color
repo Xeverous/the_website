@@ -1,0 +1,42 @@
+0com_single
+keyword func(keyword);
+keyword func(keyword, keyword);
+keyword func(keyword, keyword, keyword);
+
+0com_single
+keyword func(keyword);
+keyword func(keyword);
+keyword func(keyword);
+
+0com_single
+keyword func(keyword, keyword);
+keyword func(keyword);
+keyword func(keyword);
+keyword func(keyword);
+
+0com_single
+keyword func();
+keyword func();
+
+0com_single
+keyword func();
+keyword func(keyword);
+
+0com_single
+0com_single
+keyword func(keyword);
+keyword func(keyword keyword);
+keyword func(keyword keyword);
+
+0com_single
+0com_single
+keyword func(keyword*);
+keyword func(keyword&);
+keyword func(keyword&&);
+keyword func(keyword keyword&);
+keyword func(keyword keyword&&);
+
+0com_single
+0com_single
+keyword func();
+keyword func() keyword;

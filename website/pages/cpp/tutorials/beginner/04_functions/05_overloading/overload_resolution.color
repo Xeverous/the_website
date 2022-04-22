@@ -1,0 +1,30 @@
+keyword func(keyword, keyword);  0com_single
+keyword func(keyword, keyword); 0com_single
+keyword func(keyword, keyword); 0com_single
+
+0com_single
+0com_single
+0com_single
+0com_single
+func(num1suf, 4num);
+
+keyword func(keyword); 0com_single
+keyword func(keyword);   0com_single
+
+0com_single
+0com_single
+0com_single
+func(num);
+
+0com_single
+func(num1suf);
+
+0com_single
+0com_single
+0com_single
+func(4num1suf);
+
+0com_single
+0com_single
+0com_single
+func(chr);

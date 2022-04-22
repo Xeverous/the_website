@@ -511,6 +511,8 @@ f()
 f(x);
 final
 for (;;)
+g
+g()
 i
 if (obj)
 inline namespace

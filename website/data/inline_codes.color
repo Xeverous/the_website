@@ -511,6 +511,8 @@ func()
 func(var_local);
 keyword
 keyword (;;)
+func
+func()
 var_local
 keyword (var_local)
 keyword keyword

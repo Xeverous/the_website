@@ -1,0 +1,6 @@
+keyword func(keyword);
+func(num); 0com_single
+
+keyword func(keyword) = keyword;
+keyword func(keyword);
+func(num); 0com_single

@@ -165,6 +165,13 @@ Without using advanced features, the only case where a dangling reference can be
 
 When the function returns, the :cch:`result$$$var_local` has already been destroyed. Returned reference (or pointer) will store memory address that is no longer valid.
 
+.. admonition:: tip
+  :class: tip
+
+  Don't return references/pointers to function-local objects. `CG F.43. <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rf-dangle>`_
+
+..
+
     Shouldn't references then be banned completely from function return types? Why they are allowed?
 
 There are numerous cases when a function can return a reference. Some examples of useful functions that don't return dangling references:
