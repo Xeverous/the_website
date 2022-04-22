@@ -5,3 +5,5 @@
 .. index_path: .
 
 :sc:`{{% generate_index %}}`
+
+.. TODO constexpr, consteval functions
