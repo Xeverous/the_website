@@ -1,0 +1,27 @@
+0com_single
+0com_single
+0com_single
+keyword type;
+
+keyword type
+{
+keyword:
+	keyword func(namespace::type 10com_multi) { 9com_multi }
+
+0com_single
+};
+
+keyword type: keyword type
+{
+keyword:
+	0com_single
+	0com_single
+	keyword func(keyword type& 9com_multi) { 9com_multi }
+};
+
+keyword func(keyword type& param)
+{
+	type var_local;
+	var_local.func(param);      0com_single
+	var_local.func(str); 0com_single
+}

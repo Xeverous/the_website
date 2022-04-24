@@ -62,6 +62,7 @@ goto
 if
 inline
 int
+interface
 long
 mutable
 namespace
@@ -281,6 +282,10 @@ std::bad_function_call
 std::bad_typeid
 std::bind
 std::bit_cast
+std::basic_ios
+std::basic_iostream
+std::basic_istream
+std::basic_ostream
 std::basic_string_view<char>
 std::basic_string<char>
 std::chrono::seconds
@@ -342,6 +347,7 @@ std::make_unique
 std::map
 std::max
 std::min
+std::move
 std::move_only_function
 std::multimap
 std::multiset
@@ -405,6 +411,7 @@ std::weak_ordering
 std::weak_ordering::equivalent
 std::weak_ordering::greater
 std::weak_ordering::less
+std::weak_ptr
 std::wstring
 !=
 !(x == y)
@@ -463,6 +470,7 @@ T*
 T{expression}
 U
 V
+a + b
 alignof(T)
 begin()
 char const*
@@ -500,6 +508,7 @@ extern thread_local
 f
 f()
 f(x);
+final
 for (;;)
 i
 if (obj)
@@ -578,6 +587,8 @@ unsigned char
 unsigned long long
 unsigned short
 unsigned short int
+using base_type::base_type;
+using base_type::operator=;
 using enum
 using namespace
 using namespace std;

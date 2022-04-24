@@ -1,0 +1,29 @@
+8pp_direct 0pp_header
+
+keyword type    { keyword keyword func()  { namespace::var_global << str; } };
+keyword type: type { keyword func() keyword { namespace::var_global << str; } };
+keyword type: type { keyword func() keyword { namespace::var_global << str; } };
+keyword type: type, type {};
+
+keyword func()
+{
+	type var_local;
+
+	0com_single
+	0com_single
+
+	0com_single
+	0com_single
+	0com_single
+
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+	type& var_local = keyword<type&>(var_local);
+	type& var_local = keyword<type&>(var_local);
+
+	0com_single
+	var_local.func();
+	var_local.func();
+}

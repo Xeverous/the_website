@@ -1,0 +1,23 @@
+keyword type
+{
+	keyword var_member;
+	keyword var_member;
+	keyword var_member;
+};
+
+keyword type
+{
+keyword:
+	func(keyword param, keyword param, type param)
+	: var_member(param), var_member(param), var_member(param)
+	{
+		0com_single
+	}
+
+	0com_single
+
+keyword:
+	keyword var_member;
+	keyword var_member;
+	type var_member;
+};

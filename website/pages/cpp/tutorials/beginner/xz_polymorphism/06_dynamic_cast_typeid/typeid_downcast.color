@@ -1,0 +1,4 @@
+keyword (keyword(param) == keyword(type))
+{
+	keyword& var_local = keyword<type&>(param);
+}

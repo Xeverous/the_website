@@ -1,0 +1,11 @@
+keyword type
+{
+keyword:
+	keyword keyword type { enum, enum, enum };
+
+	keyword keyword func(type param, keyword namespace::type& param) = num;
+
+	keyword func(keyword namespace::type& param) { func(type::enum, param); }
+	keyword func(keyword namespace::type& param) { func(type::enum, param); }
+	keyword func(keyword namespace::type& param) { func(type::enum, param); }
+};

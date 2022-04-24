@@ -1,0 +1,11 @@
+keyword func(keyword type& param);
+
+keyword func(keyword type& param)
+{
+	0com_single
+	keyword var_local = func(param.func());
+
+	0com_single
+	0com_single
+	keyword var_local = func(param);
+}

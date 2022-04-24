@@ -1,0 +1,26 @@
+keyword type
+{
+keyword:
+	keyword type* func() keyword
+	{
+		keyword keyword type(*keyword);
+	}
+};
+
+keyword type: keyword type
+{
+keyword:
+	type* func() keyword keyword
+	{
+		keyword keyword type(*keyword);
+	}
+};
+
+keyword type: keyword type
+{
+keyword:
+	type* func() keyword keyword
+	{
+		keyword keyword type(*keyword);
+	}
+};

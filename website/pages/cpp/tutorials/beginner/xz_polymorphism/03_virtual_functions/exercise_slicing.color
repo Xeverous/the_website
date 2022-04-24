@@ -1,0 +1,15 @@
+8pp_direct 0pp_header
+
+keyword type { keyword var_member; };
+keyword type: type { keyword var_member; };
+
+keyword func()
+{
+	type var_local{{chr}, chr};
+	type var_local{{chr}, chr};
+
+	type& var_local = var_local;
+	var_local = var_local;
+
+	namespace::var_global << str << var_local.var_member << str << var_local.var_member << str;
+}

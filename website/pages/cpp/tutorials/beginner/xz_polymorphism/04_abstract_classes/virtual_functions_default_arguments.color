@@ -1,0 +1,37 @@
+0com_multi_dox
+ 1com_multi_dox 6com_tag_dox 0com_multi_dox
+ 0com_multi_dox
+keyword type
+{
+keyword:
+	0com_multi_dox
+	 1com_multi_dox 6com_tag_dox 0com_multi_dox
+	 1com_multi_dox 6com_tag_dox 0com_multi_dox
+	 1com_multi_dox 6com_tag_dox 0com_multi_dox
+	 1com_multi_dox 7com_tag_dox 0com_multi_dox
+	 1com_multi_dox 8com_tag_dox 0com_multi_dox
+	 1com_multi_dox 3com_tag_dox 0com_multi_dox
+	 0com_multi_dox
+	keyword keyword func(keyword param, keyword param) = num;
+	keyword func(keyword param) { keyword func(param, num); }
+	keyword func() { keyword func(func()); }
+
+	0com_multi_dox
+	 1com_multi_dox 6com_tag_dox 0com_multi_dox
+	 1com_multi_dox 7com_tag_dox 0com_multi_dox
+	 0com_multi_dox
+	 0com_multi_dox
+	keyword namespace::type<keyword> func() = num;
+
+	0com_multi_dox
+	 1com_multi_dox 6com_tag_dox 0com_multi_dox
+	 1com_multi_dox 7com_tag_dox 0com_multi_dox
+	 0com_multi_dox
+	keyword keyword func() keyword = num;
+
+	0com_multi_dox
+	 1com_multi_dox 6com_tag_dox 0com_multi_dox
+	 1com_multi_dox 7com_tag_dox 0com_multi_dox
+	 0com_multi_dox
+	keyword keyword func() keyword = num;
+};

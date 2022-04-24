@@ -1,0 +1,7 @@
+keyword type { 45com_multi };
+
+keyword type: keyword type { 45com_multi };
+keyword type: keyword type { 54com_multi };
+
+0com_single
+keyword type: keyword type, keyword type { 9com_multi };

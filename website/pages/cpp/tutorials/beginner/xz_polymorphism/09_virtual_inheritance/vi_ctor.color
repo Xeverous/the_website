@@ -1,0 +1,24 @@
+keyword type
+{
+	func(keyword param = chr): var_member(param) {}
+	keyword keyword func() { namespace::var_global << str; }
+
+	keyword var_member;
+};
+
+keyword type: keyword type
+{
+	func(): type(chr) {}
+	keyword func() keyword { namespace::var_global << str; }
+};
+
+keyword type: keyword type
+{
+	func(): type(chr) {}
+	keyword func() keyword { namespace::var_global << str; }
+};
+
+keyword type: type, type
+{
+	0com_single
+};

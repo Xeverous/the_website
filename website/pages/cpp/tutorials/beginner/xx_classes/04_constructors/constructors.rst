@@ -4,6 +4,7 @@
 .. author: Xeverous
 
 .. TODO explain explicit
+.. TODO std::move and recommendation: ctor takes by value, setter by const reference
 
 Remember recent problem of being unable to create objects with custom initial values? This lesson will solve it.
 

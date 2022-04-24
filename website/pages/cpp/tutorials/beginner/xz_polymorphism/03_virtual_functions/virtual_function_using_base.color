@@ -1,0 +1,6 @@
+0com_single
+keyword type::func(keyword param)
+{
+	0com_single
+	keyword::func(param); 0com_single
+}

@@ -1,0 +1,26 @@
+keyword type
+{
+	keyword var_member = num;
+};
+
+keyword type: type
+{
+	keyword var_member = num; 0com_single
+
+	keyword func() keyword;
+};
+
+keyword type::func() keyword
+{
+	namespace::var_global << str << var_member << str;
+	namespace::var_global << str << type::var_member << str;
+}
+
+keyword func()
+{
+	type var_local;
+	var_local.func();
+	var_local.var_member *= num;
+	var_local.type::var_member *= num;
+	var_local.func();
+}

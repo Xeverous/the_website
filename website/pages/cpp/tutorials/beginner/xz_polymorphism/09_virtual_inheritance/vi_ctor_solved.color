@@ -1,0 +1,4 @@
+keyword type: type, type
+{
+	func(): type(chr), type(), type() {}
+};

@@ -1,0 +1,61 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 10pp_header 0com_single
+
+keyword keyword type { enum, enum };
+
+keyword type
+{
+keyword:
+	keyword namespace::type func() keyword = num;
+	keyword type func() keyword = num;
+};
+
+keyword type: keyword type
+{
+keyword:
+	namespace::type func() keyword keyword { keyword str; }
+	type func() keyword keyword { keyword type::enum; }
+};
+
+keyword type: keyword type
+{
+keyword:
+	namespace::type func() keyword keyword { keyword str; }
+	type func() keyword keyword { keyword type::enum; }
+};
+
+keyword func(type& param)
+{
+	0com_single
+	0com_single
+	keyword (param.func() == type::enum)
+	{
+		keyword& var_local = keyword<type&>(param);
+	}
+
+	0com_single
+	0com_single
+	0com_single
+	keyword var_local = keyword<type*>(&param);
+	keyword (var_local != keyword)
+	{
+		type& var_local = *var_local;
+	}
+
+	0com_single
+	keyword
+	{
+		keyword& var_local = keyword<type&>(param);
+	}
+	keyword (keyword namespace::type& 7com_multi)
+	{
+		0com_single
+	}
+}
+
+keyword func()
+{
+	type var_local;
+	func(outparam);
+}

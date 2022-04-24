@@ -1,0 +1,15 @@
+keyword func(type& param)
+{
+	keyword (16com_multi)
+	{
+		0com_single
+	}
+	keyword keyword (16com_multi)
+	{
+		0com_single
+	}
+	keyword
+	{
+		0com_single
+	}
+}

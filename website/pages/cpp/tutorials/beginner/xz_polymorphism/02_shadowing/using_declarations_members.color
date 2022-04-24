@@ -1,0 +1,39 @@
+keyword type
+{
+keyword:
+	keyword func(keyword);
+	keyword func(keyword);
+
+keyword:
+	keyword var_member = num;
+};
+
+keyword type: keyword type
+{
+keyword:
+	0com_single
+	0com_single
+	0com_single
+	keyword type::var_member;
+
+	keyword type::func;
+	keyword func(keyword); 0com_single
+
+	keyword type::func;
+	keyword func(keyword); 0com_single
+};
+
+keyword func()
+{
+	type var_local;
+	var_local.var_member = num; 0com_single
+	type& var_local = var_local;
+	var_local.var_member = num; 0com_single
+
+	var_local.func(num);  0com_single
+	var_local.func(num1suf); 0com_single
+
+	var_local.func(num); 0com_single
+	var_local.type::func(num); 0com_single
+	var_local.func(num); 0com_single
+}

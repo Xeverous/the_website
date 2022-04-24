@@ -1,0 +1,26 @@
+keyword type
+{
+keyword:
+	keyword namespace::type<type> func() keyword
+	{
+		keyword namespace::func<type>(*keyword);
+	}
+};
+
+keyword type: keyword type
+{
+keyword:
+	namespace::type<type> func() keyword keyword
+	{
+		keyword namespace::func<type>(*keyword);
+	}
+};
+
+keyword type: keyword type
+{
+keyword:
+	namespace::type<type> func() keyword keyword
+	{
+		keyword namespace::func<type>(*keyword);
+	}
+};

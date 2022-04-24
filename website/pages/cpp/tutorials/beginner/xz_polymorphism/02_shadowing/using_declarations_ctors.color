@@ -1,0 +1,19 @@
+keyword type
+{
+keyword:
+	func(keyword param, keyword param, keyword param);
+	func(keyword param);
+};
+
+keyword type: keyword type
+{
+keyword:
+	0com_single
+	0com_single
+	0com_single
+	keyword type::type;
+
+keyword:
+	namespace::type var_member; 0com_single
+	keyword var_member = num;       0com_single
+};

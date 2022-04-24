@@ -1,0 +1,38 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword type
+{
+keyword:
+	keyword 7func() = keyword;
+	keyword namespace::type func() keyword = num;
+};
+
+keyword type: keyword type
+{
+keyword:
+	namespace::type func() keyword keyword { keyword str; }
+};
+
+keyword type: keyword type
+{
+keyword:
+	namespace::type func() keyword keyword { keyword str; }
+};
+
+keyword func(keyword type& param)
+{
+	namespace::var_global << param.func() << str;
+}
+
+keyword func()
+{
+	namespace::type<namespace::type<type>> var_local;
+	var_local.func(namespace::func<type>());
+	var_local.func(namespace::func<type>());
+
+	keyword (keyword keyword& var_local : var_local)
+		func(*var_local);
+}
