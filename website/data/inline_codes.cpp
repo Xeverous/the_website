@@ -63,6 +63,7 @@ if
 inline
 int
 interface
+let
 long
 mutable
 namespace
@@ -105,6 +106,7 @@ typeof
 union
 unsigned
 using
+var
 virtual
 void
 volatile
@@ -584,6 +586,7 @@ static_cast<T>(expression)
 std::vector<T>
 std::vector<char>
 std::vector<wchar_t>
+typedef struct
 typeid(T)
 typeid(obj)
 unsigned char

@@ -113,6 +113,8 @@ keyword
 keyword
 keyword
 keyword
+keyword
+keyword
 0pp_direct
 0pp_direct
 0pp_direct
@@ -584,6 +586,7 @@ keyword<tparam>(spec)
 namespace::type<tparam>
 namespace::type<keyword>
 namespace::type<keyword>
+keyword keyword
 keyword(tparam)
 keyword(var_local)
 keyword keyword
