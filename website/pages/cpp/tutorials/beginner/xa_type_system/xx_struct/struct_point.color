@@ -1,0 +1,6 @@
+keyword type 0com_single
+{
+	0com_single
+	keyword var_local;
+	keyword var_local;
+}; 0com_single

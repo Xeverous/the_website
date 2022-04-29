@@ -1,0 +1,5 @@
+0com_single
+namespace::type& keyword<<(namespace::type& param, type param)
+{
+	keyword param << str << param.var_member << str << param.var_member << str;
+}

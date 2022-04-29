@@ -1,0 +1,7 @@
+0com_single
+type var_local;
+keyword func(keyword keyword* param, type param);
+
+0com_single
+keyword type var_local;
+keyword func(keyword keyword* param, keyword type param);

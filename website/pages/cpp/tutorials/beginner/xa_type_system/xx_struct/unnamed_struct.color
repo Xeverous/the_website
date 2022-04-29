@@ -1,0 +1,5 @@
+keyword 11com_multi 0com_single
+{
+	keyword var_member;
+	keyword var_member;
+} var_local; 0com_single

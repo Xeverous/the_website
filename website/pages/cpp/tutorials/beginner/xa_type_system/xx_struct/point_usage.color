@@ -1,0 +1,13 @@
+type var_local; 0com_single
+0com_single
+var_local.var_member = num;
+var_local.var_member = num;
+
+0com_single
+type var_local{-num, num};
+
+0com_single
+type var_local = var_local;
+
+0com_single
+var_local = var_local;

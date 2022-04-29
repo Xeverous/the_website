@@ -1,0 +1,4 @@
+keyword func(keyword keyword* param, type param)
+{
+	namespace::var_global << param << str << param.var_member << str << param.var_member << str;
+}

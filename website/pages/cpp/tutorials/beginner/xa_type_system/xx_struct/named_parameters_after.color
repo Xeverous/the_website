@@ -1,0 +1,16 @@
+keyword type
+{
+	keyword var_member = keyword;
+	keyword var_member = keyword;
+	keyword var_member = keyword;
+};
+
+keyword func(keyword keyword* param, type param);
+
+// ...
+
+type var_local;
+var_local.var_member = keyword;
+var_local.var_member = keyword;
+var_local.var_member = keyword;
+keyword var_local = func(var_local, var_local);

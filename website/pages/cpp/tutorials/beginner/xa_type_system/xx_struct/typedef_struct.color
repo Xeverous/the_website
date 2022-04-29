@@ -1,0 +1,13 @@
+keyword type {
+	keyword var_member;
+	keyword var_member;
+};
+0com_multi
+   0com_multi
+keyword keyword type type;
+
+0com_multi
+keyword keyword {
+	keyword var_member;
+	keyword var_member;
+} type;

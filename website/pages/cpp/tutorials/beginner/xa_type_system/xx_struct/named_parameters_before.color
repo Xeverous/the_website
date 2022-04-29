@@ -1,0 +1,5 @@
+keyword func(keyword keyword* param, keyword param = keyword, keyword param = keyword, keyword param = keyword);
+
+0com_single
+
+keyword var_local = func(var_local, keyword, keyword, keyword); 0com_single
