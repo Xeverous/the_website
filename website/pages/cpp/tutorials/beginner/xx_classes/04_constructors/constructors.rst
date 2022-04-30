@@ -45,8 +45,8 @@ You might have also noticed a surprising thing - **parameter names are identical
 
 The list does not have to contain all class members - if any of them already have an initializer defined in the class body, they can be skipped. If a member is present in the list, its initialization code simply overrides the default initializer.
 
-.. admonition:: info
-  :class: info
+.. admonition:: note
+  :class: note
 
   :cch:`const` members and reference members always have to be initialized.
 
