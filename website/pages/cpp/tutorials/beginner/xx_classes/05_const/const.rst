@@ -11,13 +11,13 @@ Setters:
 
 - primary purpose: change data members (they *set* things)
 - secure class **invariants**.
-- function names usually start with ``set``
+- function names often start with ``set``
 - such functions almost always return :cch:`void` (if not, it's usually :cch:`bool` to indicate whether operation succeeded)
 
 Getters:
 
 - primary purpose: obtain information (they *get* things)
-- function names usually start with ``get`` (return value of a private data member or compute something from them)
+- function names often start with ``get`` (return value of a private data member or compute something from them)
 - almost always are read-only operations that do not change data members
 
 Question-like functions (a subset of getters):
@@ -127,6 +127,8 @@ The tradeoffs of this style:
   - ...it no longer can control what is actually written to it. This makes the style undesirable if the class has invariants to enforce. For the :cch:`fraction$$$type` class, this style should not be used because the denominator has to be checked against zero.
   - ...the calling code can access field's methods, which allows significant code reuse. Example above accesses :cch:`std::string::operator=$$$namespace::type::keyword=`.
 
+In other words, the approach of returning a reference to the field offers code reuse (access to methods of the field) at the cost of coupling external code to the implementation (the type of the field).
+
 Selecting desired overload
 ##########################
 
@@ -157,3 +159,17 @@ In such situation, there is a big difference between calling const-qualified ove
 Later you will also learn about :cch:`std::shared_ptr` which can be used to implement types with COW behavior.
 
 .. TODO short question about pre-C++11 std::string and SSO? Currently SSO is mentioned in arrays chapter which might be too early.
+
+Setters for classes with invariants
+###################################
+
+The style of const + non-const overloads is quite popular but it's not appropriate when a class has some invariants - returning a non-const reference makes external code totally unconstrained. For something like the :cch:`fraction$$$type` class, the following implementation can be used:
+
+- the const-qualified overload returns const reference
+- the non-const-qualified overload, instead of retuning a non-const reference, takes the value to set as a parameter
+
+.. cch::
+    :code_path: fraction_setters.cpp
+    :color_path: fraction_setters.color
+
+Data member names were changed to avoid name conflicts with function names.

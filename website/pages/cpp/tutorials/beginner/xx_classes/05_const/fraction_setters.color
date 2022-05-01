@@ -1,0 +1,19 @@
+keyword func() keyword
+{
+	keyword var_member;
+}
+
+keyword func(keyword param)
+{
+	var_member = param;
+}
+
+keyword func() keyword
+{
+	keyword var_member;
+}
+
+keyword func(keyword param)
+{
+	var_member = func(param);
+}
