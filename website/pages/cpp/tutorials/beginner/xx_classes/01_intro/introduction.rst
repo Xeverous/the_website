@@ -10,9 +10,14 @@ C++ is a multi-paradigm language. OOP is one of its bigger features, but it's no
 This lesson is a more philosophical than others but further ones in this chapter showcase a lot of new code. It's important to not only understand *how*, but also *why*. You can perfectly memorize all OOP rules - most of them are very intuitive; write any program that satisfies given requirements but whether the code will be a good code is a very different topic. This is the place where you will realize you have almost limitless ways to complete a task and the true art of programming is in making choices what features to use and how. Common combinations of specific features to solve popular problems are known as **design patterns**.
 
 .. admonition:: note
-    :class: note
+  :class: note
 
-    Vast majority of abstraction knowledge presented in this chapter applies to any programming language that supports OOP. Languages differ mostly in syntax and implementations of specific details. The concept of OOP as a whole is very reusable and understanding it will help you learning other languages significantly.
+  Vast majority of abstraction knowledge presented in this chapter applies to any programming language that supports OOP. Languages differ mostly in syntax and implementations of specific details. The concept of OOP as a whole is very reusable and understanding it will help you learning other languages significantly.
+
+.. admonition:: note
+  :class: note
+
+  Many examples in this chapter incrementally build and/or improve the :cch:`fraction$$$type` class, explaining various things on the way. It's full implementation can be found in the `appendix  <link://filename/pages/cpp/tutorials/beginner/appendix/index.rst>`_.
 
 Related terms
 #############

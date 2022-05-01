@@ -44,9 +44,10 @@ keyword:
 		keyword keyword<keyword>(var_member) / var_member;
 	}
 
-	keyword func() keyword
+	0com_single
+	keyword func(namespace::type& param = namespace::var_global) keyword
 	{
-		namespace::var_global << var_member << "/" << var_member;
+		param << var_member << "/" << var_member;
 	}
 };
 

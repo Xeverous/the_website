@@ -44,9 +44,10 @@ public:
 		return static_cast<double>(numerator) / denominator;
 	}
 
-	void print() const
+	// std::cout is a global object of type std::ostream
+	void print(std::ostream& os = std::cout) const
 	{
-		std::cout << numerator << "/" << denominator;
+		os << numerator << "/" << denominator;
 	}
 };
 

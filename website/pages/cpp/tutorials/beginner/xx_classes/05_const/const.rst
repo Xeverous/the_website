@@ -77,7 +77,7 @@ Const-qualified member functions follow const-correctness:
 - they can be called on const-qualified objects
 - they can not call non-const-qualified member functions
 
-Let's have an example:
+Let's have an example (with improved :cch:`print$$$func` function - now it also supports other streams):
 
 .. cch::
     :code_path: example.cpp
