@@ -30,7 +30,7 @@ Don't think that an *object* (some data in memory with certain properties) means
 - When using indirect mechanisms such as references and pointers, it's possible to have 2 variables (e.g. 2 references) that refer to the same object in memory.
 - When using variable-size objects such as arrays, it's possible to have multiple objects that are accessed through the same variable.
 
-Of couse we are still pretty far from indirect mechanisms, all of the code now will have 1:1 variable-object relation.
+Of couse we are still pretty far from indirect mechanisms, for now all of the code will have 1:1 variable-object relation.
 
 If you are curious for the formal difference:
 
@@ -172,72 +172,9 @@ Initialization can be performed in multiple ways:
     int x = {1}; // copy list initialization
     int x{};     // value initialization
 
-Each of these has slightly different rules. There are even more than in the example, but they can not be used for built-in types like :cch:`int`.
+Each of these has somewhat different rules. There are even more than in the example, but they can not be used for built-in types like :cch:`int`.
 
 For now, we will stick to copy initialization as ``=`` is definitely the easiest and most intuitive syntax to remember. We will come back to different ways of initialization once you gain more knowledge about the type system in C++.
-
-Printing values
-###############
-
-Now you should be familiar with how to create objects and give them values. Time to learn how to print them.
-
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x = 1;
-        int y = 2;
-        std::cout << "x = " << x << "\n";
-        std::cout << "y = " << y << "\n";
-    }
-
-Standard character output accepts many kinds of data and the input can contain arbitrary amount of expressions. These expressions are separated by ``<<``. ``\n`` is a special control character that denotes new line (AKA line break or line feed character). Since the first expression in the next statement is also text, we can actually combine 2 statements into 1:
-
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x = 1;
-        int y = 2;
-        std::cout << "x = " << x << "\ny = " << y << "\n";
-    }
-
-Sometimes you might also see :cch:`std::endl` (end-line) used instead of new line character:
-
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x = 1;
-        int y = 2;
-        std::cout << "x = " << x << std::endl;
-        std::cout << "y = " << y << std::endl;
-    }
-
-The output of this code is the same, however :cch:`std::endl` is not just a new line character. It does something more, something which shouldn't really be done explicitly - it flushes the buffer. Outputting any data to the operating system is a task which requires some extra work (very often system-specific). Buffering the output, while not necessary is very often done for performance reasons. C++ standard streams accumulate data as it is passed in and only output it in bulk when needed. The reason for this is that regardless of data size, communication with operating system is an expensive (in computation and/or time) operation so it should be avoided when possible.
-
-C++ standard streams automatically flush the buffer when necessary, so you shouldn't really be concerned with what is happening underneath. Using :cch:`std::endl` forces it to flush the buffer more than necessary, which generally only slows down the whole program. If you see examples online which use :cch:`std::endl`, you can simply rewrite them to use new line character.
-
-For now, this should be enough to let you output values of simple variables. Play with different types and values and observe the effect. In later lessons, you will learn about standard input (:cch:`std::cin`) and how to create first user-interactive programs that read text.
-
-Watch out for these syntax problems:
-
-- double operator: :cch:`std::cout << << "text";$$$namespace::var_global << 2problem str;`
-- unwanted semicolon: :cch:`std::cout << "text"; << "text";$$$namespace::var_global << str1problem << str;`
-- operator with no operand: :cch:`std::cout << "text" <<;$$$namespace::var_global << str 2problem;`
-- wrong operator: :cch:`std::cout >> "text";$$$namespace::var_global 2problem str;`
 
 Exercise
 ########
