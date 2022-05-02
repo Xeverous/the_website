@@ -1,4 +1,4 @@
-.. title: ?? - enum flags
+.. title: 03 - enum flags
 .. slug: index
 .. description: enumeration types used for bit flags
 .. author: Xeverous

@@ -1,6 +1,6 @@
-.. title: 07 - arrays
+.. title: 06 - preprocessor
 .. slug: index
-.. description: beginner C++ tutorial - arrays
+.. description: beginner C++ tutorial - preprocessor
 .. author: Xeverous
 .. index_path: .
 

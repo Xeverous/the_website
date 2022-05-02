@@ -1,4 +1,4 @@
-.. title: 06 - semantic control
+.. title: 07 - semantic control
 .. slug: index
 .. description: beginner C++ tutorial - control over the meaning of code
 .. author: Xeverous

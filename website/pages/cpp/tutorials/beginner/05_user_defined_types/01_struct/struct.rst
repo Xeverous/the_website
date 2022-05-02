@@ -1,4 +1,4 @@
-.. title: ?? - struct
+.. title: 01 - struct
 .. slug: index
 .. description: structure types
 .. author: Xeverous

@@ -1,4 +1,4 @@
-.. title: ?? - enum
+.. title: 02 - enum
 .. slug: index
 .. description: enumeration types
 .. author: Xeverous

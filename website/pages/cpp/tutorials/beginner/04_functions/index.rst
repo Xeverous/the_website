@@ -7,3 +7,4 @@
 :sc:`{{% generate_index %}}`
 
 .. TODO constexpr, consteval functions
+.. TODO convertions, introduction to exceptions

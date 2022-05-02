@@ -37,9 +37,7 @@ In programming:
 Functions by their core definition always return a single object. The trick is that the object can be of any type.
 
 - In mathematics, a function can return a complex number or a matrix. These can hold multiple numbers.
-- In programming, a function can return an object of *user-defined type*. Such types can consist of multiple other types and hold many subobjects. Various programming languages offer the functionality to define new types in the code (most often through the :cch:`class` keyword).
-
-.. TODO structs when?
+- In programming, a function can return an object of a *user-defined type*. Such types can consist of multiple other types and hold many subobjects. Various programming languages offer the functionality to define new types in the code (most often through the :cch:`class` keyword).
 
 Syntax
 ######
