@@ -1,0 +1,9 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	keyword var_local = 2fmt8num;
+	keyword var_local = num * num;
+	keyword var_local = 2num1suf / num;
+	namespace::func(5str2fmt2str_esc4str3fmt2str_esc4str2fmt2str_esc1str, var_local, var_local, var_local);
+}

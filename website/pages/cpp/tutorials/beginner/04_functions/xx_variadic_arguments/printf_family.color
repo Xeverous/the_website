@@ -1,0 +1,8 @@
+0com_single
+keyword func(keyword keyword* param, ...);
+0com_single
+keyword func(namespace::type* param, keyword keyword* param, ...);
+0com_single
+keyword func(keyword* param, keyword keyword* param, ...);
+0com_single
+keyword func(keyword* param, namespace::type param, keyword keyword* param, ...);

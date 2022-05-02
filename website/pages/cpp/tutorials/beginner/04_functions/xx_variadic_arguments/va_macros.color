@@ -1,0 +1,14 @@
+0com_single
+keyword 17com_multi type;
+
+0com_single
+keyword func(type param, ext);
+
+0com_single
+tparam func(type param, tparam);
+
+0com_single
+keyword func(type param);
+
+0com_single
+keyword func(type param, type param);

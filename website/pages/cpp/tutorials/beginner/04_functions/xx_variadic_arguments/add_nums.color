@@ -1,0 +1,20 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword func(keyword param, ...)
+{
+	keyword var_local = num;
+	namespace::type var_local;
+	macro_ref(var_local, param);
+
+	keyword (keyword var_local = num; var_local < param; ++var_local)
+		var_local += macro_ref(var_local, keyword);
+
+	macro_ref(var_local);
+	keyword var_local;
+}
+
+keyword func()
+{
+	namespace::var_global << func(num, num, num, num, num) << str;
+}
