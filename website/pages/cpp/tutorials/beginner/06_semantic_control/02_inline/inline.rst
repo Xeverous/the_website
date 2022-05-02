@@ -24,7 +24,7 @@ Over time, it turned out that humans are pretty bad at deciding what is worth in
 - inline some functions which were not explicitly marked :cch:`inline`
 - not inline some functions which were explicitly marked :cch:`inline`
 
-The keyword :cch:`inline` has lost it's former meaning but gained a different one - **it allows the definition to repeat across TUs**. :cch:`inline` entities can be put into headers, be included multiple times in different TUs and will not cause "multiple reference" linker errors. :cch:`inline` doesn't break ODR, it only opens a possibility of multiple definitions - but all must be identical.
+The keyword :cch:`inline` has lost its former meaning but gained a different one - **it allows the definition to repeat across TUs**. :cch:`inline` entities can be put into headers, be included multiple times in different TUs and will not cause "multiple reference" linker errors. :cch:`inline` doesn't break ODR, it only opens a possibility of multiple definitions - but all must be identical.
 
     How do linkers deal with such functions?
 
@@ -35,11 +35,11 @@ So ... should the keyword be used today? Well, yes and no - depends on the case.
 Optimization
 ############
 
-Compilers are much better at deciding what should be inlined and what not. But there is a catch - they often can not do it across TUs. The reason is that when compiling one TU, they only see definitions of what has been defined in this TU. But what if a hypothetically-worth-inlining function is defined in another TU? Since they don't see the definition, there is no way to perform inlining.
+Compilers are much better at deciding what should be inlined and what not. But there is a catch - they often can not do it across TUs. The reason is that when compiling one TU, they only see definitions of what has been defined in this TU (current source file + all included headers). But what if a hypothetically-worth-inlining function is defined in another TU? Since they don't see the definition, there is no way to perform inlining.
 
 To avoid this problem, some compilers offer LTO - **link-time optimization**. Basically, the compiler generates extra metadata for each compiled TU and the decision about inlining is performed at the linking step when metadata from multiple TUs is available. LTO offers better program performance but comes with the cost of significantly larger linking times.
 
-Inlining is one of the most powerful optimizations, especially if there is a lot of high-level code that does low amount of actual computations but a lot of abstraction logic. If you want to benefit from this optimization without having to use LTO, put definitions of functions that you think are worth inlining into header files and mark them :cch:`inline`.
+Inlining is one of the most powerful optimizations, especially if there is a lot of high-level code that does low amount of actual computations but a lot of abstraction logic (which in C++ often is zero-overhead and can be optimized out). If you want to benefit from this optimization without having to use LTO, put definitions of functions that you think are worth inlining into header files and mark them :cch:`inline` - in such case the keyword is not used as an optimization hint but as a way to avoid ODR violations.
 
 Note that inlining optimizations are done per call, not per function. The same function can be inlined in one place but not in the other. Compilers can have complex `heuristic <https://en.wikipedia.org/wiki/Heuristic>`_ logic that decides whether it's worth or not - too much inlining can hurt cache a lot. See https://en.wikipedia.org/wiki/Inline_expansion for more details.
 
@@ -58,3 +58,8 @@ If we apply this approach to all entities (since C++17 :cch:`inline` can also be
   :cch:`template` and :cch:`constexpr` imply :cch:`inline`.
 
 If the library project consists of mostly templates and :cch:`constexpr` code, it's already header-heavy and going header-only will make using the library easier at a very low cost.
+
+.. admonition:: note
+  :class: note
+
+  :cch:`inline` works differently in C. :cch:`inline` there alone isn't very useful, it's typically used together with :cch:`extern` or :cch:`static`. See https://stackoverflow.com/questions/34937816/inline-static-extern-in-c99 for more information.
