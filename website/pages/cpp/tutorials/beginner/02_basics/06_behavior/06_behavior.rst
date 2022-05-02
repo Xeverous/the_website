@@ -1,27 +1,19 @@
 .. title: 06 - behavior
-.. slug: 06_behavior
+.. slug: index
 .. description: C++ program behavior
 .. author: Xeverous
 
 During some experiments, you might have made something like this:
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x; // uninitialized
-        std::cout << "x = " << x << "\n"; // what will be printed?
-    }
+.. cch::
+    :code_path: ub_example.cpp
+    :color_path: ub_example.color
 
 The variable has not been initialized. Compilers try to translate the source code as best as they can to optimal hardware instructions while following language specifications but because of C++ nature (full-spectrum programming language with no lower-level mechanisms hidden underneath) situations like this can happen.
 
 This is an example of **undefined behavior**. It's unknown what will actually happen. Intuitively, the compiler will allocate memory for the variable, attempt to read it and send received bytes to operating system's standard output. What will these bytes contain? No idea. Most likely some garbage that was left after previous program which happened to use the same block of memory. The program above might print a different value every time it's run. Basically, C++ specification does not define what happens with reads of uninitialized memory so there are no guuarantees on the execution of this program.
 
-If you try to compile this program, you might get a warning from the compiler about use of uninitialized object. Because compilers optimize code during many transformation steps from source code to machine code, programs containing undefined behavior might be deformed even further, amplifying problems. This is a very simple case but as the code gets larger and more complex, it gets really hard to predict and search for potential errors. Many optimizations transform machine code based on the assumption that the program has no bugs - if they didn't there would be no sense in optimizing malfunctioning code.
+If you try to compile this program, you might get a warning from the compiler about the use of an uninitialized object. Because compilers optimize code during many transformation steps from source code to machine code, programs containing undefined behavior might be deformed even further, amplifying problems. This is a very simple case but as the code gets larger and more complex, it gets really hard to predict and search for potential errors. Many optimizations transform machine code based on the assumption that the program has no bugs - if they didn't there would be no sense in optimizing malfunctioning code.
 
 As a result, any C or C++ program containing undefined behavior can exhibit one or more of the following:
 
@@ -48,7 +40,7 @@ This covers situations in which there is no single good answer. There are multip
 
 Example - in the expression :cch:`2 * 3 + 4 * 5$$$num * num + num * num` it's *unspecified* which multiplication is done first. As long as specification and mathematical laws are concerned, the only guuarantee is that the addition will be done last. But since both multiplications are independent, there is no obligation for the compiler to write machine code that performs them in certain order.
 
-Similarly, in the expression :cch:`foo(bar(), baz())$$$func(func(), func())` it's *unspecified* which of :cch:`bar$$$func` and :cch:`baz$$$func` is called first. By analyzing parentheses (``()``) we can clearly see that the function :cch:`foo$$$func` requires results of 2 other functions as its input. But these 2 functions have no determined order - the compiler is free to decide. The code should not rely on specific order between :cch:`bar$$$func` and :cch:`baz$$$func`.
+Similarly, in the expression :cch:`foo(bar(), baz())$$$func(func(), func())` it's *unspecified* which of :cch:`bar$$$func` and :cch:`baz$$$func` is called first. By analyzing parentheses (``()``) we can clearly see that the function :cch:`foo$$$func` requires results of 2 other functions as its input. But these 2 functions have no determined order - the compiler is free to decide. The code should not rely on specific order between :cch:`bar$$$func` and :cch:`baz$$$func` - it's *unspecified*.
 
 Unspecified behavior is mostly useful for optimizations because it allows some freedom for the compiler - usually being able to replace and/or reorder some machine instructions.
 
