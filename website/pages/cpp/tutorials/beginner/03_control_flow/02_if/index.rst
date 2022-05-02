@@ -282,8 +282,6 @@ and to simply else-if code:
     else if (x == 5) c = 'e';
     else             c = 'f';
 
-.. TODO const when?
-
 The ``?:`` operator must always have 2 branches. You can get very creative with its usage (it works as a functional subexpression, not as a full statement) (not only for assignments) but I advise you to not overuse it because (due to grammar and backwards compatibility) `its evaluation rules <https://en.cppreference.com/w/cpp/language/operator_other#Conditional_operator>`_ have gone extremely complex.
 
 Exercise

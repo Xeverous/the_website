@@ -13,11 +13,9 @@ Rules
 The syntax is slightly different from :cch:`if`:
 
 - :cch:`if` requires a value of type :cch:`bool` (or something *contextually convertible* to it), :cch:`switch` requires a value of integral or enumeration type (or something *contextually convertible* to it).
-- Each :cch:`case` must use a *constant expression* (it must be computable at compile time).
+- Each :cch:`case` must use a *constant expression* (it must be computable at compile time). :cch:`constexpr` objects satisfy this requirement.
 
 Then, the expression in :cch:`switch` is evaluated once and compared for equality with cases in order of their appearance. It's not possible to make a different comparison (e.g. ``!=``).
-
-.. TODO when constexpr?
 
 Compile the following program and test how it behaves for different numbers:
 

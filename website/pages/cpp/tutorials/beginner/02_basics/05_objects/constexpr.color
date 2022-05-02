@@ -1,0 +1,3 @@
+keyword keyword var_local = macro_ref; 0com_single
+keyword keyword var_local = var_local / num;  0com_single
+namespace::var_global << str << var_local << str;

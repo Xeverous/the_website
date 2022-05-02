@@ -88,7 +88,13 @@ Array size must be a constant expression, that is, an expression that can be eva
 
     So array size must be :cch:`constexpr`?
 
-Generally, this is a good mental shortcut because everything :cch:`constexpr` can be used as an array size, but some other things too. These other things (`related cppreference page <https://en.cppreference.com/w/cpp/language/constant_expression>`_) are mostly special rules for various C++ constructs (especially :cch:`const`) that were possible much earlier, before C++11 introduced :cch:`constexpr`.
+Generally, this is a good mental shortcut because :cch:`constexpr` values can be used as array size, but many other language constructs can create constant expressions too. These constructs are mostly special rules for various use cases (especially :cch:`const`) that were present before C++11 introduced :cch:`constexpr`. `The list is long <https://en.cppreference.com/w/cpp/language/constant_expression>`_ but without these rules, one would need to use preprocessor or even worse tricks to manipulate constants - and you should know that C++ (unlike C) really hates macros. :cch:`const` in C is absent of these rules and const-qualified objects there can not be used for things such as an array size, even if the value is computable at compile time. This caused 3 conventions to emerge:
+
+- C: :cch:`#define ARRAY_SIZE 10$$$7pp_direct macro_def num` - macros are the only practical solution
+- C++ < 11: :cch:`const int array_size = 10;$$$keyword keyword var_local = num;` - rely on special rules intended for constant expressions
+- C++ >= 11: :cch:`constexpr int array_size = 10;$$$keyword keyword var_local = num;` - use dedicated feature for constant expressions
+
+I don't want you to remember all these special rules - there are too many of them and their practical value exists pretty much only for compiler implementers, but just to illustrate - in the example below both :cch:`n2$$$var_local` and :cch:`n3$$$var_local` are const-qualified objects, but only :cch:`n2$$$var_local` is classified as a constant expression.
 
 .. cch::
     :code_path: constant_expressions.cpp
