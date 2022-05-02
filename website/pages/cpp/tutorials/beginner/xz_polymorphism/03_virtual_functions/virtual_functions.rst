@@ -69,7 +69,7 @@ Terminology
 
 In C++ we can differentiate 2 kinds of polymorphism:
 
-- **Static polymorphism**, where the operation uses compile-time information. A good example is a set of multiple function overloads. The same function (by name) can work differently depending on the type of the object. The interface here is the function (the name shared across overloads).
+- **Static polymorphism**, where the operation uses compile time information. A good example is a set of multiple function overloads. The same function (by name) can work differently depending on the type of the object. The interface here is the function (the name shared across overloads).
 - **Dynamic polymorphism** (more often referred to as **runtime polymorphism**) where the operation uses runtime information. The interface here is the base class with its virtual functions, which is shared across derived classes.
 
 A class that has at least 1 virtual function is a **polymorphic type**.

@@ -142,6 +142,7 @@ I have noticed several typos, below is a list of correct expressions:
 - advised (verb) vs adviced (noun) (common phrase: it's advi**s**ed)
 - reminder (to not forget) vs remainder (result of modulo)
 - `admonition:: info` should be `admonition:: note`
+- *compile-time* should be *compile time* (and analogically *link time*)
 
 ## working with CSS
 

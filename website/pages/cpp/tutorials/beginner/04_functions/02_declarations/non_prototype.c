@@ -24,6 +24,6 @@ void g(void);
 // before C89: both function calls are well-defined
 // but will cause undefined behavior at runtime
 // C89: both function calls are ill-formed
-// compile-time error (argument type/amount mismatch)
+// compile time error (argument type/amount mismatch)
 f(3.14);
 g(3.14);

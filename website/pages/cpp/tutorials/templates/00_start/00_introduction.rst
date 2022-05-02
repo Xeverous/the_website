@@ -17,7 +17,7 @@ You can also read https://stackoverflow.com/questions/1039853/why-is-the-c-stl-i
 The core difference
 ###################
 
-The core difference between C++ templates and similar mechanisms in other languages (e.g. Java generics) is that C++ templates are a fully compile-time mechanism.
+The core difference between C++ templates and similar mechanisms in other languages (e.g. Java generics) is that C++ templates are a fully compile time mechanism.
 
 .. admonition:: 2 phases of templates
     :class: note

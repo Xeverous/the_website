@@ -23,7 +23,7 @@ Still, if you really want to do (ugly) downcasts, there are 2 ways: :cch:`static
 Static downcasts
 ================
 
-Just like upcasts don't do anything (except when *virtual inhertance* is used), so do downcasts. But there is a problem: in case of upcasts it's known at compile-time that a given class has a base class. But in the case of downcasts, it's not known what the dynamic type of the object is (and multiple different types can inherit from the same base type). :cch:`static_cast<cat&>(a)$$$keyword<type&>(param)` is valid, but will only succeed if the dynamic type of the object is :cch:`cat$$$type` or something derived from it. **If not, it will invoke undefined behavior.**
+Just like upcasts don't do anything (except when *virtual inhertance* is used), so do downcasts. But there is a problem: in case of upcasts it's known at compile time that a given class has a base class. But in the case of downcasts, it's not known what the dynamic type of the object is (and multiple different types can inherit from the same base type). :cch:`static_cast<cat&>(a)$$$keyword<type&>(param)` is valid, but will only succeed if the dynamic type of the object is :cch:`cat$$$type` or something derived from it. **If not, it will invoke undefined behavior.**
 
 Downcasts using :cch:`static_cast` can be performed on both references (e.g. from :cch:`animal&$$$type&` to :cch:`cat&$$$type&`) and pointers (e.g. from :cch:`animal*$$$type*` to :cch:`cat*$$$type*`). In both cases, the code must guuarantee through other means that the object is in fact of derived type to avoid undefined behavior. This is usually done by calling a virtual function before the cast that indicates object's dynamic type - a common approach is to return an enumerator.
 

@@ -189,7 +189,7 @@ I have tried both conventions in different projects and personally I prefer the 
     :code_path: constexpr.cpp
     :color_path: constexpr.color
 
-If possible, it's recommended to use :cch:`constexpr` over :cch:`const` as it opens few more language features; features which require compile-time data. The features are specified to require *constant expressions*.
+If possible, it's recommended to use :cch:`constexpr` over :cch:`const` as it opens few more language features; features which require compile time data. The features are specified to require *constant expressions*.
 
 It's possible to write :cch:`constexpr const ...$$$keyword keyword 0spec` but it's redundant: for object definitions, :cch:`constexpr` already implies :cch:`const`.
 
@@ -207,7 +207,7 @@ Recommendations
 
 - define 1 variable per statement
 - use :cch:`const` for objects that once initialized, should not be changed
-- use :cch:`constexpr` for objects which values are computable at compile-time
+- use :cch:`constexpr` for objects which values are computable at compile time
 
 Exercise
 ########

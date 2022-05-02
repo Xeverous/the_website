@@ -186,7 +186,7 @@ The shared state of :cch:`A$$$type` is placed at the end of any type that inheri
 Layouts are no longer subsets or supersets, each class can have its own specific order of vtable pointers and state of other classes (though some pattern can be observed). This also means that casts require additional overhead of checking the offsets (they are stored in vtables). For example, converting a pointer/reference from :cch:`B$$$type` to :cch:`A$$$type` requires different adjustment when the actual (*dynamic type*) of the object is :cch:`B$$$type` and when it is :cch:`D$$$type`. The distance between data of :cch:`A$$$type` and data of :cch:`B$$$type` is not the same for all types.
 
 - :cch:`dynamic_cast` will fail (null pointer/exception) when the destination type is ambiguous (checked at runtime)
-- :cch:`static_cast` downcast: cast is *ill-formed* if input type is ambiguous or is a virtual base of or base of virtual base of destination type (there is no way to perform the cast only with compile-time information)
+- :cch:`static_cast` downcast: cast is *ill-formed* if input type is ambiguous or is a virtual base of or base of virtual base of destination type (there is no way to perform the cast only with compile time information)
 
 Apart from complex object layout and casts with runtime overhead there is one more thing: *constructors*. How should the constructor of :cch:`A$$$type` be called when :cch:`B$$$type` and :cch:`C$$$type` specify different initialization for :cch:`A$$$type`?
 
@@ -234,7 +234,7 @@ In this hierarchy :cch:`B$$$type` inherits virtually from :cch:`A$$$type`.
    \ /
     E
 
-The most interesting thing is that :cch:`E$$$type` contains 2 :cch:`B$$$type` subobjects that share 1 :cch:`A$$$type` subobject. Casts from :cch:`A$$$type` to :cch:`B$$$type` are ambiguous and their ambiguity can not be detected at compile-time (:cch:`dynamic_cast` will fail, :cch:`static_cast` will be *ill-formed* as it does not allow converting from :cch:`virtual` bases). Pointers/references to :cch:`A$$$type` would have to be converted to refer to :cch:`C$$$type` or :cch:`D$$$type` first before being converted to :cch:`B$$$type`.
+The most interesting thing is that :cch:`E$$$type` contains 2 :cch:`B$$$type` subobjects that share 1 :cch:`A$$$type` subobject. Casts from :cch:`A$$$type` to :cch:`B$$$type` are ambiguous and their ambiguity can not be detected at compile time (:cch:`dynamic_cast` will fail, :cch:`static_cast` will be *ill-formed* as it does not allow converting from :cch:`virtual` bases). Pointers/references to :cch:`A$$$type` would have to be converted to refer to :cch:`C$$$type` or :cch:`D$$$type` first before being converted to :cch:`B$$$type`.
 
 This is the layout:
 

@@ -47,7 +47,7 @@ Apart from solving ambiguity and code clarity problems, a big advantage of these
 :cch:`static_cast`
 ##################
 
-The keyword is used for all typical convertions that rely on compile-time information. It's by far the most used explicit convertion keyword.
+The keyword is used for all typical convertions that rely on compile time information. It's by far the most used explicit convertion keyword.
 
 The cast does not modify the source object, it creates a new object thus the source object can be :cch:`const`. Possible convertions:
 
@@ -300,7 +300,7 @@ In short, **while the cast allows to strip** :cch:`const` **and** :cch:`volatile
 :cch:`reinterpret_cast`
 #######################
 
-Similarly to :cch:`const_cast`, :cch:`reinterpret_cast` does not compile to any machine instructions (except when converting between integers and pointers or on obscure architectures where pointer representation depends on its type). **It is purely a compile-time directive which instructs the compiler to treat expression as if it had a different type.**
+Similarly to :cch:`const_cast`, :cch:`reinterpret_cast` does not compile to any machine instructions (except when converting between integers and pointers or on obscure architectures where pointer representation depends on its type). **It is purely a compile time directive which instructs the compiler to treat expression as if it had a different type.**
 
 Because the cast allows to explicitly violate the type system (except :cch:`const` and :cch:`volatile` for which :cch:`const_cast` has to be used) and multiple implementation and platform shenanigans are in play, there are numerous rules that specify different requirements and guuarantees. The cast is used practically only for platform-specific code or code that relies on particular implementation guuarantees (larger than the standard).
 

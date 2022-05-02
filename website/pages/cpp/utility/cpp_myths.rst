@@ -59,7 +59,7 @@ Badly written C tends to crash. Badly written C++ tends to run slowly. This migh
 
 The entire comparison is flawed:
 
-- The first one is used for compile-time strings which contents never change.
+- The first one is used for compile time strings which contents never change.
 - The second one is used for dynamically allocated strings which contents are run-time dependent.
 
 For honest comparison, one should do:

@@ -81,7 +81,7 @@ TODO - article with symbol character names.
 
 `POSIX` - portable operating system interface. A standarized interface to create and maintain ABI, API, CLI and other compabilities between operating systems. The only largerly used OS which is not POSIX compliant is Windows. Cygwin can be used to create POSIX-compliant layer on Windows.
 
-`RAII` - resource aquisition is initialization (a C++ idiom). Objects allocating resources are responsible for their cleanup (done by implementing custom destructors). Idiom requires types to implement precise resource ownership models allowing move semantics and compile-time cleanup decisions. RAII is the backbone of C++ and Rust resource management. Term sometimes referred as SBRM (scope based resource management) or CADR (constructor acquires, destructor releases).
+`RAII` - resource aquisition is initialization (a C++ idiom). Objects allocating resources are responsible for their cleanup (done by implementing custom destructors). Idiom requires types to implement precise resource ownership models allowing move semantics and compile time cleanup decisions. RAII is the backbone of C++ and Rust resource management. Term sometimes referred as SBRM (scope based resource management) or CADR (constructor acquires, destructor releases).
 
 `reference` - an alias to a variable or constant. Does not offer all possibilities of pointers, but it safer and easier to optimize. In C++, references must always be initialized and always point to valid object (you can not reference references). In higher level languages references can be null but still do not offer pointer arithmetics.
 
