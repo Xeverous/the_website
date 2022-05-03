@@ -417,6 +417,7 @@ nav.breadcrumb {
 .code.custom-cpp .var-global  { color: #ffffff } /* global objects (including static) */
 .code.custom-cpp .str-esc,                       /* string literals (escaped content) */
 .code.custom-cpp .chr-esc     { color: #868613 } /* character literals (escaped content) */
+.code.custom-cpp .fmt         { color: #408000 } /* formatting (e.g. % for printf, {} for fmt) */
 
 .code.custom-cpp .param       { color: #408000 } /* parameters (to functions) */
 .code.custom-cpp .outparam    { color: #c86496 } /* out parameters (passed by non-const reference) */
