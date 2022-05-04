@@ -9,4 +9,4 @@
 0x1.2p3     // 9 (1.125 * 2^3), double (uses hexadecimal digits)
 
 NAN // NaN, float, macro constant defined in <cmath>
-// it's implementation-defined, may not exist if not supported
+    // it's implementation-defined, may not exist if not supported

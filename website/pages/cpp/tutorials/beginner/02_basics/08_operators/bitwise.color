@@ -3,8 +3,8 @@
 
 keyword func()
 {
-	keyword var_local = 10num;
-	keyword var_local = 10num;
+	keyword var_local = 2fmt8num;
+	keyword var_local = 2fmt8num;
 
 	namespace::var_global << str << namespace::type<num>(var_local) << str;
 	namespace::var_global << str << namespace::type<num>(var_local) << str;

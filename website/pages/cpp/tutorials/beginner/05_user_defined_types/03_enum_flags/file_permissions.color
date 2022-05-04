@@ -4,26 +4,26 @@ keyword keyword type
 {
 	enum = num,
 
-	enum = num,
-	enum = num,
-	enum = num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
 	enum = enum | enum | enum,
 
-	enum = num,
-	enum = num,
-	enum = num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
 	enum = enum | enum | enum,
 
-	enum = num,
-	enum = num,
-	enum = num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
 	enum = enum | enum | enum,
 
 	enum = enum | enum | enum,
 
-	enum = num,
-	enum = num,
-	enum = num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
+	enum = 1fmt`num,
 
 	enum = enum | enum | enum | enum
 };
