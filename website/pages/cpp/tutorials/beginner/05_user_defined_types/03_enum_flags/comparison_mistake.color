@@ -1,0 +1,7 @@
+0com_single
+keyword (var_local == namespace::namespace::type::enum)
+	0com_single
+
+0com_single
+keyword (var_local & namespace::namespace::type::enum)
+	0com_single
