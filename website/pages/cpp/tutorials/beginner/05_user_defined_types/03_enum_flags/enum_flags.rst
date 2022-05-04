@@ -33,7 +33,7 @@ A good example are file permissions on `POSIX <https://en.wikipedia.org/wiki/POS
       - `explanation of rwx on files <https://www.hackinglinuxexposed.com/articles/20030417.html>`_
       - `explanation of rwx on directories <https://www.hackinglinuxexposed.com/articles/20030424.html>`_
 
-C++17 added a filesystem library to the standard library (based on Boost.Filesystem). Synopsis for https://en.cppreference.com/w/cpp/filesystem/perms (note that literals have octal (base 8) notation):
+C++17 added a filesystem library to the standard library (based on Boost.Filesystem). Synopsis for https://en.cppreference.com/w/cpp/filesystem/perms:
 
 .. cch::
     :code_path: file_permissions.hpp
@@ -41,9 +41,13 @@ C++17 added a filesystem library to the standard library (based on Boost.Filesys
 
 There are 12 independent settings in total and few aliases for common combinations. How does it work? Each value is a different power of 2 which in binary system will be a different bit. Each bit can be changed and tested separately through bit operations.
 
-.. TOEXAMPLE a better example with << in definition?
+Literals have octal (base 8) notation for historical reasons - Unix file permissions have strong convention to be represented in octal. This even includes tools such as ``chmod``.
 
-*Bitmask types* are typically defined using bit shifts of increasing values. Since bit shifts are multiplications (or divisions in case of :cch:`>>`) by powers of 2, this clearly states the purpose of the code. Additionally it's easy to add a new enumerator - there is no need to compute its value.
+A more typical definition of a bit mask enumeration uses shifts with increasing values. Since bit shifts are multiplications (or divisions in case of :cch:`>>`) by powers of 2, they end up representing specific bits. Additionally, this clean and expressive way lets very easily add a new enumerator.
+
+.. cch::
+    :code_path: shift_example.hpp
+    :color_path: shift_example.color
 
 Common mistakes
 ###############

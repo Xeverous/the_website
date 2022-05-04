@@ -1,0 +1,19 @@
+0com_single
+0com_single
+keyword keyword type : keyword keyword
+{
+	enum = num,
+
+	enum = num << num,
+	enum = num << num,
+	enum = num << num,
+
+	enum = num << num,
+
+	enum = num << num,
+	enum = num << num,
+
+	enum = num << num,
+	enum = num << num,
+	enum = num << num
+};
