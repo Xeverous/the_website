@@ -3,5 +3,5 @@
 void func();
 
 // C  : declaration of a function that takes 0 arguments
-// C++: declaration of a function that takes 0 arguments, just ugly (keeped for backwards compatibility)
+// C++: declaration of a function that takes 0 arguments, just ugly (kept for backwards compatibility)
 void func(void);

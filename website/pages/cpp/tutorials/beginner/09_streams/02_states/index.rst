@@ -68,7 +68,7 @@ The following program reads numbers untill anything wrong happens.
 Notes:
 
 - This program doesn't differentiate between error conditions (recoverable, unrecoverable, EOF). This approach is only useful if you want to stop upon any problem.
-- EOF alone does not make convertion to :cch:`bool` evaluate to :cch:`false`, but any operation after reaching EOF will fail and set failbit so eventually the loop will stop. This behavior is desirable because last characters in the input can result in both successful read and setting EOF - in such case we still want to accept last chunk of data and only stop in next iteration.
+- EOF alone does not make convertion to :cch:`bool` evaluate to :cch:`false`, but any operation after reaching EOF will fail and set failbit so eventually the loop will stop. This behavior is desirable because last characters in the input can result in both successful read and setting EOF - in such case we still want to accept last chunk of data and stop in the next iteration.
 
 Advanced error handling
 #######################
