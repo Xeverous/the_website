@@ -24,7 +24,6 @@ C++ standard library has overloaded operators in many places (many of which you 
 
 TODO:
 
-- ``~``, ``^``, ``&``, ``|``, ``^=``, ``&=``, ``|=`` (:cch:`enum class` bitmask example needed)
 - ``->*``, ``->`` (???), also mention that :cch:`operator->` must return a raw pointer or a type (by value or by reference) for which this operator is also overloaded. This is because :cch:`a->b$$$var_local->var_member` is a shortcut for :cch:`(*a).b$$$(*var_local).var_member` which requires an object
 - ``()``, ``[]`` (need good examples, possibly with STL)
 - :cch:`co_await` (???)
