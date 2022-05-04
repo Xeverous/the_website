@@ -324,7 +324,7 @@ The truth table for this device:
       - 1
       - I0
 
-Below is the 74181, a 4-bit ALU (arithmetic logic unit):
+Below is the `74181 <https://en.wikipedia.org/wiki/74181>`_, a 4-bit ALU (arithmetic logic unit):
 
 .. image:: https://upload.wikimedia.org/wikipedia/commons/c/c0/74181aluschematic.png
     :alt: 74181 4-bit arithmetic logic unit
@@ -342,7 +342,8 @@ And many outputs:
 - 4-bit function result (F0, F1, F2, F3)
 - A = B bit
 - Carry (C(n+4))
-- ??? (P)
+- propagate bit (P)
+- generate bit (G)
 
 Selectors decide what the ALU is doing. Since there are 4 selection bits, the device can perform 2^4 = 16 different functions (which means 16 truth tables for inputs A and B), each with specific Mode and Carry. Some of possible operations are:
 
