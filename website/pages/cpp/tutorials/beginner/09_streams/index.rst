@@ -14,3 +14,4 @@ In this chapter you will learn:
 :sc:`{{% generate_index %}}`
 
 .. TODO example with stringstream, mb in files lesson?
+.. TODO std::ws, differences in behavior between reading numbers, chars and strings
