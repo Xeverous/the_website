@@ -25,9 +25,13 @@ Each C++ stream has a state that informs about potential errors. The state is st
 
 There are 3 possible flags (values implementation-defined):
 
-- :cch:`std::ios_base::badbit` - represents unrecoverable error (a crucial operation such as memory allocation failed)
-- :cch:`std::ios_base::failbit` - represents recoverable error (ususally a retryable operation such as formatted I/O failed)
-- :cch:`std::ios_base::eofbit` - set when all data has been processed and there is no possibility of continuing (e.g. end of file, closed socket)
+- :cch:`std::ios_base::badbit` - represents unrecoverable error (a crucial operation such as memory allocation failed).
+- :cch:`std::ios_base::failbit` - represents recoverable error (ususally a retryable operation such as formatted I/O failed).
+- :cch:`std::ios_base::eofbit` - set when all data has been processed and there is no possibility of continuing (e.g. end of file, closed socket). If reading interactively (e.g. :cch:`std::cin` which was not redirected to ream from a file), the EOF can be sent to the program through the console:
+
+  - Unix console terminals: ctrl+D (though does not work in Git Bash on Windows)
+  - Windows cmd: ctrl+Z
+  - Windows Power Shell: ctrl+Z
 
 There is also :cch:`std::ios_base::goodbit` which has value 0 - if comparison of stream's state is equal to goodbit, it means no error bit flags are set.
 

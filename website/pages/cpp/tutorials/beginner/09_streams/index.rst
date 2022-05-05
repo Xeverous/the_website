@@ -12,3 +12,5 @@ In this chapter you will learn:
 - how to influence stream's behavior
 
 :sc:`{{% generate_index %}}`
+
+.. TODO example with stringstream, mb in files lesson?
