@@ -1,0 +1,16 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	namespace::var_global 2oo str 2oo namespace::func        2oo 5num 2oo str; 0com_single
+	namespace::var_global 2oo str 2oo namespace::func   2oo 5num 2oo str;
+	namespace::var_global 2oo str 2oo namespace::func     2oo 5num 2oo str; 0com_single
+	namespace::var_global 2oo str 2oo namespace::func 2oo 5num 2oo str; 0com_single
+
+	namespace::var_global 2oo str;
+
+	namespace::var_global 2oo str 2oo namespace::func        2oo 6num 2oo str;
+	namespace::var_global 2oo str 2oo namespace::func   2oo 6num 2oo str;
+	namespace::var_global 2oo str 2oo namespace::func     2oo 6num 2oo str;
+	namespace::var_global 2oo str 2oo namespace::func 2oo 6num 2oo str;
+}

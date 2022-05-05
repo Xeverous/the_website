@@ -1,0 +1,27 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+keyword func()
+{
+	keyword keyword keyword var_local = namespace::func(-3num1suf); 0com_single
+	keyword keyword var_local = namespace::type<keyword keyword>::var_global + num;
+	namespace::var_global 2oo str 2oo var_local 2oo str
+	          2oo str 2oo namespace::func(num) 2oo var_local 2oo str
+	          2oo str 2oo namespace::func(var_local) 2oo var_local 2oo str;
+
+
+	0com_single
+	0com_single
+	keyword keyword var_local = namespace::func(3num) / var_local;
+
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+	0com_single
+	keyword (keyword var_local = num; var_local < var_local + num; ++var_local)
+		namespace::var_global 2oo namespace::func(var_local) 2oo var_local 2oo str;
+}

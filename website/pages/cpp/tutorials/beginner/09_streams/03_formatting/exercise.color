@@ -1,0 +1,8 @@
+8pp_direct 0pp_header
+
+keyword func()
+{
+	namespace::var_global 2oo namespace::func;
+	namespace::var_global 2oo num 2oo str 2oo -num 2oo str;
+	namespace::var_global 2oo 3num 2oo str 2oo -3num 2oo str;
+}

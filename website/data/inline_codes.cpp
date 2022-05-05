@@ -307,6 +307,7 @@ std::fstream
 std::function
 std::ifstream
 std::initializer_list
+std::internal
 std::intptr_t
 std::ios
 std::ios::app
@@ -337,6 +338,7 @@ std::ios_base::trunc
 std::is_error_code_enum
 std::is_error_condition_enum
 std::istream
+std::left
 std::list
 std::make_error_code
 std::make_optional
@@ -352,6 +354,7 @@ std::move_only_function
 std::multimap
 std::multiset
 std::mutex
+std::nounitbuf
 std::ofstream
 std::ostream
 std::partial_order
@@ -365,10 +368,12 @@ std::priority_queue
 std::ptrdiff_t
 std::queue
 std::reference_wrapper
+std::right
 std::scanf
 std::scoped_allocator_adaptor
 std::scoped_lock
 std::set
+std::setw
 std::shared_ptr
 std::size
 std::size_t
@@ -400,6 +405,7 @@ std::type_info
 std::uintmax_t
 std::uintptr_t
 std::unique_ptr
+std::unitbuf
 std::unordered_map
 std::unordered_multimap
 std::unordered_multiset
