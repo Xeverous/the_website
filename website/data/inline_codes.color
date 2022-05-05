@@ -264,9 +264,9 @@ func()
 func
 func
 func
-var_global
-var_global
-var_global
+macro_ref
+macro_ref
+macro_ref
 func
 func
 func
