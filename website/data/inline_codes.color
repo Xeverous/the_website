@@ -288,8 +288,6 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
-namespace::type<keyword>
-namespace::type<keyword>
 namespace::namespace::type
 namespace::var_global
 namespace::namespace
@@ -409,10 +407,13 @@ namespace::type
 namespace::type
 namespace::var_global
 namespace::var_global
+namespace::var_global
+namespace::var_global
 namespace::type
 namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
+namespace::type
 namespace::type
 namespace::type
 !=
@@ -466,10 +467,13 @@ num
 >>
 >=
 tparam
+type*
+tparam
 tparam&
 tparam&&
 tparam(spec)
 tparam*
+tparam
 tparam{spec}
 tparam
 tparam
@@ -584,6 +588,11 @@ keyword tparam
 keyword...(tparam)
 keyword keyword
 keyword<tparam>(spec)
+namespace::type<keyword>
+namespace::type<keyword>
+namespace::type<keyword>
+namespace::type<keyword>
+namespace::type<keyword>
 namespace::type<tparam>
 namespace::type<keyword>
 namespace::type<keyword>

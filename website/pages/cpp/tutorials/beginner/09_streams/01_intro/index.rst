@@ -39,12 +39,44 @@ Closing streams is also done through the same function:
 
 The beauty of this approach is that once a thing has been set up (socket opened, file created, etc.) the same code can be used to operate on it, regardless of what exactly it represents. This is known as *polymorphism* and is one of key aspects of OOP (object-oriented programming, explained in later chapters). The respective OOP terms for opening, using and closing objects are *construction*, *methods* and *destruction*.
 
+Standard library streams
+########################
+
 Obviously C++ streams are a higher level of abstraction - you don't want to directly call OS-level functions when performing I/O - doing so is bug-prone and limits code portability. On platforms where linux is the kernel, C++ standard library streams are just wrapper code around it that add buffering, error handling, formatting and other features. On other platforms (e.g. Windows) the logic is more complex as the interface mandated by the C++ standard differs from the interface provided by the OS.
+
+Streams in the standard library form a hierarchy of types:
+
+.. TOCSS fix background (image is transparent)
+
+.. image:: http://upload.cppreference.com/mwiki/images/0/06/std-io-complete-inheritance.svg
+
+They are implemented using *inheritance*. Inheritance is explained in detail in polymorphism chapter, for now you just need to know it's a feature which allows to define types as extensions to other types.
+
+- :cch:`std::ios_base` is the base type for all stream types, it holds core stream state (errors, formatting, locale and other stuff).
+- :cch:`std::basic_ios` extends :cch:`std::ios_base` by adding a stream buffer - a handle to an abstract (hypothetical) I/O device. It's a template to support different character types (:cch:`CharT`) and their behavior (:cch:`Traits`).
+- :cch:`std::basic_istream` and :cch:`std::basic_ostream` are primary types for input and output operations, respectively. Out of these types string-streams and file-streams are made.
+
+``basic_`` is the name prefix C++ standard library uses when a type is a template for generalized implementation. Concrete types are aliases of the basic type with specific template parameters. Examples:
+
+- :cch:`std::string` is an alias of :cch:`std::basic_string<char>`
+- :cch:`std::wstring` is an alias of :cch:`std::basic_string<wchar_t>`
+- :cch:`std::ostream` is an alias of :cch:`std::basic_ostream<char>`
+- :cch:`std::wostream` is an alias of :cch:`std::basic_ostream<wchar_t>`
+
+You don't need to understand templates for now. I'm mentioning this because cppreference documents templates from which these types come from. Don't get surprised when searching for *something* you land on *basic_something* with an information what template parameters are - just mentally replace every occurrence of :cch:`CharT` with the type specified in the alias. Since :cch:`wchar_t` has significant use only with Windows-related APIs, pretty much all code you will write and see will use :cch:`CharT` as :cch:`char`. UTF-8 (which uses single byte :cch:`char` for storing textual data) is by far the most popular text encoding.
 
 Predefined streams
 ##################
 
-On most OSes, each program automatically gets some streams upon startup. Unix systems example:
+Unix-like operating systems offer 3 predefined streams for every program:
+
+- *stdin* (standard input)
+- *stdout* (standard output)
+- *stderr* (standard error)
+
+Each program gets them upon startup. By default, they will be connected to the console terminal in which the program is run. Programs which do not have console opened (they usually either have no human interface or only GUI) still have these streams, the data just can not be observed (but could be if they were launched from a terminal or another program opened them through a *pipe* to collect their output).
+
+C and C++ standard libraries offer global objects which are connected to the operating system's predefined streams:
 
 .. list-table::
     :header-rows: 1
@@ -53,33 +85,36 @@ On most OSes, each program automatically gets some streams upon startup. Unix sy
       - stream name
       - direction
       - C stream object
+      - C stream type
       - C++ stream object
+      - C++ stream type
     * - 0
       - standard input
       - read
       - :cch:`stdin`
+      - :cch:`FILE*`
       - :cch:`std::cin`
+      - :cch:`std::istream`
     * - 1
       - standard output
       - write
       - :cch:`stdout`
+      - :cch:`FILE*`
       - :cch:`std::cout`
+      - :cch:`std::ostream`
     * - 2
       - standard error
       - write
       - :cch:`stderr`
+      - :cch:`FILE*`
       - :cch:`std::cerr`
+      - :cch:`std::ostream`
 
-On Windows there are predefined streams too but the situation is more complicated.
+..
 
-:cch:`std::clog` is identical to :cch:`std::cerr` except 1 thing: :cch:`std::cerr` is the only unbuffered stream.
+    How relevant is this for Windows?
 
-What exactly these streams are connected to is very system-specific (in C++ terms: predefined global stream objects are implementation-defined) but for pretty much any system:
-
-- standard input will be connected to the keyboard
-- standard output and error will be connected to the console terminal
-
-Programs which do not have console opened (they usually either have no human interface or only GUI) still have these streams, the data just can not be observed (but could be if they were launched from a terminal or another program opened them through a *pipe* to collect their output).
+From C and C++ point of view (as a user of the standard library) there is no difference. Obviously underlying implementation is different - even file descriptors (called *file handles* there) are designed differently.
 
 Stream redirection
 ##################
@@ -90,7 +125,7 @@ On all shells that I know, standard output and standard error are combined in te
     :code_path: stream_redirection.cpp
     :color_path: stream_redirection.color
 
-Below examples for Bash (they may be compatible with some other shells too):
+Below examples for the Bash shell, which are compatible with many other shells too:
 
 .. code::
 
@@ -119,6 +154,8 @@ For performance reasons, streams are buffered. The cost of system calls is high 
 :cch:`std::endl` works like :cch:`'\n' << std::flush$$$chr << namespace::func`. In majority of situations the flush is redundant and only degrades performance by forcing unnecessary system calls. C++ standard library has a guuarantee that standard output is flushed before read operations on standard input. This means you can mix :cch:`std::cout` with :cch:`std::cin` without worrying that some data would not be output prior to read operations. For more information, see `CppCon 2017: Dietmar Kühl "The End of std::endl" <https://www.youtube.com/watch?v=6WeEMlmrfOI>`_ (3min).
 
 Standard error stream is not buffered because errors are generally rare so the buffer would rarely be flushed, delaying output of important information. In the worst case a program could place error information in the buffer, then crash and the error would not be output at all. For this reason error streams output data immediately.
+
+:cch:`std::clog` and :cch:`std::wclog` are a buffered standard error stream alternative to :cch:`std::cerr` and :cch:`std::wcerr`. As the names suggest, they are intended for logging, which typically are read some time after program execution, thus the lack of need for immediate output allows buffered implementation for increased performance.
 
 Stream limitations
 ##################

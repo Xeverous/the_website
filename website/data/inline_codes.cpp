@@ -288,8 +288,6 @@ std::basic_ios
 std::basic_iostream
 std::basic_istream
 std::basic_ostream
-std::basic_string_view<char>
-std::basic_string<char>
 std::chrono::seconds
 std::cerr
 std::chrono
@@ -407,6 +405,8 @@ std::unordered_multimap
 std::unordered_multiset
 std::unordered_set
 std::vector
+std::wcerr
+std::wclog
 std::wcout
 std::weak_order
 std::weak_ordering
@@ -414,6 +414,7 @@ std::weak_ordering::equivalent
 std::weak_ordering::greater
 std::weak_ordering::less
 std::weak_ptr
+std::wostream
 std::wstring
 !=
 !(x == y)
@@ -465,11 +466,14 @@ std::wstring
 >
 >>
 >=
+CharT
+FILE*
 T
 T&
 T&&
 T(expression)
 T*
+Traits
 T{expression}
 U
 V
@@ -584,6 +588,11 @@ sizeof T
 sizeof...(T)
 static thread_local
 static_cast<T>(expression)
+std::basic_ostream<char>
+std::basic_ostream<wchar_t>
+std::basic_string<char>
+std::basic_string<wchar_t>
+std::basic_string_view<char>
 std::vector<T>
 std::vector<char>
 std::vector<wchar_t>
