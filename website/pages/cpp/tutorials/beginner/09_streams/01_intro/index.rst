@@ -119,22 +119,32 @@ From C and C++ point of view (as a user of the standard library) there is no dif
 Stream redirection
 ##################
 
-On all shells that I know, standard output and standard error are combined in terminal output. Still, it doesn't make them the same - their data can be separated using stream redirection.
+Typical console terminal application combines program's standard output and standard error streams. Still, it doesn't make them the same - their data can be separated using stream redirection.
 
 .. cch::
     :code_path: stream_redirection.cpp
     :color_path: stream_redirection.color
 
-Below examples for the Bash shell, which are compatible with many other shells too:
+Below examples for the Bash shell, though they are compatible with many other shells too:
 
 .. code::
 
-    # redirect stdout to null device (will display only errors)
-    ./program 1>/dev/null
+    # redirect stdout to null device
+    $ ./program 1>/dev/null
+    error message
     # redirect stderr to null device (will display only output)
-    ./program 2>/dev/null
+    $ ./program 2>/dev/null
+    info message
     # redirect stderr to a file (output on screen, errors in file)
-    ./program 2>errors.txt
+    $ ./program 2>errors.txt
+    info message
+    $ cat errors.txt
+    error message
+    # redirect stdin to stdout and then both to a file
+    $ ./program > file.txt 2>&1
+    $ cat file.txt
+    info message
+    error message
 
 See https://stackoverflow.com/questions/818255/in-the-shell-what-does-21-mean for more examples and explanation.
 
@@ -142,7 +152,7 @@ It's also possible to redirect input:
 
 .. code::
 
-    ./program < input.txt
+    $ ./program < input.txt
 
 in such case the program will not wait for keyboard input - :cch:`std::cin` will eat data from the file and go into failure state upon reaching end of file. This is very useful for testing programs for school/university assignments as it allows to you fully automate program's input.
 
