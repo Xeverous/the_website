@@ -47,7 +47,7 @@ Function names
 
 - ``to_*`` - common name for functions which transform a single object to a different type, e.g. :cch:`std::to_string`, :cch:`std::to_chars`, :cch:`std::to_address`
 - ``make_*`` - common name for factory functions which create an object of specific type (often from multiple arguments) (often multiple overloads), e.g. :cch:`std::make_unique`, :cch:`std::make_shared`, :cch:`std::make_pair`, :cch:`std::make_tuple`, :cch:`std::make_optional`, :cch:`std::make_error_code`
-- ``*_impl`` - common where a function (or class) implementation needs to be split, the implementation code has the same name with ``_impl`` appended (or ``do_`` prepended); very common in boost libraries
+- ``*_impl`` - common where a function (or class) implementation needs to be split, the implementation code has the same name with ``_impl`` appended (or ``do_`` prepended); very common in boost libraries, `also used in standard libarry <https://en.cppreference.com/w/cpp/locale/numpunct/truefalsename>`_
 - ``*_cast`` for type convertions (based on 4 cast keywords: :cch:`static_cast`, :cch:`dynamic_cast`, :cch:`const_cast` and :cch:`reinterpret_cast`), other examples: :cch:`std::bit_cast`, :cch:`boost::lexical_cast`, :cch:`boost::numeric_cast`
 
 Templates
