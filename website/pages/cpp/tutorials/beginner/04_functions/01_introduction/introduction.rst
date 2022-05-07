@@ -262,7 +262,7 @@ Processors contain SRAM (static RAM) which is a much faster memory than main RAM
 Common mistakes
 ###############
 
-.. :cch::
+.. cch::
     :code_path: common_mistakes.cpp
     :color_path: common_mistakes.color
 

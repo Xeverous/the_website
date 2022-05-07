@@ -144,6 +144,10 @@ I have noticed several typos, below is a list of correct expressions:
 - `admonition:: info` should be `admonition:: note`
 - *compile-time* should be *compile time* (and analogically *link time*)
 
+This one is very important:
+
+- `.. :cch::` should be `.. cch::` - otherwise it (and lines below specifying paths) all become comments - this is a silent bug
+
 ## working with CSS
 
 Use root-relative paths when linking global stylesheets to avoid problems in nested pages. For example, `foo/bar/page.html` would need to use `../../styles.css` to reference `styles.css` file, and the path to CSS could break every time the page is moved. `/assets/css/styles.css` will always work as long as assets themselves are not moved.
