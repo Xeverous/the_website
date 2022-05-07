@@ -21,8 +21,8 @@ int make_valid_denominator(int value)
 class fraction
 {
 private:
-	int numerator = 0;
-	int denominator = 1;
+	int numerator;
+	int denominator;
 
 public:
 	fraction(int numerator = 0, int denominator = 1)

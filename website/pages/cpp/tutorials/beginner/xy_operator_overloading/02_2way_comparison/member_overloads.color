@@ -4,8 +4,8 @@
 keyword type
 {
 keyword:
-	keyword var_member = num;
-	keyword var_member = num;
+	keyword var_member;
+	keyword var_member;
 
 	keyword keyword func(keyword param)
 	{

@@ -4,8 +4,8 @@
 class fraction
 {
 private:
-	int m_numerator = 0;
-	int m_denominator = 1;
+	int m_numerator;
+	int m_denominator;
 
 	static int make_valid_denominator(int value)
 	{
