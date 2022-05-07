@@ -4,6 +4,7 @@
 .. author: Xeverous
 
 .. TODO this lesson seems to technical, probably too much details
+.. TODO this lesson duplicates "sarr" struct example
 
 By the time you are reading this you should understand:
 
