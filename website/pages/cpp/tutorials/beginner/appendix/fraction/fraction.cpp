@@ -108,6 +108,32 @@ public:
 		return *this;
 	}
 
+	fraction& operator++() // (prefix)
+	{
+		m_numerator += m_denominator;
+		return *this;
+	}
+
+	fraction& operator--() // (prefix)
+	{
+		m_numerator -= m_denominator;
+		return *this;
+	}
+
+	fraction operator++(int) // (postfix)
+	{
+		fraction old = *this;
+		operator++();
+		return old;
+	}
+
+	fraction operator--(int) // (postfix)
+	{
+		fraction old = *this;
+		operator--();
+		return old;
+	}
+
 private:
 	static int make_valid_denominator(int value)
 	{

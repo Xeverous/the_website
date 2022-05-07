@@ -108,6 +108,32 @@ keyword:
 		keyword *keyword;
 	}
 
+	type& keyword2func() 0com_single
+	{
+		var_member += var_member;
+		keyword *keyword;
+	}
+
+	type& keyword2func() 0com_single
+	{
+		var_member -= var_member;
+		keyword *keyword;
+	}
+
+	type keyword2func(keyword) 0com_single
+	{
+		type var_local = *keyword;
+		keyword2func();
+		keyword var_local;
+	}
+
+	type keyword2func(keyword) 0com_single
+	{
+		type var_local = *keyword;
+		keyword2func();
+		keyword var_local;
+	}
+
 keyword:
 	keyword keyword func(keyword param)
 	{
