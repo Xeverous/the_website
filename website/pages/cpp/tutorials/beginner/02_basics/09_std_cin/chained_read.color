@@ -2,9 +2,9 @@
 
 keyword func()
 {
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	keyword var_local;
 	keyword var_local;
-	namespace::var_global >> var_local >> var_local; 0com_single
-	namespace::var_global << str << var_local << str << var_local << str;
+	namespace::var_global 2oo var_local 2oo var_local; 0com_single
+	namespace::var_global 2oo str 2oo var_local 2oo str 2oo var_local 2oo str;
 }

@@ -3,5 +3,5 @@
 keyword func()
 {
 	keyword var_local; 0com_single
-	namespace::var_global << str << var_local << str; 0com_single
+	namespace::var_global 2oo str 2oo var_local 2oo str; 0com_single
 }

@@ -4,7 +4,7 @@ keyword func()
 {
 	keyword var_local; 0com_single
 	var_local = num; 0com_single
-	namespace::var_global << var_local << str;
+	namespace::var_global 2oo var_local 2oo str;
 	var_local = num; 0com_single
-	namespace::var_global << var_local << str;
+	namespace::var_global 2oo var_local 2oo str;
 }

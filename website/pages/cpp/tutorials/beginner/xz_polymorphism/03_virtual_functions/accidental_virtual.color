@@ -5,7 +5,7 @@ keyword type
 keyword:
 	keyword keyword func(keyword)
 	{
-		namespace::var_global << str;
+		namespace::var_global 2oo str;
 	}
 };
 
@@ -14,7 +14,7 @@ keyword type: keyword type
 keyword:
 	keyword keyword func(keyword) 0com_single
 	{
-		namespace::var_global << str;
+		namespace::var_global 2oo str;
 	}
 };
 
@@ -23,7 +23,7 @@ keyword type: keyword type
 keyword:
 	keyword keyword func(keyword)
 	{
-		namespace::var_global << str;
+		namespace::var_global 2oo str;
 	}
 };
 

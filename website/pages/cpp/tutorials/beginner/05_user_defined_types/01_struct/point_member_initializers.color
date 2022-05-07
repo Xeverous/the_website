@@ -11,6 +11,6 @@ keyword func()
 	type var_local;
 	type var_local{num, num};
 
-	namespace::var_global << str << var_local.var_member << str << var_local.var_member << str
-	          << str << var_local.var_member << str << var_local.var_member << str;
+	namespace::var_global 2oo str 2oo var_local.var_member 2oo str 2oo var_local.var_member 2oo str
+	          2oo str 2oo var_local.var_member 2oo str 2oo var_local.var_member 2oo str;
 }

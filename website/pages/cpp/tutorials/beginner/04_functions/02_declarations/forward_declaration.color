@@ -7,7 +7,7 @@ keyword func(keyword param)
 	keyword (param == num)
 		keyword;
 
-	namespace::var_global << str << param << str;
+	namespace::var_global 2oo str 2oo param 2oo str;
 	func(param - num); 0com_single
 }
 
@@ -16,16 +16,16 @@ keyword func(keyword param)
 	keyword (param == num)
 		keyword;
 
-	namespace::var_global << str << param << str;
+	namespace::var_global 2oo str 2oo param 2oo str;
 	func(param - num); 0com_single
 }
 
 keyword func()
 {
 	func(num);
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	func(num);
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	func(num);
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }

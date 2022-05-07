@@ -11,7 +11,7 @@ keyword:
 
 keyword func(type param) 0com_single
 {
-	namespace::var_global << str << param.var_member << str;
+	namespace::var_global 2oo str 2oo param.var_member 2oo str;
 }
 
 keyword func()

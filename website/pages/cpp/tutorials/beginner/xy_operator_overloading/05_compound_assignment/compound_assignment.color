@@ -41,7 +41,7 @@ keyword:
 	keyword func() keyword { keyword var_member; }
 	keyword func() keyword { keyword var_member; }
 
-	type& keyword+=(type param)
+	type& keyword2func(type param)
 	{
 		var_member = func() * param.func() + param.func() * func();
 		var_member = func() * param.func();
@@ -50,7 +50,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword-=(type param)
+	type& keyword2func(type param)
 	{
 		var_member = func() * param.func() - param.func() * func();
 		var_member = func() * param.func();
@@ -59,7 +59,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword*=(type param)
+	type& keyword2func(type param)
 	{
 		var_member *= param.func();
 		var_member *= param.func();
@@ -68,7 +68,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword/=(type param)
+	type& keyword2func(type param)
 	{
 		0com_single
 		0com_single
@@ -81,7 +81,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword%=(type param)
+	type& keyword2func(type param)
 	{
 		macro_ref(param.func() != num);
 		var_member = (func() * param.func()) % (param.func() * func());
@@ -92,7 +92,7 @@ keyword:
 	}
 };
 
-keyword keyword==(type param, type param)
+keyword keyword2func(type param, type param)
 {
 	keyword (param.func() == param.func())
 		keyword param.func() == param.func();
@@ -102,9 +102,9 @@ keyword keyword==(type param, type param)
 	keyword param.func() * param.func() == param.func() * param.func();
 }
 
-keyword keyword!=(type param, type param)
+keyword keyword2func(type param, type param)
 {
-	keyword !(param == param);
+	keyword !(param 2oo param);
 }
 
 0com_single
@@ -112,26 +112,26 @@ keyword keyword!=(type param, type param)
 0com_single
 0com_single
 0com_single
-type keyword+(type param, type param) { keyword param += param; }
-type keyword-(type param, type param) { keyword param -= param; }
-type keyword*(type param, type param) { keyword param *= param; }
-type keyword/(type param, type param) { keyword param /= param; }
-type keyword%(type param, type param) { keyword param %= param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
 
 keyword func()
 {
-	macro_ref(type(num, num) + type(num, num) == type(num, num));
-	macro_ref(type(num, num) - type(num, num) == type(num, num));
+	macro_ref(type(num, num) 1oo type(num, num) 2oo type(num, num));
+	macro_ref(type(num, num) 1oo type(num, num) 2oo type(num, num));
 
-	macro_ref(type(num, num) * type(num, num) == type(num, num));
-	macro_ref(type(num, num) / type(num, num) == type(num, num));
+	macro_ref(type(num, num) 1oo type(num, num) 2oo type(num, num));
+	macro_ref(type(num, num) 1oo type(num, num) 2oo type(num, num));
 
-	macro_ref(type(num, num) * type(num, -num) == type(-num, num));
-	macro_ref(type(num, num) / type(num, -num) == type(-num, num));
+	macro_ref(type(num, num) 1oo type(num, -num) 2oo type(-num, num));
+	macro_ref(type(num, num) 1oo type(num, -num) 2oo type(-num, num));
 
-	macro_ref(type(num, num) % type(num, num) == type(num, num));
-	macro_ref(type(num, num) % type(num, -num) == type(num, num));
-	macro_ref(type(num, num) % type(-num, num) == type(num, num));
-	macro_ref(type(-num, num) % type(num, num) == type(-num, num));
-	macro_ref(type(num, -num) % type(num, num) == type(-num, num));
+	macro_ref(type(num, num) 1oo type(num, num) 2oo type(num, num));
+	macro_ref(type(num, num) 1oo type(num, -num) 2oo type(num, num));
+	macro_ref(type(num, num) 1oo type(-num, num) 2oo type(num, num));
+	macro_ref(type(-num, num) 1oo type(num, num) 2oo type(-num, num));
+	macro_ref(type(num, -num) 1oo type(num, num) 2oo type(-num, num));
 }

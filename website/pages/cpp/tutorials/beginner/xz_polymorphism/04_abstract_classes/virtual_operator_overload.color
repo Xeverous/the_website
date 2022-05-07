@@ -1,4 +1,4 @@
-namespace::type& keyword<<(namespace::type& param, keyword type& param)
+namespace::type& keyword2func(namespace::type& param, keyword type& param)
 {
-	keyword param << param.func();
+	keyword param 2oo param.func();
 }

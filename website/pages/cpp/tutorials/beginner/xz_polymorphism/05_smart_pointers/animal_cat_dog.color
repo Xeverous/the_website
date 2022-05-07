@@ -24,7 +24,7 @@ keyword:
 
 keyword func(keyword type& param)
 {
-	namespace::var_global << param.func() << str;
+	namespace::var_global 2oo param.func() 2oo str;
 }
 
 keyword func()
@@ -34,5 +34,5 @@ keyword func()
 	var_local.func(namespace::func<type>());
 
 	keyword (keyword keyword& var_local : var_local)
-		func(*var_local);
+		func(1oo`var_local);
 }

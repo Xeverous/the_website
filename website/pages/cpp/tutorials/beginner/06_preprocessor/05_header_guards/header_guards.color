@@ -45,5 +45,5 @@ namespace::type func(type param)
 keyword func()
 {
 	keyword var_local = type::enum;
-	namespace::var_global << str << func(var_local) << str;
+	namespace::var_global 2oo str 2oo func(var_local) 2oo str;
 }

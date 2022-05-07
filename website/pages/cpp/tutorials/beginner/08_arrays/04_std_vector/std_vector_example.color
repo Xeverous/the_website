@@ -10,8 +10,8 @@ keyword func()
 		var_local.func(var_local * num);
 
 	keyword (keyword var_local : var_local)
-		namespace::var_global << var_local << str;
+		namespace::var_global 2oo var_local 2oo str;
 
-	namespace::var_global << str << var_local.func() << str;
-	namespace::var_global << str << var_local.func() << str;
+	namespace::var_global 2oo str 2oo var_local.func() 2oo str;
+	namespace::var_global 2oo str 2oo var_local.func() 2oo str;
 }

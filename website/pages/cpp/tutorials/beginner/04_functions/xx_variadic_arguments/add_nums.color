@@ -16,5 +16,5 @@ keyword func(keyword param, ...)
 
 keyword func()
 {
-	namespace::var_global << func(num, num, num, num, num) << str;
+	namespace::var_global 2oo func(num, num, num, num, num) 2oo str;
 }

@@ -6,9 +6,9 @@ keyword func()
 
 	keyword (var_local != num)
 	{
-		namespace::var_global << var_local << str;
+		namespace::var_global 2oo var_local 2oo str;
 		var_local /= 3num1suf;
 	}
 
-	namespace::var_global << var_local << str;
+	namespace::var_global 2oo var_local 2oo str;
 }

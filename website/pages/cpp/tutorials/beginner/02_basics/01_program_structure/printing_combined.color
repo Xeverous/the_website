@@ -4,5 +4,5 @@ keyword func()
 {
 	keyword var_local = num;
 	keyword var_local = chr;
-	namespace::var_global << str << var_local << str << var_local << str;
+	namespace::var_global 2oo str 2oo var_local 2oo str 2oo var_local 2oo str;
 }

@@ -3,7 +3,7 @@
 
 keyword func(keyword param, keyword param, keyword param, keyword keyword& param, keyword param)
 {
-	namespace::var_global << param << chr << param << chr << param << chr << param << chr << param << chr;
+	namespace::var_global 2oo param 2oo chr 2oo param 2oo chr 2oo param 2oo chr 2oo param 2oo chr 2oo param 2oo chr;
 }
 
 keyword func()
@@ -13,11 +13,11 @@ keyword func()
 	keyword var_local = num;
 	keyword var_local = namespace::func(func, var_global, num, var_global, namespace::func(var_local), var_local);
 	var_local = num;
-	var_local(num, num, num);
+	var_local1oo`num, num, num1oo;
 
 	0com_single
 	var_local = num;
 	keyword var_local = [var_local = namespace::func(var_local), var_local = var_local](keyword param, keyword param, keyword 12com_multi) { func(param, num, param, var_local, var_local); };
 	var_local = num;
-	var_local(num, num, num);
+	var_local1oo`num, num, num1oo;
 }

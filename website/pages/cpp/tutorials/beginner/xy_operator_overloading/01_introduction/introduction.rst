@@ -38,11 +38,11 @@ All of these restrictions aim to reduce potential surprises.
 - You can not change arity of operators - if ``/`` takes 2 arguments normally, it must be a 2-argument function.
 - Overloaded :cch:`operator&&` and :cch:`operator||` lose *short-circuit evaluation*.
 - At least one of operands must be a user-defined type - you can't redefine behaviour for built-in types.
-- You can not change operator precedence - overloaded :cch:`x + y * z$$$var_local + var_local * var_local` will always be treated as :cch:`x + (y * z)$$$var_local + (var_local * var_local)`, never as :cch:`(x + y) * z$$$(var_local + var_local) * var_local`.
+- You can not change operator precedence - overloaded :cch:`x + y * z$$$var_local + var_local * var_local` will always be treated as :cch:`x + (y * z)$$$var_local 1oo (var_local 1oo var_local)`, never as :cch:`(x + y) * z$$$(var_local 1oo var_local) 1oo var_local`.
 - You can not change operator associativity:
 
-  - (RtL operators) overloaded :cch:`x = y = z$$$var_local = var_local = var_local` will always be treated as :cch:`x = (y = z)$$$var_local = (var_local = var_local)`, never as :cch:`(x = y) = z$$$(var_local = var_local) = var_local`.
-  - (LtR operators) overloaded :cch:`x << y << z$$$var_local << var_local << var_local` will always be treated as :cch:`(x << y) << z$$$(var_local << var_local) << var_local`, never as :cch:`x << (y << z)$$$var_local << (var_local << var_local)`.
+  - (RtL operators) overloaded :cch:`x = y = z$$$var_local = var_local = var_local` will always be treated as :cch:`x = (y = z)$$$var_local 1oo (var_local 1oo var_local)`, never as :cch:`(x = y) = z$$$(var_local 1oo var_local) 1oo var_local`.
+  - (LtR operators) overloaded :cch:`x << y << z$$$var_local << var_local << var_local` will always be treated as :cch:`(x << y) << z$$$(var_local 2oo var_local) 2oo var_local`, never as :cch:`x << (y << z)$$$var_local 2oo (var_local 2oo var_local)`.
 
 Some operators must be member functions, some must be free functions and some can be both. Majority can not have default parameters (there is no syntax support). More info and recommendation for each in specific lessons.
 

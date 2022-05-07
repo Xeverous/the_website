@@ -28,14 +28,14 @@ keyword keyword type
 	enum = enum | enum | enum | enum
 };
 
-type keyword&(type param, type param);
-type keyword|(type param, type param);
-type keyword^(type param, type param);
+type keyword1func(type param, type param);
+type keyword1func(type param, type param);
+type keyword1func(type param, type param);
 
-type& keyword&=(type& param, type param);
-type& keyword|=(type& param, type param);
-type& keyword^=(type& param, type param);
+type& keyword2func(type& param, type param);
+type& keyword2func(type& param, type param);
+type& keyword2func(type& param, type param);
 
-type keyword~(type param);
+type keyword1func(type param);
 
 }

@@ -11,7 +11,7 @@ keyword tparam& func(keyword tparam& param, keyword tparam& param)
 
 keyword func()
 {
-	namespace::var_global << func(num, num)        << str; 0com_single
-	namespace::var_global << func(5num, 4num) << str; 0com_single
-	namespace::var_global << func(chr, chr)    << str; 0com_single
+	namespace::var_global 2oo func(num, num)        2oo str; 0com_single
+	namespace::var_global 2oo func(5num, 4num) 2oo str; 0com_single
+	namespace::var_global 2oo func(chr, chr)    2oo str; 0com_single
 }

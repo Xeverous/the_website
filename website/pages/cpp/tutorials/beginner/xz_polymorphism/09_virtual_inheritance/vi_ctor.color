@@ -1,7 +1,7 @@
 keyword type
 {
 	func(keyword param = chr): var_member(param) {}
-	keyword keyword func() { namespace::var_global << str; }
+	keyword keyword func() { namespace::var_global 2oo str; }
 
 	keyword var_member;
 };
@@ -9,13 +9,13 @@ keyword type
 keyword type: keyword type
 {
 	func(): type(chr) {}
-	keyword func() keyword { namespace::var_global << str; }
+	keyword func() keyword { namespace::var_global 2oo str; }
 };
 
 keyword type: keyword type
 {
 	func(): type(chr) {}
-	keyword func() keyword { namespace::var_global << str; }
+	keyword func() keyword { namespace::var_global 2oo str; }
 };
 
 keyword type: type, type

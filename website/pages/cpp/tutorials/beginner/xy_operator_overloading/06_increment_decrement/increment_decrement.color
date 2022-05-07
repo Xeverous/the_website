@@ -1,27 +1,27 @@
 0com_single
 
-type& keyword++() 0com_single
+type& keyword2func() 0com_single
 {
 	var_member += var_member;
 	keyword *keyword;
 }
 
-type& keyword--() 0com_single
+type& keyword2func() 0com_single
 {
 	var_member -= var_member;
 	keyword *keyword;
 }
 
-type keyword++(keyword) 0com_single
+type keyword2func(keyword) 0com_single
 {
 	type var_local = *keyword; 0com_single
-	keyword++(); 0com_single
+	keyword2func(); 0com_single
 	keyword var_local;
 }
 
-type keyword--(keyword) 0com_single
+type keyword2func(keyword) 0com_single
 {
 	type var_local = *keyword;
-	keyword--();
+	keyword2func();
 	keyword var_local;
 }

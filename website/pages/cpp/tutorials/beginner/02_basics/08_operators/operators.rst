@@ -44,7 +44,7 @@ For binary operators, there is a syntax sugar available when you want to perform
 
 It works as :cch:`z = z * (x + y)$$$var_local = var_local * (var_local + var_local)`. The entire right side is always evaluated first.
 
-Much later, you will also learn about **operator overloading**. Because most built-in operators work only with built-in types, C++ allows to define meaning for operators when user-defined types are involved. You have already used overloaded :cch:`operator<<` with :cch:`std::cout`.
+Much later, you will also learn about **operator overloading**. Because C++ allows to define new types (using speciifc keywords) and most built-in operators work only with built-in types, C++ allows to define meaning for operators when user-defined types are involved. You have already used overloaded :cch:`operator<<` with :cch:`std::cout`. Many IDEs will color overloaded operators to signal that their meaning has been specified in code, not in the language.
 
 Comparison
 ##########

@@ -5,8 +5,8 @@ keyword type
 {
 	tparam var_member[tparam];
 
-	keyword keyword tparam& keyword[](type param) keyword { keyword var_member[param]; }
-	keyword       tparam& keyword[](type param)       { keyword var_member[param]; }
+	keyword keyword tparam& keyword2func(type param) keyword { keyword var_member[param]; }
+	keyword       tparam& keyword2func(type param)       { keyword var_member[param]; }
 
 	keyword type func() keyword keyword { keyword tparam; }
 

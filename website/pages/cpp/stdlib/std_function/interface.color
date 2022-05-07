@@ -17,15 +17,15 @@ keyword type<tparam(tparam...)> 0com_single
 	keyword <keyword tparam>
 	type(tparam&& param); 0com_single
 
-	type& keyword=(keyword type& param);
-	type& keyword=(type&& param); 0com_single
-	type& keyword=(namespace::type) keyword; 0com_single
+	type& keyword1func(keyword type& param);
+	type& keyword1func(type&& param); 0com_single
+	type& keyword1func(namespace::type) keyword; 0com_single
 
 	0com_single
 	keyword <keyword tparam>
-	type& keyword=(tparam&& param);
+	type& keyword1func(tparam&& param);
 	keyword <keyword tparam>
-	type& keyword=(namespace::type<tparam> param) keyword;
+	type& keyword1func(namespace::type<tparam> param) keyword;
 
 	keyword func(type& param) keyword;
 
@@ -35,7 +35,7 @@ keyword type<tparam(tparam...)> 0com_single
 
 	0com_single
 	0com_single
-	tparam keyword()(tparam... param) keyword;
+	tparam keyword2func(tparam... param) keyword;
 
 	0com_single
 	0com_single
@@ -51,10 +51,10 @@ keyword type<tparam(tparam...)> 0com_single
 
 0com_single
 keyword <keyword tparam, keyword... tparam>
-keyword keyword==(keyword namespace::type<tparam(tparam...)>& param, namespace::type) keyword;
+keyword keyword2func(keyword namespace::type<tparam(tparam...)>& param, namespace::type) keyword;
 keyword <keyword tparam, keyword... tparam>
-keyword keyword==(namespace::type, keyword namespace::type<tparam(tparam...)>& param) keyword;
+keyword keyword2func(namespace::type, keyword namespace::type<tparam(tparam...)>& param) keyword;
 keyword <keyword tparam, keyword... tparam>
-keyword keyword!=(keyword namespace::type<tparam(tparam...)>& param, namespace::type) keyword;
+keyword keyword2func(keyword namespace::type<tparam(tparam...)>& param, namespace::type) keyword;
 keyword <keyword tparam, keyword... tparam>
-keyword keyword!=(namespace::type, keyword namespace::type<tparam(tparam...)>& param) keyword;
+keyword keyword2func(namespace::type, keyword namespace::type<tparam(tparam...)>& param) keyword;

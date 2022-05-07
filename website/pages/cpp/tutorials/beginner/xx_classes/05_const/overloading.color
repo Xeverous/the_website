@@ -15,7 +15,7 @@ keyword:
 0com_single
 0com_single
 type var_local(9com_multi);
-var_local.func() = str;
+var_local.func() 1oo str;
 
 keyword type var_local(9com_multi);
-var_local.func() = str; 0com_single
+var_local.func() 1oo str; 0com_single

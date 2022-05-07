@@ -24,7 +24,7 @@ keyword keyword func(keyword keyword param, keyword keyword param, keyword keywo
 0com_single
 keyword func()
 {
-	namespace::var_global << func(3num) << str;
-	namespace::var_global << func(-3num) << str;
-	namespace::var_global << func(num, num, num) << str;
+	namespace::var_global 2oo func(3num) 2oo str;
+	namespace::var_global 2oo func(-3num) 2oo str;
+	namespace::var_global 2oo func(num, num, num) 2oo str;
 }

@@ -47,7 +47,7 @@ keyword:
 	0com_single
 	keyword func(namespace::type& param = namespace::var_global) keyword
 	{
-		param << var_member << "/" << var_member;
+		param 2oo var_member 2oo "/" 2oo var_member;
 	}
 };
 
@@ -60,7 +60,7 @@ keyword:
 keyword func(keyword type& param)
 {
 	param.func();
-	namespace::var_global << str << param.func() << str;
+	namespace::var_global 2oo str 2oo param.func() 2oo str;
 
 	0com_single
 }
@@ -69,9 +69,9 @@ keyword func(type param)
 {
 	func(param);
 	param.func();
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	func(param);
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }
 
 keyword func()

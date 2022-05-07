@@ -9,7 +9,7 @@ keyword func()
 
 	++var_local;
 
-	namespace::var_global << var_local; 0com_single
+	namespace::var_global 2oo var_local; 0com_single
 
 	0com_single
 	0com_single

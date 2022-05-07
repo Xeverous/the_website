@@ -84,9 +84,9 @@ Unlike other stuff that came with C++11, :cch:`std::make_unique` was added in C+
 Thanks to overloaded operators, once you have a smart pointer, you can:
 
 - test whether it's not empty (AKA not null): :cch:`if (ptr)$$$keyword (var_local)`
-- get a reference to managed object: :cch:`T& ref = *ptr;$$$tparam& var_local = *var_local;` (pointer must not be empty)
+- get a reference to the managed object: :cch:`T& ref = *ptr;$$$tparam& var_local = 1oo`var_local;` (pointer must not be empty)
 - access smart pointer members: :cch:`ptr.$$$var_local.`
-- access managed object members: :cch:`ptr->$$$var_local->` (pointer must not be empty)
+- access managed object members: :cch:`ptr->$$$var_local2oo` (pointer must not be empty)
 
 How it works
 ############
@@ -99,7 +99,7 @@ Single ownership
 :cch:`std::unique_ptr` models single ownership. The managed object always has 1 owner.
 
 - The pointer can not be copied (formally, its *copy constructor* is :cch:`= delete`\ d) (this also disallows copy constructors of containers of this smart pointer).
-- The pointer can be *moved*: :cch:`uptr2 = std::move(uptr1);$$$var_local = namespace::func(var_local);`.
+- The pointer can be *moved*: :cch:`uptr2 = std::move(uptr1);$$$var_local 1oo namespace::func(var_local);`.
 
 :cch:`std::move` is a simple 1-line function that returns :cch:`T&&` (*rvalue reference*) - the function is just a cast. When such reference is passed to constructors or assignment operators, it triggers *move operations*.
 

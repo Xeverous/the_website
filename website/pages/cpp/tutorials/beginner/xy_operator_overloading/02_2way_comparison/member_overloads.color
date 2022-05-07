@@ -26,7 +26,7 @@ keyword:
 
 	0com_single
 
-	keyword keyword==(type param) keyword
+	keyword keyword2func(type param) keyword
 	{
 		keyword (func() == param.func())
 			keyword func() == param.func();
@@ -34,9 +34,9 @@ keyword:
 		keyword func() * param.func() == param.func() * func();
 	}
 
-	keyword keyword!=(type param) keyword
+	keyword keyword2func(type param) keyword
 	{
-		keyword !(*keyword == param);
+		keyword !(*keyword 2oo param);
 	}
 };
 
@@ -45,8 +45,8 @@ keyword func()
 	type var_local(num, num);
 
 	0com_single
-	macro_ref(var_local == num);
-	macro_ref(var_local.keyword==(num));
+	macro_ref(var_local 2oo num);
+	macro_ref(var_local.keyword2func(num));
 
 	0com_single
 	macro_ref(num 2problem var_local);          0com_single

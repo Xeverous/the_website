@@ -9,7 +9,7 @@ keyword func()
 	keyword (keyword)
 	{
 		keyword var_local;
-		keyword (namespace::var_global >> var_local)
+		keyword (namespace::var_global 2oo var_local)
 		{
 			0com_single
 			var_local += var_local;
@@ -18,7 +18,7 @@ keyword func()
 
 		keyword (namespace::var_global.func())
 		{
-			namespace::var_global << str;
+			namespace::var_global 2oo str;
 			keyword;
 		}
 
@@ -26,13 +26,13 @@ keyword func()
 		0com_single
 		keyword (namespace::var_global.func())
 		{
-			namespace::var_global << str;
+			namespace::var_global 2oo str;
 			keyword;
 		}
 
 		keyword (namespace::var_global.func())
 		{
-			namespace::var_global << str;
+			namespace::var_global 2oo str;
 			namespace::var_global.func();
 			0com_single
 			0com_single
@@ -40,7 +40,7 @@ keyword func()
 		}
 	}
 
-	namespace::var_global << str << var_local << str;
+	namespace::var_global 2oo str 2oo var_local 2oo str;
 	keyword (var_local != num)
-		namespace::var_global << str << var_local / var_local << str;
+		namespace::var_global 2oo str 2oo var_local / var_local 2oo str;
 }

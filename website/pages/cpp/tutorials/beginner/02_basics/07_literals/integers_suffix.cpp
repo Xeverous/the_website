@@ -4,5 +4,5 @@
 123ull // unsigned long long
 
 // C++23
-123z   // size type
-123uz  // unsigned size type (std::size_t)
+123z   // signed version of std::size_t
+123uz  // std::size_t (an alias, typically for unsigned long long)

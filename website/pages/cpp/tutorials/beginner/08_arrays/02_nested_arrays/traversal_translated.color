@@ -23,8 +23,8 @@ keyword func()
 	keyword (keyword var_local = num; var_local < var_local; ++var_local)
 	{
 		keyword (var_local % var_local == num)
-			namespace::var_global << str;
+			namespace::var_global 2oo str;
 
-		namespace::var_global << var_local[var_local] << str;
+		namespace::var_global 2oo var_local[var_local] 2oo str;
 	}
 }

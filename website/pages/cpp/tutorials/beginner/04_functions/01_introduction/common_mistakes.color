@@ -2,7 +2,7 @@
 
 keyword func()
 {
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }
 
 keyword func()
@@ -26,5 +26,5 @@ keyword func()
 
 	0com_single
 	0com_single
-	namespace::var_global << func;
+	namespace::var_global 2oo func;
 }

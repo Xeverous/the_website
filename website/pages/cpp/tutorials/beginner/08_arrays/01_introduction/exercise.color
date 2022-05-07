@@ -1,5 +1,4 @@
 8pp_direct 0pp_header
-8pp_direct 5pp_header 0com_single
 
 keyword <keyword tparam, keyword tparam>
 keyword keyword func(keyword tparam (&)[tparam]) keyword
@@ -31,5 +30,5 @@ keyword func()
 	func(var_local, var_local, var_local);
 	func(var_local);
 	func(var_local);
-	namespace::var_global << namespace::func << func(var_local, var_local, var_local, var_local);
+	namespace::var_global 2oo namespace::func 2oo func(var_local, var_local, var_local, var_local);
 }

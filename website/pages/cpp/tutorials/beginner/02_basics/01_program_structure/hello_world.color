@@ -2,6 +2,6 @@
 
 keyword func() 0com_single
 { 0com_single
-	namespace::var_global << str; 0com_single
+	namespace::var_global 2oo str; 0com_single
 	keyword num; 0com_single
 } 0com_single

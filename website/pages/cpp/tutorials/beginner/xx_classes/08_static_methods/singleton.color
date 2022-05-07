@@ -10,9 +10,9 @@ keyword:
 	0com_single
 	0com_single
 	func(keyword type&) = keyword;
-	type& keyword=(keyword type&) = keyword;
+	type& keyword1func(keyword type&) = keyword;
 	func(type&&) = keyword;
-	type& keyword=(type&&) = keyword;
+	type& keyword1func(type&&) = keyword;
 
 	0com_single
 

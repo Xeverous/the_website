@@ -6,8 +6,8 @@ keyword func()
 	{
 		0com_single
 		keyword (keyword var_local = num; var_local <= var_local; ++var_local)
-			namespace::var_global << var_local << str;
+			namespace::var_global 2oo var_local 2oo str;
 
-		namespace::var_global << str;
+		namespace::var_global 2oo str;
 	}
 }

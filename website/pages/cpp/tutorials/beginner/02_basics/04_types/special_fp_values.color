@@ -4,7 +4,7 @@
 keyword func()
 {
 	0com_single
-	namespace::var_global << namespace::func(num, num) << str;
+	namespace::var_global 2oo namespace::func(num, num) 2oo str;
 	0com_single
-	namespace::var_global << namespace::func(-num) << str;
+	namespace::var_global 2oo namespace::func(-num) 2oo str;
 }

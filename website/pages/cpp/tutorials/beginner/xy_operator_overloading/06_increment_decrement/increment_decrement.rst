@@ -10,7 +10,7 @@ As you should remember, increment and decrement have 2 variations:
 
 As with compound assignments, to avoid code duplication one operator implementation should reuse the other one. Postfix operators should reuse prefix operators - this way code is simpler.
 
-Increment and decrement need to be defined as member functions. But how to differentiate prefix from postfix operator overload? Intuitively, one might think :cch:`operator++$$$keyword++` vs :cch:`++operator$$$++keyword` but that's not how syntax works. Due to syntax limitations, it has been decided that the ambiguity problem will be fixed by adding a dummy :cch:`int` parameter to postfix operators. The value of this parameter is always :cch:`0` and it should be always ignored.
+Increment and decrement need to be defined as member functions. But how to differentiate prefix from postfix operator overload? Intuitively, one might think :cch:`operator++` vs :cch:`++operator$$$2oo`keyword` but that's not how syntax works. Due to syntax limitations, it has been decided that the ambiguity problem will be fixed by adding a dummy :cch:`int` parameter to postfix operators. The value of this parameter is always :cch:`0` and it should be always ignored.
 
 As with most other operators, this one is going to showcase :cch:`fraction$$$type` class too. There are 2 potential designs:
 

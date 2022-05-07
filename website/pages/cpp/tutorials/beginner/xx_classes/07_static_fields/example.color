@@ -20,24 +20,24 @@ keyword func()
 	type var_local(num);
 
 	0com_single
-	namespace::var_global << str << var_local.var_global << str;
-	namespace::var_global << str << var_local.var_global << str;
+	namespace::var_global 2oo str 2oo var_local.var_global 2oo str;
+	namespace::var_global 2oo str 2oo var_local.var_global 2oo str;
 
 	++var_local.var_global;
 
-	namespace::var_global << str << var_local.var_global << str;
-	namespace::var_global << str << var_local.var_global << str;
+	namespace::var_global 2oo str 2oo var_local.var_global 2oo str;
+	namespace::var_global 2oo str 2oo var_local.var_global 2oo str;
 
 	0com_single
-	namespace::var_global << str << namespace::func(var_local.var_global) << str;
-	namespace::var_global << str << namespace::func(var_local.var_global) << str;
+	namespace::var_global 2oo str 2oo namespace::func(var_local.var_global) 2oo str;
+	namespace::var_global 2oo str 2oo namespace::func(var_local.var_global) 2oo str;
 
 	0com_single
 	0com_single
-	namespace::var_global << str << keyword(keyword) << str;
-	namespace::var_global << str << keyword(type) << str;
+	namespace::var_global 2oo str 2oo keyword(keyword) 2oo str;
+	namespace::var_global 2oo str 2oo keyword(type) 2oo str;
 
 	0com_single
 	++type::var_global;
-	namespace::var_global << str << type::var_global << str;
+	namespace::var_global 2oo str 2oo type::var_global 2oo str;
 }

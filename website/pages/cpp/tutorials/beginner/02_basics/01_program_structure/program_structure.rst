@@ -80,9 +80,9 @@ For now, this should be enough to let you print values of different objects. In 
 
 Watch out for these syntax problems:
 
-- double operator: :cch:`std::cout << << "text";$$$namespace::var_global << 2problem str;`
-- unwanted semicolon: :cch:`std::cout << "text"; << "text";$$$namespace::var_global << str1problem << str;`
-- operator with no operand: :cch:`std::cout << "text" <<;$$$namespace::var_global << str 2problem;`
+- double operator: :cch:`std::cout << << "text";$$$namespace::var_global 2oo 2problem str;`
+- unwanted semicolon: :cch:`std::cout << "text"; << "text";$$$namespace::var_global 2oo str1problem 2oo str;`
+- operator with no operand: :cch:`std::cout << "text" <<;$$$namespace::var_global 2oo str 2problem;`
 - wrong operator: :cch:`std::cout >> "text";$$$namespace::var_global 2problem str;`
 
 Exercise

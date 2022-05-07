@@ -30,5 +30,5 @@ keyword func()
 	} 0com_single
 
 	type var_local; 0com_single
-	namespace::var_global << var_local.func() << str;
+	namespace::var_global 2oo var_local.func() 2oo str;
 }

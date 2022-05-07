@@ -3,19 +3,19 @@
 keyword type
 {
 keyword:
-	keyword keyword func() { namespace::var_global << str; }
+	keyword keyword func() { namespace::var_global 2oo str; }
 };
 
 keyword type
 {
 keyword:
-	keyword keyword func() { namespace::var_global << str; }
+	keyword keyword func() { namespace::var_global 2oo str; }
 };
 
 keyword type: keyword type, keyword type
 {
 keyword:
-	keyword func() keyword { namespace::var_global << str; }
+	keyword func() keyword { namespace::var_global 2oo str; }
 };
 
 keyword func()

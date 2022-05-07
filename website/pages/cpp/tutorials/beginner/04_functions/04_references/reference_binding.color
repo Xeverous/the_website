@@ -3,7 +3,7 @@
 keyword func(keyword& param)
 {
 	param *= num;
-	namespace::var_global << str << param << str;
+	namespace::var_global 2oo str 2oo param 2oo str;
 }
 
 keyword func()

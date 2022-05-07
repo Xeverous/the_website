@@ -1,6 +1,6 @@
 0com_single
 
-keyword keyword==(type param) keyword
+keyword keyword2func(type param) keyword
 {
 	keyword (func() == param.func())
 		keyword func() == param.func();
@@ -8,7 +8,7 @@ keyword keyword==(type param) keyword
 	keyword func() * param.func() == param.func() * func();
 }
 
-namespace::type keyword<=>(type param) keyword
+namespace::type keyword3func(type param) keyword
 {
 	keyword (func() == param.func())
 	{

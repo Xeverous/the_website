@@ -23,16 +23,16 @@ keyword type
 
 keyword func(keyword keyword* param, type param)
 {
-	namespace::var_global << param << str << param.var_member << str << param.var_member << str;
+	namespace::var_global 2oo param 2oo str 2oo param.var_member 2oo str 2oo param.var_member 2oo str;
 }
 
 keyword func(keyword keyword* param, type param)
 {
-	namespace::var_global << param << str;
+	namespace::var_global 2oo param 2oo str;
 	func(str, param.var_member);
 	func(str, param.var_member);
 	func(str, param.var_member);
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }
 
 keyword func()

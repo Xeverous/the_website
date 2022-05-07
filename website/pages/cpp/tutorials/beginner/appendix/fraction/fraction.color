@@ -48,7 +48,7 @@ keyword:
 
 	keyword func(namespace::type& param = namespace::var_global) keyword
 	{
-		param << var_member << str << var_member;
+		param 2oo var_member 2oo str 2oo var_member;
 	}
 
 	keyword func() keyword
@@ -61,7 +61,7 @@ keyword:
 		keyword func();
 	}
 
-	type& keyword+=(type param)
+	type& keyword2func(type param)
 	{
 		var_member = func() * param.func() + param.func() * func();
 		var_member = func() * param.func();
@@ -70,7 +70,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword-=(type param)
+	type& keyword2func(type param)
 	{
 		var_member = func() * param.func() - param.func() * func();
 		var_member = func() * param.func();
@@ -79,7 +79,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword*=(type param)
+	type& keyword2func(type param)
 	{
 		var_member *= param.func();
 		var_member *= param.func();
@@ -88,7 +88,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword/=(type param)
+	type& keyword2func(type param)
 	{
 		macro_ref(param.func() != num);
 		var_member *= param.func();
@@ -98,7 +98,7 @@ keyword:
 		keyword *keyword;
 	}
 
-	type& keyword%=(type param)
+	type& keyword2func(type param)
 	{
 		macro_ref(param.func() != num);
 		var_member = (func() * param.func()) % (param.func() * func());
@@ -121,7 +121,7 @@ keyword:
 	keyword var_member;
 };
 
-keyword keyword==(type param, type param)
+keyword keyword2func(type param, type param)
 {
 	keyword (param.func() == param.func())
 		keyword param.func() == param.func();
@@ -129,12 +129,12 @@ keyword keyword==(type param, type param)
 	keyword param.func() * param.func() == param.func() * param.func();
 }
 
-keyword keyword!=(type param, type param)
+keyword keyword2func(type param, type param)
 {
 	keyword !(param == param);
 }
 
-keyword keyword<(type param, type param)
+keyword keyword1func(type param, type param)
 {
 	keyword (param.func() == param.func())
 		keyword param.func() < param.func();
@@ -142,17 +142,17 @@ keyword keyword<(type param, type param)
 	keyword param.func() * param.func() < param.func() * param.func();
 }
 
-keyword keyword> (type param, type param) { keyword param < param; }
-keyword keyword<=(type param, type param) { keyword !(param > param); }
-keyword keyword>=(type param, type param) { keyword !(param < param); }
+keyword keyword1func (type param, type param) { keyword param < param; }
+keyword keyword2func(type param, type param) { keyword !(param > param); }
+keyword keyword2func(type param, type param) { keyword !(param < param); }
 
-type keyword+(type param, type param) { keyword param += param; }
-type keyword-(type param, type param) { keyword param -= param; }
-type keyword*(type param, type param) { keyword param *= param; }
-type keyword/(type param, type param) { keyword param /= param; }
-type keyword%(type param, type param) { keyword param %= param; }
+type keyword1func(type param, type param) { keyword param += param; }
+type keyword1func(type param, type param) { keyword param -= param; }
+type keyword1func(type param, type param) { keyword param *= param; }
+type keyword1func(type param, type param) { keyword param /= param; }
+type keyword1func(type param, type param) { keyword param %= param; }
 
-namespace::type& keyword<<(namespace::type& param, type param)
+namespace::type& keyword2func(namespace::type& param, type param)
 {
 	param.func(param);
 	keyword param;

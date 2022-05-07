@@ -8,13 +8,13 @@ keyword:
 	0com_single
 
 	0com_single
-	keyword keyword keyword==(keyword type& param, keyword type& param)
+	keyword keyword keyword2func(keyword type& param, keyword type& param)
 	{
 		keyword param.var_member == param.var_member;
 	}
 };
 
-keyword keyword!=(keyword type& param, keyword type& param)
+keyword keyword2func(keyword type& param, keyword type& param)
 {
-	keyword !(param == param);
+	keyword !(param 2oo param);
 }

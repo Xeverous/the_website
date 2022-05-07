@@ -1,5 +1,4 @@
 #include <iostream>
-#include <ios> // for std::boolalpha
 
 template <typename T, int N>
 constexpr int size(const T (&)[N]) noexcept

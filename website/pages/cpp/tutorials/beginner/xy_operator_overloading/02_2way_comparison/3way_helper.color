@@ -1,9 +1,9 @@
 keyword type { 9com_multi };
 keyword func(keyword type& param, keyword type& param);
 
-keyword keyword==(keyword type& param, keyword type& param) { keyword func(param, param) == num; }
-keyword keyword!=(keyword type& param, keyword type& param) { keyword func(param, param) != num; }
-keyword keyword< (keyword type& param, keyword type& param) { keyword func(param, param) <  num; }
-keyword keyword> (keyword type& param, keyword type& param) { keyword func(param, param) >  num; }
-keyword keyword<=(keyword type& param, keyword type& param) { keyword func(param, param) <= num; }
-keyword keyword>=(keyword type& param, keyword type& param) { keyword func(param, param) >= num; }
+keyword keyword2func(keyword type& param, keyword type& param) { keyword func(param, param) == num; }
+keyword keyword2func(keyword type& param, keyword type& param) { keyword func(param, param) != num; }
+keyword keyword1func (keyword type& param, keyword type& param) { keyword func(param, param) <  num; }
+keyword keyword1func (keyword type& param, keyword type& param) { keyword func(param, param) >  num; }
+keyword keyword2func(keyword type& param, keyword type& param) { keyword func(param, param) <= num; }
+keyword keyword2func(keyword type& param, keyword type& param) { keyword func(param, param) >= num; }

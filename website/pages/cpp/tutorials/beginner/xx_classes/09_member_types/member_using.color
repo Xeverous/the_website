@@ -5,13 +5,13 @@ keyword:
 
 	keyword func()
 	{
-		var_member = var_member;
+		var_member 1oo var_member;
 	}
 
 	keyword func()
 	{
 		func();
-		var_member = var_member;
+		var_member 1oo var_member;
 	}
 
 	      type& func()       { keyword var_member; }

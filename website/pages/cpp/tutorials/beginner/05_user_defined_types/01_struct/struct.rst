@@ -49,7 +49,7 @@ The code above requires C++14, becase *default member initializers* introduced i
 
 ..
 
-    I don't like the fact that in the second overload of :cch:`print$$$func` the code mixes function calls with :cch:`std::cout`. Is it possible to make :cch:`std::cout << p$$$namespace::var_global << var_local` work?
+    I don't like the fact that in the second overload of :cch:`print$$$func` the code mixes function calls with :cch:`std::cout`. Is it possible to make :cch:`std::cout << p$$$namespace::var_global 2oo var_local` work?
 
 Yes. The specific feature that supports it is known as *operator overloading*. You can overload operators (they work just like functions with few restrictions) for *user-defined types* (built-in types already have behavior specified). I'm not going to delve into details as the topic is described in it's own chapter but for the sake of example:
 

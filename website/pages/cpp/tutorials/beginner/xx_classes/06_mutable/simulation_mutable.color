@@ -9,7 +9,7 @@ keyword:
 		keyword (param != var_member)
 		{
 			var_member = param;
-			var_member = namespace::var_global;
+			var_member 1oo namespace::var_global;
 		}
 
 		keyword keyword;
@@ -23,7 +23,7 @@ keyword:
 		keyword (param != var_member)
 		{
 			var_member = param;
-			var_member = namespace::var_global;
+			var_member 1oo namespace::var_global;
 		}
 
 		keyword keyword;
@@ -34,7 +34,7 @@ keyword:
 		keyword (param != var_member)
 		{
 			var_member = param;
-			var_member = namespace::var_global;
+			var_member 1oo namespace::var_global;
 		}
 
 		keyword keyword;
@@ -45,7 +45,7 @@ keyword:
 	type func() keyword
 	{
 		keyword (!var_member)
-			var_member = func();
+			var_member 1oo func();
 
 		keyword var_member.func();
 	}

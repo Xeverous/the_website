@@ -19,8 +19,8 @@ keyword func()
 {
 	0com_single
 	0com_single
-	namespace::var_global << func(num, func(func(-num, num), num)) << str;
-	namespace::var_global << func(func(func(func(num)))) << str;
+	namespace::var_global 2oo func(num, func(func(-num, num), num)) 2oo str;
+	namespace::var_global 2oo func(func(func(func(num)))) 2oo str;
 
 	0com_single
 	0com_single

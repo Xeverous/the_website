@@ -1,4 +1,4 @@
-keyword (namespace::var_global >> var_local)
+keyword (namespace::var_global 2oo var_local)
 {
 	0com_single
 }
@@ -6,7 +6,7 @@ keyword (namespace::var_global >> var_local)
 0com_single
 keyword (keyword)
 {
-	namespace::var_global >> var_local;
+	namespace::var_global 2oo var_local;
 
 	keyword (namespace::var_global)
 	{

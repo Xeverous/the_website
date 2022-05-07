@@ -2,30 +2,30 @@
 
 keyword func()
 {
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }
 
 keyword func()
 {
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	func();
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }
 
 keyword func()
 {
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	func();
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }
 
 keyword func()
 {
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	func();
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 	func();
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
 }
 
 keyword func()

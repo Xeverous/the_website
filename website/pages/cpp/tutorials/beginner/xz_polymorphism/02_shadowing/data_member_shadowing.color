@@ -12,8 +12,8 @@ keyword type: type
 
 keyword type::func() keyword
 {
-	namespace::var_global << str << var_member << str;
-	namespace::var_global << str << type::var_member << str;
+	namespace::var_global 2oo str 2oo var_member 2oo str;
+	namespace::var_global 2oo str 2oo type::var_member 2oo str;
 }
 
 keyword func()

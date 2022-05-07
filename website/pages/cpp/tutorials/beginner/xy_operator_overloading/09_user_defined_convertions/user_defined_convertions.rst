@@ -11,7 +11,7 @@ By default, the convertion is implicit. Since C++11 :cch:`explicit` can be used 
     :code_path: fraction.cpp
     :color_path: fraction.color
 
-:cch:`operator!` must be a member function that takes 0 arguments. It has no restrictions on the return type although there is very little point in a type different than :cch:`bool`. Since C++11 ``!`` performs *contextual convertion* to :cch:`bool` so overloading :cch:`operator bool` is enough - expressions like :cch:`if (!obj)$$$keyword (!var_local)` where ``!`` is not overloaded will be treated as :cch:`if (!static_cast<bool>(obj))$$$keyword (!keyword<keyword>(var_local))`.
+:cch:`operator!` must be a member function that takes 0 arguments. It has no restrictions on the return type although there is very little point in a type different than :cch:`bool`. Since C++11 ``!`` performs *contextual convertion* to :cch:`bool` so overloading :cch:`operator bool` is enough - expressions like :cch:`if (!obj)$$$keyword (1oo`var_local)` where ``!`` is not overloaded will be treated as :cch:`if (!static_cast<bool>(obj))$$$keyword (!keyword<keyword>(var_local))`.
 
 Example usage:
 

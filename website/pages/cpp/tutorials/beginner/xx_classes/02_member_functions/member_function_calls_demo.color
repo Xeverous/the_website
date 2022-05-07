@@ -25,7 +25,7 @@ keyword:
 
 	keyword func()
 	{
-		namespace::var_global << var_member << str << var_member << str;
+		namespace::var_global 2oo var_member 2oo str 2oo var_member 2oo str;
 	}
 };
 

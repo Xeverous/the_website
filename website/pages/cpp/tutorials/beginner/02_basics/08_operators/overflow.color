@@ -4,11 +4,11 @@
 keyword func()
 {
 	namespace::type var_local = num1suf;
-	namespace::var_global << str << var_local << str;
+	namespace::var_global 2oo str 2oo var_local 2oo str;
 
 	var_local += num;
-	namespace::var_global << str << var_local << str;
+	namespace::var_global 2oo str 2oo var_local 2oo str;
 
 	var_local -= num;
-	namespace::var_global << str << var_local << str;
+	namespace::var_global 2oo str 2oo var_local 2oo str;
 }

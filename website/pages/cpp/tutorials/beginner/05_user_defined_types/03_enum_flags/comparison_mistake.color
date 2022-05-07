@@ -3,5 +3,5 @@ keyword (var_local == namespace::namespace::type::enum)
 	0com_single
 
 0com_single
-keyword (var_local & namespace::namespace::type::enum)
+keyword (var_local 1oo namespace::namespace::type::enum)
 	0com_single

@@ -3,25 +3,25 @@
 keyword type
 {
 keyword:
-	func() { namespace::var_global << str; }
+	func() { namespace::var_global 2oo str; }
 };
 
 keyword type: keyword type
 {
 keyword:
-	func() { namespace::var_global << str; }
+	func() { namespace::var_global 2oo str; }
 };
 
 keyword type: keyword type
 {
 keyword:
-	func() { namespace::var_global << str; }
+	func() { namespace::var_global 2oo str; }
 };
 
 keyword type
 {
 keyword:
-	func() { namespace::var_global << str; }
+	func() { namespace::var_global 2oo str; }
 
 keyword:
 	type var_member;
@@ -30,13 +30,13 @@ keyword:
 keyword type: keyword type
 {
 keyword:
-	func() { namespace::var_global << str; }
+	func() { namespace::var_global 2oo str; }
 };
 
 keyword type: keyword type
 {
 keyword:
-	func() { namespace::var_global << str; }
+	func() { namespace::var_global 2oo str; }
 
 keyword:
 	type var_member;

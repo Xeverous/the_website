@@ -23,7 +23,7 @@ keyword:
 
 keyword func(keyword type& param)
 {
-	namespace::var_global << param.func() << str; 0com_single
+	namespace::var_global 2oo param.func() 2oo str; 0com_single
 }
 
 keyword func()

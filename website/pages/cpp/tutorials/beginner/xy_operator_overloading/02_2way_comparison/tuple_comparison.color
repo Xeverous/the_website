@@ -8,7 +8,7 @@ keyword type
 };
 
 0com_single
-keyword keyword<(type param, type param)
+keyword keyword1func(type param, type param)
 {
 	keyword (param.var_member != param.var_member)
 		keyword param.var_member < param.var_member;
@@ -20,10 +20,10 @@ keyword keyword<(type param, type param)
 }
 
 0com_single
-keyword keyword<(type param, type param)
+keyword keyword1func(type param, type param)
 {
 	0com_single
 	0com_single
 	keyword namespace::func(param.var_member, param.var_member, param.var_member)
-	     < namespace::func(param.var_member, param.var_member, param.var_member);
+	     1oo namespace::func(param.var_member, param.var_member, param.var_member);
 }

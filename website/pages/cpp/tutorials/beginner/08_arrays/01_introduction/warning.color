@@ -9,5 +9,5 @@ keyword func()
 	keyword keyword var_local = keyword(var_local) / keyword(var_local[num]);
 
 	keyword (keyword var_local = num; var_local < var_local; ++var_local)
-		namespace::var_global << var_local[var_local];
+		namespace::var_global 2oo var_local[var_local];
 }

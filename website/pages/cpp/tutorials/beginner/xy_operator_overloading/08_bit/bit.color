@@ -1,23 +1,23 @@
-type& keyword&=(type& param, type param)
+type& keyword2func(type& param, type param)
 {
 	keyword param = keyword<type>(keyword<keyword>(param) & keyword<keyword>(param));
 }
 
-type& keyword|=(type& param, type param)
+type& keyword2func(type& param, type param)
 {
 	keyword param = keyword<type>(keyword<keyword>(param) | keyword<keyword>(param));
 }
 
-type& keyword^=(type& param, type param)
+type& keyword2func(type& param, type param)
 {
 	keyword param = keyword<type>(keyword<keyword>(param) ^ keyword<keyword>(param));
 }
 
-type keyword&(type param, type param) { keyword param &= param; }
-type keyword|(type param, type param) { keyword param |= param; }
-type keyword^(type param, type param) { keyword param ^= param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
+type keyword1func(type param, type param) { keyword param 2oo param; }
 
-type keyword~(type param)
+type keyword1func(type param)
 {
 	0com_single
 	keyword keyword<type>(~keyword<keyword>(param));

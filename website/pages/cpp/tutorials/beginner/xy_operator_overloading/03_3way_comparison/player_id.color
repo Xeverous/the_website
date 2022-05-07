@@ -7,12 +7,12 @@ keyword:
 keyword:
 	0com_single
 
-	keyword keyword==(keyword type& param) keyword
+	keyword keyword2func(keyword type& param) keyword
 	{
 		keyword var_member == param.var_member;
 	}
 
-	keyword keyword==(keyword param) keyword
+	keyword keyword2func(keyword param) keyword
 	{
 		keyword var_member == param;
 	}

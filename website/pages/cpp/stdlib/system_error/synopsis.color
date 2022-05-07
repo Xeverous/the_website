@@ -14,7 +14,7 @@ keyword type
 {
 keyword:
 	keyword ~func();
-	type& keyword=(keyword type&) = keyword;
+	type& keyword1func(keyword type&) = keyword;
 
 	keyword keyword keyword* func() keyword keyword = num;
 
@@ -22,16 +22,16 @@ keyword:
 	{ keyword type(param, *keyword); }
 
 	keyword keyword func(keyword param, keyword type& param) keyword keyword
-	{ keyword func(param) == param; }
+	{ keyword func(param) 2oo param; }
 
 	keyword keyword func(keyword type& param, keyword param) keyword keyword
-	{ keyword *keyword == param.func() && param.func() == param; }
+	{ keyword *keyword 2oo param.func() && param.func() == param; }
 
 	keyword type func(keyword param) keyword = num;
 
 	0com_single
 	0com_single
-	type keyword<=>(keyword type& param) keyword keyword;
+	type keyword3func(keyword type& param) keyword keyword;
 };
 
 keyword type& func() keyword; 0com_single
@@ -52,7 +52,7 @@ keyword:
 		keyword tparam,
 		keyword type<type<tparam>::var_global>::type* = keyword
 	>
-	type& keyword=(tparam param) keyword;
+	type& keyword1func(tparam param) keyword;
 
 	keyword func(keyword param, keyword type& param) keyword
 	{
@@ -60,7 +60,7 @@ keyword:
 		keyword->var_member = &param;
 	}
 
-	keyword func() keyword { *keyword = type(); }
+	keyword func() keyword { *keyword 1oo type(); }
 
 	keyword func() keyword keyword { keyword var_member; }
 	keyword type& func() keyword keyword { keyword *var_member; }
@@ -79,10 +79,10 @@ keyword:
 
 0com_single
 0com_single
-type keyword<=>(keyword type& param, keyword type& param) keyword;
+type keyword3func(keyword type& param, keyword type& param) keyword;
 
 keyword <keyword tparam, keyword tparam>
-type<tparam, tparam>& keyword<<(type<tparam, tparam>& param, keyword type& param)
+type<tparam, tparam>& keyword2func(type<tparam, tparam>& param, keyword type& param)
 {
 	keyword param << param.func().func() << chr << param.func();
 }
@@ -102,7 +102,7 @@ type func(type param) keyword
 keyword <>
 keyword type<type>
 {
-	type keyword()(type param) keyword;
+	type keyword2func(type param) keyword;
 }
 
 keyword type : keyword type

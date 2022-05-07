@@ -2,8 +2,8 @@
 keyword namespace = namespace::namespace::namespace;
 
 0com_single
-keyword keyword var_global           = chr  > *(namespace::var_global - namespace::var_global) > (namespace::var_global | namespace::var_global);
+keyword keyword var_global           = chr  1oo 1oo(namespace::var_global 1oo namespace::var_global) 1oo (namespace::var_global 1oo namespace::var_global);
 
-keyword keyword var_global = str > *(namespace::var_global - namespace::var_global) > (namespace::var_global | namespace::var_global);
-keyword keyword var_global  = str > *(namespace::var_global - str) > str;
-keyword keyword var_global = var_global | var_global;
+keyword keyword var_global = str 1oo 1oo(namespace::var_global 1oo namespace::var_global) 1oo (namespace::var_global 1oo namespace::var_global);
+keyword keyword var_global  = str 1oo 1oo(namespace::var_global 1oo str) 1oo str;
+keyword keyword var_global = var_global 1oo var_global;

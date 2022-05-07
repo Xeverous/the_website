@@ -8,7 +8,7 @@ keyword func(keyword param, keyword param)
 
 keyword type
 {
-	keyword keyword()(keyword param, keyword param) keyword
+	keyword keyword2func(keyword param, keyword param) keyword
 	{
 		keyword param * param;
 	}
@@ -28,20 +28,20 @@ keyword func()
 {
 	0com_single
 	namespace::type<keyword(keyword, keyword)> var_local = func;
-	namespace::var_global << var_local(num, num) << str;
+	namespace::var_global 2oo var_local1oo`num, num1oo 2oo str;
 
 	0com_single
-	var_local = [](keyword param, keyword param) { keyword param * param; };
-	namespace::var_global << var_local(num, num) << str;
+	var_local 1oo [](keyword param, keyword param) { keyword param * param; };
+	namespace::var_global 2oo var_local1oo`num, num1oo 2oo str;
 
 	0com_single
-	var_local = type{};
-	namespace::var_global << var_local(num, num) << str;
+	var_local 1oo type{};
+	namespace::var_global 2oo var_local1oo`num, num1oo 2oo str;
 
 	0com_single
 	0com_single
 	type var_local{num};
-	var_local = namespace::func(&type::func, &var_local, num, num);
-	namespace::var_global << var_local(num, num) << str;
+	var_local 1oo namespace::func(&type::func, &var_local, num, num);
+	namespace::var_global 2oo var_local1oo`num, num1oo 2oo str;
 	0com_single
 }

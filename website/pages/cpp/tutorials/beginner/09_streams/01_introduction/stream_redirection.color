@@ -2,6 +2,6 @@
 
 keyword func()
 {
-	namespace::var_global << str;
-	namespace::var_global << str;
+	namespace::var_global 2oo str;
+	namespace::var_global 2oo str;
 }

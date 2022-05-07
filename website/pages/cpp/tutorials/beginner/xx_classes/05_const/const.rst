@@ -125,7 +125,7 @@ The tradeoffs of this style:
 - Since the setter does not take the value as a parameter but returns a reference to a field:
 
   - ...it no longer can control what is actually written to it. This makes the style undesirable if the class has invariants to enforce. For the :cch:`fraction$$$type` class, this style should not be used because the denominator has to be checked against zero.
-  - ...the calling code can access field's methods, which allows significant code reuse. Example above accesses :cch:`std::string::operator=$$$namespace::type::keyword=`.
+  - ...the calling code can access field's methods, which allows significant code reuse. Example above accesses :cch:`std::string::operator=$$$namespace::type::keyword1func`.
 
 In other words, the approach of returning a reference to the field offers code reuse (access to methods of the field) at the cost of coupling external code to the implementation (the type of the field).
 
