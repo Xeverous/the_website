@@ -172,7 +172,7 @@ Aliasing
 - In C, (potentially cv-qualified) :cch:`signed`/:cch:`unsigned`/unspecified :cch:`char*` may alias.
 - In C++, only (potentially cv-qualified) :cch:`unsigned`/unspecified :cch:`char*` may alias.
 
-Want to know more? Read the article about strict aliasing TODO link.
+Want to know more? Read the article about strict aliasing TOWRITE.
 
 Linkage rules
 #############

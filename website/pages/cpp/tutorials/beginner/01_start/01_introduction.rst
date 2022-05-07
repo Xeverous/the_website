@@ -104,7 +104,7 @@ All of mentioned above compilers come together with other necessary tools. All o
 
 It doesn't really matter as C++ is a standarized language. Any compiler is required to implement it according to the specification, so you should see no difference in behavior unless you want to use compiler-specific extensions.
 
-If you haven't choosen a compiler yet, I recommend to use GCC or Clang as their diagnostics (error messages) are much better for beginners than the ones produced by MSVC (which is bundled with Visual Studio). Check out TODO link page for details on installation.
+If you haven't choosen a compiler yet, I recommend to use GCC or Clang as their diagnostics (error messages) are much better for beginners than the ones produced by MSVC (which is bundled with Visual Studio). Check out TOWRITE page for details on installation.
 
 Most popular C++ IDEs:
 

@@ -13,7 +13,7 @@ All streams in C++ can do formatted or unformatted I/O.
 - operators ``<<`` and ``>>`` are intended for formatted I/O.
 - Unformatted I/O and more formatted I/O is available through stream's *member functions*.
 
-Locale is a pretty complex feature intended for localization which can affect formatted I/O and other specific text operations. Due to the size and uniqueness of the feature, it's outside the scope of the tutorial and instead is explained in a separate article TODO link. Custom locales are rarely used and the default "C" locale is universal to the point of being able to completely ignore this topic for now.
+Locale is a pretty complex feature intended for localization which can affect formatted I/O and other specific text operations. Due to the size and uniqueness of the feature, it's outside the scope of the tutorial and instead is explained in a separate article TOWRITE. Custom locales are rarely used and the default "C" locale is universal to the point of being able to completely ignore this topic for now.
 
 Everything below is more of a reference than actual lesson - don't try to memorize it. You will do so naturally when there will be a frequent need for such operations. Otherwise just come back here when an occasional need appears.
 

@@ -59,7 +59,7 @@ There is some convention but nothing is strict. Generally:
   - function *definitions*
   - global object *definitions*
 
-This is only a rough guideline, details for specific entities are explained in respective lessons. There is also a detailed cheatsheet. TODO link
+This is only a rough guideline, details for specific entities are explained in respective lessons. There is also a detailed cheatsheet. TOWRITE
 
 File naming
 ###########

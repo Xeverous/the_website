@@ -257,7 +257,7 @@ Questions
 
     What if RTTI is disabled?
 
-Most compilers, if given ``-fno-rtti`` option (or equivalent) treat RTTI-requiring :cch:`dynamic_cast` expressions as ill-formed. For more information see typeof article TODO link.
+Most compilers, if given ``-fno-rtti`` option (or equivalent) treat RTTI-requiring :cch:`dynamic_cast` expressions as ill-formed. For more information see typeof article TOWRITE.
 
     Are :cch:`static_cast` casts and :cch:`dynamic_cast` upcasts only an abstraction? Do they compile to any machine instructions?
 
@@ -350,7 +350,7 @@ These are the primary uses of :cch:`reinterpret_cast`. They create references/po
 
     :cch:`reinterpret_cast` alone does not justify violating *aliasing rules*. Only certain types are allowed to *alias* each other. Any technique that is seemingly capable of creating a situation where two pointers to different types that are not exempt from *strict aliasing* could simultaneously exist (and both can be used to load or store the same memory) necessarily invokes undefined behavior.
 
-    For an explanation about *strict aliasing* see its dedicated article TODO link.
+    For an explanation about *strict aliasing* see its dedicated article TOWRITE.
 
 - Any object pointer type :cch:`T*` can be converted to another object pointer type :cch:`cv U*$$$spec tparam*`. This is exactly equivalent to :cch:`static_cast<cv U*>(static_cast<cv void*>(expression))$$$keyword<spec tparam*>(keyword<spec keyword*>(spec))`, which implies that if alignment of :cch:`U` is not stricter than alignment of :cch:`T` (that is, :cch:`alignof(U) <= alignof(T)$$$keyword(tparam) <= keyword(tparam)`), the value of the pointer does not change and conversion of the resulting pointer back to its original type yields the original value.
 - An *lvalue* expression of type :cch:`T` can be converted to reference to another type :cch:`U`. The result is an *lvalue* or *xvalue* referring to the same object as the original *lvalue*, but with a different type. No temporary is created, no copy is made, no constructors or conversion functions are called.

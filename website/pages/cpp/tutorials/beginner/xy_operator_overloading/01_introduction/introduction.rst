@@ -19,8 +19,8 @@ C++ standard library has overloaded operators in many places (many of which you 
 
   Even through this chapter is purely about operator overloading, it does not explain overloading of all operators.
 
-  - operators :cch:`new`, :cch:`new[]`, :cch:`delete` and :cch:`delete[]` are explained in seprate tutorial TODO link.
-  - :cch:`operator=` is explained in RAII chapter TODO link.
+  - operators :cch:`new`, :cch:`new[]`, :cch:`delete` and :cch:`delete[]` are explained in seprate tutorial TOWRITE.
+  - :cch:`operator=` is explained in RAII chapter TOWRITE.
 
 TODO:
 

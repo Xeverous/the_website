@@ -136,7 +136,7 @@ C++ as a superset of C
 
 C++ was forked from ANSI C, the C language before any standarization. Today we can at most say that ISO C and ISO C++ have a common ancestor.
 
-For a list of features that C has but C++ does not (or their alternatives) see TODO link.
+For a list of features that C has but C++ does not (or their alternatives) see TOWRITE.
 
 C++ standard library as a superset of C standard library
 ========================================================

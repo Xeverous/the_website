@@ -21,7 +21,7 @@ Each C++ stream has a state that informs about potential errors. The state is st
 
   A *bitmask type* is a type that supports a finite number of independent non-zero values each representing unique bit. Multiple values can be stored in 1 object of bitmask type and retrieved separately. The simplest bitmask example is an integer or enumeration type where different bits are represented by constants that are different powers of 2.
 
-  Come back to lesson about bit operations TODO link for more information.
+  Come back to `lesson about bit operators <link://filename/pages/cpp/tutorials/beginner/02_basics/08_operators/operators.rst>`_ for more information.
 
 There are 3 possible flags (values implementation-defined):
 

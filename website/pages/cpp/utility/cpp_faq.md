@@ -94,7 +94,7 @@ C is mostly about imperative, structural programming. This style is still practi
 
 C++ puts a great effort to support many paradigms, including object-oriented, functional, generic and metaprogramming. The whole STL is designed around generic programming - instead of implementing interfaces you specialize and instantiate templates.
 
-See also cat-dog program written in various styles. TODO link.
+See also cat-dog program written in various styles. TOWRITE.
 
 ### What is STL?
 
