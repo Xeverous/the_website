@@ -19,7 +19,7 @@ Other notes:
 
 - Beginning is often the hardest part of programming. If you managed to setup the environment so that you can write code and run it, you have already accomplished a significant step. If not, you can read first chapter (which is theory only) - this should tremendously help you understand most fundamental elements and the process of installation of required tools.
 - Don't copy-paste code samples until you memorize the grammar. It's obvious that at the start you will not remember perfectly where every punctuation goes. Just by rewriting examples you will learn it over time.
-- If at any point you encounter a term that you don't know the meaning of, check the `glossary <link://filename/pages/cpp/utility/glossary.md>`_.
+- If at any point you encounter a term that you don't know the meaning of, check the `glossary <link://filename/pages/cpp/utility/glossary.rst>`_.
 - If you ever have an urge to edit example code and see what happens - do it. You will learn a lot through experience. If you encounter a non-trivial problem - don't put too much effort into it - there are tons of things you might not know at the beginning but will know later. Take notes of these problems and attempt to solve them later when you know more.
 
 ..

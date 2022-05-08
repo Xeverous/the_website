@@ -12,6 +12,7 @@ __has_cpp_attribute
 __has_include
 __int128
 __restrict
+abstract
 alignas
 alignof
 and
@@ -288,6 +289,8 @@ std::basic_ios
 std::basic_iostream
 std::basic_istream
 std::basic_ostream
+std::basic_string
+std::basic_string_view
 std::chrono::seconds
 std::cerr
 std::chrono
@@ -474,6 +477,7 @@ std::wstring
 >=
 CharT
 FILE*
+NULL
 T
 T&
 T&&
@@ -483,6 +487,7 @@ Traits
 T{expression}
 U
 V
+WinMain
 a + b
 alignof(T)
 begin()

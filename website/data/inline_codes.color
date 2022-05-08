@@ -115,6 +115,7 @@ keyword
 keyword
 keyword
 keyword
+keyword
 0pp_direct
 0pp_direct
 0pp_direct
@@ -284,6 +285,8 @@ namespace::type
 namespace::type
 namespace::func
 namespace::func
+namespace::type
+namespace::type
 namespace::type
 namespace::type
 namespace::type
@@ -474,6 +477,7 @@ num
 >=
 tparam
 type*
+macro_ref
 tparam
 tparam&
 tparam&&
@@ -483,6 +487,7 @@ tparam
 tparam{spec}
 tparam
 tparam
+func
 var_local + var_local
 keyword(tparam)
 func()
