@@ -1,10 +1,7 @@
-.. title: 03 - formatting
+.. title: 03 - formatted I/O
 .. slug: index
-.. description: (un)formatted I/O with C++ streams
+.. description: formatted I/O with C++ streams
 .. author: Xeverous
-
-.. TODO order of headings in this article
-.. TODO check LCPP for more examples
 
 All streams in C++ can do formatted or unformatted I/O.
 
@@ -17,15 +14,31 @@ Locale is a pretty complex feature intended for localization which can affect fo
 
 Everything below is more of a reference than actual lesson - don't try to memorize it. You will do so naturally when there will be a frequent need for such operations. Otherwise just come back here when an occasional need appears.
 
-Unformatted I/O
-###############
+Formatting states
+#################
 
-TODO
+Each setting is represented by a specific bit in stream's flags. They can be changed using *member functions* and manipulators.
 
-Formatted I/O
-#############
+.. cch::
+    :code_path: setting_states.cpp
+    :color_path: setting_states.color
 
-Each setting is represented by a group of manipulators. Because the state is permanent, we can say that for each group of manipulators (which elements are exclusive) one is the default.
+Because some settings (e.g. base of the output - 8/10/16) are represented by separate bits, you need to set new one and unset previous one:
+
+.. cch::
+    :code_path: unsetting_states.cpp
+    :color_path: unsetting_states.color
+
+A safer shortcut for this operation is to use a different overload of :cch:`setf$$$func`, one that takes an additional argument which specifies a group of bits to be cleared (called mask):
+
+.. cch::
+    :code_path: setting_states_mask.cpp
+    :color_path: setting_states_mask.color
+
+Manipulators (which are passed with ``<<``) will automatically disable other bits when necessary.
+
+Manipulators
+############
 
 Stream manipulators are functions which are either called (to create an object of specific but *unspecified* type) or passed directly (without calling) to stream insertion/extraction operators. In any case, operator overloads are defined to support the way in which specific manipulator is intended to be used. Stream state can also be changed by using stream *member functions* (see `example on cppreference for details <https://en.cppreference.com/w/cpp/io/ios_base/setf>`_).
 
@@ -114,21 +127,23 @@ Example:
 
 No idea, nothing about in on cppreference so I guess the behavior is *unspecified*.
 
-Hexadecimal digits
-==================
+Casing
+======
 
-Use uppercase or lowercase letters for hexadecimal digits (default: lowercase).
+Use uppercase or lowercase letters for numerical output (default: lowercase).
 
 .. cch::
-    :code_path: hex_case.cpp
-    :color_path: hex_case.color
+    :code_path: num_case.cpp
+    :color_path: num_case.color
 
 .. code::
 
-    0XDEADBEEF
-    0xdeadbeef
+    0XDEADBEEF 1.23457E+08
+    0xdeadbeef 1.23457e+08
 
-These manipulators are only for integer types and do not affect printing text or floating-point types in any way. They have no effect on input.
+You can also observe that default format for floating-point types rounds numbers when using scientific notation.
+
+These manipulators are only for numeric types and do not affect printing text in any way. They have no effect on input.
 
 Point
 =====
@@ -171,14 +186,6 @@ Specify which format should be used.
 
 These manipulators have no effect on input: parsing of floating-point numbers is unaffected.
 
-Other
-=====
-
-There are 2 more manipualtors:
-
-- :cch:`std::unitbuf`, :cch:`std::nounitbuf` - disable or enable output buffering (buffering is disabled for :cch:`std::cerr` and :cch:`std::wcerr`); no effect on input
-- :cch:`std::left`, :cch:`std::right`, :cch:`std::internal` - showcased further down as these permanent manipulators have effect only in combination with certain temporary manipulators
-
 Whitespace
 ==========
 
@@ -199,6 +206,14 @@ Enable or disable skipping whitespace before *formatted input* operations. By de
 These manipulators have no effect on output.
 
 Whitespace can also be skipped explicitly by doing :cch:`>> std::ws$$$2oo namespace::func`. This operation will consume any consecutive whitespace in the input stream.
+
+Other
+=====
+
+There are 2 more manipulators:
+
+- :cch:`std::unitbuf`, :cch:`std::nounitbuf` - disable or enable output buffering (buffering is disabled for :cch:`std::cerr` and :cch:`std::wcerr`); no effect on input
+- :cch:`std::left`, :cch:`std::right`, :cch:`std::internal` - showcased further down as these manipulators have effect only in combination with width and fill manipulators
 
 Additional manipulators
 #######################
@@ -222,7 +237,9 @@ Fill:
 Adjustment:
 
 - Specify positioning of fill characters.
-- Default adjustment is right, but any adjustment has effect only if width forces to print fill characters.
+- Default adjustment is right, but any adjustment has effect only if width forces to print fill characters. Internal adjustment will separate all kinds of prefixes (``0x`` for hexadecimal, ``-`` for negative numbers and currency symbols if monetary output is used).
+
+.. TODO setw with input operations (for std::string fills N characters, for C arrays fills N-1 + null-terminator)
 
 .. cch::
     :code_path: adjustment.cpp

@@ -1,0 +1,2 @@
+var_local.func(namespace::type::var_global);
+var_local.func(namespace::type::var_global);

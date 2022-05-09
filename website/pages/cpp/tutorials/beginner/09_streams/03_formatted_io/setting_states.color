@@ -1,0 +1,2 @@
+var_local.func(namespace::namespace::func);
+var_local << namespace::func;

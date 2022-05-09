@@ -1,0 +1,2 @@
+0com_single
+var_local.func(namespace::type::var_global, namespace::type::var_global);
