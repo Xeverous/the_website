@@ -604,6 +604,7 @@ std::basic_ostream<wchar_t>
 std::basic_string<char>
 std::basic_string<wchar_t>
 std::basic_string_view<char>
+std::cin.get();
 std::vector<T>
 std::vector<char>
 std::vector<wchar_t>

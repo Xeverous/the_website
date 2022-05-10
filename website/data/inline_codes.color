@@ -604,6 +604,7 @@ namespace::type<keyword>
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::type<keyword>
+namespace::var_global.func();
 namespace::type<tparam>
 namespace::type<keyword>
 namespace::type<keyword>
