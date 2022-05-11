@@ -499,6 +499,7 @@ keyword spec
 keyword spec
 keyword tparam
 keyword tparam&
+keyword tparam*
 keyword keyword*
 keyword keyword* keyword
 keyword keyword
@@ -611,6 +612,7 @@ namespace::type<keyword>
 keyword keyword
 keyword(tparam)
 keyword(var_local)
+keyword keyword
 keyword keyword
 keyword keyword keyword
 keyword keyword

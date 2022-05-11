@@ -5,7 +5,7 @@ int main()
 {
 	std::array<int, 5> arr1 = {1, 2, 3, 4, 5};
 
-	// array assignment works
+	// std::array objects can be initialized and assigned from other objects
 	auto arr2 = arr1;
 
 	// comparison checks all elements

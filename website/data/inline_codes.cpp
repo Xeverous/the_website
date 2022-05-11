@@ -499,6 +499,7 @@ co_await expression
 co_yield expression
 const T
 const T&
+const T*
 const char*
 const char* const
 const int
@@ -612,6 +613,7 @@ typedef struct
 typeid(T)
 typeid(obj)
 unsigned char
+unsigned long
 unsigned long long
 unsigned short
 unsigned short int

@@ -8,7 +8,7 @@ for (double& d : c_arr)
 	auto __begin = c_arr;   // auto = double* (decays array to pointer)
 	auto __end = c_arr + 5; // auto = double* (also decays and shifts the pointer to point further in memory)
 	for (; __begin != __end; ++__begin) {
-		double& d = *__begin;
+		double& d = *__begin; // accesses memory pointed by __begin
 		d *= 2;
 	}
 }
@@ -23,7 +23,7 @@ for (double& d : std_arr)
 	auto __begin = std_arr.begin(); // auto = std::array<double, 5>::iterator
 	auto __end = std_arr.end()      // auto = std::array<double, 5>::iterator
 	for (; __begin != __end; ++__begin) {
-		double& d = *__begin;
+		double& d = *__begin;       // iterators overload * to imitate pointers
 		d *= 2;
 	}
 }

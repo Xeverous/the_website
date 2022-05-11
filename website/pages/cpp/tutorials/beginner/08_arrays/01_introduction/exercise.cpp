@@ -28,7 +28,7 @@ int main()
 	int arr2[sz] = {};
 
 	copy(arr1, arr2, sz);
-	reverse(arr2);
-	reverse(arr2);
+	reverse(arr2, sz);
+	reverse(arr2, sz);
 	std::cout << std::boolalpha << compare(arr1, sz, arr2, sz);
 }

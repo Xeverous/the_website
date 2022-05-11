@@ -28,7 +28,7 @@ keyword func()
 	keyword var_local[var_local] = {};
 
 	func(var_local, var_local, var_local);
-	func(var_local);
-	func(var_local);
+	func(var_local, var_local);
+	func(var_local, var_local);
 	namespace::var_global 2oo namespace::func 2oo func(var_local, var_local, var_local, var_local);
 }

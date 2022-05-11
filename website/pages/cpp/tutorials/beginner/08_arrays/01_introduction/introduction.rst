@@ -3,6 +3,8 @@
 .. description: introduction to arrays
 .. author: Xeverous
 
+.. TODO explain array initialization from const char[N]
+
 You may have noticed that sometimes the code contains variables named like ``x1``, ``x2``, ``x3``. Multiple objects of the same type are used for the same purpose. You may write functions to reuse logic on multiple objects, but even calling functions with a group of same variables gets repetitive and we know that duplicate code is a really bad thing.
 
 .. cch::
@@ -25,7 +27,7 @@ Arrays
 .. admonition:: definition
     :class: definition
 
-    An array object is an object that consists of multiple contiguously allocated objects.
+    An array object is an object that consists of multiple contiguously allocated objects of the same type.
 
 .. cch::
     :code_path: sample_array.cpp
@@ -46,7 +48,7 @@ Recall one of the first lessons - **declarator syntax is not "type followed by n
 
     So is there any lesson about declarator syntax?
 
-No, at least not now. But the problem is old enough that you may find various resources on the internet that may help you, e.g. https://cdelc.org. Here, I will post examples when needed as I don't think spending time trying to understand this part of C grammar is worth it. In practice, there are C++ alternatives and actual "syntax abonimations" are pretty rare so people usually just remember them instead of understanding.
+No, at least not now. But the problem is old enough that you may find various resources on the internet that may help you, e.g. https://cdelc.org. Here, I will post examples when needed as I don't think spending time trying to understand this part of C grammar is worth it. In practice, there are C++ alternatives and actual "syntax abonimations" are pretty rare so people usually just remember them instead of understanding. Explaining the C (and C++) language grammar could be a separate course on its own.
 
 The good news for arrays is that we will not use this syntax for long, as C++11 added an alternative, which is much better and not only in syntax. But first, let's explain some aspects of arrays.
 
@@ -60,6 +62,8 @@ If this is the first time you encounter 0-based indexing you might be a bit conf
 The primary reason for zero-based indexing is related to how arrays work underneath - variables that refer to contiguously allocated objects (next to each other) of the same type. A good comparison (which may be surprising, depending where do you live) is floor numbering - ground floor is floor 0, first floor is 1, second is 2 and so on. If you are not used to this type of indexing, I have to inform you that this is the European convention and elevators there do have a 0 floor button.
 
 An array starts at a specific memory address and it's first element is placed right in the beginning:
+
+.. teaching note: the example below uses std::addressof on purpose: for readability and to avoid pointers
 
 .. cch::
     :code_path: addresses.cpp
@@ -100,7 +104,7 @@ I don't want you to remember all these special rules - there are too many of the
     :code_path: constant_expressions.cpp
     :color_path: constant_expressions.color
 
-My recommendation is to use :cch:`constexpr` and then you don't need to remember all these special rules - they were made before :cch:`constexpr` became the norm. In C, text-replacing macros have to be used as there is no way to make a constant expression other than writing the literal (obviously C++ code which uses macro for constants is bad code).
+My recommendation is to use :cch:`constexpr` and then you don't need to remember all these special rules - they were made to elevate :cch:`const` before :cch:`constexpr` was introduced into the language. In C, text-replacing macros have to be used as there is no way to make a constant expression other than writing the literal (obviously C++ code which uses macro for constants is bad code).
 
 .. admonition:: note
     :class: note
@@ -117,6 +121,11 @@ My recommendation is to use :cch:`constexpr` and then you don't need to remember
 
     Some compilers allow arrays of size 0 as the last member of a :cch:`struct`, but this is a non-standard extension known as *flexible array member*. See `GCC description of the feature <https://gcc.gnu.org/onlinedocs/gcc/Zero-Length.html>`_.
 
+.. admonition:: note
+    :class: note
+
+    Before C11 and C++11 introduced *static assertions* (conditions checked at compile time), people have been using preprocessor tricks to create an (in)valid expression that would stop the build if the tested value (did not) met certain criteria. Most popular ones are macros which try to declare an array or a *bit-field* with invalid (0 or lower) size. See https://stackoverflow.com/questions/9229601/what-is-in-c-code for a good example.
+
 VLA
 ###
 
@@ -128,7 +137,7 @@ During some experiments, you might accidentally use a common extension known as 
 
 **This is not standard C++.** The feature dates back to C89, but even in C99 it was changed from "official" to "optional" and later removed in C11. C++ never officially had VLA, some compilers simply continued to support it as a non-standard extension. Modern compilers (with standard options) should reject such code or at least output a warning.
 
-    Why it was removed from C and never was a part of C++? It seems useful.
+    Why was it removed from C and never was a part of C++? It seems useful.
 
 There are multiple reasons:
 
@@ -160,7 +169,7 @@ Since C++17 the same can be done using a standard function:
     :code_path: size2.cpp
     :color_path: size2.color
 
-And before C++17, the function could be written in C++11 compatible code as such (this function doesn't use :cch:`sizeof` operator but the fact that template will deduce array size from its type):
+And before C++17, the function could be written in C++11-compatible code. This function doesn't use :cch:`sizeof` operator but the fact that templates can *deduce* array size from its type (*template type deduction* is a very powerful feature where the compiler can infer a lot of compile-time information):
 
 .. cch::
     :code_path: size3.cpp
@@ -188,7 +197,7 @@ Whichever of :cch:`<` and :cch:`!=` operators is used, after last iteration the 
 Loop control vs array size type
 ###############################
 
-The C++ standard library uses size type (:cch:`std::size_t`) for array sizes. For historical reasons, this type is an alias of some unsigned integer (usually :cch:`unsigned long long`) which as you should remember is not a good choice - unsigned types should only be used when dealing with bit-level operations or when overflow is desired.
+The C++ standard library uses size type (:cch:`std::size_t`) for array sizes. For historical reasons, this type is an alias of some unsigned integer (typically :cch:`unsigned long` or :cch:`unsigned long long`) which as you should remember is not a good choice - unsigned types should only be used when dealing with bit-level operations or when overflow is desired.
 
 This causes a quite common warning:
 
@@ -212,6 +221,17 @@ For historical reasons, convertion to :cch:`unsigned` takes place. Because of ho
 
 The solution is simple: make sure both comparison operands are of the same type. Usually it's as simple as changing the type of :cch:`i`, which is on the same line as the warning. Since C++20 there is also another small help: :cch:`std::ssize` member functions with the same name. These work just like :cch:`std::size` but their return type is a signed version of `std::size_t`, called :cch:`std::ptrdiff_t` (pointer difference type). Later you will also learn about other typical forms of loops (range-based, iterator-based) which do not have this problem.
 
+.. admonition:: tip
+    :class: tip
+
+    Avoid using different types for loop counters and sizes.
+
+..
+
+    What if I can not change the types?
+
+In such case use a :cch:`static_cast` to convert values before comparison. TODO which convert to which? both to signed or both to unsigned?
+
 Looping backwards
 #################
 
@@ -228,6 +248,8 @@ It's possible to loop backward on an unsigned control variable, but one needs to
 .. cch::
     :code_path: loop_backwards2.cpp
     :color_path: loop_backwards2.color
+
+Related: `SO: What is the "-->" operator in C++? <https://stackoverflow.com/questions/1642028>`_.
 
 Passing arrays
 ##############
@@ -250,7 +272,7 @@ Since the array type is lost, the convention of passing arrays to functions is t
 
 Pointers are a complicated topic that will be explained later. For now, it's enough to understand that:
 
-- arrays *decay* into pointers
+- arrays *decay* into pointers (memory addresses)
 - operator ``[]`` is actually defined for pointers, not arrays
 
 This means that once within a function, you can work with arrays exactly the same way:
@@ -259,16 +281,16 @@ This means that once within a function, you can work with arrays exactly the sam
     :code_path: print_array.cpp
     :color_path: print_array.color
 
-.. admonition:: error
-    :class: error
-
-    When writing a function that takes an array, never assume it's of certain size. Always pass array size to the function. Otherwise code clarity and flexibility is significantly reduced.
-
-You might wonder why. After all, it's possible to compute array size with the :cch:`sizeof` operator, right? That's true, **but only for array types**. Inside the function you don't have an array, only a pointer!
+You might wonder why. After all, it's possible to compute array size with the :cch:`sizeof` operator, right? That's true, **but only for array types**. Inside the function you don't have an array, only a pointer! In other words, because *decay* strips some type information, it's not possible to compute the size of the array after it.
 
 .. cch::
     :code_path: sizeof_pointer.cpp
     :color_path: sizeof_pointer.color
+
+.. admonition:: tip
+    :class: tip
+
+    When writing a function that takes an array, never assume it's of certain size. Always pass array size to the function. Otherwise code clarity and flexibility is significantly reduced.
 
 Array limitations
 #################

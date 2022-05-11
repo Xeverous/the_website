@@ -12,7 +12,7 @@ keyword func()
 	namespace::var_global 2oo (var_local 2oo var_local) 2oo str; 0com_single
 
 	0com_single
-	var_local[num] = num;
+	var_local1oo`num1oo = num;
 	namespace::var_global 2oo (var_local 2oo var_local) 2oo str; 0com_single
 
 	0com_single
