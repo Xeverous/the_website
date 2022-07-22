@@ -2,6 +2,7 @@ macro_ref
 macro_ref
 macro_ref
 macro_ref
+ext
 macro_ref
 macro_ref
 keyword
@@ -277,6 +278,7 @@ namespace::namespace::type
 namespace::func
 namespace::func
 namespace
+namespace::func
 namespace::type
 namespace::func
 namespace::type
@@ -478,6 +480,7 @@ num
 tparam
 type*
 macro_ref
+macro_ref
 tparam
 tparam&
 tparam&&
@@ -489,9 +492,10 @@ tparam
 tparam
 func
 var_local + var_local
-param
-param
 keyword(tparam)
+param
+param
+macro_ref
 func()
 keyword keyword*
 keyword keyword* keyword

@@ -2,6 +2,7 @@ __DATE__
 __FILE__
 __LINE__
 __TIME__
+__PRETTY_FUNCTION__
 __VA_ARGS__
 __VA_OPT__
 __attribute__
@@ -277,6 +278,7 @@ boost::container::small_vector
 boost::lexical_cast
 boost::numeric_cast
 std
+std::abort
 std::array
 std::as_const
 std::atomic
@@ -477,6 +479,7 @@ std::wstring
 >=
 CharT
 FILE*
+NDEBUG
 NULL
 T
 T&
@@ -489,9 +492,10 @@ U
 V
 WinMain
 a + b
+alignof(T)
 argc
 argv
-alignof(T)
+assert
 begin()
 char const*
 char const* const
