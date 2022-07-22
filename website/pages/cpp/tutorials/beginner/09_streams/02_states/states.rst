@@ -27,7 +27,7 @@ There are 3 possible flags (values implementation-defined):
 
 - :cch:`std::ios_base::badbit` - represents unrecoverable error (a crucial operation such as memory allocation failed).
 - :cch:`std::ios_base::failbit` - represents recoverable error (ususally a retryable operation such as formatted I/O failed).
-- :cch:`std::ios_base::eofbit` - set when all data has been processed and there is no possibility of continuing (e.g. end of file, closed socket). If reading interactively (e.g. :cch:`std::cin` which was not redirected to ream from a file), the EOF can be sent to the program through the console:
+- :cch:`std::ios_base::eofbit` - set when all data has been processed and there is no possibility of continuing (e.g. end of file, closed socket). If reading interactively (e.g. :cch:`std::cin` which was not redirected to read from a file), the EOF can be sent to the program through the console:
 
   - Unix console terminals: ctrl+D (though does not work in Git Bash on Windows)
   - Windows cmd: ctrl+Z
@@ -58,7 +58,7 @@ Correct reaction to different flags is crucial in implementing robust I/O. Gener
   - if reading interactively: it should be cleared and last I/O operation should be retried
   - if reading from premade input (e.g. file) - stop processing, similarly to bad bit
 
-- if EOF (end of file) is encountered, this means no more data will be given and any I/O-handling code should proceed processing the data
+- if EOF (end of file) is encountered, this means no more data will be given and any I/O-handling code should proceed to processing of the data
 
 Simple handling
 ###############
@@ -94,7 +94,7 @@ This program is much more detailed and while it deals with different situations 
 - missing ignore - the loop would endlessly process fautly data
 - missing breaks - faulty logic or endless loop
 
-For this reason C++ streams get a lot of criticism - they support a lot of customization but at the same time doing even simple I/O operations is complicated and contains many opportunities to commit a bug that results in endless loop or invalid data. Additionally each formatted I/O operation can treat whitespace differently. My recommendation is thus:
+For this reason C++ streams get a lot of criticism - they support a lot of customization but at the same time doing even simple I/O operations is complicated and contains many opportunities to commit a bug that results in an endless loop or invalid data. Additionally each formatted I/O operation can treat whitespace differently. My recommendation is thus:
 
-- For non-interactive input (e.g. text from file), use the simple approach of testing convertion to :cch:`bool` (basically first example).
+- For non-interactive input (e.g. text from a file), use the simple approach of testing convertion to :cch:`bool` (basically first example).
 - For interactive input use line-oriented functions (explained in a later lesson) and do any input validation yourself - this will detatch your code from dealing with stream states, allow custom (potentially very complex) validation and make retrying operations easier.

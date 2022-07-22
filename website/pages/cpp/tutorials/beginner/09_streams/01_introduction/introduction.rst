@@ -8,7 +8,7 @@ Theory
 
 A stream is an abstraction over I/O (input/output) operations. The core goal is to hide implementation-specific details and offer a common interface for the same operations, regardless what the stream is actually connected to. The stream can represent a file, network traffic, in-memory operations such as compression and more - basically any abstract task that involves reading or writing data. Streams can work with any data (they almost always work on byte level) but in majority of cases it is text.
 
-A good example is linux kernel interface, where for userspace streams are represented with file descriptors (unique integer numbers). File descriptors do not necessarily represent files on disk (they represent anything that supports I/O operations) - in unix philosophy everything is either a file or a process.
+A good example is Linux kernel interface, where for userspace streams are represented with file descriptors (unique integer numbers). File descriptors do not necessarily represent files on disk (they represent anything that supports I/O operations) - in unix philosophy everything is either a file or a process.
 
 Opening a stream looks differently depending on what it is:
 
@@ -39,10 +39,12 @@ Closing streams is also done through the same function:
 
 The beauty of this approach is that once a thing has been set up (socket opened, file created, etc.) the same code can be used to operate on it, regardless of what exactly it represents. This is known as *polymorphism* and is one of key aspects of OOP (object-oriented programming, explained in later chapters). The respective OOP terms for opening, using and closing objects are *construction*, *methods* and *destruction*.
 
+Even though majority of Linux kernel code is C (which has no explicit features for object-oriented programming), specific patterns from OOP can be seen in its interfaces. Later in the tutorial you will learn dedicated C++ features for OOP.
+
 Standard library streams
 ########################
 
-Obviously C++ streams are a higher level of abstraction - you don't want to directly call OS-level functions when performing I/O - doing so is bug-prone and limits code portability. On platforms where linux is the kernel, C++ standard library streams are just wrapper code around it that add buffering, error handling, formatting and other features. On other platforms (e.g. Windows) the logic is more complex as the interface mandated by the C++ standard differs from the interface provided by the OS.
+C++ streams are a higher level of abstraction - you don't want to directly call OS-level functions when performing I/O - doing so is bug-prone and limits code portability. On platforms where Linux is the kernel, C++ standard library streams are just wrapper code around it that add buffering, error handling, formatting and other features. On other platforms (e.g. Windows) the logic is more complex as the interface mandated by the C++ standard differs from the interface provided by the OS.
 
 Streams in the standard library form a hierarchy of types:
 
@@ -63,7 +65,9 @@ They are implemented using *inheritance*. Inheritance is explained in detail in 
 - :cch:`std::ostream` is an alias of :cch:`std::basic_ostream<char>`
 - :cch:`std::wostream` is an alias of :cch:`std::basic_ostream<wchar_t>`
 
-You don't need to understand templates for now. I'm mentioning this because cppreference documents templates from which these types come from. Don't get surprised when searching for *something* you land on *basic_something* with an information what template parameters are - just mentally replace every occurrence of :cch:`CharT` with the type specified in the alias. Since :cch:`wchar_t` has significant use only with Windows-related APIs, pretty much all code you will write and see will use :cch:`CharT` as :cch:`char`. UTF-8 (which uses single byte :cch:`char` for storing textual data) is by far the most popular text encoding.
+You don't need to understand templates for now. I'm mentioning this because cppreference only documents templates from which these types come from. Don't get surprised when searching for *something* you land on *basic_something* with an information what template parameters are - just mentally replace every occurrence of :cch:`CharT` with the type specified in the alias.
+
+Since :cch:`wchar_t` has significant use only with Windows-related APIs, pretty much all code you will write and see will use :cch:`CharT` as :cch:`char`. Unicode, UTF-8 encoding in particular, uses single byte :cch:`char` for storing textual data and is by far the most popular text encoding.
 
 Predefined streams
 ##################
@@ -114,7 +118,7 @@ C and C++ standard libraries offer global objects which are connected to the ope
 
     How relevant is this for Windows?
 
-From C and C++ point of view (as a user of the standard library) there is no difference. Obviously underlying implementation is different - even file descriptors (called *file handles* there) are designed differently.
+From C and C++ point of view (as a user of the standard library) there is no difference - they just work. Obviously underlying implementation is different - even file descriptors (called *file handles* on Windows) are designed differently.
 
 Stream redirection
 ##################

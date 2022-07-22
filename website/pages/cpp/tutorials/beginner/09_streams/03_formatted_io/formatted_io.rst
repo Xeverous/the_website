@@ -40,7 +40,7 @@ Manipulators (which are passed with ``<<``) will automatically disable other bit
 Manipulators
 ############
 
-Stream manipulators are functions which are either called (to create an object of specific but *unspecified* type) or passed directly (without calling) to stream insertion/extraction operators. In any case, operator overloads are defined to support the way in which specific manipulator is intended to be used. Stream state can also be changed by using stream *member functions* (see `example on cppreference for details <https://en.cppreference.com/w/cpp/io/ios_base/setf>`_).
+Stream manipulators are functions which are either called (to create an object of specific but *unspecified* type) or passed directly (without calling) to stream insertion/extraction operators (which will call them internally). In any case, operator overloads are defined to support the way in which specific manipulator is intended to be used.
 
 :cch:`bool`
 ===========
@@ -225,7 +225,7 @@ Adjustment
 
 Width:
 
-- **Unlike other manipulators**, :cch:`std::setw` (set width) is temporary: it only affects next *formatted I/O* operation. Thus, it's applied inside loops.
+- **Unlike other manipulators**, :cch:`std::setw` (set width) is temporary: it only affects next *formatted I/O* operation. Thus, it's typically used inside loops.
 - For *formatted output* operations, it specifies the minimum amount of characters that should be printed. Additional characters are repetitions of the fill character.
 - For *formatted input* operations, see next example.
 - By default width is zero, which means no additional characters are printed.

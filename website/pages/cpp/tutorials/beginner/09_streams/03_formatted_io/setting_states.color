@@ -1,2 +1,3 @@
-var_local.func(namespace::namespace::func);
-var_local << namespace::func;
+0com_single
+var_local.func(namespace::type::var_global);
+var_local 2oo namespace::func;
