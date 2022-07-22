@@ -489,12 +489,16 @@ U
 V
 WinMain
 a + b
+argc
+argv
 alignof(T)
 begin()
 char const*
 char const* const
 char*
 char* const
+char**
+char*[]
 co_await expression
 co_yield expression
 const T
@@ -532,6 +536,8 @@ final
 for (;;)
 g
 g()
+getopt
+getopt_long
 i
 if (obj)
 inline namespace

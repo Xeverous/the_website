@@ -489,12 +489,16 @@ tparam
 tparam
 func
 var_local + var_local
+param
+param
 keyword(tparam)
 func()
 keyword keyword*
 keyword keyword* keyword
 keyword*
 keyword* keyword
+keyword**
+keyword*[]
 keyword spec
 keyword spec
 keyword tparam
@@ -532,6 +536,8 @@ keyword
 keyword (;;)
 func
 func()
+func
+func
 var_local
 keyword (var_local)
 keyword keyword

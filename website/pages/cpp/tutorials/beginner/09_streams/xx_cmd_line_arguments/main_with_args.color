@@ -1,0 +1,4 @@
+0com_single
+0com_single
+keyword func(keyword param, keyword** param)
+keyword func(keyword param, keyword* param[])
