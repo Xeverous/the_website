@@ -51,7 +51,7 @@ A quick test with the program above can result in something like this:
 
     As of writing this, MSVC implementation does not conform to C++11 requirements - the diagnostic message does not contain :cch:`__func__`.
 
-    libstdc++ implementation (used by GCC and optionally by Clang) uses :cch:`__PRETTY_FUNCTION__` extension instead of :cch:`__func__`, which results in ... pretty function description (return type, argument types, template parameters), not just function's name.
+    libstdc++ implementation (used by GCC and optionally by Clang) uses :cch:`__PRETTY_FUNCTION__` extension instead of :cch:`__func__`, which outputs a lot of details about the function (return type, argument types, template parameters), not just its name.
 
 
 Custom diagnostic message
@@ -66,7 +66,7 @@ The macro takes only 1 argument which is the condition and while it outputs a me
 The first trick uses the fact that ``,`` is an operator that evalues both operands but returns the value of the second (of the last operand if chained). For example, :cch:`(1, 2, 3)$$$(num, num, num)` returns :cch:`3`.
 
 - An extra set of parentheses is added to force evaluation through this operator. Otherwise the :cch:`assert` macro would error it got 2 arguments but expected 1.
-- The order of condition and message is flipped so that the condition is the result.
+- The order of condition and message is flipped so that the condition is evaluated for the assertion.
 - Message is cast to :cch:`void` to shut "operand of comma operator has no effect" warning.
 
 The second trick relies on implicit convertions.
@@ -156,7 +156,7 @@ If the condition evaluates to :cch:`true` the statement has no effect. If :cch:`
 
 :cch:`static_assert` is commonly used within templates as it allows to ensure that various compile-time requirements are satisfied. When given invalid types or values, it's much better to get a compiler error with the message from failed assertion than a complex template error describing many details.
 
-TODO good simple static assert example
+TOEXAMPLE good simple static assert example
 
 Recommendations
 ###############

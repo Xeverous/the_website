@@ -1,0 +1,9 @@
+namespace::type<namespace::type> func(); 0com_single
+type func(namespace::type param);
+namespace::namespace::type func(keyword type& param);
+
+keyword var_local = func() 0com_single
+	.func(func) 0com_single
+	.func(func) 0com_single
+	.func(namespace::namespace::type(num)); 0com_single
+	0com_single

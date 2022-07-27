@@ -1,0 +1,12 @@
+keyword var_local = keyword;
+0com_single
+0com_single
+keyword var_local = func(param, param, outparam);
+keyword (var_local)
+{
+	0com_single
+}
+keyword
+{
+	0com_single
+}

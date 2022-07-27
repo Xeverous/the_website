@@ -1,0 +1,6 @@
+keyword func(keyword param = 3num);
+namespace::type<keyword> func(namespace::type param);
+
+0com_single
+0com_single
+func(func(var_local.var_member).func(3num));

@@ -1,0 +1,11 @@
+var_global = num;
+keyword var_local = func(var_local, var_local);
+keyword (var_global == num)
+{
+	0com_single
+}
+keyword
+{
+	0com_single
+	0com_single
+}

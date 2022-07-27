@@ -254,6 +254,7 @@ keyword
 0pp_header
 0pp_header
 0pp_header
+macro_ref
 func
 func()
 func
@@ -277,6 +278,7 @@ namespace::type
 namespace::namespace::type
 namespace::func
 namespace::func
+namespace::type
 namespace
 namespace::func
 namespace::type
@@ -351,6 +353,7 @@ namespace::func
 namespace::func
 namespace::func
 namespace::func
+namespace::func
 namespace::type
 namespace::func
 namespace::func
@@ -360,6 +363,8 @@ namespace::type
 namespace::type
 namespace::type
 namespace::func
+namespace::var_global
+namespace::type
 namespace::type
 namespace::type
 namespace::var_global
@@ -368,6 +373,7 @@ namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
 namespace::type::var_global
+namespace::func
 namespace::func
 namespace::type
 namespace::type
@@ -411,6 +417,7 @@ namespace::type
 namespace::type
 namespace::type
 namespace::func
+namespace::type
 namespace::type
 namespace::type
 namespace::type
@@ -616,6 +623,10 @@ namespace::type<keyword>
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::var_global.func();
+namespace::func<tparam>
+namespace::func<tparam>
+namespace::type<tparam>
+namespace::type<tparam>
 namespace::type<tparam>
 namespace::type<keyword>
 namespace::type<keyword>

@@ -1,0 +1,5 @@
+namespace::type<keyword, namespace::type> var_local = func(param, param);
+keyword (namespace::func<keyword>(var_local))
+	func(namespace::func<keyword>(var_local));
+keyword
+	namespace::var_global 2oo namespace::type(namespace::func<namespace::type>(var_local)).func() 2oo str;

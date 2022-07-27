@@ -254,6 +254,7 @@ xor_eq
 <version>
 <wchar.h>
 <wctype.h>
+errno
 fprintf
 free()
 fscanf
@@ -277,6 +278,7 @@ boost::array
 boost::container::small_vector
 boost::lexical_cast
 boost::numeric_cast
+boost::optional
 std
 std::abort
 std::array
@@ -345,6 +347,7 @@ std::is_error_condition_enum
 std::istream
 std::left
 std::list
+std::log
 std::make_error_code
 std::make_optional
 std::make_pair
@@ -360,7 +363,9 @@ std::multimap
 std::multiset
 std::mutex
 std::nounitbuf
+std::nullopt
 std::ofstream
+std::optional
 std::ostream
 std::partial_order
 std::partial_ordering
@@ -368,6 +373,7 @@ std::partial_ordering::equivalent
 std::partial_ordering::greater
 std::partial_ordering::less
 std::partial_ordering::unordered
+std::pow
 std::printf
 std::priority_queue
 std::ptrdiff_t
@@ -415,6 +421,7 @@ std::unordered_map
 std::unordered_multimap
 std::unordered_multiset
 std::unordered_set
+std::variant
 std::vector
 std::wcerr
 std::wclog
@@ -616,6 +623,10 @@ std::basic_string<char>
 std::basic_string<wchar_t>
 std::basic_string_view<char>
 std::cin.get();
+std::get<I>
+std::get<T>
+std::optional<T>
+std::optional<U>
 std::vector<T>
 std::vector<char>
 std::vector<wchar_t>

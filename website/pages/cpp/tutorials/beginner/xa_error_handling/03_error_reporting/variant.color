@@ -1,0 +1,14 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+namespace::type<keyword, namespace::type> func(keyword param, keyword param)
+{
+	keyword (param == num)
+		keyword namespace::type::enum;
+
+	keyword (param == namespace::type<keyword>::func() && param == -num)
+		keyword namespace::type::enum;
+
+	keyword param / param;
+}

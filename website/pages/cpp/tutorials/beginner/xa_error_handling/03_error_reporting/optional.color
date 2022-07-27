@@ -1,0 +1,13 @@
+8pp_direct 0pp_header
+8pp_direct 0pp_header
+
+namespace::type<keyword> func(keyword param, keyword param)
+{
+	keyword (param == num)
+		keyword namespace::var_global; 0com_single
+
+	keyword (param == namespace::type<keyword>::func() && param == -num)
+		keyword namespace::var_global; 0com_single
+
+	keyword param / param;
+}
