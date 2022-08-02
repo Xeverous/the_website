@@ -71,7 +71,10 @@ Yes - C++ does not differentiate classes and structures. It's one thing that can
 
 The main reason for this convention is clear expression of intent . In C, there is no :cch:`class` and :cch:`struct` has very limited functionality compared to C++. Thus if :cch:`struct` is used within C++, it's usually only for functionality that is available in C.
 
-So far we relied on implicit :cch:`public` access default in structures. Because of different defaults in classes, in order to have the same behavior as with :cch:`struct`, we need to specify the access as :cch:`public`. **In the code below all definitions are equivalent.**
+Access specifiers
+#################
+
+Classes can limit access to their *members* (entities defined inside). For :cch:`struct` everything by default is :cch:`public` which means there are no constraints. Because of different default in classes, in order to have the same behavior as with :cch:`struct`, :cch:`public` has to be written explicitly. **In the code below all definitions are equivalent.**
 
 .. cch::
     :code_path: identical_definitions.cpp

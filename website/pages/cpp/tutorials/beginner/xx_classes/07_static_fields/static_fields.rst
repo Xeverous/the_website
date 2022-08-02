@@ -43,7 +43,7 @@ Obviously global state is bad so :cch:`static` fields should be avoided. A typic
     :code_path: user_id.cpp
     :color_path: user_id.color
 
-Here each :cch:`user$$$type` object will get a unique ID. The :cch:`id$$$var_member` member is :cch:`const` because once initialized in the constructor, it will never change for the same user.
+Here each :cch:`user$$$type` object will get a unique ID. The :cch:`id$$$var_member` member could be :cch:`const`, but there are good reasons to not use the keyword even if the field never changes (the main one being prevention of assignment of objects of this class).
 
 Static initialization order fiasco
 ##################################

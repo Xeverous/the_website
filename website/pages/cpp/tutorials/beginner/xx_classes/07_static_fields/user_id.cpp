@@ -4,21 +4,21 @@ class user
 {
 public:
 	user(/* params... */)
-	: id(++id_count) {}
+	: id(++id_counter) {}
 
 	int get_id() const { return id; }
 
 	// other member functions...
 
 private:
-	const int id;
+	int id;
 	// other fields (e.g. name, password, ...)
 
-	static int id_count;
+	static int id_counter;
 };
 
 // even private static members can be initialized this way
-int user::id_count = 0;
+int user::id_counter = 0;
 
 int main()
 {

@@ -11,7 +11,7 @@ keyword:
 	0com_single
 
 keyword:
-	keyword keyword var_member;
+	keyword var_member;
 	0com_single
 
 	keyword keyword var_global;
