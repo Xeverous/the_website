@@ -36,7 +36,7 @@ How the macro works:
 - if :cch:`NDEBUG` is not defined: expands to a statement that evaluates given expression:
 
     - if :cch:`true` then nothing happens.
-    - if :cch:`false` outputs implementation-defined diagnostic information on the standard error stream and calls :cch:`std::abort`. The diagnostic message is guuaranteed to contain the source code from the expression (turned into text by preprocessor stringization - :cch:`#`), :cch:`__FILE__`, :cch:`__LINE__` and :cch:`__func__`.
+    - if :cch:`false` outputs implementation-defined diagnostic information on the standard error stream and calls :cch:`std::abort`, which terminates the program. The diagnostic message is guuaranteed to contain the source code from the expression (turned into text by preprocessor stringization - :cch:`#`), :cch:`__FILE__`, :cch:`__LINE__` and :cch:`__func__`.
 
 Why weird NDEBUG ("not debug") name? Just history. NDEBUG is never defined within standard library but high-level build tools (e.g. CMake, Meson) and IDEs have the concept of relase and debug build configurations. Pretty much all such tools will add ``-DNDEBUG`` (or equivalent) to compiler flags in release configuration to disable the macro in release builds (C++ does not define this macro by default). Many libraries offer similar macro, sometimes implemented as a wrapper around the standard one.
 
@@ -52,7 +52,6 @@ A quick test with the program above can result in something like this:
     As of writing this, MSVC implementation does not conform to C++11 requirements - the diagnostic message does not contain :cch:`__func__`.
 
     libstdc++ implementation (used by GCC and optionally by Clang) uses :cch:`__PRETTY_FUNCTION__` extension instead of :cch:`__func__`, which outputs a lot of details about the function (return type, argument types, template parameters), not just its name.
-
 
 Custom diagnostic message
 =========================
@@ -80,6 +79,8 @@ The second trick relies on implicit convertions.
     Can I use a variable to hold the message and put the variable in the macro?
 
 You can, but ... the macro will print variable's name, not its value. For this to really work you would need a very different implementation of the macro, one that passes the variable to some output function.
+
+`Boost.Assert <http://boost.org/libs/assert>`_ library offers an upgraded version of the macro similar to the one presented above. Additionally, it has more compile-time enable/disable switches as well as ability to implement custom assertion failure handler.
 
 Side effects
 ############
