@@ -28,6 +28,18 @@ You might not experience how hard it is unless you actually try it. Imagine a co
 
 Good material needs not only to have as few cross-dependencies as possible but also be relatively structured so that the reader can come back for a refresh on a specific topic. Thus, some chapters (especially preprocessor content - variadic macros and X macros) have lessons which explicitly state that the reader does not need to read it now, only later if desired - the lesson is placed where it is only to be able to be found easier. This approach is much better than finishing the tutorial with the last chapter that contains unordered articles about random things not covered earlier.
 
+Specifics
+=========
+
+Many are quite obvious:
+
+- arrays should be after loops and other control flow statements
+- classes should be after functions (simple :cch:`struct`\ s can be showcased early)
+
+But many others not so much - many topics can be explained in a wide range of places, each with different tradeoffs.
+
+- Preprocessor: in theory, this chapter could be at the beginning because the preprocessor works before the compiler. On the other hand, explaining preprocessor is very boring, adds no significant abilities to the reader and without some minimal knowledge, it's impossible to give good examples and explain header/source files. For this reason, preprocessor is placed after functions, structs and enums so that it's possible to explain function-like macros (based on knowledge about functions) and the header/source model (based on ODR knowledge).
+
 OOP content
 ###########
 
