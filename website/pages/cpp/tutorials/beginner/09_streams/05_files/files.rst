@@ -5,6 +5,8 @@
 
 Reading and writing files doesn't differ much from using other streams - the core difference is initialization.
 
+.. TODO - missing initialization example (ctor and .open) - this lesson needs examples
+
 File streams
 ############
 
@@ -52,6 +54,8 @@ The mode further specifies behavior
 - Binary mode is used when the file contains binary data (not text) to avoid any automatic convertion and when the convertion of textual data is undesirable.
 - Other flags are hardly ever used.
 
+We can say that file streams have a "cursor" mechanism (formally called input and output positions). These positions specify at which offset read or write operation happens (2-directional streams will have 2 cursors) (the **app**end and **ate** flags modify their initial value). The position can be checked and changed using various functions which names start with ``tell`` and ``seek``. Because standard library streams have many complex layers and I have never seen these functions used directly in production code, I don't see any value in presenting them.
+
 Binary mode
 ###########
 
@@ -76,7 +80,7 @@ There are 2 modes in which a C++ stream can operate on a file:
 File to string
 ##############
 
-A common need is to read entire file into one string object for later processing. There are tons of ways to do this in C++ and there has been somewhat a hot debate what is most idiomatic or most performant. In addition to this, specific applications should not actually read entire file into one object (imagine multi-gigabyte database) but read specific chunks and process them as more data in put into the buffer of limited size - such approach reduces memory usage and allows for concurrent disk operations and data processing.
+A common need is to read entire file into one string object for later processing. There are tons of ways to do this in C++ and there has been somewhat a hot debate what is most idiomatic or most performant. In addition to this, specific applications should not actually read entire file into one object (imagine multi-gigabyte database) but read specific chunks and process them as more data is put into the buffer of limited size - such approach reduces memory usage and allows for concurrent disk operations and data processing.
 
 Still, for majority of applications the benefits of concurrent reading/writing/processing (and any other performance improvements) are not worth the trouble caused by complication - majority of programs read small files (megabytes at best) or files which need to be read entirely anyway (images, sounds, models and other files for games and simulatory applications).
 
