@@ -151,6 +151,13 @@ Extra stuff
 
 While :cch:`errno` is thread-local, functions which return textual representation aren't thread safe. `An article elsewhere <http://www.club.cc.cmu.edu/~cmccabe/blog_strerror.html>`_ describes the problem in detail.
 
+Care should be taken when mixing errno-based error reporting with :cch:`bool` return types:
+
+- in case of :cch:`errno`, 0 means success
+- in case of `bool`, :cch:`true` means success
+
+Many function calls are put into :cch:`if` statements. :cch:`errno` (which has type :cch:`int`) with value :cch:`0` is converted to :cch:`false`. But the success for other kind of functions is represented by :cch:`true`. This creates a program with very surprising and confusing code: sometimes :cch:`if (!func())$$$keyword (!func())` is correct to check against errors and sometimes :cch:`if (func())$$$keyword (func())`.
+
 summary
 =======
 
