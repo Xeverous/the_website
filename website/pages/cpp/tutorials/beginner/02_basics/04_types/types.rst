@@ -56,6 +56,11 @@ Most important built-in types:
 - character types - *integral* types which main purpose is storing text.
 - floating-point types - capable of storing real numbers with fractional and/or exponential part, with limited accuracy.
 
+.. admonition:: definition
+  :class: definition
+
+  **Integral** types are :cch:`bool`, integer, character and (if any) implementation-defined extended integer types.
+
 The type :cch:`bool`
 ====================
 
