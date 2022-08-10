@@ -3,7 +3,7 @@
 .. description: basic operators C++
 .. author: Xeverous
 
-Basic arithmetic operators in C++ are written using symbols like ``+``, ``-``, ``*`` etc. An **operator** can be thought as a *function* (in mathematical sense) - it has certain input and produces certain output. An operator does not mean a symbol - some operators consist of multiple characters and some are even keywords. *Operator* is an abstract term.
+Basic arithmetic operators in C++ are written using symbols like ``+``, ``-``, ``*`` etc. An **operator** can be thought as a *function* (in mathematical sense) - it has certain input and produces certain output. An *operator* does not mean a *symbol* - some operators consist of multiple characters and some are even keywords. *Operator* is an abstract term.
 
 In majority of programming languages (including languages of C family), there is no juxtaposition or any implicit use of operators. This means that mathematical expressions like ``2(x + y)`` will create syntax errors - you need to write ``2 * (x + y)``.
 
@@ -44,7 +44,7 @@ For binary operators, there is a syntax sugar available when you want to perform
 
 It works as :cch:`z = z * (x + y)$$$var_local = var_local * (var_local + var_local)`. The entire right side is always evaluated first.
 
-Much later, you will also learn about **operator overloading**. Because C++ allows to define new types (using speciifc keywords) and most built-in operators work only with built-in types, C++ allows to define meaning for operators when user-defined types are involved. You have already used overloaded :cch:`operator<<` with :cch:`std::cout`. Many IDEs will color overloaded operators to signal that their meaning has been specified in code, not in the language.
+Much later, you will also learn about **operator overloading**. Because C++ allows to define new types (using specific keywords) and most built-in operators work only with built-in types, C++ allows to define meaning for operators when user-defined types are involved. You have already used overloaded :cch:`operator<<` with :cch:`std::cout`. Many IDEs will color overloaded operators to signal that their meaning has been specified in code, not in the language.
 
 Comparison
 ##########

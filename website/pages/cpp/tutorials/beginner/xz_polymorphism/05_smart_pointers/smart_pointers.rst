@@ -139,7 +139,7 @@ Smart pointers to derived types are implicitly convertible to smart pointers to 
 Destruction
 ###########
 
-Each class can on the inheritance hierarchy can store some members. Some of these members may manage memory (e.g. :cch:`std::string`). If we use smart pointers to manage object lifetime, they need to know how to properly destroy the object - if they only call destructors of the base class, resource-managing members in derived classes will leak.
+Each class on the inheritance hierarchy can store some members. Some of these members may manage memory (e.g. :cch:`std::string`). If we use smart pointers to manage object lifetime, they need to know how to properly destroy the object - if they only call destructors of the base class, resource-managing members in derived classes will leak.
 
 The solution to this problem is very simple: *virtual destructors*. Destructors can be virtual just like any other function, but unlike other functions (but like constructors) virtual destructors execute **all** implementations, not just the one from most derived overrider.
 
