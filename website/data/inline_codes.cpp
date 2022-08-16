@@ -647,6 +647,8 @@ using std::cout;
 void*
 void* const
 volatile T
+while (0)
+while (false)
 x
 x != y
 x % y

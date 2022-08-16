@@ -647,6 +647,8 @@ keyword namespace::var_global;
 keyword*
 keyword* keyword
 keyword tparam
+keyword (num)
+keyword (keyword)
 var_local
 var_local != var_local
 var_local % var_local

@@ -6,4 +6,5 @@
 	} while (false)
 
 // sample usage - looks like a single statement
-COMPLEX_MACRO(value); // the ; completes the loop syntax
+if (some_condition)
+	COMPLEX_MACRO(some_value); // the ; completes the loop syntax

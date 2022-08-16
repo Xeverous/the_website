@@ -132,6 +132,8 @@ Similarly to stringification, the operation is commonly used through another mac
     :code_path: concat.cpp
     :color_path: concat.color
 
+Concatenation is typically used when a macro defines a family of entities; a set of names with common prefix or suffix. This avoids creating name conflicts because each macro call will use different string that becomes the prefix/suffix.
+
 Additional conventions
 ######################
 
@@ -140,7 +142,7 @@ Some macros generate a lot of code - much more than a single subexpression or ev
 - If the macro creates some local objects, their names might clash between usages of the macro and/or other code.
 - If the macro produces multiple statements, it can significantly impact code readability - it's not a function or other C++ construct and a human reading code may have trouble understanding how to connect other code with it. Additionally, if such macro is used under braceless :cch:`if` or other control flow statements, only the first statement from the macro expansion is covered by it.
 
-A common solution to both problems is to enclose generated code within a do-while loop that runs exactly once. This guards the scope, makes a single statement and additionally allows ``;`` to be used after macro call to make it look as a single statement.
+A common solution to both problems is to enclose generated code within a do-while loop that runs exactly once. This guards the scope, makes it a single statement and additionally allows ``;`` to be used after macro call to make it look as a single statement.
 
 .. admonition:: tip
   :class: tip
@@ -151,7 +153,9 @@ A common solution to both problems is to enclose generated code within a do-whil
     :code_path: do_while_macro.cpp
     :color_path: do_while_macro.color
 
-In some cases macros have to be used at global scope (when they generate classes, enumerations or any other non-imperative code). In such situation they can add a dummy code like :cch:`void no_op()$$$keyword func()` (no operation) at the end so that ``;`` immediatelly following the macro expansion forms valid, unused function declaration.
+It's also very common to see :cch:`while (0)` because it's additionally compatible with older C standards, before C had boolean type. More examples and additional explanation: https://kernelnewbies.org/FAQ/DoWhile0.
+
+In some cases macros have to be used at global scope (when they generate classes, enumerations or any other non-imperative code). In such situation they can add a dummy code like :cch:`void no_op()$$$keyword func()` (no operation) at the end so that ``;`` immediatelly following the macro expansion forms valid, unused function declaration. **The goal is to define a macro in a such way that ``;`` can be put after it, making the macro call resemble a function call**.
 
 Problematic macros
 ##################

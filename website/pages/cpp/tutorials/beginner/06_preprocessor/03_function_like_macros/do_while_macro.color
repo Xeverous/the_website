@@ -6,4 +6,5 @@
 	1macro_body keyword 1macro_body`keyword1macro_body
 
 0com_single
-macro_ref(macro_param); 0com_single
+keyword (var_local)
+	macro_ref(macro_param); 0com_single
