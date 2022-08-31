@@ -9,8 +9,10 @@ keyword
 macro
 ext
 ext
+ext
 macro
 macro
+ext
 ext
 0pp_hash
 0pp_hash
@@ -62,6 +64,8 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
+namespace::type
+namespace::type
 namespace::func
 namespace::func
 namespace::type
@@ -83,8 +87,11 @@ namespace::var_global
 namespace::type
 namespace::type
 namespace::type
+namespace::type
+namespace::type
 namespace::func
 namespace::func
+namespace::type
 namespace::type
 namespace::type
 namespace::type
@@ -142,6 +149,7 @@ namespace::var_global
 namespace::type
 namespace::type
 namespace::type
+namespace::type
 namespace::var_global
 namespace::type
 namespace::type::var_global
@@ -154,11 +162,14 @@ namespace::type
 namespace::type
 namespace::type
 namespace::type
+namespace::type
 namespace::func
+namespace::type
 namespace::func
 namespace::type
 namespace::type
 namespace::type
+namespace::func
 namespace::func
 namespace::type
 namespace::func
@@ -185,11 +196,13 @@ namespace::func
 namespace::func
 namespace::func
 namespace::func
+namespace::func
 namespace::type
 namespace::type
 namespace::type
 namespace::type
 namespace::type
+namespace::func
 namespace::type
 namespace::func
 namespace::type
@@ -282,6 +295,7 @@ param
 param
 macro
 func()
+keyword (...)
 keyword keyword*
 keyword keyword* keyword
 keyword*
@@ -323,12 +337,15 @@ func()
 func(var_local);
 keyword
 keyword (;;)
+func()
 func
 func()
 func
 func
 var_local
+keyword (keyword)
 keyword (var_local)
+keyword (keyword)
 keyword keyword
 keyword keyword keyword keyword
 keyword func(keyword param, keyword* param[])
@@ -337,6 +354,9 @@ keyword keyword
 keyword keyword
 keyword namespace
 keyword[]
+keyword(keyword)
+keyword(keyword)
+keyword(keyword)
 keyword param_tmpl
 keyword keyword
 keyword1func
@@ -405,9 +425,11 @@ namespace::func<param_tmpl>
 namespace::func<param_tmpl>
 namespace::type<param_tmpl>
 namespace::type<param_tmpl>
+namespace::type&&
 namespace::type<param_tmpl>
 namespace::type<keyword>
 namespace::type<keyword>
+keyword;
 keyword keyword
 keyword(param_tmpl)
 keyword(var_local)

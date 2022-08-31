@@ -7,11 +7,13 @@ __VA_ARGS__
 __VA_OPT__
 __attribute__
 __cplusplus
+__except
 __float128
 __func__
 __has_cpp_attribute
 __has_include
 __int128
+__try
 #
 ##
 #define
@@ -59,7 +61,9 @@ std::abort
 std::array
 std::as_const
 std::atomic
+std::bad_alloc
 std::bad_cast
+std::bad_exception
 std::bad_function_call
 std::bad_typeid
 std::bind
@@ -82,11 +86,14 @@ std::deque
 std::endl
 std::error_code
 std::error_condition
+std::exception
+std::exception_ptr
 std::forward_list
 std::fprintf
 std::fscanf
 std::fstream
 std::function
+std::future
 std::ifstream
 std::initializer_list
 std::internal
@@ -142,6 +149,7 @@ std::nullopt
 std::ofstream
 std::optional
 std::ostream
+std::out_of_range
 std::partial_order
 std::partial_ordering
 std::partial_ordering::equivalent
@@ -151,14 +159,17 @@ std::partial_ordering::unordered
 std::pow
 std::printf
 std::priority_queue
+std::promise
 std::ptrdiff_t
 std::queue
 std::reference_wrapper
 std::right
+std::runtime_error
 std::scanf
 std::scoped_allocator_adaptor
 std::scoped_lock
 std::set
+std::set_unexpected
 std::setw
 std::shared_ptr
 std::size
@@ -181,6 +192,7 @@ std::strong_ordering::equivalent
 std::strong_ordering::greater
 std::strong_ordering::less
 std::system_error
+std::terminate
 std::tie
 std::to_address
 std::to_chars
@@ -190,6 +202,7 @@ std::type_index
 std::type_info
 std::uintmax_t
 std::uintptr_t
+std::unexpected
 std::unique_ptr
 std::unitbuf
 std::unordered_map
@@ -282,6 +295,7 @@ argc
 argv
 assert
 begin()
+catch (...)
 char const*
 char const* const
 char*
@@ -323,12 +337,15 @@ f()
 f(x);
 final
 for (;;)
+func()
 g
 g()
 getopt
 getopt_long
 i
+if (false)
 if (obj)
+if (true)
 inline namespace
 int long unsigned long
 int main(int argc, char* argv[])
@@ -337,6 +354,9 @@ long double
 long long
 namespace std
 new[]
+noexcept(bool)
+noexcept(false)
+noexcept(true)
 operator T
 operator bool
 operator!
@@ -405,9 +425,11 @@ std::get<I>
 std::get<T>
 std::optional<T>
 std::optional<U>
+std::string&&
 std::vector<T>
 std::vector<char>
 std::vector<wchar_t>
+throw;
 typedef struct
 typeid(T)
 typeid(obj)
