@@ -3,10 +3,16 @@
 ## clone the repository
 
 ```sh
-git clone https://github.com/Xeverous/the_website.git
+git clone --recurse-submodules https://github.com/Xeverous/the_website.git
 ```
 
-## install required packages (these are for Ubuntu-derived distros)
+or, if you have already cloned:
+
+```sh
+git submodule update --init --recursive
+```
+
+## install required packages (these are for Ubuntu and derived distros)
 
 ```sh
 sudo apt install python3.8-dev python3-pip cmake
@@ -33,10 +39,15 @@ source ./venv/bin/activate
 pip install Nikola jinja2 aiohttp watchdog ansi2html
 ```
 
+TODO `use requirements.txt`
+
 ## build C++ plugin code
 
+Part of website's build functionality is implemented in C++, which is compiled to a shared library object and loaded as a plugin by the Nikola build framework. You can build the website without it, though it is discouraged as code snippets will be mostly non-functional (no highlight and other fancy features). It is only for the case where you have problems with Python being unable to load external modules.
+
+**ACH requires Boost only for CLI utility and tests (not needed for the website build).** The build options presented below are minimal defaults that require only a C++17 compiler. Everything else is provided in git submodules.
+
 ```sh
-git submodule update --init --recursive
 cd website/external/arbitrary_code_highlighter
 mkdir build
 cd build

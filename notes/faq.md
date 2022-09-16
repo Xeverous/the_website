@@ -1,6 +1,6 @@
 # FAQ
 
-## Can I add a certain binary file (eg image) as-is to the website and use it on some pages?
+## Can I add a certain binary file (e.g. image) as-is to the website and use it on some pages?
 
 Yes, just put it in the `files` directory - everything there is copied as-is to the output.
 
@@ -14,30 +14,31 @@ While the format has great simplicity, it has failed to accomplish 1 fundamental
 
 Very simple files (like this one) can use Markdown as they are indended to be read online directly from repository, without going through website build process. But I will not care to support complex webpages written in Markdown - use a different format instead.
 
+There are 2 documented forks of Markdown - Kramdown and CommonMark but at this point it's just better to use reStructuredText.
+
 ## Is it possible to nest shortcodes (Nikola feature, e.g. `{{% name %}}`)?
 
-Nikola does not support it explicitly, but it is possible to implement such thing in 2 ways:
-
-- Workaround lack of nesting support by implementing opening and closing blocks as 2 separate shortcode plugins Then add some code which verifies all nested shortcodes are properly closed and in order.
-- Implement custom Markdown or reST extension (safer but more complex).
-
-The topic is still under investigation.
+Nikola does not support it explicitly, but it is possible to implement such thing by adding opening and closing blocks as 2 separate shortcode plugins + some code which verifies all nested shortcodes are properly closed and in order. IMO not worth the effort given that reStructuredText offers nestable directives, which can be custom.
 
 ## Can you describe the order of all build steps (e.g. scanning files, invoking plugins, generating HTML, copying files)?
 
 There is no fixed order. Nikola uses doit, which is an incremental build build system that can run tasks in parallel. If there are any dependencies between certain tasks (as it is the case with many plugins) they need to be stated explicitly by the plugin itself. Plugins have an interface to express which files they depend on.
 
-Simplified steps of the build process:
+Of couse there is some pattern within file dependencies so here is a simplified list of steps of the build process:
 
-- Nikola loads `conf.py` and plugins
+- Nikola loads `conf.py` and plugins.
 - If it's an incremental build, files are scanned for date.
-- Source files (e.g. Markdown, reStructuredText) are being passed through respective compilers. This site compiles them to HTML.
-- Compiled HTML portions are not fully functional HTML (they do not contain `<head>` etc), these are passed through HTML templates engine - this site uses Jinja2. Check existing templates to see which data and how is output.
+- Source files (e.g. Markdown, reStructuredText) are being passed through respective compilers. This site compiles them to HTML. Compilers may invoke their plugins (as it is the case for ACH).
+- Compiled HTML portions are not fully functional HTML (they do not contain `<head>` etc), these are passed through HTML templates engine - this site uses Jinja2. Check existing templates to see which data and how is output. Majority of pages go through the same HTML template, intended for lessons and side articles.
 - Files in `files` directory are copied 1:1 to the output directory `output`.
 
 ## Why Nikola?
 
-The answer to this question is so long that I plan to make a separate article on the page about it. The tl;dr is that while there are few hundred available static site generators, ~99% of them are only suited for blogs or  documentation, neither of which this site is. Turns out that there weren't many real candidates to choose from so the final decision wasn't that hard. Nikola has great inner architecture and basically everything can be replaced. Even the built-in Markdown and reST compilers are written as plugins, so one can define another compiler that is equally powerful as the built-in ones. To me this sounds familiar to C++ design, where user-defined types are as powerful with operator overloading as the built-in types.
+The answer to this question is so long that I plan to make a separate article on the website about it. The tl;dr is that while there are few hundred available static site generators, ~99% of them are only suited for blogs or documentation, neither of which this site is. Turns out that there weren't many real candidates to choose from so the final decision wasn't that hard. Nikola has great inner architecture and basically everything can be replaced. Even the built-in Markdown and reST compilers are written as plugins, so one can define another compiler that is equally powerful as the built-in ones. To me this sounds familiar to C++ design, where user-defined types are as powerful with operator overloading as the built-in types.
+
+Nikola is a relatively small project and the only thing it does is tying together text compilers (e.g. Markdown, reST), output generators (e.g. Jinja2, Mako) and a build system (doit). If at any point in future I need even more customization or Nikola gets abandoned, I can easily reconnect the pieces which themselves are pretty mature projects.
+
+For questions why not Hugo - Go isn't as popular as Python and Python plays very well with C and C++. Python is commonly the second best-known language for C++ programmers.
 
 ## Can I help with the site by means other than writing/editing articles?
 
@@ -47,8 +48,14 @@ Yes, in fact a lot of help is needed for CSS, JS and Python code. There is a lot
 
 Yes, as much as this (and many other questions in this FAQ) are fake. They are "fake" as they have never actually been asked but I predicted some would like to read answers to them. Plus there are some important aspects that I would like to share in FAQ-style form.
 
-## If I contribute something to the site, can it have a different license?
+## If I contribute something to the site, can my work have a different license?
 
-For articles - generally yes.
+Depends what the work is.
 
-For website internal code that builds everything - generally no unless it's compatible with GPL 3.0 or CC-BY-SA 4.0.
+- Editing someone else's articles - no, the license is the will of the author.
+- Your own articles - yes as you are the author.
+- Website internal code that builds everything:
+    - editing code: same license
+    - new code: must be compatible with GPL 3.0.
+
+Note that the project uses separate licenses for internal code and article text - the first is GPL 3.0, the latter depends on the author, which in my case will usually be CC-BY-SA 4.0.

@@ -20,7 +20,7 @@ The current recommended input format for pages is [reStructuredText](https://doc
 
 ## general notes
 
-Note that this site completely replaces Nikola's default templates by using its own, parent-less theme so a lot of things that are mentioned in Nikola's documentation do not apply to this site or apply but have different effect. Multiple built-in features such as charts, galleries, timeline, anything blog-related, listings etc are not being used and had their respective files removed. This includes HTML templates, CSS and JS. Everything generation-related (HTML templates, CSS, JS) should be put into this site custom theme directory. Watch out when reading anything from https://getnikola.com/handbook.html as it implicitly assumes a blog with base theme. Better read https://getnikola.com/theming.html because that is the place where most functionality of this site comes from. Again, remember that this site theme has no base and absolutely all HTML templates are custom-made.
+Note that this site completely replaces Nikola's default templates by using its own, parent-less theme so a lot of things that are mentioned in Nikola's documentation do not apply to this site or apply but have different effect. Multiple built-in features such as charts, galleries, timeline, anything blog-related, listings etc. are not being used and had their respective files removed. This includes HTML templates, CSS and JS. Everything generation-related (HTML templates, CSS, JS) should be put into this site custom theme directory. Watch out when reading anything from https://getnikola.com/handbook.html as it implicitly assumes a blog with base theme. Better read https://getnikola.com/theming.html because that is the place where most functionality of this site comes from. Again, remember that this site theme has no base and absolutely all HTML templates are custom-made.
 
 `PAGES` and `POSTS` in `conf.py` have been modified. File extension has been changed from `tmpl` to `html` because while the `tmpl` is more clear about the source being a template, multiple editing tools work better with `html` extension by default and they already are smart enough to detect and highlight template code in HTML files.
 
@@ -158,7 +158,7 @@ Xeverous: I'm not a web developer. I learned CSS from https://www.internetingish
 
 - Documentation and tutorial: https://jinja.palletsprojects.com/en/2.11.x/templates/
 - Use `extends` or `import`. Nikola does not support `include` (note that `import` has a superset of `include` features).
-- Do not use `with context` to be able to access variables supplied by Nikola in templates, this inhibits caching (https://jinja.palletsprojects.com/en/2.11.x/templates/#import-visibility) pass any necessary data through macro parameters instead.
+- Do not use `with context` to be able to access variables supplied by Nikola in templates, this inhibits caching (https://jinja.palletsprojects.com/en/2.11.x/templates/#import-visibility); pass any necessary data through macro parameters instead.
 - List of stuff predefined in templates: https://getnikola.com/template-variables.html
 - When writing Python code for templates, always write it so that templates use functions:
   - If `obj.name` does not exist it will silently evaluate to an empty string.
@@ -173,7 +173,7 @@ Xeverous: I'm not a web developer. I learned CSS from https://www.internetingish
   - `.py` file is obviously plugin implementation. There is no problem is sharing code between plugins - just make it a separate file and import common code in plugin implementation files.
   - 2 things are common for every plugin
     - there is some specific interface to implement (which depends on the plugin category)
-	- there is an interface to report file dependencies (if the plugin uses extra files, this allows to tell Nikola necesssary information to support incremental builds)
+    - there is an interface to report file dependencies (if the plugin uses extra files, this allows to tell Nikola necesssary information to support incremental builds)
 - For historical reasons, Nikola uses `Post` class for both posts and pages even though posts are pages with specific properties. Thus, a lot of Python code has `Post` instances named `page`.
 - Site plugins should raise exceptions on problems that may cause bigger problems later. Otherwise, issue warnings to the log.
 - Do not `import logging`, `from nikola.utils import get_logger` instead and use `get_logger(__name__)`.
