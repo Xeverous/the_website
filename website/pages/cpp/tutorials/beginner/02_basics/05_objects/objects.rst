@@ -174,7 +174,7 @@ Technically, **const applies to what is on its left, unless there is nothing - t
 
 In other words, for strictly technical reasons, east :cch:`const` should be used. But because it's known that declaration part of the C/C++ grammar is unintuitive, many recommend west :cch:`const` - it feels more natural and in majority of cases it's possible to do so.
 
-The west vs east :cch:`const` debate is C++'s equivalent of the "on which side the toiler paper should be" debate. Community likes to make fun of it, it's most prominently visible on CppCon materials.
+The west vs east :cch:`const` debate is C++'s equivalent of the "on which side the toiler paper should be" debate. Community likes to make fun of it, it's most prominently visible on CppCon materials, such as `Jon Kalb: "This is Why We Can’t Have Nice Things" <https://www.youtube.com/watch?v=fv--IKZFVO8>`.
 
 `Core Guidelines NL.26 <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rl-const>`_ recommend west version although the recommendation itself isn't very strong.
 
