@@ -23,11 +23,11 @@ def make_json_rpc_request(id: Union[str, int], method: str, params: Union[Tuple,
 
     return request
 
+HEADER_CONTENT_LENGTH = "Content-Length: "
 
-def make_lsp_request(json_rpc_request):
+def make_lsp_request(json_rpc_request) -> str:
     string = json.dumps(json_rpc_request, indent=None)
-    string = f"Content-Length: {len(string)}\r\n\r\n{string}"
-    return string
+    return f"{HEADER_CONTENT_LENGTH}{len(string)}\r\n\r\n{string}"
 
 def get_clangd_path():
     result = shutil.which("clangd")
@@ -46,25 +46,51 @@ def get_clangd_path():
 class Connection:
     def __init__(self):
         self.clangd_path = get_clangd_path()
-        self.p = subprocess.Popen([self.clangd_path], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.p = subprocess.Popen([self.clangd_path, "--log=error"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         self.id = 1
 
-    def send(self, method: str, params):
+    def initialize(self):
+        self.make_lsp_call("initialize", {"params": {
+            "processId": None,
+                "rootUri": None,
+                "capabilities": {
+            }
+        }})
+
+    def make_lsp_call(self, method: str, params):
+        response = self.receive(self.send(method, params))
+        print(response)
+
+    def send(self, method: str, params) -> int:
         request = make_lsp_request(make_json_rpc_request(self.id, method, params))
         self.p.stdin.write(request.encode())
         self.p.stdin.flush()
+        id = self.id
         self.id += 1
+        return id
 
-    def receive(self):
-        pass
+    def receive(self, id: int):
+        headers = []
 
+        while True:
+            line = self.p.stdout.readline()
+            if line != b"\r\n":
+                headers.append(line)
+            else:
+                break
+
+        length = 0
+        for hdr in headers:
+            hdr = hdr.decode()
+            if HEADER_CONTENT_LENGTH in hdr:
+                length = int(hdr.removeprefix(HEADER_CONTENT_LENGTH))
+                break
+
+        if length == 0:
+            raise RuntimeError(f"invalid or missing '{HEADER_CONTENT_LENGTH}' header")
+
+        return self.p.stdout.read(length).decode()
 
 if __name__ == "__main__":
     conn = Connection()
-    conn.send("initialize", {"params": {
-        "processId": None,
-      		"rootUri": None,
-      		"capabilities": {
-		}
-    }})
-    print(conn.p.stdout.read1())
+    conn.initialize()
