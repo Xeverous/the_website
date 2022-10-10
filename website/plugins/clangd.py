@@ -70,11 +70,19 @@ def get_clangd_path() -> str:
 
 
 class Connection:
-    def __init__(self):
+    def __init__(self, connect=True, initialize=True):
         self.clangd_path = get_clangd_path()
         # TODO: log clangd version
-        self.p = subprocess.Popen([self.clangd_path, "--log=error"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         self.id = 1
+        self.p = None
+        self.initialized = False
+        if connect:
+            self.open_connection()
+            if initialize:
+                self.initialize()
+
+    def open_connection(self) -> None:
+        self.p = subprocess.Popen([self.clangd_path, "--log=error"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
     def _send(self, message: bytes) -> None:
         bytes_written = self.p.stdin.write(message)
@@ -120,6 +128,9 @@ class Connection:
             raise RuntimeError(f"JSON RPC call failed: {json.dumps(response, indent=None)}")
 
     def initialize(self):
+        if not self.p:
+            raise RuntimeError("initialization requires opened connection")
+
         result = self.make_lsp_request("initialize", {"params": {
             "processId": None,
                 "rootUri": None,
@@ -127,8 +138,27 @@ class Connection:
                 }
             }
         })
+        self.initialized = True
         print(result)
+
+    def shutdown(self) -> None:
+        if not self.initialized:
+            return
+
+        result = self.make_lsp_request("shutdown", None)
+        if result is not None:
+            raise RuntimeError(f"shutdown call failed: {json.dumps(result, indent=None)}")
+
+        self.initialized = False
+
+    def close_connection(self) -> None:
+        self.shutdown()
+        self.make_lsp_notification("exit", None)
+        self.p = None
+
+    def __del__(self):
+        self.close_connection()
+
 
 if __name__ == "__main__":
     conn = Connection()
-    conn.initialize()
