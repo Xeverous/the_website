@@ -8,7 +8,6 @@ from typing import Union, Any
 def make_json_rpc_notification(method: str, params: Union[tuple, list, dict, None]) -> dict[str, Any]:
     message = {
         "jsonrpc": "2.0",
-        "id": id,
         "method": method
     }
 
