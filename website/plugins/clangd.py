@@ -37,9 +37,10 @@ def json_rpc_response_extract_content(response: dict[str, Any], id: Union[str, i
     if response_id != id:
         raise RuntimeError(f"expected response with id {id} but got {response_id}")
 
-    result = response.get("result")
-    if result:
-        return result, True
+    # use "in" instead of ".get()" to differentiate between no item and item with value None
+    # (some JSON RPC calls can return "result": null)
+    if "result" in response:
+        return response.get("result"), True
 
     error = response.get("error")
     if error:
