@@ -15,7 +15,7 @@ git submodule update --init --recursive
 ## install required packages (these are for Ubuntu and derived distros)
 
 ```sh
-sudo apt install python3.8-dev python3-pip cmake
+sudo apt install python3.9-dev python3-pip cmake
 pip3 install wheel
 pip3 install setuptools
 pip3 install virtualenv
@@ -24,7 +24,8 @@ pip3 install virtualenv
 ## create virtual environment (1 directory above `conf.py`)
 
 ```sh
-python3.8 -m virtualenv -p python3.8 venv
+sudo apt install python3.9-venv
+python3.9 -m venv venv
 ```
 
 ## launch virtual environment
