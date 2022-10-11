@@ -132,7 +132,7 @@ class Connection:
             raise RuntimeError("initialization requires opened connection")
 
         result = self.make_lsp_request("initialize", {"params": {
-            "processId": None,
+            "processId": os.getpid(),
                 "rootUri": None,
                 "capabilities": {
                 }
