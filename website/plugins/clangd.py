@@ -134,12 +134,36 @@ class Connection:
         result = self.make_lsp_request("initialize", {"params": {
             "processId": os.getpid(),
                 "rootUri": None,
+                # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#clientCapabilities
                 "capabilities": {
+                    "workspace": {
+                        # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#semanticTokensWorkspaceClientCapabilities
+                        "semanticTokens": {
+                        }
+                    },
+                    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocumentClientCapabilities
+                    "textDocument": {
+                        # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#semanticTokensClientCapabilities
+                        "semanticTokens" : {
+                            "requests": {
+                                "range": True,
+                                "full": {
+                                    "delta": False
+                                }
+                            },
+                            "tokenTypes": [],
+                            "tokenModifiers": [],
+                            "formats": [], # no support for relative as of now (absolute is implicitly assumed)
+                            "overlappingTokenSupport": False,
+                            "multilineTokenSupport": True
+                        }
+                    }
                 }
+                # TODO workspaceFolders
             }
         })
         self.initialized = True
-        print(result)
+        print(json.dumps(result, indent=4))
 
     def shutdown(self) -> None:
         if not self.initialized:
