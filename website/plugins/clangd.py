@@ -56,15 +56,15 @@ def make_lsp_message(json_rpc_object: dict[str, Any]) -> bytes:
     return f"{HEADER_CONTENT_LENGTH}{len(body)}\r\n\r\n".encode() + body
 
 def get_clangd_path() -> str:
-    result = shutil.which("clangd")
-    if result:
-        return result
-
     env_name = os.environ.get("CLANGD")
     if env_name:
         result = shutil.which(env_name)
         if result:
             return result
+
+    result = shutil.which("clangd")
+    if result:
+        return result
 
     raise RuntimeError("clangd not found. Specify env variable CLANGD that points to the executable or to a name searchable in PATH")
 
