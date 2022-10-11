@@ -18,7 +18,6 @@ git submodule update --init --recursive
 sudo apt install python3.9-dev python3-pip cmake
 pip3 install wheel
 pip3 install setuptools
-pip3 install virtualenv
 ```
 
 ## create virtual environment (1 directory above `conf.py`)
@@ -44,7 +43,15 @@ TODO `use requirements.txt`
 
 ## build C++ plugin code
 
-Part of website's build functionality is implemented in C++, which is compiled to a shared library object and loaded as a plugin by the Nikola build framework. You can build the website without it, though it is discouraged as code snippets will be mostly non-functional (no highlight and other fancy features). It is only for the case where you have problems with Python being unable to load external modules.
+Part of website's build functionality is implemented in C++, which is compiled to a shared library object and loaded as a plugin by the Nikola build framework. Plugins also use additional tools such as [clangd](https://clangd.llvm.org). You can build the website without them, though it is discouraged as code snippets will be mostly non-functional (no highlight and other fancy features). It is only for the case where you have technical problems like Python being unable to load external modules or trouble installing LLVM tooling packages.
+
+For Ubuntu and Debian distros, you can automatically install newest stable release of LLVM tools with the following (packages obtained this way can be multiple releases ahead of distro-supplied builds):
+
+```sh
+wget https://apt.llvm.org/llvm.sh
+chmod +x llvm.sh
+sudo ./llvm.sh all
+```
 
 **ACH requires Boost only for CLI utility and tests (not needed for the website build).** The build options presented below are minimal defaults that require only a C++17 compiler. Everything else is provided in git submodules.
 
