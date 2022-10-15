@@ -131,7 +131,7 @@ class Connection:
         if not self.p:
             raise RuntimeError("initialization requires opened connection")
 
-        result = self.make_lsp_request("initialize", {"params": {
+        result = self.make_lsp_request("initialize", {
             "processId": os.getpid(),
                 "rootUri": None,
                 # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#clientCapabilities
@@ -160,8 +160,7 @@ class Connection:
                     }
                 }
                 # TODO workspaceFolders
-            }
-        })
+            })
         self.initialized = True
         print(json.dumps(result, indent=4))
 
