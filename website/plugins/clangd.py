@@ -80,12 +80,12 @@ def lsp_make_message(json_rpc_object: dict[str, Any]) -> bytes:
 def lsp_make_text_document_identifier(uri: str) -> dict[str, Any]:
     return {"uri": uri}
 
-def lsp_make_text_document_item(path: str) -> dict[str, Any]:
+def lsp_make_text_document_item(path: str, text: str) -> dict[str, Any]:
     return {
         "uri": path_to_uri(path),
         "languageId": "cpp",
         "version": 0,
-        "text": read_file(path)
+        "text": text
     }
 
 def get_clangd_path() -> str:
@@ -231,27 +231,73 @@ class Clangd:
         result = self.conn.initialize()
         print(json.dumps(result, indent=4))
         print(f'Using clangd version: {result["serverInfo"]["version"]}')
+        self.parse_capabilities(result["capabilities"])
 
-    def text_document_open(self):
+    def parse_capabilities(self, capabilities: dict[str, Any]):
+        semantic_tokens_legend = capabilities["semanticTokensProvider"]["legend"]
+        self.semantic_tokens_types = semantic_tokens_legend["tokenTypes"]
+        self.semantic_tokens_modifiers = semantic_tokens_legend["tokenModifiers"]
+        print(f"SEMANTIC TOKENS TYPES")
+        print(self.semantic_tokens_types)
+        print(f"SEMANTIC TOKENS MODIFIERS")
+        print(self.semantic_tokens_modifiers)
+
+    def text_document_open(self, path: str) -> str:
         # TODO this triggers a notification textDocument/publishDiagnostics
         # which can be later used to verify that the code is correct
+        text = read_file(path)
         self.conn.make_lsp_notification("textDocument/didOpen", {
-            "textDocument": lsp_make_text_document_item("main.cpp")
+            "textDocument": lsp_make_text_document_item(path, text)
         })
+        return text
 
-    def text_document_close(self):
+    def text_document_close(self, path: str) -> None:
         self.conn.make_lsp_notification("textDocument/didClose", {
-            "textDocument": lsp_make_text_document_item("main.cpp")
+            "textDocument": lsp_make_text_document_identifier(path_to_uri(path))
         })
 
-    def text_document_semantic_tokens_full(self):
-        result = self.conn.make_lsp_request("textDocument/semanticTokens/full", {
-            "textDocument": lsp_make_text_document_identifier(path_to_uri("main.cpp"))
+    def text_document_semantic_tokens_full(self, path: str) -> dict[str, Any]:
+        return self.conn.make_lsp_request("textDocument/semanticTokens/full", {
+            "textDocument": lsp_make_text_document_identifier(path_to_uri(path))
         })
-        print(result)
+
+    def semantic_tokens_for_file(self, path: str):
+        lines = self.text_document_open(path).splitlines()
+        result = self.text_document_semantic_tokens_full(path)
+        self.text_document_close(path)
+        self.debug_print_semantic_tokens(result["data"], lines)
+
+    def list_of_token_modifiers(self, token_modifiers: int) -> list[str]:
+        result = []
+        for i in range (0, len(self.semantic_tokens_modifiers)):
+            if (1 << i) & token_modifiers != 0:
+                result.append(self.semantic_tokens_modifiers[i])
+        return result
+
+    def debug_print_semantic_tokens(self, data: dict[str, Any], lines: list[str]):
+        last_line = 0
+        last_column = 0
+        for i in range(0, len(data) // 5):
+            idx = i * 5
+            delta_line = data[idx]
+            delta_column = data[idx + 1]
+            length = data[idx + 2]
+            token_type = data[idx + 3]
+            token_modifiers = data[idx + 4]
+
+            line = last_line + delta_line
+            if delta_line != 0:
+                # token column is only relative when on the same line
+                last_column = 0
+            column = last_column + delta_column
+
+            token = lines[line][column:column+length]
+            print(f'token: "{token}", type: {self.semantic_tokens_types[token_type]}, modifiers: {", ".join(self.list_of_token_modifiers(token_modifiers))}')
+
+            last_line = line
+            last_column = column
+
 
 if __name__ == "__main__":
     clangd = Clangd()
-    clangd.text_document_open()
-    clangd.text_document_semantic_tokens_full()
-    clangd.text_document_close()
+    clangd.semantic_tokens_for_file("main.cpp")
