@@ -3,7 +3,22 @@ import json
 import subprocess
 import shutil
 from typing import Union, Any
+from file_utils import read_file
 
+# All of URI handling is done manually instead of through a dedicated library because:
+# 1) For LSP, URIs are only a form of identification and their actual content doesn't matter
+# 2) python's uri library is broken (import error) (https://github.com/marrow/uri/issues/19)
+# 3) We need only path-to-URI and URI-to-path functionality
+# https://en.wikipedia.org/wiki/File_URI_scheme
+URI_FILE_PREFIX = "file:///"
+def path_to_uri(path: str) -> str:
+    return f"{URI_FILE_PREFIX}{path}"
+
+def uri_to_path(uri: str) -> str:
+    if uri.startswith(URI_FILE_PREFIX):
+        return uri.removeprefix(URI_FILE_PREFIX)
+    else:
+        raise RuntimeError(f"URI {uri} is not valid or unsupported")
 
 def json_rpc_make_notification(method: str, params: Union[tuple, list, dict, None]) -> dict[str, Any]:
     message = {
@@ -29,24 +44,31 @@ def json_rpc_make_request(id: Union[str, int], method: str, params: Union[tuple,
     return message
 
 
-def json_rpc_response_extract_content(response: dict[str, Any], id: Union[str, int]) -> tuple[dict[str, Any], bool]:
-    """extract result or error subobject, return this object + False if object is error"""
+def json_rpc_is_error(message: dict[str, Any]) -> bool:
+    return "error" in message
+
+
+def json_rpc_is_notification(message: dict[str, Any]) -> bool:
+    return "id" not in message and "method" in message
+
+
+def json_rpc_response_extract_error(response: dict[str, Any]) -> dict[str, Any]:
+    return response["error"]
+
+
+def json_rpc_response_extract_result(response: dict[str, Any], id: Union[str, int]) -> Any:
     response_id = response.get("id")
     if not response_id:
-        raise RuntimeError(f"no id object in response:\n{json.dumps(response, indent=4)}")
+        raise RuntimeError(f"no id object in JSON RPC response:\n{json.dumps(response, indent=4)}")
     if response_id != id:
-        raise RuntimeError(f"expected response with id {id} but got {response_id}")
+        raise RuntimeError(f"expected JSON RPC response with id {id} but got {response_id}")
 
     # use "in" instead of ".get()" to differentiate between no item and item with value None
     # (some JSON RPC calls can return "result": null)
     if "result" in response:
-        return response.get("result"), True
-
-    error = response.get("error")
-    if error:
-        return error, False
-
-    raise RuntimeError(f"invalid JSON RPC response:\n{json.dumps(response, indent=4)}")
+        return response["result"]
+    else:
+        raise RuntimeError(f"expected result in JSON RPC response:\n{json.dumps(response, indent=4)}")
 
 
 HEADER_CONTENT_LENGTH = "Content-Length: "
@@ -57,6 +79,14 @@ def lsp_make_message(json_rpc_object: dict[str, Any]) -> bytes:
 
 def lsp_make_text_document_identifier(uri: str) -> dict[str, Any]:
     return {"uri": uri}
+
+def lsp_make_text_document_item(path: str) -> dict[str, Any]:
+    return {
+        "uri": path_to_uri(path),
+        "languageId": "cpp",
+        "version": 0,
+        "text": read_file(path)
+    }
 
 def get_clangd_path() -> str:
     env_name = os.environ.get("CLANGD")
@@ -119,16 +149,22 @@ class Connection:
     def make_lsp_notification(self, method: str, params: Any) -> None:
         self._send(lsp_make_message(json_rpc_make_notification(method, params)))
 
+    def receive_response(self, id: Union[str, int]) -> Any:
+        while True:
+            message = json.loads(self._receive())
+            if json_rpc_is_error(message):
+                raise RuntimeError(f"JSON RPC error:\n{json.dumps(json_rpc_response_extract_error(message), indent=4)}")
+            elif json_rpc_is_notification(message):
+                print("NOTIFICATION:")
+                print(json.dumps(message, indent=4))
+            else:
+               return json_rpc_response_extract_result(message, id)
+
     def make_lsp_request(self, method: str, params: Any) -> Any:
         id = self.id
         self._send(lsp_make_message(json_rpc_make_request(id, method, params)))
         self.id += 1
-        response, is_success = json_rpc_response_extract_content(json.loads(self._receive()), id)
-
-        if is_success:
-            return response
-        else:
-            raise RuntimeError(f"JSON RPC call failed: {json.dumps(response, indent=None)}")
+        return self.receive_response(id)
 
     def initialize(self):
         if not self.p:
@@ -185,6 +221,18 @@ class Connection:
     def __del__(self):
         self.close_connection()
 
+    def notify_text_document_did_open(self):
+        result = self.make_lsp_notification("textDocument/didOpen", {
+            "textDocument": lsp_make_text_document_item("main.cpp")
+        })
+
+    def request_text_document_semantic_tokens_full(self):
+        result = self.make_lsp_request("textDocument/semanticTokens/full", {
+            "textDocument": lsp_make_text_document_identifier(path_to_uri("main.cpp"))
+        })
+        print(result)
 
 if __name__ == "__main__":
     conn = Connection()
+    conn.notify_text_document_did_open()
+    conn.request_text_document_semantic_tokens_full()
