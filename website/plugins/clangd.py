@@ -5,7 +5,7 @@ import shutil
 from typing import Union, Any
 
 
-def make_json_rpc_notification(method: str, params: Union[tuple, list, dict, None]) -> dict[str, Any]:
+def json_rpc_make_notification(method: str, params: Union[tuple, list, dict, None]) -> dict[str, Any]:
     message = {
         "jsonrpc": "2.0",
         "method": method
@@ -20,11 +20,11 @@ def make_json_rpc_notification(method: str, params: Union[tuple, list, dict, Non
     return message
 
 
-def make_json_rpc_request(id: Union[str, int], method: str, params: Union[tuple, list, dict, None]) -> dict[str, Any]:
+def json_rpc_make_request(id: Union[str, int], method: str, params: Union[tuple, list, dict, None]) -> dict[str, Any]:
     if not isinstance(id, (str, int)):
         raise RuntimeError(f"id should be a number or a string: {id}")
 
-    message = make_json_rpc_notification(method, params)
+    message = json_rpc_make_notification(method, params)
     message["id"] = id
     return message
 
@@ -51,9 +51,12 @@ def json_rpc_response_extract_content(response: dict[str, Any], id: Union[str, i
 
 HEADER_CONTENT_LENGTH = "Content-Length: "
 
-def make_lsp_message(json_rpc_object: dict[str, Any]) -> bytes:
+def lsp_make_message(json_rpc_object: dict[str, Any]) -> bytes:
     body = json.dumps(json_rpc_object, indent=None).encode()
     return f"{HEADER_CONTENT_LENGTH}{len(body)}\r\n\r\n".encode() + body
+
+def lsp_make_text_document_identifier(uri: str) -> dict[str, Any]:
+    return {"uri": uri}
 
 def get_clangd_path() -> str:
     env_name = os.environ.get("CLANGD")
@@ -114,11 +117,11 @@ class Connection:
         return self.p.stdout.read(length).decode()
 
     def make_lsp_notification(self, method: str, params: Any) -> None:
-        self._send(make_lsp_message(make_json_rpc_notification(method, params)))
+        self._send(lsp_make_message(json_rpc_make_notification(method, params)))
 
     def make_lsp_request(self, method: str, params: Any) -> Any:
         id = self.id
-        self._send(make_lsp_message(make_json_rpc_request(id, method, params)))
+        self._send(lsp_make_message(json_rpc_make_request(id, method, params)))
         self.id += 1
         response, is_success = json_rpc_response_extract_content(json.loads(self._receive()), id)
 
