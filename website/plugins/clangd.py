@@ -233,7 +233,14 @@ class Clangd:
         print(f'Using clangd version: {result["serverInfo"]["version"]}')
 
     def text_document_open(self):
+        # TODO this triggers a notification textDocument/publishDiagnostics
+        # which can be later used to verify that the code is correct
         self.conn.make_lsp_notification("textDocument/didOpen", {
+            "textDocument": lsp_make_text_document_item("main.cpp")
+        })
+
+    def text_document_close(self):
+        self.conn.make_lsp_notification("textDocument/didClose", {
             "textDocument": lsp_make_text_document_item("main.cpp")
         })
 
@@ -247,3 +254,4 @@ if __name__ == "__main__":
     clangd = Clangd()
     clangd.text_document_open()
     clangd.text_document_semantic_tokens_full()
+    clangd.text_document_close()
