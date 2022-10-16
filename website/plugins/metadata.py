@@ -1,6 +1,6 @@
 # https://stackoverflow.com/questions/33533148
 from __future__ import annotations
-from typing import List, Tuple, Optional
+from typing import List, Optional
 
 from nikola.post import Post
 from nikola.nikola import Nikola
@@ -29,11 +29,11 @@ def log_correctness(root_dir: PageDir) -> None:
     """
     Check and log any suspicions in the structure
 
-    index   child dirs   child pages
-        +        -             -       WARN: useless index
-        +                              OK
-        -        -             -       WARN: empty directory
-        -                              ERROR: missing index
+    index   child dirs or pages
+      +             -              WARN: useless index
+      +             +              OK
+      -             -              WARN: empty directory
+      -             +              ERROR: missing index
     """
     logger = get_logger(__name__)
     if root_dir.index_page():
