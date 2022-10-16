@@ -14,10 +14,10 @@ git submodule update --init --recursive
 
 ## install required packages (these are for Ubuntu and derived distros)
 
+CMake and Python development files are needed for C++ plugin code.
+
 ```sh
 sudo apt install python3.9-dev python3-pip cmake
-pip3 install wheel
-pip3 install setuptools
 ```
 
 ## create virtual environment (1 directory above `conf.py`)
@@ -36,10 +36,8 @@ source ./venv/bin/activate
 ## when already in virtual environment
 
 ```sh
-pip install Nikola jinja2 aiohttp watchdog ansi2html
+pip install -r requirements.txt
 ```
-
-TODO `use requirements.txt`
 
 ## build C++ plugin code
 
@@ -68,13 +66,9 @@ cmake .. -DACH_BUILD_TESTS=OFF -DACH_BUILD_EXECUTABLE_CLI=OFF -DACH_BUILD_PYTHON
 make -j
 ```
 
+No installation step required. The Python plugin code is coded to load (import) from ACH build directory.
+
 # working with the project
-
-## launch virtual environment
-
-```sh
-source ./venv/bin/activate
-```
 
 ## build the site (while inside virtual environment)
 
