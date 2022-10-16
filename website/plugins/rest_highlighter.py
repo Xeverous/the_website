@@ -18,7 +18,9 @@ from docutils.parsers.rst import Directive, directives, roles
 from nikola.plugin_categories import RestExtension
 from nikola.utils import get_logger
 
-from typing import List, Dict, Optional
+from file_utils import is_relative_path, make_path, read_file
+
+from typing import Dict, Optional
 
 import os
 import sys
@@ -67,22 +69,6 @@ class RestHighlighter(RestExtension):
 
         return super().set_site(site)
 
-def is_relative_path(path: str) -> bool:
-    return path[0] != "/"
-
-def make_path(rst_source_path: str, path: str) -> str:
-    if is_relative_path(path):
-        return os.path.join(os.path.dirname(rst_source_path), path)
-    else:
-        return path
-
-def read_file(path: str) -> str:
-    with open(path, 'r', encoding="utf-8") as file:
-        return file.read()
-
-def read_file_split_lines(path: str) -> List[str]:
-    return read_file(path).splitlines()
-
 ##############################################################################
 # CCH implementation
 ##############################################################################
@@ -102,8 +88,8 @@ def run_highlighter_inline(code: str, color: str) -> str:
     return f'<code class="code custom-cpp">{highlighted}</code>'
 
 def load_inline_codes() -> Dict[str, str]:
-    code_lines = read_file_split_lines(INLINE_CODES_CODE_PATH)
-    color_lines = read_file_split_lines(INLINE_CODES_COLOR_PATH)
+    code_lines = read_file(INLINE_CODES_CODE_PATH).splitlines()
+    color_lines = read_file(INLINE_CODES_COLOR_PATH).splitlines()
 
     if (len(code_lines) != len(color_lines)):
         raise RuntimeError(f"inline code sources differ, "
