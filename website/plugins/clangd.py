@@ -117,14 +117,14 @@ class Connection:
     def open_connection(self) -> None:
         self.p = subprocess.Popen([self.clangd_path, "--log=error"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
 
-    def _send(self, message: bytes) -> None:
+    def send(self, message: bytes) -> None:
         bytes_written = self.p.stdin.write(message)
         if bytes_written != len(message):
             raise RuntimeError(f"Wrote only {bytes_written} of {len(message)} bytes when sending:\n{message.decode()}")
 
         self.p.stdin.flush()
 
-    def _receive(self) -> str:
+    def receive(self) -> str:
         headers = []
 
         while True:
@@ -147,11 +147,11 @@ class Connection:
         return self.p.stdout.read(length).decode()
 
     def make_lsp_notification(self, method: str, params: Any) -> None:
-        self._send(lsp_make_message(json_rpc_make_notification(method, params)))
+        self.send(lsp_make_message(json_rpc_make_notification(method, params)))
 
     def receive_response(self, id: Union[str, int]) -> Any:
         while True:
-            message = json.loads(self._receive())
+            message = json.loads(self.receive())
             if json_rpc_is_error(message):
                 raise RuntimeError(f"JSON RPC error:\n{json.dumps(json_rpc_response_extract_error(message), indent=4)}")
             elif json_rpc_is_notification(message):
@@ -162,11 +162,11 @@ class Connection:
 
     def make_lsp_request(self, method: str, params: Any) -> Any:
         id = self.id
-        self._send(lsp_make_message(json_rpc_make_request(id, method, params)))
+        self.send(lsp_make_message(json_rpc_make_request(id, method, params)))
         self.id += 1
         return self.receive_response(id)
 
-    def initialize(self):
+    def initialize(self) -> Any:
         if not self.p:
             raise RuntimeError("initialization requires opened connection")
 
@@ -201,7 +201,7 @@ class Connection:
                 # TODO workspaceFolders
             })
         self.initialized = True
-        print(json.dumps(result, indent=4))
+        return result
 
     def shutdown(self) -> None:
         if not self.initialized:
@@ -221,18 +221,29 @@ class Connection:
     def __del__(self):
         self.close_connection()
 
-    def notify_text_document_did_open(self):
-        result = self.make_lsp_notification("textDocument/didOpen", {
+class Clangd:
+    def __init__(self, connect=True, initialize=True):
+        self.conn = Connection(connect, False)
+        if initialize:
+            self.initialize()
+
+    def initialize(self):
+        result = self.conn.initialize()
+        print(json.dumps(result, indent=4))
+        print(f'Using clangd version: {result["serverInfo"]["version"]}')
+
+    def text_document_open(self):
+        self.conn.make_lsp_notification("textDocument/didOpen", {
             "textDocument": lsp_make_text_document_item("main.cpp")
         })
 
-    def request_text_document_semantic_tokens_full(self):
-        result = self.make_lsp_request("textDocument/semanticTokens/full", {
+    def text_document_semantic_tokens_full(self):
+        result = self.conn.make_lsp_request("textDocument/semanticTokens/full", {
             "textDocument": lsp_make_text_document_identifier(path_to_uri("main.cpp"))
         })
         print(result)
 
 if __name__ == "__main__":
-    conn = Connection()
-    conn.notify_text_document_did_open()
-    conn.request_text_document_semantic_tokens_full()
+    clangd = Clangd()
+    clangd.text_document_open()
+    clangd.text_document_semantic_tokens_full()
