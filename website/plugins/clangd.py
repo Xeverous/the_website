@@ -77,8 +77,8 @@ def lsp_make_message(json_rpc_object: dict[str, Any]) -> bytes:
     body = json.dumps(json_rpc_object, indent=None).encode()
     return f"{HEADER_CONTENT_LENGTH}{len(body)}\r\n\r\n".encode() + body
 
-def lsp_make_text_document_identifier(uri: str) -> dict[str, Any]:
-    return {"uri": uri}
+def lsp_make_text_document_identifier(path: str) -> dict[str, Any]:
+    return {"uri": path_to_uri(path)}
 
 def lsp_make_text_document_item(path: str, text: str) -> dict[str, Any]:
     return {
@@ -194,7 +194,9 @@ class Connection:
                             "tokenModifiers": [],
                             "formats": [], # no support for relative as of now (absolute is implicitly assumed)
                             "overlappingTokenSupport": False,
-                            "multilineTokenSupport": True
+                            # even if given True, clangd-15.0.2 doesn't report any multiline tokens
+                            # instead, it always reports many whole-line tokens with identical type and modifers
+                            "multilineTokenSupport": False
                         }
                     }
                 }
@@ -235,8 +237,8 @@ class Clangd:
 
     def parse_capabilities(self, capabilities: dict[str, Any]):
         semantic_tokens_legend = capabilities["semanticTokensProvider"]["legend"]
-        self.semantic_tokens_types = semantic_tokens_legend["tokenTypes"]
-        self.semantic_tokens_modifiers = semantic_tokens_legend["tokenModifiers"]
+        self.semantic_tokens_types: list[str] = semantic_tokens_legend["tokenTypes"]
+        self.semantic_tokens_modifiers: list[str] = semantic_tokens_legend["tokenModifiers"]
         print(f"SEMANTIC TOKENS TYPES")
         print(self.semantic_tokens_types)
         print(f"SEMANTIC TOKENS MODIFIERS")
@@ -253,12 +255,21 @@ class Clangd:
 
     def text_document_close(self, path: str) -> None:
         self.conn.make_lsp_notification("textDocument/didClose", {
-            "textDocument": lsp_make_text_document_identifier(path_to_uri(path))
+            "textDocument": lsp_make_text_document_identifier(path)
         })
 
+    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol
+    # each symbol is reported only once; only symbols originating from the file are reported
     def text_document_semantic_tokens_full(self, path: str) -> dict[str, Any]:
         return self.conn.make_lsp_request("textDocument/semanticTokens/full", {
-            "textDocument": lsp_make_text_document_identifier(path_to_uri(path))
+            "textDocument": lsp_make_text_document_identifier(path)
+        })
+
+    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
+    # each occurrence of a symbol (typically an identifier) is reported; each symbol has a range, 1 type and 0+ modifiers
+    def text_document_document_symbols(self, path: str) -> dict[str, Any]:
+        return self.conn.make_lsp_request("textDocument/documentSymbol", {
+            "textDocument": lsp_make_text_document_identifier(path)
         })
 
     def semantic_tokens_for_file(self, path: str):
