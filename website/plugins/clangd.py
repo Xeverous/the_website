@@ -77,8 +77,29 @@ def lsp_make_message(json_rpc_object: dict[str, Any]) -> bytes:
     body = json.dumps(json_rpc_object, indent=None).encode()
     return f"{HEADER_CONTENT_LENGTH}{len(body)}\r\n\r\n".encode() + body
 
+def lsp_make_position(line: int, character: int) -> dict[str, int]:
+    if line < 0 or character < 0:
+        raise RuntimeError(f"position with line {line} and character {character} is invalid")
+
+    return { "line": line, "character": character }
+
+def lsp_make_range(start_line: int, start_character: int, end_line: int, end_character: int) -> dict[str, dict[str, int]]:
+    return {
+        "start": lsp_make_position(start_line, start_character),
+        "end": lsp_make_position(end_line, end_character)
+    }
+
+def lsp_make_range_whole_file(num_lines: int) -> dict[str, dict[str, int]]:
+    return lsp_make_range(0, 0, num_lines, 0)
+
 def lsp_make_text_document_identifier(path: str) -> dict[str, Any]:
     return {"uri": path_to_uri(path)}
+
+def lsp_make_text_document_position_params(path: str, position: dict[str, int]):
+    return {
+        "textDocument": lsp_make_text_document_identifier(path),
+        "position": position
+    }
 
 def lsp_make_text_document_item(path: str, text: str) -> dict[str, Any]:
     return {
@@ -258,25 +279,49 @@ class Clangd:
             "textDocument": lsp_make_text_document_identifier(path)
         })
 
-    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol
-    # each symbol is reported only once; only symbols originating from the file are reported
+    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
+    # each occurrence of a symbol (typically an identifier) is reported; each symbol has a range, 1 type and 0+ modifiers
     def text_document_semantic_tokens_full(self, path: str) -> dict[str, Any]:
         return self.conn.make_lsp_request("textDocument/semanticTokens/full", {
             "textDocument": lsp_make_text_document_identifier(path)
         })
 
-    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
-    # each occurrence of a symbol (typically an identifier) is reported; each symbol has a range, 1 type and 0+ modifiers
+    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol
+    # each symbol is reported only once; only symbols originating from the file are reported
     def text_document_document_symbols(self, path: str) -> dict[str, Any]:
         return self.conn.make_lsp_request("textDocument/documentSymbol", {
             "textDocument": lsp_make_text_document_identifier(path)
         })
 
+    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_references
+    # returns positions of usages of the entity at specified position; note that there may a different entity with
+    # the same name in a different scope; for this reason this call requires a position, not a name
+    def text_document_references(self, path: str, position: dict[str, int], include_declaration: bool = True):
+        params = lsp_make_text_document_position_params(path, position)
+        params["context"] = {"includeDeclaration": include_declaration}
+        return self.conn.make_lsp_request("textDocument/references", params)
+
+    # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentHighlight
+    # like textDocument/references, but allowed to be fuzzy
+    # also delivers more information: DocumentHighlightKind which is 1 (Text), 2 (Read) or 3 (Write)
+    # clangd reports DocumentHighlightKind poorly: there are many 1s and out params may not be 3
+    def text_document_document_highlight(self, path: str, position: dict[str, int]) -> dict[str, Any]:
+        return self.conn.make_lsp_request("textDocument/documentHighlight", lsp_make_text_document_position_params(path, position))
+
+    # https://clangd.llvm.org/extensions#ast
+    # very rich information, too rich and undocumented, can not easily extract things such as overloaded operators
+    # the highest-level node that entirely contains the range is returned; no way to call for all ASTs in the file
+    def text_document_ast(self, path: str, range: dict[str, dict[str, int]]) -> dict[str, Any]:
+        return self.conn.make_lsp_request("textDocument/ast", {
+            "textDocument": lsp_make_text_document_identifier(path),
+            "range": range
+        })
+
     def semantic_tokens_for_file(self, path: str):
         lines = self.text_document_open(path).splitlines()
-        result = self.text_document_semantic_tokens_full(path)
+        semantic_tokens = self.text_document_semantic_tokens_full(path)
         self.text_document_close(path)
-        self.debug_print_semantic_tokens(result["data"], lines)
+        self.debug_print_semantic_tokens(semantic_tokens["data"], lines)
 
     def list_of_token_modifiers(self, token_modifiers: int) -> list[str]:
         result = []
