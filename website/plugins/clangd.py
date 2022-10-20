@@ -244,6 +244,46 @@ class Connection:
     def __del__(self):
         self.close_connection()
 
+class SemanticToken:
+    def __init__(self, line_num: int, column: int, length: int, token_type: int, token_modifiers: int):
+        self.line_num = line_num
+        self.column = column
+        self.length = length
+        self.token_type = token_type
+        self.token_modifiers = token_modifiers
+        self.color_variant = 0 # (no variance)
+        self.last_highlight = False
+
+# https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
+# the data is packed in an array of integers, where each 5 consecutive integers denote specific attributes
+def parse_semantic_token_data(data: list[int]) -> list[SemanticToken]:
+    result = []
+
+    last_line = 0
+    last_column = 0
+
+    for i in range(0, len(data) // 5):
+        idx = i * 5
+        delta_line = data[idx]
+        delta_column = data[idx + 1]
+        length = data[idx + 2]
+        token_type = data[idx + 3]
+        token_modifiers = data[idx + 4]
+
+        # token column is only relative when on the same line
+        if delta_line != 0:
+            last_column = 0
+
+        line = last_line + delta_line
+        column = last_column + delta_column
+
+        result.append(SemanticToken(line, column, length, token_type, token_modifiers))
+
+        last_line = line
+        last_column = column
+
+    return result
+
 class Clangd:
     def __init__(self, connect=True, initialize=True):
         self.conn = Connection(connect, False)
@@ -264,6 +304,19 @@ class Clangd:
         print(self.semantic_tokens_types)
         print(f"SEMANTIC TOKENS MODIFIERS")
         print(self.semantic_tokens_modifiers)
+
+    # return an array of semantic token types that are suitable for token-specific colorization
+    def get_semantic_tokens_object_types(self) -> list[int]:
+        if not hasattr(self, "semantic_tokens_types"):
+            raise RuntimeError("semantic tokens capabilities unavailable - missing initialization")
+
+        result = []
+        for i in range(0, len(self.semantic_tokens_types)):
+            # clangd reports semantic token types with duplicate entries
+            # it's important to make a full loop as there may be many matching indexes
+            if self.semantic_tokens_types[i] in ["variable", "parameter", "property"]:
+                result.append(i)
+        return result
 
     def text_document_open(self, path: str) -> str:
         # TODO this triggers a notification textDocument/publishDiagnostics
@@ -319,9 +372,9 @@ class Clangd:
 
     def semantic_tokens_for_file(self, path: str):
         lines = self.text_document_open(path).splitlines()
-        semantic_tokens = self.text_document_semantic_tokens_full(path)
+        semantic_tokens = parse_semantic_token_data(self.text_document_semantic_tokens_full(path)["data"])
         self.text_document_close(path)
-        self.debug_print_semantic_tokens(semantic_tokens["data"], lines)
+        self.debug_print_semantic_tokens(semantic_tokens, lines)
 
     def list_of_token_modifiers(self, token_modifiers: int) -> list[str]:
         result = []
@@ -330,29 +383,15 @@ class Clangd:
                 result.append(self.semantic_tokens_modifiers[i])
         return result
 
-    def debug_print_semantic_tokens(self, data: dict[str, Any], lines: list[str]):
-        last_line = 0
-        last_column = 0
-        for i in range(0, len(data) // 5):
-            idx = i * 5
-            delta_line = data[idx]
-            delta_column = data[idx + 1]
-            length = data[idx + 2]
-            token_type = data[idx + 3]
-            token_modifiers = data[idx + 4]
-
-            line = last_line + delta_line
-            if delta_line != 0:
-                # token column is only relative when on the same line
-                last_column = 0
-            column = last_column + delta_column
-
-            token = lines[line][column:column+length]
-            print(f'token: "{token}", type: {self.semantic_tokens_types[token_type]}, modifiers: {", ".join(self.list_of_token_modifiers(token_modifiers))}')
-
-            last_line = line
-            last_column = column
-
+    def debug_print_semantic_tokens(self, semantic_tokens: list[SemanticToken], lines: list[str]) -> None:
+        for token in semantic_tokens:
+            token_string = lines[token.line_num][token.column:token.column+token.length]
+            print(
+                f'line|col+len: {token.line_num:>3}|{token.column:>3}+{token.length:>2}, '
+                f'token: {token_string:<16}, '
+                f'type: {self.semantic_tokens_types[token.token_type]:<13}, '
+                f'modifiers: {", ".join(self.list_of_token_modifiers(token.token_modifiers))}'
+            )
 
 if __name__ == "__main__":
     clangd = Clangd()
