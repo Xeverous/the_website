@@ -1,9 +1,9 @@
-from bisect import bisect_left
+from bisect import bisect_left, bisect_right
 import os
 import json
 import subprocess
 import shutil
-from typing import Optional, Union, Any
+from typing import Callable, Optional, Sequence, Union, Any
 from file_utils import read_file
 
 # All of URI handling is done manually instead of through a dedicated library because:
@@ -253,7 +253,7 @@ class SemanticToken:
         self.token_type = token_type
         self.token_modifiers = token_modifiers
         self.color_variant = 0 # (no variance)
-        self.last_highlight = False
+        self.last_reference = False
 
     def __eq__(self, other) -> bool:
         return self.line_num == other.line_num and self.column == other.column and self.length == other.length
@@ -272,6 +272,19 @@ class SemanticToken:
 
     def __ge__(self, other) -> bool:
         return (self.line_num, self.column, self.length) >= (other.line_num, other.column, other.length)
+
+# bisect_left supports custom comparison in Python 3.10, in 3.9 there is a workaround:
+# https://stackoverflow.com/questions/27672494/how-to-use-bisect-insort-left-with-a-key
+class KeyWrapper:
+    def __init__(self, iterable: Sequence, key: Callable):
+        self.iterable = iterable
+        self.key = key
+
+    def __getitem__(self, i: int):
+        return self.key(self.iterable[i])
+
+    def __len__(self) -> int:
+        return len(self.iterable)
 
 # https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens
 # the data is packed in an array of integers, where each 5 consecutive integers denote specific attributes
@@ -303,8 +316,12 @@ def parse_semantic_token_data(data: list[int]) -> list[SemanticToken]:
 
     return result
 
-
-def document_highlight_find_matching_token(highlight: dict[str, Any], semantic_tokens: list[SemanticToken]) -> Optional[SemanticToken]:
+# Highlights are defined by DocumentHighlight type, which has a Range member.
+# Ranges can be multiline. In clangd, a highlight can match multiple semantic
+# tokens because these can not be multiline and clangd reports spliced code
+# as multiple tokens.
+# For this reason this function returns a list, not Optional[SemanticToken]
+def document_highlight_find_matching_tokens(highlight: dict[str, Any], semantic_tokens: list[SemanticToken]) -> list[SemanticToken]:
     range = highlight["range"]
     start = range["start"]
     end = range["end"]
@@ -313,22 +330,10 @@ def document_highlight_find_matching_token(highlight: dict[str, Any], semantic_t
     end_line = end["line"]
     end_column = end["character"]
 
-    if start_line != end_line:
-        raise RuntimeError(f"line-breaking highlights are not supported: {json.dumps(highlight, indent=4)}")
-
-    length = end_column - start_column
-
-    token_to_find = SemanticToken(start_line, start_column, length, 0, 0)
-    i = bisect_left(semantic_tokens, token_to_find)
-
-    if i == len(semantic_tokens):
-        return None
-
-    if semantic_tokens[i] == token_to_find:
-        return semantic_tokens[i]
-    else:
-        return None
-
+    key = lambda token: (token.line_num, token.column)
+    l = bisect_left(KeyWrapper(semantic_tokens, key), (start_line, start_column))
+    r = bisect_right(KeyWrapper(semantic_tokens, key), (end_line, end_column))
+    return semantic_tokens[l:r]
 
 class Clangd:
     def __init__(self, connect=True, initialize=True):
@@ -438,15 +443,16 @@ class Clangd:
 
             highlights = self.text_document_document_highlight(path, lsp_make_position(token.line_num, token.column))
             for idx, hl in enumerate(highlights):
-                matching_token = document_highlight_find_matching_token(hl, semantic_tokens)
-                if matching_token is None:
+                matching_tokens = document_highlight_find_matching_tokens(hl, semantic_tokens)
+                if not matching_tokens:
                     self.debug_print_semantic_tokens(semantic_tokens, lines)
                     raise RuntimeError(
-                        f"highlight failed to find a matching token\nhighlight:\n{json.dumps(hl, indent=4)}")
+                        f"failed to find matching semantic token(s) for this highlight:\n{json.dumps(hl, indent=4)}")
 
-                matching_token.color_variant = color_variant
-                if idx + 1 == len(highlights):
-                    matching_token.last_highlight = True
+                for mt in matching_tokens:
+                    mt.color_variant = color_variant
+                    if idx + 1 == len(highlights):
+                        mt.last_reference = True
 
             color_variant += 1
 
@@ -463,6 +469,7 @@ class Clangd:
     def debug_print_semantic_tokens(self, semantic_tokens: list[SemanticToken], lines: list[str]) -> None:
         for token in semantic_tokens:
             token_string = lines[token.line_num][token.column:token.column+token.length]
+
             print(
                 f'line|col+len|cv: {token.line_num:>3}|{token.column:>3}+{token.length:>2}|{token.color_variant:>2}, '
                 f'token: {token_string:<16}, '
