@@ -246,8 +246,8 @@ class Connection:
         self.close_connection()
 
 class SemanticToken:
-    def __init__(self, line_num: int, column: int, length: int, token_type: int, token_modifiers: int):
-        self.line_num = line_num
+    def __init__(self, line: int, column: int, length: int, token_type: int, token_modifiers: int):
+        self.line = line
         self.column = column
         self.length = length
         self.token_type = token_type
@@ -256,22 +256,22 @@ class SemanticToken:
         self.last_reference = False
 
     def __eq__(self, other) -> bool:
-        return self.line_num == other.line_num and self.column == other.column and self.length == other.length
+        return self.line == other.line and self.column == other.column and self.length == other.length
 
     def __ne__(self, other) -> bool:
         return not self.__eq__(other)
 
     def __lt__(self, other) -> bool:
-        return (self.line_num, self.column, self.length) < (other.line_num, other.column, other.length)
+        return (self.line, self.column, self.length) < (other.line, other.column, other.length)
 
     def __le__(self, other) -> bool:
-        return (self.line_num, self.column, self.length) <= (other.line_num, other.column, other.length)
+        return (self.line, self.column, self.length) <= (other.line, other.column, other.length)
 
     def __gt__(self, other) -> bool:
-        return (self.line_num, self.column, self.length) > (other.line_num, other.column, other.length)
+        return (self.line, self.column, self.length) > (other.line, other.column, other.length)
 
     def __ge__(self, other) -> bool:
-        return (self.line_num, self.column, self.length) >= (other.line_num, other.column, other.length)
+        return (self.line, self.column, self.length) >= (other.line, other.column, other.length)
 
 # bisect_left supports custom comparison in Python 3.10, in 3.9 there is a workaround:
 # https://stackoverflow.com/questions/27672494/how-to-use-bisect-insort-left-with-a-key
@@ -330,7 +330,7 @@ def document_highlight_find_matching_tokens(highlight: dict[str, Any], semantic_
     end_line = end["line"]
     end_column = end["character"]
 
-    key = lambda token: (token.line_num, token.column)
+    key = lambda token: (token.line, token.column)
     l = bisect_left(KeyWrapper(semantic_tokens, key), (start_line, start_column))
     r = bisect_right(KeyWrapper(semantic_tokens, key), (end_line, end_column))
     return semantic_tokens[l:r]
@@ -441,7 +441,7 @@ class Clangd:
             if not token.token_type in semantic_tokens_object_types:
                 continue
 
-            highlights = self.text_document_document_highlight(path, lsp_make_position(token.line_num, token.column))
+            highlights = self.text_document_document_highlight(path, lsp_make_position(token.line, token.column))
             for idx, hl in enumerate(highlights):
                 matching_tokens = document_highlight_find_matching_tokens(hl, semantic_tokens)
                 if not matching_tokens:
@@ -468,10 +468,10 @@ class Clangd:
 
     def debug_print_semantic_tokens(self, semantic_tokens: list[SemanticToken], lines: list[str]) -> None:
         for token in semantic_tokens:
-            token_string = lines[token.line_num][token.column:token.column+token.length]
+            token_string = lines[token.line][token.column:token.column+token.length]
 
             print(
-                f'line|col+len|cv: {token.line_num:>3}|{token.column:>3}+{token.length:>2}|{token.color_variant:>2}, '
+                f'line|col+len|cv: {token.line:>3}|{token.column:>3}+{token.length:>2}|{token.color_variant:>2}, '
                 f'token: {token_string:<16}, '
                 f'type: {self.semantic_tokens_types[token.token_type]:<13}, '
                 f'modifiers: {", ".join(self.list_of_token_modifiers(token.token_modifiers))}'
