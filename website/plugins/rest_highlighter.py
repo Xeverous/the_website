@@ -79,15 +79,28 @@ VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;pref;suf;fmt;label
 "macro_def;macro_ref;macro_param;macro_body;asm_direct")
 
 DATA_FILES_PATH = "data"
+KEYWORDS_PATH = DATA_FILES_PATH + "/keywords.txt"
+HEADERS_PATH = DATA_FILES_PATH + "/headers.txt"
 INLINE_CODES_CODE_PATH = DATA_FILES_PATH + "/inline_codes.cpp"
 INLINE_CODES_COLOR_PATH = DATA_FILES_PATH + "/inline_codes.color"
 
-def run_highlighter_inline(code: str, color: str) -> str:
-    highlighted = pyach.run_highlighter(code, color,
+def run_mirror_highlighter_inline(code: str, color: str) -> str:
+    highlighted = pyach.run_mirror_highlighter(code, color,
         replace=True, valid_css_classes=VALID_CSS_CLASSES)
     return f'<code class="code custom-cpp">{highlighted}</code>'
 
+def inline_codes_add_entry(inline_codes: Dict[str, str], code: str, color: str, line: int):
+    logger = get_logger(__name__)
+    try:
+        if inline_codes.get(code):
+            logger.error(f'duplicate inline code defined: "{code}"')
+        inline_codes[code] = run_mirror_highlighter_inline(code, color)
+    except RuntimeError as err:
+        logger.error(f'inline code highlight failed [line = {line}]:\n{str(err)}')
+
 def load_inline_codes() -> Dict[str, str]:
+    keywords = read_file(KEYWORDS_PATH).splitlines()
+    headers = read_file(HEADERS_PATH).splitlines()
     code_lines = read_file(INLINE_CODES_CODE_PATH).splitlines()
     color_lines = read_file(INLINE_CODES_COLOR_PATH).splitlines()
 
@@ -97,14 +110,15 @@ def load_inline_codes() -> Dict[str, str]:
             f"but color has {len(color_lines)}")
 
     result = {}
-    logger = get_logger(__name__)
+
+    for i, code in enumerate(keywords, 1):
+        inline_codes_add_entry(result, code, "keyword", i)
+
+    for i, code in enumerate(headers, 1):
+        inline_codes_add_entry(result, code, "0pp_header", i)
+
     for i, (code, color) in enumerate(zip(code_lines, color_lines), 1):
-        try:
-            if result.get(code):
-                logger.error(f'duplicate inline code defined: "{code}"')
-            result[code] = run_highlighter_inline(code, color)
-        except RuntimeError as err:
-            logger.error(f'inline code line {i}: highlight failed:\n{str(err)}')
+        inline_codes_add_entry(result, code, color, i)
 
     # workaround for some totally obscure bug, probably within docutils
     # problem: some inline directives with backslashes are incorrectly parsed,
@@ -148,7 +162,7 @@ class CustomCodeHighlightInline:
                 prb = inliner.problematic(rawtext, rawtext, msg)
                 return [prb], [msg]
             try:
-                html_output = run_highlighter_inline(l[0], l[1])
+                html_output = run_mirror_highlighter_inline(l[0], l[1])
                 return [nodes.raw('', html_output, format='html')], []
             except RuntimeError as err:
                 get_logger(__name__).error(f'inline code with $$$: highlight failed:\n{str(err)}')
@@ -201,7 +215,7 @@ class CustomCodeHighlight(Directive):
         try:
             code_str = read_file(code_path)
             color_str = read_file(color_path)
-            result = pyach.run_highlighter(code_str, color_str, table_wrap_css_class=lang,
+            result = pyach.run_mirror_highlighter(code_str, color_str, table_wrap_css_class=lang,
                 replace=True, valid_css_classes=VALID_CSS_CLASSES)
         except Exception as err:
             raise self.error(f'highlight failed:\n{str(err)}\n'
