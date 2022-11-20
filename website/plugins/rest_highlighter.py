@@ -30,13 +30,30 @@ try:
     sys.path.append(os.path.abspath(os.path.dirname(__file__)) +
         "/../external/arbitrary_code_highlighter/build/lib")
     import pyach
-except ImportError:
+except ImportError as err:
+    get_logger(__name__).error(f"failed to import ACH: {str(err)}")
     pyach = None
 
 import ansi2html
 import pkg_resources
 
 from plugins.html_utils import escape_text_into_html
+
+##############################################################################
+# utilities
+##############################################################################
+
+def make_not_word(b: bool) -> str:
+    if b:
+        return ""
+    else:
+        return "not "
+
+def enclose_in_html(text: str, html_tag: str, css_classes: Optional[str] = None) -> str:
+    if css_classes:
+        return f'<{html_tag} class="{css_classes}">{text}</{html_tag}>'
+    else:
+        return f'<{html_tag}>{text}</{html_tag}>'
 
 ##############################################################################
 # common code
@@ -87,7 +104,7 @@ INLINE_CODES_COLOR_PATH = DATA_FILES_PATH + "/inline_codes.color"
 def run_mirror_highlighter_inline(code: str, color: str) -> str:
     highlighted = pyach.run_mirror_highlighter(code, color,
         replace=True, valid_css_classes=VALID_CSS_CLASSES)
-    return f'<code class="code custom-cpp">{highlighted}</code>'
+    return enclose_in_html(highlighted, "code", "code custom-cpp")
 
 def inline_codes_add_entry(inline_codes: Dict[str, str], code: str, color: str, line: int):
     logger = get_logger(__name__)
@@ -135,12 +152,6 @@ def load_inline_codes() -> Dict[str, str]:
 
     return result
 
-def make_not_word(b: bool) -> str:
-    if b:
-        return ""
-    else:
-        return "not "
-
 class CustomCodeHighlightInline:
     # inline_codes should be already a mapping of code strings to output strings
     def __init__(self, inline_codes: Optional[Dict[str, str]]):
@@ -150,7 +161,7 @@ class CustomCodeHighlightInline:
         if not self.inline_codes:
             # fail gracefully with raw text
             # problems are already reported when the plugin fails to initialize
-            result = f"<code>{escape_text_into_html(text)}</code>"
+            result = enclose_in_html(escape_text_into_html(text), "code")
             return [nodes.raw('', result, format='html')], []
 
         # inline code with explicit color specification
@@ -189,18 +200,14 @@ class CustomCodeHighlight(Directive):
     }
 
     def run(self):
-        if pyach is None:
-            result = "<em>ERROR WHILE LOADING ACH; OUTPUT WOULD BE HERE</em>"
-            return [nodes.raw('', result, format='html')]
-
         code_path = self.options["code_path"]
         color_path = self.options["color_path"]
         is_code_path_relative = is_relative_path(code_path)
         is_color_path_relative = is_relative_path(color_path)
         rst_source_path = self.state.document.settings._nikola_source_path
+        logger = get_logger(__name__)
 
         if is_code_path_relative != is_color_path_relative:
-            logger = get_logger(__name__)
             logger.warn(f'{rst_source_path} called CCH extension with inconsistent paths: '
                 f'{code_path} is {make_not_word(is_code_path_relative)} relative but '
                 f'{color_path} is {make_not_word(is_color_path_relative)} relative')
@@ -212,20 +219,32 @@ class CustomCodeHighlight(Directive):
         code_path = make_path(rst_source_path, code_path)
         color_path = make_path(rst_source_path, color_path)
 
-        try:
-            code_str = read_file(code_path)
-            color_str = read_file(color_path)
-            result = pyach.run_mirror_highlighter(code_str, color_str, table_wrap_css_class=lang,
-                replace=True, valid_css_classes=VALID_CSS_CLASSES)
-        except Exception as err:
-            raise self.error(f'highlight failed:\n{str(err)}\n'
-                f'code_path: {code_path}\n'
-                f'color_path: {color_path}\n'
-                f'valid_css_classes: {VALID_CSS_CLASSES}\n')
-
         # report dependency on used files - required to support incremental build
         self.state.document.settings.record_dependencies.add(code_path)
         self.state.document.settings.record_dependencies.add(color_path)
+
+        try:
+            code_str = read_file(code_path)
+            color_str = read_file(color_path)
+
+            if pyach is None:
+                # fail gracefully with raw text
+                # problems are already reported when the plugin fails to initialize
+                result = enclose_in_html(code_str, "pre", f"code {lang}")
+                return [nodes.raw('', result, format='html')]
+
+            result = pyach.run_mirror_highlighter(code_str, color_str, table_wrap_css_class=lang,
+                replace=True, valid_css_classes=VALID_CSS_CLASSES)
+        except Exception as err:
+            # Log and return error_str instead of raise self.error(error_str) because
+            # either way, error_str will land on the page.
+            # If it's done through exception, it's not formatted well and hard to read.
+            error_str = (f'highlight failed:\n{str(err)}'
+                f'code_path: {code_path}\n'
+                f'color_path: {color_path}\n'
+                f'valid_css_classes: {VALID_CSS_CLASSES}')
+            logger.error(error_str)
+            return [nodes.raw('', enclose_in_html(error_str, "pre", "code"), format='html')]
 
         return [nodes.raw('', result, format='html')]
 
@@ -234,12 +253,16 @@ class CustomCodeHighlight(Directive):
 ##############################################################################
 
 class AnsiHighlight(Directive):
+    # required by docutils
     has_content = False
     required_arguments = 0
     optional_arguments = 0
     option_spec = {
         'ansi_path': directives.path,
     }
+
+    # for internal purposes
+    converter = ansi2html.Ansi2HTMLConverter(line_wrap=False)
 
     def run(self):
         ansi_path = self.options["ansi_path"]
@@ -248,7 +271,10 @@ class AnsiHighlight(Directive):
 
         try:
             # full=False disables HTML preamble - we want only <span> elements
-            result = f"<pre class=\"code ansi\">{ansi2html.Ansi2HTMLConverter(line_wrap=False).convert(read_file(ansi_path), full=False)}</pre>"
+            result = enclose_in_html(
+                AnsiHighlight.converter.convert(read_file(ansi_path), full=False),
+                "pre",
+                "code ansi")
         except Exception as err:
             raise self.error(f'highlight failed:\n{str(err)}\nansi_path: {ansi_path}\n')
 
