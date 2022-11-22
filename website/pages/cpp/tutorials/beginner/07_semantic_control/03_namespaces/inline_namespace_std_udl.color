@@ -33,7 +33,7 @@ keyword namespace {
 }
 
 {
-	keyword namespace::keyword""s; 0com_single
+	keyword namespace::keyword2str1suf; 0com_single
 	keyword var_local = str1suf;
 	keyword var_local = num1suf;
 }
