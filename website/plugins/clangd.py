@@ -3,8 +3,13 @@ import os
 import json
 import subprocess
 import shutil
-from typing import Callable, Optional, Sequence, Union, Any
+import sys
+from typing import Callable, Sequence, Union, Any
 from file_utils import read_file
+from nikola.utils import get_logger
+
+DEBUG = os.environ.get("CLANGD_DEBUG") is not None
+logger = get_logger("clangd_plugin")
 
 # All of URI handling is done manually instead of through a dedicated library because:
 # 1) For LSP, URIs are only a form of identification and their actual content doesn't matter
@@ -127,7 +132,6 @@ def get_clangd_path() -> str:
 class Connection:
     def __init__(self, connect=True, initialize=True):
         self.clangd_path = get_clangd_path()
-        # TODO: log clangd version
         self.id = 1
         self.p = None
         self.initialized = False
@@ -177,8 +181,8 @@ class Connection:
             if json_rpc_is_error(message):
                 raise RuntimeError(f"JSON RPC error:\n{json.dumps(json_rpc_response_extract_error(message), indent=4)}")
             elif json_rpc_is_notification(message):
-                print("NOTIFICATION:")
-                print(json.dumps(message, indent=4))
+                if DEBUG:
+                    logger.info(f"NOTIFICATION:\n{json.dumps(message, indent=4)}")
             else:
                return json_rpc_response_extract_result(message, id)
 
@@ -216,8 +220,10 @@ class Connection:
                             "tokenModifiers": [],
                             "formats": [], # no support for relative as of now (absolute is implicitly assumed)
                             "overlappingTokenSupport": False,
-                            # even if given True, clangd-15.0.2 doesn't report any multiline tokens
-                            # instead, it always reports many whole-line tokens with identical type and modifers
+                            # Even if given True, clangd-15.0.2 doesn't report any multiline tokens.
+                            # Instead, it always reports multiple tokens with identical type and modifers.
+                            # Tokens that hypothetically can be multiline are disabled (ifdefed out) code and
+                            # anything split using splice mechanism (\ at the end of a line).
                             "multilineTokenSupport": False
                         }
                     }
@@ -335,6 +341,14 @@ def document_highlight_find_matching_tokens(highlight: dict[str, Any], semantic_
     r = bisect_right(KeyWrapper(semantic_tokens, key), (end_line, end_column))
     return semantic_tokens[l:r]
 
+# https://stackoverflow.com/questions/67680296/syntaxerror-f-string-expression-part-cannot-include-a-backslash
+def list_of_strings_to_pretty_str(l: list[str]) -> str:
+    if l:
+        s = '", "'
+        return f'["{s.join(l)}"]'
+    else:
+        return "[]"
+
 class Clangd:
     def __init__(self, connect=True, initialize=True):
         self.conn = Connection(connect, False)
@@ -343,29 +357,31 @@ class Clangd:
 
     def initialize(self):
         result = self.conn.initialize()
-        print(json.dumps(result, indent=4))
-        print(f'Using clangd version: {result["serverInfo"]["version"]}')
-        self.parse_capabilities(result["capabilities"])
+        if DEBUG:
+            logger.info(json.dumps(result, indent=4))
+        logger.info(f'Using clangd version: {result["serverInfo"]["version"]}')
+        self._parse_capabilities(result["capabilities"])
+        logger.info("Successful initialization")
 
-    def parse_capabilities(self, capabilities: dict[str, Any]):
+    def _parse_capabilities(self, capabilities: dict[str, Any]):
         semantic_tokens_legend = capabilities["semanticTokensProvider"]["legend"]
-        self.semantic_tokens_types: list[str] = semantic_tokens_legend["tokenTypes"]
-        self.semantic_tokens_modifiers: list[str] = semantic_tokens_legend["tokenModifiers"]
-        print(f"SEMANTIC TOKENS TYPES")
-        print(self.semantic_tokens_types)
-        print(f"SEMANTIC TOKENS MODIFIERS")
-        print(self.semantic_tokens_modifiers)
+        self.semantic_token_types: list[str] = semantic_tokens_legend["tokenTypes"]
+        self.semantic_token_modifiers: list[str] = semantic_tokens_legend["tokenModifiers"]
+        logger.info(
+            f"initialization - supported semantic token types: "
+            f"{list_of_strings_to_pretty_str(self.semantic_token_types)}")
+        logger.info(
+            f"initialization - supported semantic token modifiers: "
+            f"{list_of_strings_to_pretty_str(self.semantic_token_modifiers)}")
+        self.semantic_token_type_indexes_for_color_variants = self._get_semantic_token_type_indexes_for_color_variants()
 
     # return an array of semantic token types that are suitable for token-specific colorization
-    def get_semantic_tokens_object_types(self) -> list[int]:
-        if not hasattr(self, "semantic_tokens_types"):
-            raise RuntimeError("semantic tokens capabilities unavailable - missing initialization")
-
+    def _get_semantic_token_type_indexes_for_color_variants(self) -> list[int]:
         result = []
-        for i in range(0, len(self.semantic_tokens_types)):
+        for i in range(0, len(self.semantic_token_types)):
             # clangd reports semantic token types with duplicate entries
             # it's important to make a full loop as there may be many matching indexes
-            if self.semantic_tokens_types[i] in ["variable", "parameter", "property"]:
+            if self.semantic_token_types[i] in ["variable", "parameter", "property"]:
                 result.append(i)
         return result
 
@@ -421,33 +437,46 @@ class Clangd:
             "range": range
         })
 
-    def semantic_tokens_for_file(self, path: str):
-        lines = self.text_document_open(path).splitlines()
+    def file_content_and_semantic_tokens(self, path: str):
+        file_content = self.text_document_open(path)
         semantic_tokens = parse_semantic_token_data(self.text_document_semantic_tokens_full(path)["data"])
         self.text_document_close(path)
-        self.debug_print_semantic_tokens(semantic_tokens, lines)
+        return file_content, semantic_tokens
 
-    def semantic_tokens_with_variant_color(self, path: str):
-        lines = self.text_document_open(path).splitlines()
+    def file_content_and_semantic_tokens_with_color_variance(self, path: str):
+        file_content = self.text_document_open(path)
         semantic_tokens = parse_semantic_token_data(self.text_document_semantic_tokens_full(path)["data"])
-        semantic_tokens_object_types = self.get_semantic_tokens_object_types()
 
+        # The goal:
+        # - for each token that has a type eligible for color variance:
+        #   - find its usages (highlights)
+        #   - for each highlight:
+        #     - apply the same color variant ID
+        #     - mark the last usage (this will inform ACH that after this token the ID can be recycled)
+        #   - change ID for the next token
+        #
+        # complexity: O(n) where n is len(semantic_tokens)
+        # explanation:
+        # - each token is visited at most once
+        # - the more highlights a given token has the more later tokens will be skipped
         color_variant = 1
         for token in semantic_tokens:
             # skip tokens that have color variant already applied
             if token.color_variant != 0:
                 continue
             # do not variant-color tokens of uninteresting types
-            if not token.token_type in semantic_tokens_object_types:
+            if not token.token_type in self.semantic_token_type_indexes_for_color_variants:
                 continue
 
             highlights = self.text_document_document_highlight(path, lsp_make_position(token.line, token.column))
             for idx, hl in enumerate(highlights):
                 matching_tokens = document_highlight_find_matching_tokens(hl, semantic_tokens)
                 if not matching_tokens:
-                    self.debug_print_semantic_tokens(semantic_tokens, lines)
                     raise RuntimeError(
-                        f"failed to find matching semantic token(s) for this highlight:\n{json.dumps(hl, indent=4)}")
+                        f"failed to apply color variance to semantic tokens for file: {path}\n"
+                        f"reason: failed to find matching semantic token(s) for this highlight:\n{json.dumps(hl, indent=4)}\n"
+                        f"semantic tokens for this file (with color variance modifications so far):\n"
+                        f"{self.semantic_tokens_debug_info(semantic_tokens, file_content.splitlines())}")
 
                 for mt in matching_tokens:
                     mt.color_variant = color_variant
@@ -457,26 +486,32 @@ class Clangd:
             color_variant += 1
 
         self.text_document_close(path)
-        self.debug_print_semantic_tokens(semantic_tokens, lines)
+        return file_content, semantic_tokens
 
     def list_of_token_modifiers(self, token_modifiers: int) -> list[str]:
         result = []
-        for i in range (0, len(self.semantic_tokens_modifiers)):
+        for i in range (0, len(self.semantic_token_modifiers)):
             if (1 << i) & token_modifiers != 0:
-                result.append(self.semantic_tokens_modifiers[i])
+                result.append(self.semantic_token_modifiers[i])
         return result
 
-    def debug_print_semantic_tokens(self, semantic_tokens: list[SemanticToken], lines: list[str]) -> None:
+    def semantic_tokens_debug_info(self, semantic_tokens: list[SemanticToken], lines: list[str]) -> str:
+        output_lines = []
         for token in semantic_tokens:
             token_string = lines[token.line][token.column:token.column+token.length]
-
-            print(
+            output_lines.append(
                 f'line|col+len|cv: {token.line:>3}|{token.column:>3}+{token.length:>2}|{token.color_variant:>2}, '
                 f'token: {token_string:<16}, '
-                f'type: {self.semantic_tokens_types[token.token_type]:<13}, '
-                f'modifiers: {", ".join(self.list_of_token_modifiers(token.token_modifiers))}'
+                f'type: {self.semantic_token_types[token.token_type]:<13}, '
+                f'modifiers: {", ".join(self.list_of_token_modifiers(token.token_modifiers))}\n'
             )
+        return "".join(output_lines)
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("specify 1 path (absolute or relative) to read")
+        exit()
+
     clangd = Clangd()
-    clangd.semantic_tokens_with_variant_color("main.cpp")
+    file_content, semantic_tokens = clangd.file_content_and_semantic_tokens_with_color_variance(sys.argv[1])
+    print(clangd.semantic_tokens_debug_info(semantic_tokens, file_content.splitlines()))
