@@ -98,14 +98,14 @@ Operators and operator overloading
       - :cch:`+x`
       - 1
       - RtL
-      - free, member
+      - both
       -
     * - 3
       - unary minus
       - :cch:`-x`
       - 1
       - RtL
-      - free, member
+      - both
       -
     * - 3
       - logical NOT
@@ -161,28 +161,28 @@ Operators and operator overloading
       - :cch:`new`
       - 1+
       - RtL
-      - free, member
+      - both
       -
     * - 3
       - dynamic memory allocation
       - :cch:`new[]`
       - 1+
       - RtL
-      - free, member
+      - both
       -
     * - 3
       - dynamic memory deallocation
       - :cch:`delete`
       - 1
       - RtL
-      - free, member
+      - both
       -
     * - 3
       - dynamic memory deallocation
       - :cch:`delete[]`
       - 1
       - RtL
-      - free, member
+      - both
       -
     * - 4
       - pointer-to-member access
@@ -252,7 +252,7 @@ Operators and operator overloading
       - :cch:`x <=> y`
       - 2
       - LtR
-      - free, member
+      - both
       - C++20
     * - 9
       - less than
@@ -503,8 +503,10 @@ Operators and operator overloading
 Legend:
 
 - **precendence** - C++ has no formal precendence of operators. Their precendence is implicitly defined by the grammar.
+
   - If multiple operators have the same precedence they are applied according to their associativity.
   - Operators with no precedence in the table are never ambiguous.
+
 - **arity** - number of operands (including :cch:`*this` if appropriate). In cases like ``x.y`` and ``x->y`` the arity is 1 because ``y`` does not contribute to the operator's output.
 - **associativity**:
 
@@ -515,7 +517,7 @@ Legend:
 
   - free - must be a free function
   - member - must be a member function
-  - free, member - can be both free function and member function, no recommendation
+  - both - can be both free function and member function, no recommendation
   - recommended free - can be both a free function and a member function, recommended free function
   - recommended member - can be both a free function and a member function, recommended member function
   - \- - can not be overloaded
