@@ -4,9 +4,16 @@ def is_relative_path(path: str) -> bool:
     return path[0] != "/"
 
 
-def make_path(source_path: str, path: str) -> str:
+def path_description(is_relative: bool) -> str:
+    if is_relative:
+        return "relative"
+    else:
+        return "absolute"
+
+
+def make_path_absolute(base_path: str, path: str) -> str:
     if is_relative_path(path):
-        return os.path.join(os.path.dirname(source_path), path)
+        return os.path.join(os.path.dirname(base_path), path)
     else:
         return path
 

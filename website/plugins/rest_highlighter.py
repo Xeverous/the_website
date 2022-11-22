@@ -18,9 +18,9 @@ from docutils.parsers.rst import Directive, directives, roles
 from nikola.plugin_categories import RestExtension
 from nikola.utils import get_logger
 
-from file_utils import is_relative_path, make_path, read_file
+from file_utils import is_relative_path, make_path_absolute, path_description, read_file
 
-from typing import Dict, Optional
+from typing import Any, Dict, Optional
 
 import os
 import sys
@@ -42,12 +42,6 @@ from plugins.html_utils import escape_text_into_html
 ##############################################################################
 # utilities
 ##############################################################################
-
-def make_not_word(b: bool) -> str:
-    if b:
-        return ""
-    else:
-        return "not "
 
 def enclose_in_html(text: str, html_tag: str, css_classes: Optional[str] = None) -> str:
     if css_classes:
@@ -100,6 +94,7 @@ KEYWORDS_PATH = DATA_FILES_PATH + "/keywords.txt"
 HEADERS_PATH = DATA_FILES_PATH + "/headers.txt"
 INLINE_CODES_CODE_PATH = DATA_FILES_PATH + "/inline_codes.cpp"
 INLINE_CODES_COLOR_PATH = DATA_FILES_PATH + "/inline_codes.color"
+KEYWORDS_LIST = read_file(KEYWORDS_PATH).splitlines()
 
 def run_mirror_highlighter_inline(code: str, color: str) -> str:
     highlighted = pyach.run_mirror_highlighter(code, color,
@@ -116,7 +111,6 @@ def inline_codes_add_entry(inline_codes: Dict[str, str], code: str, color: str, 
         logger.error(f'inline code highlight failed [line = {line}]:\n{str(err)}')
 
 def load_inline_codes() -> Dict[str, str]:
-    keywords = read_file(KEYWORDS_PATH).splitlines()
     headers = read_file(HEADERS_PATH).splitlines()
     code_lines = read_file(INLINE_CODES_CODE_PATH).splitlines()
     color_lines = read_file(INLINE_CODES_COLOR_PATH).splitlines()
@@ -128,7 +122,7 @@ def load_inline_codes() -> Dict[str, str]:
 
     result = {}
 
-    for i, code in enumerate(keywords, 1):
+    for i, code in enumerate(KEYWORDS_LIST, 1):
         inline_codes_add_entry(result, code, "keyword", i)
 
     for i, code in enumerate(headers, 1):
@@ -189,64 +183,91 @@ class CustomCodeHighlightInline:
             return [prb], [msg]
         return [nodes.raw('', html_output, format='html')], []
 
+# Docutils directives.unchanged actually changes None into ""
+def passthrough(value: Any) -> Any:
+    return value
+
+def fail_gracefully(result: str, css_class: str = "code"):
+    result = enclose_in_html(result, "pre", css_class)
+    return [nodes.raw('', result, format='html')]
+
 class CustomCodeHighlight(Directive):
     has_content = False
     required_arguments = 0
     optional_arguments = 0
     option_spec = {
-        'code_path': directives.path,
-        'color_path': directives.path,
-        'lang': directives.unchanged,
+        "code_path": directives.unchanged_required,
+        "color_path": passthrough,
+        "lang": passthrough,
     }
 
     def run(self):
         code_path = self.options["code_path"]
-        color_path = self.options["color_path"]
+        color_path = self.options.get("color_path")
+        rst_source_path = self.state.document.settings._nikola_source_path
+        code_absolute_path = make_path_absolute(rst_source_path, code_path)
+        # report dependency on used files - required to support incremental build
+        self.state.document.settings.record_dependencies.add(code_absolute_path)
+
+        if not color_path:
+            return self.run_clangd_highlighter(code_absolute_path)
+
         is_code_path_relative = is_relative_path(code_path)
         is_color_path_relative = is_relative_path(color_path)
-        rst_source_path = self.state.document.settings._nikola_source_path
-        logger = get_logger(__name__)
 
         if is_code_path_relative != is_color_path_relative:
-            logger.warn(f'{rst_source_path} called CCH extension with inconsistent paths: '
-                f'{code_path} is {make_not_word(is_code_path_relative)} relative but '
-                f'{color_path} is {make_not_word(is_color_path_relative)} relative')
+            get_logger(__name__).warn(f"{rst_source_path} called CCH extension with inconsistent paths: "
+                f"{code_path} is {path_description(is_code_path_relative)} but "
+                f"{color_path} is {path_description(is_color_path_relative)}")
 
-        lang = self.options.get("lang")
-        if not lang:
-            lang = "custom-cpp"
+        color_absolute_path = make_path_absolute(rst_source_path, color_path)
+        self.state.document.settings.record_dependencies.add(color_absolute_path)
+        lang = self.options.get("lang", "custom-cpp")
+        return self.run_mirror_highlighter(code_absolute_path, color_absolute_path, lang)
 
-        code_path = make_path(rst_source_path, code_path)
-        color_path = make_path(rst_source_path, color_path)
-
-        # report dependency on used files - required to support incremental build
-        self.state.document.settings.record_dependencies.add(code_path)
-        self.state.document.settings.record_dependencies.add(color_path)
-
+    def run_mirror_highlighter(self, code_absolute_path: str, color_absolute_path: str, lang: str):
         try:
-            code_str = read_file(code_path)
-            color_str = read_file(color_path)
+            code_str = read_file(code_absolute_path)
+            color_str = read_file(color_absolute_path)
 
             if pyach is None:
                 # fail gracefully with raw text
                 # problems are already reported when the plugin fails to initialize
-                result = enclose_in_html(code_str, "pre", f"code {lang}")
-                return [nodes.raw('', result, format='html')]
+                return fail_gracefully(code_str, f"code {lang}")
 
             result = pyach.run_mirror_highlighter(code_str, color_str, table_wrap_css_class=lang,
                 replace=True, valid_css_classes=VALID_CSS_CLASSES)
+            return [nodes.raw('', result, format='html')]
         except Exception as err:
             # Log and return error_str instead of raise self.error(error_str) because
             # either way, error_str will land on the page.
             # If it's done through exception, it's not formatted well and hard to read.
-            error_str = (f'highlight failed:\n{str(err)}'
-                f'code_path: {code_path}\n'
-                f'color_path: {color_path}\n'
+            error_str = (f'mirror highlight failed:\n{str(err)}'
+                f'code_path: {code_absolute_path}\n'
+                f'color_path: {color_absolute_path}\n'
                 f'valid_css_classes: {VALID_CSS_CLASSES}')
-            logger.error(error_str)
-            return [nodes.raw('', enclose_in_html(error_str, "pre", "code"), format='html')]
+            get_logger(__name__).error(error_str)
+            return fail_gracefully(error_str)
 
-        return [nodes.raw('', result, format='html')]
+    def run_clangd_highlighter(self, code_absolute_path: str):
+        try:
+            lang = "custom-cpp"
+            code_str = read_file(code_absolute_path)
+
+            if pyach is None:
+                # fail gracefully with raw text
+                # problems are already reported when the plugin fails to initialize
+                return fail_gracefully(code_str, f"code {lang}")
+
+            result = pyach.run_clangd_highlighter(code_str,
+                semantic_token_types=[], semantic_token_modifiers=[], semantic_tokens=[],
+                keywords=KEYWORDS_LIST, table_wrap_css_class=lang)
+            return [nodes.raw('', result, format='html')]
+        except Exception as err:
+            error_str = (f"clangd highlight failed:\n{str(err)}\ncode_path: {code_absolute_path}\n")
+            get_logger(__name__).error(error_str)
+            return fail_gracefully(error_str)
+
 
 ##############################################################################
 # ANSI implementation
@@ -267,7 +288,7 @@ class AnsiHighlight(Directive):
     def run(self):
         ansi_path = self.options["ansi_path"]
         rst_source_path = self.state.document.settings._nikola_source_path
-        ansi_path = make_path(rst_source_path, ansi_path)
+        ansi_path = make_path_absolute(rst_source_path, ansi_path)
 
         try:
             # full=False disables HTML preamble - we want only <span> elements
