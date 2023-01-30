@@ -18,7 +18,7 @@ from docutils.parsers.rst import Directive, directives, roles
 from nikola.plugin_categories import RestExtension
 from nikola.utils import get_logger
 
-from file_utils import is_relative_path, make_path_absolute, path_description, read_file
+from plugins.file_utils import is_relative_path, make_path_absolute, path_description, read_file
 
 from typing import Any, Dict, Optional
 
@@ -38,6 +38,7 @@ import ansi2html
 import pkg_resources
 
 from plugins.html_utils import escape_text_into_html
+from plugins.clangd import Clangd
 
 ##############################################################################
 # utilities
@@ -192,6 +193,7 @@ def fail_gracefully(result: str, css_class: str = "code"):
     return [nodes.raw('', result, format='html')]
 
 class CustomCodeHighlight(Directive):
+    # required by docutils
     has_content = False
     required_arguments = 0
     optional_arguments = 0
@@ -200,6 +202,9 @@ class CustomCodeHighlight(Directive):
         "color_path": passthrough,
         "lang": passthrough,
     }
+
+    # for internal purposes
+    clangd = Clangd()
 
     def run(self):
         code_path = self.options["code_path"]
@@ -252,16 +257,20 @@ class CustomCodeHighlight(Directive):
     def run_clangd_highlighter(self, code_absolute_path: str):
         try:
             lang = "custom-cpp"
-            code_str = read_file(code_absolute_path)
 
             if pyach is None:
                 # fail gracefully with raw text
                 # problems are already reported when the plugin fails to initialize
-                return fail_gracefully(code_str, f"code {lang}")
+                return fail_gracefully(read_file(code_absolute_path), f"code {lang}")
 
-            result = pyach.run_clangd_highlighter(code_str,
-                semantic_token_types=[], semantic_token_modifiers=[], semantic_tokens=[],
-                keywords=KEYWORDS_LIST, table_wrap_css_class=lang)
+            file_content, semantic_tokens = CustomCodeHighlight.clangd.file_content_and_semantic_tokens_with_color_variance(code_absolute_path)
+            result = pyach.run_clangd_highlighter(
+                file_content,
+                semantic_token_types=CustomCodeHighlight.clangd.semantic_token_types,
+                semantic_token_modifiers=CustomCodeHighlight.clangd.semantic_token_modifiers,
+                semantic_tokens=semantic_tokens,
+                keywords=KEYWORDS_LIST,
+                table_wrap_css_class=lang)
             return [nodes.raw('', result, format='html')]
         except Exception as err:
             error_str = (f"clangd highlight failed:\n{str(err)}\ncode_path: {code_absolute_path}\n")
