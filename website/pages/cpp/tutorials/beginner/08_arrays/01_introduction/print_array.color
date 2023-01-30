@@ -1,10 +1,10 @@
 8pp_direct 0pp_header
 
 0com_single
-keyword <keyword tparam, keyword tparam>
-keyword keyword func(keyword tparam (&)[tparam]) keyword
+keyword <keyword param_tmpl, keyword param_tmpl>
+keyword keyword func(keyword param_tmpl (&)[param_tmpl]) keyword
 {
-	keyword tparam;
+	keyword param_tmpl;
 }
 
 keyword func(keyword keyword* param, keyword param)

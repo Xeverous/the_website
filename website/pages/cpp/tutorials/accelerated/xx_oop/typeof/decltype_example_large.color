@@ -5,8 +5,8 @@ keyword(keyword) var_local = (var_local); 0com_single
 0com_single
 0com_single
 0com_single
-keyword <keyword tparam, keyword... tparam>
-keyword(keyword) func(tparam param, tparam&&... param)
+keyword <keyword param_tmpl, keyword... param_tmpl>
+keyword(keyword) func(param_tmpl param, param_tmpl&&... param)
 {
-	keyword param(namespace::func<tparam>(param)...);
+	keyword param(namespace::func<param_tmpl>(param)...);
 }

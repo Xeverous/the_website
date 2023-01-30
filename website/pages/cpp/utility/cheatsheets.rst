@@ -39,14 +39,14 @@ Operators and operator overloading
       -
     * - 2
       - functional cast
-      - :cch:`T(x)$$$tparam(var_local)`
+      - :cch:`T(x)$$$param_tmpl(var_local)`
       - 1
       - LtR
       - member
       -
     * - 2
       - functional cast
-      - :cch:`T{x}$$$tparam{var_local}`
+      - :cch:`T{x}$$$param_tmpl{var_local}`
       - 1
       - LtR
       - member
@@ -123,7 +123,7 @@ Operators and operator overloading
       -
     * - 3
       - C-style cast
-      - :cch:`(T) x$$$(tparam) var_local`
+      - :cch:`(T) x$$$(param_tmpl) var_local`
       - 1
       - RtL
       - member
@@ -445,28 +445,28 @@ Operators and operator overloading
       - C++11
     * - \-
       - static cast
-      - :cch:`static_cast<T>(x)$$$keyword<tparam>(var_local)`
+      - :cch:`static_cast<T>(x)$$$keyword<param_tmpl>(var_local)`
       - 1
       - \-
       - member
       - C++11
     * - \-
       - dynamic cast
-      - :cch:`dynamic_cast<T>(x)$$$keyword<tparam>(var_local)`
+      - :cch:`dynamic_cast<T>(x)$$$keyword<param_tmpl>(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - const cast
-      - :cch:`const_cast<T>(x)$$$keyword<tparam>(var_local)`
+      - :cch:`const_cast<T>(x)$$$keyword<param_tmpl>(var_local)`
       - 1
       - \-
       - \-
       - C++11
     * - \-
       - reinterpret cast
-      - :cch:`reinterpret_cast<T>(x)$$$keyword<tparam>(var_local)`
+      - :cch:`reinterpret_cast<T>(x)$$$keyword<param_tmpl>(var_local)`
       - 1
       - \-
       - \-

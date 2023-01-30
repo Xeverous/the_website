@@ -1,4 +1,4 @@
-keyword <keyword tparam> keyword
-tparam& func(tparam& param) keyword { keyword param; }
+keyword <keyword param_tmpl> keyword
+param_tmpl& func(param_tmpl& param) keyword { keyword param; }
 
 func(func<keyword(keyword, keyword)>(func), num, num); 0com_single

@@ -1,20 +1,20 @@
 0com_single
-keyword <keyword tparam>
+keyword <keyword param_tmpl>
 keyword type
 {
 	keyword type = 20com_multi;
 };
 
 0com_single
-keyword <keyword tparam>
-keyword type = keyword type<tparam>::type;
+keyword <keyword param_tmpl>
+keyword type = keyword type<param_tmpl>::type;
 
 0com_single
 0com_single
 0com_single
 0com_single
-keyword <keyword tparam>
-keyword keyword type<tparam>::type func(tparam param) keyword
+keyword <keyword param_tmpl>
+keyword keyword type<param_tmpl>::type func(param_tmpl param) keyword
 {
-	keyword keyword<keyword type<tparam>::type>(param);
+	keyword keyword<keyword type<param_tmpl>::type>(param);
 }

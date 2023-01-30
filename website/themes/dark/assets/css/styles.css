@@ -421,7 +421,7 @@ nav.breadcrumb {
 
 .code.custom-cpp .param       { color: #408000 } /* parameters (to functions) */
 .code.custom-cpp .param-out   { color: #c86496 } /* out parameters (passed by non-const reference) */
-.code.custom-cpp .tparam,                        /* template parameters */
+.code.custom-cpp .param-tmpl,                    /* template parameters */
 .code.custom-cpp .concept     { color: #ffaf7b } /* C++ concept (constrained template) */
 .code.custom-cpp .problem     { color: #ff0000 } /* compiler errors etc. */
 

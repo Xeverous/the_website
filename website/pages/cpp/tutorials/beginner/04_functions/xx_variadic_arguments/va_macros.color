@@ -5,7 +5,7 @@ keyword 17com_multi type;
 keyword func(type param, ext);
 
 0com_single
-tparam func(type param, tparam);
+param_tmpl func(type param, param_tmpl);
 
 0com_single
 keyword func(type param);

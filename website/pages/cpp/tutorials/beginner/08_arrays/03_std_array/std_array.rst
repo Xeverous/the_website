@@ -120,8 +120,8 @@ Passing :cch:`std::array`
 
 Thus, it's recommended to still use:
 
-- pointer + size: :cch:`(const T*, size_t)$$$(keyword tparam*, type)`
-- (C++20) :cch:`(std::span<T>)$$$(namespace::type<tparam>)` which essentially is a struct containing pointer and size
+- pointer + size: :cch:`(const T*, size_t)$$$(keyword param_tmpl*, type)`
+- (C++20) :cch:`(std::span<T>)$$$(namespace::type<param_tmpl>)` which essentially is a struct containing pointer and size
 
 Functions with such parameters will work for:
 

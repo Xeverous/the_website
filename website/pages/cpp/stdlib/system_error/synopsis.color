@@ -2,9 +2,9 @@ keyword namespace {
 
 keyword keyword type { 57com_multi };
 
-keyword <keyword tparam>
+keyword <keyword param_tmpl>
 keyword type : type {};
-keyword <keyword tparam>
+keyword <keyword param_tmpl>
 keyword type : type {};
 0com_single
 keyword <>
@@ -43,16 +43,16 @@ keyword:
 	func() keyword : type(num, func()) {}
 	func(keyword param, keyword type& param) keyword : var_member(param), var_member(&param) {}
 	keyword <
-		keyword tparam,
-		keyword type<type<tparam>::var_global>::type* = keyword
+		keyword param_tmpl,
+		keyword type<type<param_tmpl>::var_global>::type* = keyword
 	>
-	func(tparam param) keyword;
+	func(param_tmpl param) keyword;
 
 	keyword <
-		keyword tparam,
-		keyword type<type<tparam>::var_global>::type* = keyword
+		keyword param_tmpl,
+		keyword type<type<param_tmpl>::var_global>::type* = keyword
 	>
-	type& keyword1func(tparam param) keyword;
+	type& keyword1func(param_tmpl param) keyword;
 
 	keyword func(keyword param, keyword type& param) keyword
 	{
@@ -81,8 +81,8 @@ keyword:
 0com_single
 type keyword3func(keyword type& param, keyword type& param) keyword;
 
-keyword <keyword tparam, keyword tparam>
-type<tparam, tparam>& keyword2func(type<tparam, tparam>& param, keyword type& param)
+keyword <keyword param_tmpl, keyword param_tmpl>
+type<param_tmpl, param_tmpl>& keyword2func(type<param_tmpl, param_tmpl>& param, keyword type& param)
 {
 	keyword param << param.func().func() << chr << param.func();
 }

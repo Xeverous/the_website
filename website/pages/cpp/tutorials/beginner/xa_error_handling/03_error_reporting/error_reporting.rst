@@ -254,13 +254,13 @@ This code hides a lot of if-else instructions inside. Various monadic functions 
 
 - :cch:`map$$$func`:
 
-  - changes :cch:`optional<T>$$$type<tparam>` into :cch:`optional<U>$$$type<tparam>`, requires a function of the form :cch:`U f(T)$$$tparam func(tparam)` or :cch:`optional<U> f(T)$$$type<tparam> func(tparam)`
-  - if there is a value, applies supplied function and returns its result as :cch:`optional<U>$$$type<tparam>`
-  - if there is no value, returns an empty optional of the destination type :cch:`optional<U>$$$type<tparam>`
+  - changes :cch:`optional<T>$$$type<param_tmpl>` into :cch:`optional<U>$$$type<param_tmpl>`, requires a function of the form :cch:`U f(T)$$$param_tmpl func(param_tmpl)` or :cch:`optional<U> f(T)$$$type<param_tmpl> func(param_tmpl)`
+  - if there is a value, applies supplied function and returns its result as :cch:`optional<U>$$$type<param_tmpl>`
+  - if there is no value, returns an empty optional of the destination type :cch:`optional<U>$$$type<param_tmpl>`
 
 - :cch:`flatmap$$$func`:
 
-  - like map, but the function has to have the form :cch:`U f(optional<T>)$$$tparam func(type<tparam>)` or `optional<U> f(optional<T>)$$$type<tparam> func(type<tparam>)`
+  - like map, but the function has to have the form :cch:`U f(optional<T>)$$$param_tmpl func(type<param_tmpl>)` or `optional<U> f(optional<T>)$$$type<param_tmpl> func(type<param_tmpl>)`
 
 - :cch:`value_or$$$func`:
 

@@ -3,10 +3,10 @@
 
 keyword type
 {
-	keyword <keyword tparam, namespace::concept<tparam> tparam>
-	keyword keyword keyword()(keyword tparam& param, keyword tparam& param) keyword
+	keyword <keyword param_tmpl, namespace::concept<param_tmpl> param_tmpl>
+	keyword keyword keyword()(keyword param_tmpl& param, keyword param_tmpl& param) keyword
 	{
-		keyword keyword (namespace::concept<tparam, tparam>)
+		keyword keyword (namespace::concept<param_tmpl, param_tmpl>)
 		{
 			keyword param <=> param;
 		}
@@ -25,6 +25,6 @@ keyword type
 };
 keyword keyword type var_global;
 
-keyword <keyword tparam, keyword tparam = tparam>
+keyword <keyword param_tmpl, keyword param_tmpl = param_tmpl>
 keyword type
-	= keyword(var_global(namespace::func<keyword tparam&>(), namespace::func<keyword tparam&>()));
+	= keyword(var_global(namespace::func<keyword param_tmpl&>(), namespace::func<keyword param_tmpl&>()));

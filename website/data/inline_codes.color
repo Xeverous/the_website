@@ -224,8 +224,8 @@ chr
 chr
 chr
 chr
-(tparam) spec
-(tparam) var_local
+(param_tmpl) spec
+(param_tmpl) var_local
 (keyword)
 (keyword) spec
 *keyword
@@ -259,22 +259,22 @@ num
 >
 >>
 >=
-tparam
+param_tmpl
 type*
 macro_ref
 macro_ref
-tparam
-tparam&
-tparam&&
-tparam(spec)
-tparam*
-tparam
-tparam{spec}
-tparam
-tparam
+param_tmpl
+param_tmpl&
+param_tmpl&&
+param_tmpl(spec)
+param_tmpl*
+param_tmpl
+param_tmpl{spec}
+param_tmpl
+param_tmpl
 func
 var_local + var_local
-keyword(tparam)
+keyword(param_tmpl)
 param
 param
 macro_ref
@@ -287,27 +287,27 @@ keyword**
 keyword*[]
 keyword spec
 keyword spec
-keyword tparam
-keyword tparam&
-keyword tparam*
+keyword param_tmpl
+keyword param_tmpl&
+keyword param_tmpl*
 keyword keyword*
 keyword keyword* keyword
 keyword keyword
 keyword keyword*
 keyword keyword* keyword
-keyword keyword[tparam]
+keyword keyword[param_tmpl]
 keyword keyword[]
 keyword namespace::type&
 keyword keyword*
 keyword keyword* keyword
-keyword keyword tparam
-keyword<tparam>(spec)
+keyword keyword param_tmpl
+keyword<param_tmpl>(spec)
 keyword(keyword)
 keyword(spec)
 keyword((spec))
 keyword(spec)
 keyword[]
-keyword<tparam>(spec)
+keyword<param_tmpl>(spec)
 func()
 keyword keyword
 keyword keyword
@@ -334,7 +334,7 @@ keyword keyword
 keyword keyword
 keyword namespace
 keyword[]
-keyword tparam
+keyword param_tmpl
 keyword keyword
 keyword1func
 keyword2func
@@ -378,7 +378,7 @@ keyword2func
 keyword1func
 keyword
 func()
-keyword<tparam>(spec)
+keyword<param_tmpl>(spec)
 func()
 keyword *keyword;
 keyword num;
@@ -388,25 +388,25 @@ keyword keyword
 keyword keyword
 keyword keyword keyword keyword
 keyword keyword keyword
-keyword tparam
-keyword...(tparam)
+keyword param_tmpl
+keyword...(param_tmpl)
 keyword keyword
-keyword<tparam>(spec)
+keyword<param_tmpl>(spec)
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::type<keyword>
 namespace::var_global.func();
-namespace::func<tparam>
-namespace::func<tparam>
-namespace::type<tparam>
-namespace::type<tparam>
-namespace::type<tparam>
+namespace::func<param_tmpl>
+namespace::func<param_tmpl>
+namespace::type<param_tmpl>
+namespace::type<param_tmpl>
+namespace::type<param_tmpl>
 namespace::type<keyword>
 namespace::type<keyword>
 keyword keyword
-keyword(tparam)
+keyword(param_tmpl)
 keyword(var_local)
 keyword keyword
 keyword keyword
@@ -421,7 +421,7 @@ keyword keyword namespace;
 keyword namespace::var_global;
 keyword*
 keyword* keyword
-keyword tparam
+keyword param_tmpl
 keyword (num)
 keyword (keyword)
 var_local

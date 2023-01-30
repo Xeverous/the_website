@@ -21,10 +21,10 @@ The behavior of the keyword is dependent on exact usage.
 
 - For :cch:`typeid(T)`, if the type :cch:`T` is a reference type, the behavior is identical as if it had no reference. Thus, references are considered to have the same type ID as types they refer to, but pointers have different type IDs. Top-level cv-qualifiers are ignored, thus:
 
-  - :cch:`typeid(T&) == typeid(T)$$$keyword(tparam&) == keyword(tparam)`
-  - :cch:`typeid(const T) == typeid(T)$$$keyword(keyword tparam) == keyword(tparam)`
-  - :cch:`typeid(volatile T) == typeid(T)$$$keyword(keyword tparam) == keyword(tparam)`
-  - :cch:`typeid(T*) != typeid(T)$$$keyword(tparam*) != keyword(tparam)`
+  - :cch:`typeid(T&) == typeid(T)$$$keyword(param_tmpl&) == keyword(param_tmpl)`
+  - :cch:`typeid(const T) == typeid(T)$$$keyword(keyword param_tmpl) == keyword(param_tmpl)`
+  - :cch:`typeid(volatile T) == typeid(T)$$$keyword(keyword param_tmpl) == keyword(param_tmpl)`
+  - :cch:`typeid(T*) != typeid(T)$$$keyword(param_tmpl*) != keyword(param_tmpl)`
 
 - For :cch:`typeid(obj)`:
 
@@ -106,7 +106,7 @@ This is the second keyword, it bevahes much differently. Instead of returning an
 
 The keyword has 2 usages:
 
-- :cch:`decltype(entity)$$$keyword(spec)`, that is: :cch:`decltype(ref.member)$$$keyword(var_local.var_member)`, :cch:`decltype(ptr->member)$$$keyword(var_local->var_member)` and :cch:`decltype(T::member)$$$keyword(tparam::var_member)` - yields the type of the (member) *entity*, with top-level cv-qualifiers removed
+- :cch:`decltype(entity)$$$keyword(spec)`, that is: :cch:`decltype(ref.member)$$$keyword(var_local.var_member)`, :cch:`decltype(ptr->member)$$$keyword(var_local->var_member)` and :cch:`decltype(T::member)$$$keyword(param_tmpl::var_member)` - yields the type of the (member) *entity*, with top-level cv-qualifiers removed
 - :cch:`decltype(expression)$$$keyword(spec)` - yields a type depending on value category of the expression:
 
   - for prvalue, yields :cch:`T`

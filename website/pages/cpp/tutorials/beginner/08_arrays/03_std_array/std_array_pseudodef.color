@@ -1,14 +1,14 @@
 keyword namespace {
 
-keyword <keyword tparam, type tparam>
+keyword <keyword param_tmpl, type param_tmpl>
 keyword type
 {
-	tparam var_member[tparam];
+	param_tmpl var_member[param_tmpl];
 
-	keyword keyword tparam& keyword2func(type param) keyword { keyword var_member[param]; }
-	keyword       tparam& keyword2func(type param)       { keyword var_member[param]; }
+	keyword keyword param_tmpl& keyword2func(type param) keyword { keyword var_member[param]; }
+	keyword       param_tmpl& keyword2func(type param)       { keyword var_member[param]; }
 
-	keyword type func() keyword keyword { keyword tparam; }
+	keyword type func() keyword keyword { keyword param_tmpl; }
 
 	0com_single
 };

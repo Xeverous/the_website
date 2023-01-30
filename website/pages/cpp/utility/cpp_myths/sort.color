@@ -6,8 +6,8 @@ keyword func(
 	keyword (*param)(keyword keyword*, keyword keyword*));
 
 0com_single
-keyword <keyword tparam, keyword tparam>
+keyword <keyword param_tmpl, keyword param_tmpl>
 keyword keyword namespace::func(
-	tparam param,
-	tparam param,
-	tparam param);
+	param_tmpl param,
+	param_tmpl param,
+	param_tmpl param);

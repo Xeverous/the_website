@@ -53,18 +53,18 @@ Both can be created in multiple ways:
 
 - By calling default constructor (it will be empty won't manage any object):
 
-  - :cch:`std::unique_ptr<T> uptr;$$$namespace::type<tparam> var_local;`
-  - :cch:`std::shared_ptr<T> sptr;$$$namespace::type<tparam> var_local;`
+  - :cch:`std::unique_ptr<T> uptr;$$$namespace::type<param_tmpl> var_local;`
+  - :cch:`std::shared_ptr<T> sptr;$$$namespace::type<param_tmpl> var_local;`
 
 - By providing a pointer to dynamically allocated object to the constructor:
 
-  - :cch:`std::unique_ptr<T> uptr(new T(/* ctor args... */));$$$namespace::type<tparam> var_local(keyword tparam(18com_multi));`
-  - :cch:`std::shared_ptr<T> sptr(new T(/* ctor args... */));$$$namespace::type<tparam> var_local(keyword tparam(18com_multi));`
+  - :cch:`std::unique_ptr<T> uptr(new T(/* ctor args... */));$$$namespace::type<param_tmpl> var_local(keyword param_tmpl(18com_multi));`
+  - :cch:`std::shared_ptr<T> sptr(new T(/* ctor args... */));$$$namespace::type<param_tmpl> var_local(keyword param_tmpl(18com_multi));`
 
 - By using a factory function:
 
-  - :cch:`auto uptr = std::make_unique<T>(/* ctor args... */);$$$keyword var_local = namespace::func<tparam>(18com_multi);`
-  - :cch:`auto sptr = std::make_shared<T>(/* ctor args... */);$$$keyword var_local = namespace::func<tparam>(18com_multi);`
+  - :cch:`auto uptr = std::make_unique<T>(/* ctor args... */);$$$keyword var_local = namespace::func<param_tmpl>(18com_multi);`
+  - :cch:`auto sptr = std::make_shared<T>(/* ctor args... */);$$$keyword var_local = namespace::func<param_tmpl>(18com_multi);`
 
 You should prefer factory functions because:
 
@@ -84,7 +84,7 @@ Unlike other stuff that came with C++11, :cch:`std::make_unique` was added in C+
 Thanks to overloaded operators, once you have a smart pointer, you can:
 
 - test whether it's not empty (AKA not null): :cch:`if (ptr)$$$keyword (var_local)`
-- get a reference to the managed object: :cch:`T& ref = *ptr;$$$tparam& var_local = 1oo`var_local;` (pointer must not be empty)
+- get a reference to the managed object: :cch:`T& ref = *ptr;$$$param_tmpl& var_local = 1oo`var_local;` (pointer must not be empty)
 - access smart pointer members: :cch:`ptr.$$$var_local.`
 - access managed object members: :cch:`ptr->$$$var_local2oo` (pointer must not be empty)
 

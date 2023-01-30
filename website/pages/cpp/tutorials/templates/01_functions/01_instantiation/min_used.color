@@ -1,7 +1,7 @@
 8pp_direct 0pp_header
 
-keyword <keyword tparam>
-keyword tparam& func(keyword tparam& param, keyword tparam& param)
+keyword <keyword param_tmpl>
+keyword param_tmpl& func(keyword param_tmpl& param, keyword param_tmpl& param)
 {
 	keyword (param < param)
 		keyword param;

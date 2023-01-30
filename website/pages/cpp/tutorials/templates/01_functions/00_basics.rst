@@ -72,7 +72,7 @@ The name of the alias doesn't really matter, but it is a very strong convention 
 
 Template type aliases are PascalCase, not UPPERCASE. We just have a 1-letter name here. Later, in more advanced scenarios, longer, more descriptive alias names will be used such as ``UnaryPredicate`` or ``RandomAccessIterator`` to indicate the template is supposed to be used with type that satisfies certain concepts.
 
-Because in the minimum function code relies on support for :cch:`operator<`, :cch:`T` could be named :cch:`LessThanComparable$$$tparam`.
+Because in the minimum function code relies on support for :cch:`operator<`, :cch:`T` could be named :cch:`LessThanComparable$$$param_tmpl`.
 
 Passing arguments
 #################

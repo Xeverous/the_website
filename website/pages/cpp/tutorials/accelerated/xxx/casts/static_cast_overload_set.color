@@ -1,5 +1,5 @@
-keyword <keyword tparam, keyword... tparam>
-keyword func(tparam param, tparam&&... param);
+keyword <keyword param_tmpl, keyword... param_tmpl>
+keyword func(param_tmpl param, param_tmpl&&... param);
 
 keyword func(keyword, keyword);
 keyword func(keyword, keyword);

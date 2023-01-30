@@ -306,7 +306,7 @@ Because the cast allows to explicitly violate the type system (except :cch:`cons
 
 The standard technically allows many obscure platforms, but in practice many (if not majority or all) platforms have relatively simple pointer implementation where:
 
-- :cch:`sizeof(void*) == sizeof(T*)$$$keyword(keyword*) == keyword(tparam*)` for any :cch:`T`
+- :cch:`sizeof(void*) == sizeof(T*)$$$keyword(keyword*) == keyword(param_tmpl*)` for any :cch:`T`
 - :cch:`sizeof(void*) == sizeof(std::uintmax_t)$$$keyword(keyword*) == keyword(namespace::type)`
 - :cch:`sizeof(void*) == sizeof(std::uintptr_t)$$$keyword(keyword*) == keyword(namespace::type)`
 - :cch:`alignof(void*) == alignof(std::uintptr_t)$$$keyword(keyword*) == keyword(namespace::type)`
@@ -334,7 +334,7 @@ Pointer convertions
 ===================
 
 - A pointer to member function can be converted to pointer to a different member function of a different type. Conversion back to the original type yields the original value, otherwise the resulting pointer cannot be used safely.
-- A pointer to member object of some class :cch:`T` can be converted to a pointer to another member object of another class :cch:`U`. If alignment of :cch:`U` is not stricter than alignment of :cch:`T` (that is, :cch:`alignof(U) <= alignof(T)$$$keyword(tparam) <= keyword(tparam)`), conversion back to the original type :cch:`T` yields the original value, otherwise the resulting pointer cannot be used safely.
+- A pointer to member object of some class :cch:`T` can be converted to a pointer to another member object of another class :cch:`U`. If alignment of :cch:`U` is not stricter than alignment of :cch:`T` (that is, :cch:`alignof(U) <= alignof(T)$$$keyword(param_tmpl) <= keyword(param_tmpl)`), conversion back to the original type :cch:`T` yields the original value, otherwise the resulting pointer cannot be used safely.
 - Any pointer to function can be converted to a pointer to a different function type. Calling the function through a pointer to a different function type is undefined, but converting such pointer back to pointer to the original function type yields the pointer to the original function.
 - On some implementations, a function pointer can be converted to :cch:`void*` or any other object pointer, or vice versa. If the implementation supports conversion in both directions, conversion to the original type yields the original value, otherwise the resulting pointer cannot be dereferenced or called safely.
 
@@ -352,7 +352,7 @@ These are the primary uses of :cch:`reinterpret_cast`. They create references/po
 
     For an explanation about *strict aliasing* see its dedicated article TOWRITE.
 
-- Any object pointer type :cch:`T*` can be converted to another object pointer type :cch:`cv U*$$$spec tparam*`. This is exactly equivalent to :cch:`static_cast<cv U*>(static_cast<cv void*>(expression))$$$keyword<spec tparam*>(keyword<spec keyword*>(spec))`, which implies that if alignment of :cch:`U` is not stricter than alignment of :cch:`T` (that is, :cch:`alignof(U) <= alignof(T)$$$keyword(tparam) <= keyword(tparam)`), the value of the pointer does not change and conversion of the resulting pointer back to its original type yields the original value.
+- Any object pointer type :cch:`T*` can be converted to another object pointer type :cch:`cv U*$$$spec param_tmpl*`. This is exactly equivalent to :cch:`static_cast<cv U*>(static_cast<cv void*>(expression))$$$keyword<spec param_tmpl*>(keyword<spec keyword*>(spec))`, which implies that if alignment of :cch:`U` is not stricter than alignment of :cch:`T` (that is, :cch:`alignof(U) <= alignof(T)$$$keyword(param_tmpl) <= keyword(param_tmpl)`), the value of the pointer does not change and conversion of the resulting pointer back to its original type yields the original value.
 - An *lvalue* expression of type :cch:`T` can be converted to reference to another type :cch:`U`. The result is an *lvalue* or *xvalue* referring to the same object as the original *lvalue*, but with a different type. No temporary is created, no copy is made, no constructors or conversion functions are called.
 
 Summary

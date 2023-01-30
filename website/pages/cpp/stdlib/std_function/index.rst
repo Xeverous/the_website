@@ -29,7 +29,7 @@ By default, the function object is empty (no *target* set). Calling :cch:`operat
 
     Why does it throw in such case? Couldn't it just do nothing?
 
-At first this sounds like a reasonable behavior alternative, but what when :cch:`R$$$tparam` is not :cch:`void` (the result is potentially passed somewhere)? Theoretically if the type was *default-constructibe* :cch:`std::function` could return a new instance of it but - what if it doesn't make sense in the given application or the type has no default constructor? I think it's much better to have a single throw-on-no-target behavior than an entire set of rules that governs what :cch:`operator()` does when there is no target.
+At first this sounds like a reasonable behavior alternative, but what when :cch:`R$$$param_tmpl` is not :cch:`void` (the result is potentially passed somewhere)? Theoretically if the type was *default-constructibe* :cch:`std::function` could return a new instance of it but - what if it doesn't make sense in the given application or the type has no default constructor? I think it's much better to have a single throw-on-no-target behavior than an entire set of rules that governs what :cch:`operator()` does when there is no target.
 
 The only other reasonable option would be to make it UB.
 

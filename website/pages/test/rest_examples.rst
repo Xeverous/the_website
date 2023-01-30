@@ -71,7 +71,7 @@ Interpreted text (text surrounded by single `````) is not intended for literal t
 Custom code highlight is implemented in ``rest_highlighter`` plugin. The interpreted text must either:
 
 - The code must be defined in ``data/inline_codes.cpp`` and its highlight in ``data/inline_codes.color``, matching line number. The code in interpreted text must be exact copy of a specific line. The code need not to be C++, the source file has just ``cpp`` extension for better editor support. Example: :cch:`std::string::npos`.
-- The code and color are written together in one interpreted text call, separated by ``$$$`` token. Example: :cch:`std::holds_alternative<typename T::value_type>(v)$$$namespace::func<keyword tparam::type>(var_local)`.
+- The code and color are written together in one interpreted text call, separated by ``$$$`` token. Example: :cch:`std::holds_alternative<typename T::value_type>(v)$$$namespace::func<keyword param_tmpl::type>(var_local)`.
 
 Inline markup - escaping
 ========================

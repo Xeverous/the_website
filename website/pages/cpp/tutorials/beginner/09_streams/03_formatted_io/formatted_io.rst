@@ -101,7 +101,7 @@ These manipulators apply only to integer types.
     in decimal     (base 10): 42
     in hexadecimal (base 16): 2a
 
-Strangely, there is no :cch:`std::bin$$$namespace::func` that would print numbers in binary. As a workaround, :cch:`<< std::bitset<N>(val)$$$2oo namespace::type<tparam>(var_local)` can be used.
+Strangely, there is no :cch:`std::bin$$$namespace::func` that would print numbers in binary. As a workaround, :cch:`<< std::bitset<N>(val)$$$2oo namespace::type<param_tmpl>(var_local)` can be used.
 
 Prefix manipulators also affect input but only `monetary input <https://en.cppreference.com/w/cpp/io/manip/get_money>`_ which I guess no one uses.
 
