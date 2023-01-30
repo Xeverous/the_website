@@ -1,0 +1,54 @@
+#include <iostream>
+#include <utility>
+
+#define EMPTY
+#define PRINT(x)  \
+	std::cout << #x " = " << (x) << "\n"
+
+#ifndef EMPTY
+#define BUG
+#error Misconfigured build!
+#endif
+
+// some comment
+template <typename T>
+struct test
+{
+	/**
+	 * @brief reset an object of type T
+	 * @param value the object
+	 * @return void
+	 */
+	void reset(T& value) const noexcept(noexcept(T{}))
+	{
+		// TODO make a version with T()
+		value = EMPTY T{};
+	}
+
+	template <typename U = T>
+	decltype(auto) func(U&& object) const noexcept(noexcept(std::declval<U&&>().func()))
+	{
+		return std::forward<U>(object).func();
+	}
+};
+
+[[nodiscard]] long long factorial(long long n)
+{
+	if (n < 2)
+		return 1;
+	else
+		return n * factorial(n - 1);
+}
+#define X(g, ...)
+auto global = /* not so multiline comment */ 123.456l;
+# /// shouldn't be a problem
+namespace anything { enum class something { one, two, three }; }
+
+auto main() -> int
+{
+	test<decltype(global)>{}.reset(global);
+	PRINT(global);
+	auto str_lit = R"test(raw\nstring\nliteral)test";
+	const auto& fmt = L"pointr = %p, length = %zu, string = %s";
+	std::cout << "sizeof(fmt) = " << sizeof(fmt) << "\n";
+}

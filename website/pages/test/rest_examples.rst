@@ -348,12 +348,24 @@ Custom code highlight
 
 Support through ``rest_highlighter`` plugin.
 
-- Optional option: ``lang``, defaults to CSS class used for C++.
-- Paths to code and color spec are mandatory. If paths begin with ``/``, they are relative to the ``conf.py`` file, otherwise they are relative to the file containing the directive.
+Optional option: ``lang``, defaults to CSS class used for C++.
+
+Mirror highlight
+~~~~~~~~~~~~~~~~
+
+Paths to code and color spec are mandatory. If paths begin with ``/``, they are relative to the ``conf.py`` file, otherwise they are relative to the file containing the directive.
 
 .. cch::
     :code_path: test_code.cpp
     :color_path: test_code.color
+
+Clangd-based highlight
+~~~~~~~~~~~~~~~~~~~~~~
+
+Uses clangd and basic parsing to colorize the code. No color file required, but the code must be compilable.
+
+.. cch::
+  :code_path: test_code_clangd.cpp
 
 Custom ANSI highlight
 ---------------------
