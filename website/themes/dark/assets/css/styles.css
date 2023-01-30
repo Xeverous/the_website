@@ -432,14 +432,14 @@ nav.breadcrumb {
 .code.custom-cpp .com-multi-dox  { color: #4b71e3 } /* Doxygen multi-line comment */
 .code.custom-cpp .com-tag-dox    { color: #c402c4 } /* Doxygen tag in comment */
 
-.code.custom-cpp .pp-direct   { color: #ec691e } /* preprocessor directives (includes, pragmas, etc.) */
-.code.custom-cpp .pp-header   { color: #319bbe } /* preprocessor header names */
-.code.custom-cpp .pp-other    { color: #ffffff } /* e.g. text after #pragma and #error */
-.code.custom-cpp .macro-def   { color: #f7c527 } /* macro definitions */
-.code.custom-cpp .macro-ref   { color: #ffffff } /* macro references */
-.code.custom-cpp .macro-param { color: #408000 } /* function-like macro parameters */
-.code.custom-cpp .macro-body  { color: #aaaaaa } /* macro body */
-.code.custom-cpp .asm-direct  { color: #ec691e } /* directives in assembly */
+.code.custom-cpp .pp-direct      { color: #ec691e } /* preprocessor directives (includes, pragmas, etc.) */
+.code.custom-cpp .pp-header      { color: #319bbe } /* preprocessor header names */
+.code.custom-cpp .pp-other       { color: #ffffff } /* e.g. text after #pragma and #error */
+.code.custom-cpp .macro-def      { color: #f7c527 } /* macro definitions */
+.code.custom-cpp .macro-ref      { color: #ffffff } /* macro references */
+.code.custom-cpp .pp-macro-param { color: #408000 } /* function-like macro parameters */
+.code.custom-cpp .macro-body     { color: #aaaaaa } /* macro body */
+.code.custom-cpp .asm-direct     { color: #ec691e } /* directives in assembly */
 
 /*
  * styles for ANSI-escaped text

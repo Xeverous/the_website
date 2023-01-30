@@ -1,10 +1,10 @@
-7pp_direct macro_def(macro_param) \
+7pp_direct macro_def(pp_macro_param) \
 	keyword 1macro_body \
-		3macro_body`macro_param2macro_body \
-		3macro_body`macro_param2macro_body \
-		3macro_body`macro_param2macro_body \
+		3macro_body`pp_macro_param2macro_body \
+		3macro_body`pp_macro_param2macro_body \
+		3macro_body`pp_macro_param2macro_body \
 	1macro_body keyword 1macro_body`keyword1macro_body
 
 0com_single
 keyword (var_local)
-	macro_ref(macro_param); 0com_single
+	macro_ref(pp_macro_param); 0com_single

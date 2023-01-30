@@ -1,2 +1,2 @@
-7pp_direct macro_def(macro_param, macro_param) macro_body(((keyword)(macro_param), macro_param))
-7pp_direct macro_def(macro_param, macro_param) macro_body((macro_param) && macro_param)
+7pp_direct macro_def(pp_macro_param, pp_macro_param) macro_body(((keyword)(pp_macro_param), pp_macro_param))
+7pp_direct macro_def(pp_macro_param, pp_macro_param) macro_body((pp_macro_param) && pp_macro_param)
