@@ -37,7 +37,7 @@ keyword func()
 	type var_local;
 	type var_local;
 	type var_local;
-	func(outparam);
-	func(outparam);
-	func(outparam);
+	func(param_out);
+	func(param_out);
+	func(param_out);
 }
