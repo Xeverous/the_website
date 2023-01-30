@@ -1,4 +1,4 @@
-7pp_direct macro_def(pp_macro_param) 3num * pp_macro_param + num
+7pp_direct pp_macro(pp_macro_param) 3num * pp_macro_param + num
 
 keyword var_local = macro_ref(num + num);
 

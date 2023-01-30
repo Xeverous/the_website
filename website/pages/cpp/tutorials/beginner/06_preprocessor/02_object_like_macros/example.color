@@ -1,6 +1,6 @@
 0com_single
-7pp_direct macro_def(pp_macro_param, pp_macro_param, pp_macro_param) (num * pp_macro_param + num * pp_macro_param + pp_macro_param)
-7pp_direct macro_def macro_ref(num, num, num)
+7pp_direct pp_macro(pp_macro_param, pp_macro_param, pp_macro_param) (num * pp_macro_param + num * pp_macro_param + pp_macro_param)
+7pp_direct pp_macro macro_ref(num, num, num)
 
 0com_single
 8pp_direct 0pp_header

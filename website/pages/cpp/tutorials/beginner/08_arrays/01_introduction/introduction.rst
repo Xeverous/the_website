@@ -94,7 +94,7 @@ Array size must be a constant expression, that is, an expression that can be eva
 
 Generally, this is a good mental shortcut because :cch:`constexpr` values can be used as array size, but many other language constructs can create constant expressions too. These constructs are mostly special rules for various use cases (especially :cch:`const`) that were present before C++11 introduced :cch:`constexpr`. `The list is long <https://en.cppreference.com/w/cpp/language/constant_expression>`_ but without these rules, one would need to use preprocessor or even worse tricks to manipulate constants - and you should know that C++ (unlike C) really hates macros. :cch:`const` in C is absent of these rules and const-qualified objects there can not be used for things such as an array size, even if the value is computable at compile time. This caused 3 conventions to emerge:
 
-- C: :cch:`#define ARRAY_SIZE 10$$$7pp_direct macro_def num` - macros are the only practical solution
+- C: :cch:`#define ARRAY_SIZE 10$$$7pp_direct pp_macro num` - macros are the only practical solution
 - C++ < 11: :cch:`const int array_size = 10;$$$keyword keyword var_local = num;` - rely on special rules intended for constant expressions
 - C++ >= 11: :cch:`constexpr int array_size = 10;$$$keyword keyword var_local = num;` - use dedicated feature for constant expressions
 

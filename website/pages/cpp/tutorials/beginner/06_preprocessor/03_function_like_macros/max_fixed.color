@@ -1,2 +1,2 @@
 0com_single
-7pp_direct macro_def(pp_macro_param, pp_macro_param) 2macro_body`pp_macro_param5macro_body`pp_macro_param5macro_body`pp_macro_param5macro_body`pp_macro_param2macro_body
+7pp_direct pp_macro(pp_macro_param, pp_macro_param) 2macro_body`pp_macro_param5macro_body`pp_macro_param5macro_body`pp_macro_param5macro_body`pp_macro_param2macro_body

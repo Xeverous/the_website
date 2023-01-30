@@ -1,12 +1,12 @@
 8pp_direct 0pp_header
 
-7pp_direct macro_def(pp_macro_param) #pp_macro_param
-7pp_direct macro_def(pp_macro_param) macro_ref(pp_macro_param)
+7pp_direct pp_macro(pp_macro_param) #pp_macro_param
+7pp_direct pp_macro(pp_macro_param) macro_ref(pp_macro_param)
 
-7pp_direct macro_def(pp_macro_param) 12macro_body 1pp_direct`pp_macro_param str 2macro_body pp_macro_param 2macro_body str
-7pp_direct macro_def(pp_macro_param) 12macro_body macro_ref(pp_macro_param) str 2macro_body pp_macro_param 2macro_body str
+7pp_direct pp_macro(pp_macro_param) 12macro_body 1pp_direct`pp_macro_param str 2macro_body pp_macro_param 2macro_body str
+7pp_direct pp_macro(pp_macro_param) 12macro_body macro_ref(pp_macro_param) str 2macro_body pp_macro_param 2macro_body str
 
-7pp_direct macro_def 5macro_body
+7pp_direct pp_macro 5macro_body
 
 keyword func()
 {

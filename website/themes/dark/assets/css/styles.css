@@ -435,7 +435,7 @@ nav.breadcrumb {
 .code.custom-cpp .pp-direct      { color: #ec691e } /* preprocessor directives (includes, pragmas, etc.) */
 .code.custom-cpp .pp-header      { color: #319bbe } /* preprocessor header names */
 .code.custom-cpp .pp-other       { color: #ffffff } /* e.g. text after #pragma and #error */
-.code.custom-cpp .macro-def      { color: #f7c527 } /* macro definitions */
+.code.custom-cpp .pp-macro       { color: #f7c527 } /* macro definitions in preprocessor code */
 .code.custom-cpp .macro-ref      { color: #ffffff } /* macro references */
 .code.custom-cpp .pp-macro-param { color: #408000 } /* function-like macro parameters */
 .code.custom-cpp .macro-body     { color: #aaaaaa } /* macro body */
