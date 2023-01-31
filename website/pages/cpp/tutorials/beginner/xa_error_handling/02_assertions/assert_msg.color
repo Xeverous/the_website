@@ -1,2 +1,2 @@
-7pp_direct pp_macro(pp_macro_param, pp_macro_param) macro_body(((keyword)(pp_macro_param), pp_macro_param))
-7pp_direct pp_macro(pp_macro_param, pp_macro_param) macro_body((pp_macro_param) && pp_macro_param)
+7pp_direct pp_macro(pp_macro_param, pp_macro_param) pp_macro_body(((keyword)(pp_macro_param), pp_macro_param))
+7pp_direct pp_macro(pp_macro_param, pp_macro_param) pp_macro_body((pp_macro_param) && pp_macro_param)
