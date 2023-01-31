@@ -427,7 +427,7 @@ nav.breadcrumb {
 
 .code.custom-cpp .com-single     { color: #af47ff } /* single-line comment */
 .code.custom-cpp .com-multi      { color: #be68ff } /* multi-line comment */
-.code.custom-cpp .com-tag        { color: #c402c4 } /* tags in comments, e.g. @todo */
+.code.custom-cpp .com-tag-todo   { color: #c402c4 } /* @TODO and @FIXME tags in comments */
 .code.custom-cpp .com-single-dox,                   /* Doxygen single-line comment */
 .code.custom-cpp .com-multi-dox  { color: #4b71e3 } /* Doxygen multi-line comment */
 .code.custom-cpp .com-tag-dox    { color: #c402c4 } /* Doxygen tag in comment */
