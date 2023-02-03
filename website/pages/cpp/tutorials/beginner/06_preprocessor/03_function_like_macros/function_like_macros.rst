@@ -162,7 +162,7 @@ Problematic macros
 
 One particular header is known for the trouble it was causing in the past - :cch:`<windows.h>$$$0pp_header`. It was defining a macro just like the maximum one in this lesson, except it was named ``max``, not ``MAX``. It caused many accidental compilation errors because ``max`` is a popular name for functions and objects. :cch:`std::max(a, b)$$$namespace::func(var_local, var_local)` had to be written as :cch:`(std::max)(a, b)$$$(namespace::func)(var_local, var_local)` to avoid the macro call (the code as C++ still works but extra parentheses around the function name prevent preprocessor from considering it a macro call). This is a great example why macros and only macros should be written as UPPERCASE - otherwise there is a risk corrupting the code through accidental text replacements.
 
-The problem is long gone since Microsoft made changes to :cch:`<windows.h>$$$0pp_header`. If the header is included while :cch:`WIN32_LEAN_AND_MEAN$$$macro_ref` is defined, it avoids including a lot of (mostly older) stuff, many lowercase and CamelCase macros in particular. Pretty much every new project that is compiled for windows will define this identifier to prevent nasty macros from destroying their code.
+The problem is long gone since Microsoft made changes to :cch:`<windows.h>$$$0pp_header`. If the header is included while :cch:`WIN32_LEAN_AND_MEAN$$$macro` is defined, it avoids including a lot of (mostly older) stuff, many lowercase and CamelCase macros in particular. Pretty much every new project that is compiled for windows will define this identifier to prevent nasty macros from destroying their code.
 
 - https://devblogs.microsoft.com/oldnewthing/20091130-00/?p=15863
 - https://stackoverflow.com/questions/11040133/what-does-defining-win32-lean-and-mean-exclude-exactly
@@ -182,7 +182,7 @@ There are few more preprocessor features, all are pretty simple in theory but pr
 Variadic macros
 ===============
 
-If a function-like macro is defined with ``...``, it's a *variadic macro*. ``...`` accepts any 1+ number of arguments (changed to 0+ in C++20) and can output them with :cch:`__VA_ARGS__` as a comma-separated list of tokens. Since C++20 there is also :cch:`__VA_OPT__(content)$$$macro_ref(spec)` which expands *content* only if ``...`` is non-empty.
+If a function-like macro is defined with ``...``, it's a *variadic macro*. ``...`` accepts any 1+ number of arguments (changed to 0+ in C++20) and can output them with :cch:`__VA_ARGS__` as a comma-separated list of tokens. Since C++20 there is also :cch:`__VA_OPT__(content)$$$macro(spec)` which expands *content* only if ``...`` is non-empty.
 
 X macros
 ========

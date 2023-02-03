@@ -3,7 +3,7 @@
 
 keyword func(keyword param, keyword param)
 {
-	macro_ref(param != num); 0com_single
+	macro(param != num); 0com_single
 	keyword param / param;
 }
 

@@ -7,4 +7,4 @@
 
 0com_single
 keyword (var_local)
-	macro_ref(pp_macro_param); 0com_single
+	macro(pp_macro_param); 0com_single

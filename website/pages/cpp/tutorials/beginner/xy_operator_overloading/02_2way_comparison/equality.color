@@ -64,15 +64,15 @@ keyword keyword2func(type param, type param) { keyword !(param 1oo param); }
 
 keyword func()
 {
-	macro_ref(type(num, num) 2oo type(num, num));
-	macro_ref(type(num, num) 2oo type(-num, num));
-	macro_ref(type(num, num) 2oo type(num, -num));
-	macro_ref(type(num, num) 2oo type(-num, -num));
+	macro(type(num, num) 2oo type(num, num));
+	macro(type(num, num) 2oo type(-num, num));
+	macro(type(num, num) 2oo type(num, -num));
+	macro(type(num, num) 2oo type(-num, -num));
 
-	macro_ref(type(num, num) 2oo type(num, num));
+	macro(type(num, num) 2oo type(num, num));
 
-	macro_ref(type(num, num) 1oo type(num, num));
-	macro_ref(type(num, num) 1oo type(-num, num));
-	macro_ref(type(num, num) 1oo type(num, -num));
-	macro_ref(type(num, num) 1oo type(-num, -num));
+	macro(type(num, num) 1oo type(num, num));
+	macro(type(num, num) 1oo type(-num, num));
+	macro(type(num, num) 1oo type(num, -num));
+	macro(type(num, num) 1oo type(-num, -num));
 }

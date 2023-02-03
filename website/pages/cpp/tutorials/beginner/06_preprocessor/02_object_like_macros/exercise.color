@@ -2,5 +2,5 @@
 
 keyword func()
 {
-	namespace::var_global 2oo str 2oo macro_ref / num % num;
+	namespace::var_global 2oo str 2oo macro / num % num;
 }

@@ -1,16 +1,16 @@
-macro_ref
-macro_ref
-macro_ref
-macro_ref
+macro
+macro
+macro
+macro
 ext
-macro_ref
-macro_ref
+macro
+macro
 keyword
-macro_ref
+macro
 ext
 ext
-macro_ref
-macro_ref
+macro
+macro
 ext
 0pp_direct
 0pp_direct
@@ -29,7 +29,7 @@ ext
 0pp_direct
 0pp_direct
 0pp_direct
-macro_ref
+macro
 func
 func()
 func
@@ -42,9 +42,9 @@ func()
 func
 func
 func
-macro_ref
-macro_ref
-macro_ref
+macro
+macro
+macro
 func
 func
 func
@@ -261,8 +261,8 @@ num
 >=
 param_tmpl
 type*
-macro_ref
-macro_ref
+macro
+macro
 param_tmpl
 param_tmpl&
 param_tmpl&&
@@ -277,7 +277,7 @@ var_local + var_local
 keyword(param_tmpl)
 param
 param
-macro_ref
+macro
 func()
 keyword keyword*
 keyword keyword* keyword

@@ -1,6 +1,6 @@
 0com_single
 7pp_direct 0pp_macro
-7pp_direct 0macro_ref
+7pp_direct 0macro
 
 keyword keyword type { enum, enum, enum };
 
@@ -8,7 +8,7 @@ keyword keyword type { enum, enum, enum };
 
 0com_single
 7pp_direct 0pp_macro
-7pp_direct 0macro_ref
+7pp_direct 0macro
 8pp_direct 0pp_header
 8pp_direct 0pp_header
 

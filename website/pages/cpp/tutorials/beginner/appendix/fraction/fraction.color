@@ -90,7 +90,7 @@ keyword:
 
 	type& keyword2func(type param)
 	{
-		macro_ref(param.func() != num);
+		macro(param.func() != num);
 		var_member *= param.func();
 		var_member *= param.func();
 
@@ -100,7 +100,7 @@ keyword:
 
 	type& keyword2func(type param)
 	{
-		macro_ref(param.func() != num);
+		macro(param.func() != num);
 		var_member = (func() * param.func()) % (param.func() * func());
 		var_member *= param.func();
 

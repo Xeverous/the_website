@@ -7,14 +7,14 @@ keyword func(keyword param, keyword param)
 	{
 		0com_single
 		0com_single
-		var_global = macro_ref;
+		var_global = macro;
 		keyword num;
 	}
 
 	keyword (var_local == namespace::type<keyword>::func() && param == -num)
 	{
 		0com_single
-		var_global = macro_ref;
+		var_global = macro;
 		keyword num;
 	}
 

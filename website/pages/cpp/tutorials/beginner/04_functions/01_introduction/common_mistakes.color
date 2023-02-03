@@ -8,7 +8,7 @@ keyword func()
 keyword func()
 {
 	0com_single
-	keyword macro_ref / num;
+	keyword macro / num;
 }
 
 keyword func()

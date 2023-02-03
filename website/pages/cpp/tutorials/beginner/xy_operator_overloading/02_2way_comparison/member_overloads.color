@@ -45,10 +45,10 @@ keyword func()
 	type var_local(num, num);
 
 	0com_single
-	macro_ref(var_local 2oo num);
-	macro_ref(var_local.keyword2func(num));
+	macro(var_local 2oo num);
+	macro(var_local.keyword2func(num));
 
 	0com_single
-	macro_ref(num 2problem var_local);          0com_single
-	macro_ref(2problem`problem==(var_local)); 0com_single
+	macro(num 2problem var_local);          0com_single
+	macro(2problem`problem==(var_local)); 0com_single
 }

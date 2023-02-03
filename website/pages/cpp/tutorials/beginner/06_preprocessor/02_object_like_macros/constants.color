@@ -1,7 +1,7 @@
 0com_single
 7pp_direct pp_macro num
-keyword var_local[macro_ref]; 0com_single
-keyword (keyword var_local = num; var_local < macro_ref; ++var_local)
+keyword var_local[macro]; 0com_single
+keyword (keyword var_local = num; var_local < macro; ++var_local)
 	0com_single
 
 0com_single

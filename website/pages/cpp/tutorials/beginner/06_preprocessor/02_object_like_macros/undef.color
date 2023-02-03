@@ -1,7 +1,7 @@
-7pp_direct macro_ref
-7pp_direct macro_ref num
+7pp_direct macro
+7pp_direct macro num
 6pp_direct
 
-6pp_direct macro_ref
-6pp_direct macro_ref
+6pp_direct macro
+6pp_direct macro
 6pp_direct

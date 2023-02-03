@@ -12,11 +12,11 @@ keyword func(keyword type) keyword
 		keyword num: keyword num;
 		keyword num: keyword num;
 		// ...
-		keyword num: keyword macro_ref;
-		keyword num: keyword macro_ref;
-		keyword num: keyword macro_ref;
+		keyword num: keyword macro;
+		keyword num: keyword macro;
+		keyword num: keyword macro;
 		// ...
-		keyword: keyword macro_ref; 0com_single
+		keyword: keyword macro; 0com_single
 	}
 }
 

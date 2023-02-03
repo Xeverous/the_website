@@ -72,15 +72,15 @@ Most notable ones:
   - C++17: :cch:`201703L$$$6num1suf`
   - C++20: :cch:`202002L$$$6num1suf`
 
-- :cch:`__STDC_HOSTED__$$$macro_ref` - :cch:`1` if the implementation runs on an OS, :cch:`0` if freestanding (the code is the operating system)
-- :cch:`__STDCPP_THREADS__$$$macro_ref` - if present and if has value :cch:`1` indicates that the implementation supports multiple threads of execution
+- :cch:`__STDC_HOSTED__$$$macro` - :cch:`1` if the implementation runs on an OS, :cch:`0` if freestanding (the code is the operating system)
+- :cch:`__STDCPP_THREADS__$$$macro` - if present and if has value :cch:`1` indicates that the implementation supports multiple threads of execution
 
 More listed on https://en.cppreference.com/w/cpp/preprocessor/replace
 
 .. admonition:: warning
   :class: warning
 
-  Up untill Visual Studio 2017 version 15.7 Preview 3, the Microsoft's compiler implementation was erroneously stuck at :cch:`__cplusplus` being :cch:`199711L$$$6num1suf`. Library implementers had to rely on :cch:`_MSC_VER$$$macro_ref` or other MSVC-specific macros to check what is supported. See `a post on Microsoft's blog <https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/>`_ for more information.
+  Up untill Visual Studio 2017 version 15.7 Preview 3, the Microsoft's compiler implementation was erroneously stuck at :cch:`__cplusplus` being :cch:`199711L$$$6num1suf`. Library implementers had to rely on :cch:`_MSC_VER$$$macro` or other MSVC-specific macros to check what is supported. See `a post on Microsoft's blog <https://devblogs.microsoft.com/cppblog/msvc-now-correctly-reports-__cplusplus/>`_ for more information.
 
 Feature-testing macros
 ======================
@@ -106,7 +106,7 @@ These are commonly used for testing, debugging (especially assertions) and loggi
 
 In the scope of every function body, there is a special function-local predefined variable named :cch:`__func__`, defined as a static character array holding the name of the function in implementation-defined format. It's not a preprocessor directive because the preprocessor does not understand C and C++ code - it sees everything as text and doesn't understand what a function is. For this reason :cch:`__func__` has been specified as magic function-local variable. This also means that directives like :cch:`#ifdef __func__$$$6pp_direct var_global` will not work.
 
-The value is implementation defined, but on all major implementations it's simply the name of the function. If you want a richer variant (enclosing scopes + arguments + cv-qualifiers etc.), :cch:`<boost/current_function.hpp>$$$0pp_header` offers :cch:`BOOST_PRETTY_FUNCTION$$$macro_ref` macro which tries to detect the compiler and use an alternative if the implementation supports it. GCC and Clang offer :cch:`__PRETTY_FUNCTION__$$$ext` (magic variable) and MSVC offers :cch:`__FUNCSIG__$$$macro_ref` (macro - no idea why/how).
+The value is implementation defined, but on all major implementations it's simply the name of the function. If you want a richer variant (enclosing scopes + arguments + cv-qualifiers etc.), :cch:`<boost/current_function.hpp>$$$0pp_header` offers :cch:`BOOST_PRETTY_FUNCTION$$$macro` macro which tries to detect the compiler and use an alternative if the implementation supports it. GCC and Clang offer :cch:`__PRETTY_FUNCTION__$$$ext` (magic variable) and MSVC offers :cch:`__FUNCSIG__$$$macro` (macro - no idea why/how).
 
 For extra information, see `SO: What's the difference between __PRETTY_FUNCTION__, __FUNCTION__, __func__? <https://stackoverflow.com/q/4384765/4818802>`_.
 
@@ -117,10 +117,10 @@ Compilers provide a lot of information about the implementation in their own mac
 
 For GCC and Clang, you can dump all of the predefined macros using a command like ``echo | g++ -x c++ -std=c++17 -dM -E - | sort`` (should work on Windows and many GNU/Linux distributions). See https://stackoverflow.com/q/2224334/4818802 for more info.
 
-:cch:`NDEBUG$$$macro_ref`
-=========================
+:cch:`NDEBUG$$$macro`
+=====================
 
-One particular macro that is very often used is :cch:`NDEBUG$$$macro_ref`. It's presence signifies a release build and based on it, a lot of other macros may be defined differently to enable/disable/alter certain functionality that should be present only in debug or release builds. This typically includes *assertions* (explained later) and logging.
+One particular macro that is very often used is :cch:`NDEBUG$$$macro`. It's presence signifies a release build and based on it, a lot of other macros may be defined differently to enable/disable/alter certain functionality that should be present only in debug or release builds. This typically includes *assertions* (explained later) and logging.
 
 The macro name is reversed ("not debug", present only in release builds) for historical reasons.
 

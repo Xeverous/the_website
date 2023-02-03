@@ -88,7 +88,7 @@ class RestHighlighter(RestExtension):
 VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;pref;suf;fmt;label;spec;"
 "var_local;var_member;var_global;param;param_out;param_tmpl;concept;problem;num;str;str_esc;chr;chr_esc;"
 "com_single;com_multi;com_tag_todo;com_single_dox;com_multi_dox;com_tag_dox;pp_direct;pp_header;pp_other;"
-"pp_macro;macro_ref;pp_macro_param;pp_macro_body;asm_direct")
+"macro;pp_macro;pp_macro_param;pp_macro_body;asm_direct")
 
 DATA_FILES_PATH = "data"
 KEYWORDS_PATH = DATA_FILES_PATH + "/keywords.txt"

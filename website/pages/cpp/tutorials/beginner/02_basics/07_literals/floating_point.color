@@ -8,5 +8,5 @@
 2fmt4num1fmt1num1suf   0com_single
 2fmt3num1fmt1num     0com_single
 
-macro_ref 0com_single
+macro 0com_single
     0com_single

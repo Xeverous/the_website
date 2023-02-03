@@ -2,4 +2,4 @@
 
 keyword var_local = num;
 keyword var_local = num;
-keyword var_local = macro_ref(var_local, var_local);
+keyword var_local = macro(var_local, var_local);
