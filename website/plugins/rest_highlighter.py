@@ -50,6 +50,9 @@ def enclose_in_html(text: str, html_tag: str, css_classes: Optional[str] = None)
     else:
         return f'<{html_tag}>{text}</{html_tag}>'
 
+def bytes_to_hex_string(bytes: bytearray) -> str:
+    return ', '.join('0x{:02x}'.format(x) for x in bytes)
+
 ##############################################################################
 # common code
 ##############################################################################
@@ -85,8 +88,8 @@ class RestHighlighter(RestExtension):
 # CCH implementation
 ##############################################################################
 
-VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;pref;suf;fmt;label;spec;"
-"var_local;var_member;var_global;param;param_out;param_tmpl;concept;problem;num;str;str_esc;chr;chr_esc;"
+VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;concept;problem;label;spec;"
+"var_local;var_member;var_global;param;param_out;param_tmpl;lit_pre;lit_suf;lit_num;lit_str;lit_chr;esc_seq;fmt_seq;"
 "com_single;com_multi;com_tag_todo;com_single_dox;com_multi_dox;com_tag_dox;pp_direct;pp_header;pp_other;"
 "macro;pp_macro;pp_macro_param;pp_macro_body;asm_direct")
 
@@ -139,8 +142,11 @@ def load_inline_codes() -> Dict[str, str]:
     # example: :directive:`'\\0'`   gives ["'", "\0", "\\", "0", "'"]
     # example: :directive:`'\\\0'`  gives ["'", "\0", "\\", "\0", "0", "'"]
     # example: :directive:`'\\\\0'` gives ["'", "\0", "\\", "\0", "\\" ,"0", "'"]
-    # right now there are only 3 affected strings so just adding their corrupted versions
+    # right now there are only few affected strings so just adding their corrupted versions
     # as a copies of the proper ones
+    result["\0\\0"] = result.get("\\0")
+    result["\0\\n"] = result.get("\\n")
+    result["\0\\r"] = result.get("\\r")
     result["'\0\\0'"] = result.get("'\\0'")
     result["'\0\\n'"] = result.get("'\\n'")
     result["'\0\\r'"] = result.get("'\\r'")
@@ -179,7 +185,12 @@ class CustomCodeHighlightInline:
 
         html_output = self.inline_codes.get(text)
         if html_output is None:
-            msg = inliner.reporter.error(f'code "{text}" was not found in inline codes', line=lineno)
+            error_str = f'code "{text}" was not found in inline codes'
+            # for unknown reason, some directives are reported with additional, unwanted null characters
+            # this helps identify such cases by printing the string as an array of hex
+            if "\0" in text:
+                error_str += f'; code = [{bytes_to_hex_string(bytearray(text, "utf-8"))}]'
+            msg = inliner.reporter.error(error_str, line=lineno)
             prb = inliner.problematic(rawtext, rawtext, msg)
             return [prb], [msg]
         return [nodes.raw('', html_output, format='html')], []

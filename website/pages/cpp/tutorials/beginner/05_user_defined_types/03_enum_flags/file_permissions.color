@@ -4,26 +4,26 @@ keyword keyword type
 {
 	enum = num,
 
-	enum = 1fmt`num,
-	enum = 1fmt`num,
-	enum = 1fmt`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
 	enum = enum | enum | enum,
 
-	enum = 1fmt`num,
-	enum = 1fmt`num,
-	enum = 1fmt`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
 	enum = enum | enum | enum,
 
-	enum = 1fmt`num,
-	enum = 1fmt`num,
-	enum = 1fmt`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
 	enum = enum | enum | enum,
 
 	enum = enum | enum | enum,
 
-	enum = 1fmt`num,
-	enum = 1fmt`num,
-	enum = 1fmt`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
+	enum = 1fmt_seq`num,
 
 	enum = enum | enum | enum | enum
 };

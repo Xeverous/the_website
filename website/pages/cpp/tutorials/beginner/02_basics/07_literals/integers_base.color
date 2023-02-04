@@ -1,5 +1,5 @@
 keyword var_local      = num;         0com_single
-keyword var_local        = 1fmt2num;        0com_single
-keyword var_local = 2fmt2num;       0com_single
-keyword var_local = 2fmt2num;       0com_single
-keyword var_local       = 2fmt8num; 0com_single
+keyword var_local        = 1fmt_seq2num;        0com_single
+keyword var_local = 2fmt_seq2num;       0com_single
+keyword var_local = 2fmt_seq2num;       0com_single
+keyword var_local       = 2fmt_seq8num; 0com_single

@@ -54,7 +54,7 @@ In some programming languages, such thing is actually possible but C++ places sp
 Printing values
 ###############
 
-Standard character output (:cch:`std::cout`) accepts many kinds of data. Expressions of different types are separated by ``<<``. :cch:`\n$$$0chr_esc` is a special control character that denotes new line (AKA line break or line feed character).
+Standard character output (:cch:`std::cout`) accepts many kinds of data. Expressions of different types are separated by ``<<``. :cch:`\\n` is a special control character that denotes new line (AKA line break or line feed character).
 
 .. cch::
     :code_path: printing.cpp

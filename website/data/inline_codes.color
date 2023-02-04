@@ -273,6 +273,9 @@ param_tmpl{spec}
 param_tmpl
 param_tmpl
 func
+0esc_seq
+0esc_seq
+0esc_seq
 var_local + var_local
 keyword(param_tmpl)
 param

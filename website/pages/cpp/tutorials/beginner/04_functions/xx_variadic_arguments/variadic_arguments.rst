@@ -46,7 +46,7 @@ The function from the inside has to use a set of magic macros which can be rough
     :code_path: va_macros.hpp
     :color_path: va_macros.color
 
-Again, for implementation reasons the macros have weird forms and expect the caller to know certain things about the parameters. This is why printf-family of functions requires to provide format strings like :cch:`%ld$$$0fmt` so that it knows how to extract actual data.
+Again, for implementation reasons the macros have weird forms and expect the caller to know certain things about the parameters. This is why printf-family of functions requires to provide format strings like :cch:`%ld$$$0fmt_seq` so that it knows how to extract actual data.
 
 Even a simple function which adds numbers (assuming all are of type :cch:`int`) is fairly complicated:
 

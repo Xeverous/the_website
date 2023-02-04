@@ -3,8 +3,8 @@
 
 keyword func()
 {
-	keyword var_local = 2fmt8num;
-	keyword var_local = 2fmt8num;
+	keyword var_local = 2fmt_seq8num;
+	keyword var_local = 2fmt_seq8num;
 
 	namespace::var_global 2oo str 2oo namespace::type<num>(var_local) 2oo str;
 	namespace::var_global 2oo str 2oo namespace::type<num>(var_local) 2oo str;

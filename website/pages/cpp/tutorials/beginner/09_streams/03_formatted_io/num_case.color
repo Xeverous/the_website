@@ -3,6 +3,6 @@
 keyword func()
 {
 	namespace::var_global 2oo namespace::func 2oo namespace::func;
-	namespace::var_global 2oo namespace::func   2oo 2fmt8num 2oo str 2oo 11num 2oo str;
-	namespace::var_global 2oo namespace::func 2oo 2fmt8num 2oo str 2oo 11num 2oo str; 0com_single
+	namespace::var_global 2oo namespace::func   2oo 2fmt_seq8num 2oo str 2oo 11num 2oo str;
+	namespace::var_global 2oo namespace::func 2oo 2fmt_seq8num 2oo str 2oo 11num 2oo str; 0com_single
 }

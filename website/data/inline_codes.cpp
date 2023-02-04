@@ -273,6 +273,9 @@ T{expression}
 U
 V
 WinMain
+\0
+\n
+\r
 a + b
 alignof(T)
 argc

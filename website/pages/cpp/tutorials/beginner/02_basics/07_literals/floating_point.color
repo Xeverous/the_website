@@ -2,11 +2,11 @@
 3num1suf  0com_single
 4num1suf 0com_single
 3num1suf  0com_single
-1num1fmt2num  0com_single
-7num1fmt3num 0com_single
-2num1fmt1num1suf       0com_single
-2fmt4num1fmt1num1suf   0com_single
-2fmt3num1fmt1num     0com_single
+1num1fmt_seq2num  0com_single
+7num1fmt_seq3num 0com_single
+2num1fmt_seq1num1suf       0com_single
+2fmt_seq4num1fmt_seq1num1suf   0com_single
+2fmt_seq3num1fmt_seq1num     0com_single
 
 macro 0com_single
     0com_single
