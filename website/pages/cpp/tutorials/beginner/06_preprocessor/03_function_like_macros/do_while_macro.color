@@ -1,4 +1,4 @@
-7pp_direct pp_macro(pp_macro_param) \
+1pp_hash`pp_directive pp_macro(pp_macro_param) \
 	keyword 1pp_macro_body \
 		3pp_macro_body`pp_macro_param2pp_macro_body \
 		3pp_macro_body`pp_macro_param2pp_macro_body \

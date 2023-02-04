@@ -1,5 +1,5 @@
 keyword var_local = num;
 keyword var_local = var_local * var_local;
 
-7pp_direct pp_macro() pp_macro_body
+1pp_hash`pp_directive pp_macro() pp_macro_body
 keyword var_local = macro()var_local; 0com_single

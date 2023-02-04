@@ -1,6 +1,6 @@
-8pp_direct 0pp_header
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 
 namespace::type<keyword, namespace::type> func(keyword param, keyword param)
 {

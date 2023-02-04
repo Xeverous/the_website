@@ -1,4 +1,4 @@
-8pp_direct 10pp_header 0com_single
+1pp_hash`pp_directive 10pp_header 0com_single
 
 keyword func() 0com_single
 { 0com_single

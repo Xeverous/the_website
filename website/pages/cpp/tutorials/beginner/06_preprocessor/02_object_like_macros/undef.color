@@ -1,7 +1,7 @@
-7pp_direct macro
-7pp_direct macro num
-6pp_direct
+1pp_hash`pp_directive macro
+1pp_hash`pp_directive macro num
+1pp_hash`pp_directive
 
-6pp_direct macro
-6pp_direct macro
-6pp_direct
+1pp_hash`pp_directive macro
+1pp_hash`pp_directive macro
+1pp_hash`pp_directive

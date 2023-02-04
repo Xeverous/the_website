@@ -39,7 +39,7 @@ Similarly to virtual functions in constructors and destructors, using :cch:`type
 
 In all cases, the resulting expression returns :cch:`const std::type_info&`. The type info object has infinite lifetime (*static storage duration* strictly technically) and because it's a reference, the actual referenced object can be derived from :cch:`std::type_info` if the implementation needs it.
 
-In all cases, you have to :cch:`#include <typeinfo>$$$8pp_header 0pp_direct` in order to use the keyword. Otherwise the program is *ill-formed*.
+In all cases, you have to :cch:`#include <typeinfo>` in order to use the keyword. Otherwise the program is *ill-formed*.
 
 The interface looks as follows:
 

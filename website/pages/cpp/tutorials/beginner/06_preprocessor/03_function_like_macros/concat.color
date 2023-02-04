@@ -1,4 +1,4 @@
-7pp_direct pp_macro(pp_macro_param, pp_macro_param) pp_macro_param 2pp_direct pp_macro_param 0com_single
-7pp_direct pp_macro(pp_macro_param, pp_macro_param) macro(pp_macro_param, pp_macro_param)
+1pp_hash`pp_directive pp_macro(pp_macro_param, pp_macro_param) pp_macro_param 2pp_hash pp_macro_param 0com_single
+1pp_hash`pp_directive pp_macro(pp_macro_param, pp_macro_param) macro(pp_macro_param, pp_macro_param)
 
 keyword var_local = macro(pp_macro_param, pp_macro_param); 0com_single

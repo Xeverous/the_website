@@ -1,13 +1,13 @@
-8pp_direct 0pp_header
-8pp_direct 0pp_header
-8pp_direct 0pp_header
-8pp_direct 0pp_header
-8pp_direct 0pp_header
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 
-6pp_direct macro
-6pp_direct macro 0com_single
+1pp_hash`pp_directive macro
+1pp_hash`pp_directive macro 0com_single
 
 keyword <keyword param_tmpl>
 keyword type : namespace::type {};

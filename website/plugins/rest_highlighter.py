@@ -90,7 +90,7 @@ class RestHighlighter(RestExtension):
 
 VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;concept;problem;label;spec;"
 "var_local;var_member;var_global;param;param_out;param_tmpl;lit_pre;lit_suf;lit_num;lit_str;lit_chr;esc_seq;fmt_seq;"
-"com_single;com_multi;com_tag_todo;com_single_dox;com_multi_dox;com_tag_dox;pp_direct;pp_header;pp_other;"
+"com_single;com_multi;com_tag_todo;com_single_dox;com_multi_dox;com_tag_dox;pp_hash;pp_directive;pp_header;pp_other;"
 "macro;pp_macro;pp_macro_param;pp_macro_body;asm_direct")
 
 DATA_FILES_PATH = "data"
@@ -131,6 +131,9 @@ def load_inline_codes() -> Dict[str, str]:
 
     for i, code in enumerate(headers, 1):
         inline_codes_add_entry(result, code, "0pp_header", i)
+
+    for i, code in enumerate(headers, 1):
+        inline_codes_add_entry(result, f"#include {code}", "1pp_hash`pp_directive 0pp_header", i)
 
     for i, (code, color) in enumerate(zip(code_lines, color_lines), 1):
         inline_codes_add_entry(result, code, color, i)

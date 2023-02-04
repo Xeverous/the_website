@@ -2,13 +2,13 @@
 keyword keyword type { enum, enum, enum };
 
 0com_single
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 
 namespace::type func(type param);
 
 0com_single
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
 0com_single
 0com_single
 
@@ -28,10 +28,10 @@ namespace::type func(type param)
 }
 
 0com_single
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
 
 keyword func()
 {

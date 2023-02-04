@@ -1,14 +1,14 @@
-6pp_direct macro
-	8pp_direct 0pp_header
-5pp_direct macro(macro)
-	8pp_direct 0pp_header
-5pp_direct
-	6pp_direct 0pp_other
-6pp_direct
+1pp_hash`pp_directive macro
+	1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive macro(macro)
+	1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive
+	1pp_hash`pp_directive 0pp_other
+1pp_hash`pp_directive
 
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
 
-6pp_direct macro
+1pp_hash`pp_directive macro
 namespace::type func(keyword keyword* param, keyword param)
 {
 	keyword (param == num)
@@ -19,16 +19,16 @@ namespace::type func(keyword keyword* param, keyword param)
 	func(macro, num, param, param, &var_local.func(), var_local, keyword, keyword);
 	keyword var_local;
 }
-6pp_direct
+1pp_hash`pp_directive
 
 namespace::type func()
 {
-6pp_direct macro
+1pp_hash`pp_directive macro
 	keyword var_local[macro];
 	keyword func(var_local, func(keyword, var_local, macro));
-5pp_direct
+1pp_hash`pp_directive
 	keyword var_local[macro];
 	keyword type var_local = func(str, var_local, macro);
 	keyword namespace::type(var_local, (var_local > num) ? var_local : num);
-6pp_direct
+1pp_hash`pp_directive
 }

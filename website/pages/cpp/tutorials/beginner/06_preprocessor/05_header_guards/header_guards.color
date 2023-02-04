@@ -1,23 +1,23 @@
 0com_single
-7pp_direct 0pp_macro
-7pp_direct 0macro
+1pp_hash`pp_directive 0pp_macro
+1pp_hash`pp_directive 0macro
 
 keyword keyword type { enum, enum, enum };
 
-0pp_direct
+1pp_hash0pp_directive
 
 0com_single
-7pp_direct 0pp_macro
-7pp_direct 0macro
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_macro
+1pp_hash`pp_directive 0macro
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 
 namespace::type func(type param);
 
-0pp_direct
+1pp_hash0pp_directive
 
 0com_single
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
 0com_single
 0com_single
 
@@ -37,10 +37,10 @@ namespace::type func(type param)
 }
 
 0com_single
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
 
 keyword func()
 {

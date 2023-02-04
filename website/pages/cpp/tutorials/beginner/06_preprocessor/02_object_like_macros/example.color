@@ -1,13 +1,13 @@
 0com_single
-7pp_direct pp_macro(pp_macro_param, pp_macro_param, pp_macro_param) (num * pp_macro_param + num * pp_macro_param + pp_macro_param)
-7pp_direct pp_macro macro(num, num, num)
+1pp_hash`pp_directive pp_macro(pp_macro_param, pp_macro_param, pp_macro_param) (num * pp_macro_param + num * pp_macro_param + pp_macro_param)
+1pp_hash`pp_directive pp_macro macro(num, num, num)
 
 0com_single
-8pp_direct 0pp_header
-3pp_direct macro >= macro(num, num, num)
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive macro >= macro(num, num, num)
 	0com_single
-5pp_direct macro >= macro(num, num, num)
+1pp_hash`pp_directive macro >= macro(num, num, num)
 	0com_single
-5pp_direct
-	6pp_direct 0pp_other
-6pp_direct
+1pp_hash`pp_directive
+	1pp_hash`pp_directive 0pp_other
+1pp_hash`pp_directive

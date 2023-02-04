@@ -1,4 +1,4 @@
 0com_single
-7pp_direct 0pp_other
+1pp_hash`pp_directive 0pp_other
 
 keyword keyword type { enum, enum, enum };

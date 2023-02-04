@@ -1,6 +1,6 @@
 0com_single
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 
 keyword func()
 {
@@ -12,8 +12,8 @@ keyword func()
 keyword func();
 
 0com_single
-8pp_direct 0pp_header
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
 0com_multi
 0com_multi
 0com_multi

@@ -1,12 +1,12 @@
-8pp_direct 0pp_header
+1pp_hash`pp_directive 0pp_header
 
-7pp_direct pp_macro(pp_macro_param) #pp_macro_param
-7pp_direct pp_macro(pp_macro_param) macro(pp_macro_param)
+1pp_hash`pp_directive pp_macro(pp_macro_param) 1pp_hash`pp_macro_param
+1pp_hash`pp_directive pp_macro(pp_macro_param) macro(pp_macro_param)
 
-7pp_direct pp_macro(pp_macro_param) 12pp_macro_body 1pp_direct`pp_macro_param str 2pp_macro_body pp_macro_param 2pp_macro_body str
-7pp_direct pp_macro(pp_macro_param) 12pp_macro_body macro(pp_macro_param) str 2pp_macro_body pp_macro_param 2pp_macro_body str
+1pp_hash`pp_directive pp_macro(pp_macro_param) 12pp_macro_body 1pp_hash`pp_macro_param str 2pp_macro_body pp_macro_param 2pp_macro_body str
+1pp_hash`pp_directive pp_macro(pp_macro_param) 12pp_macro_body macro(pp_macro_param) str 2pp_macro_body pp_macro_param 2pp_macro_body str
 
-7pp_direct pp_macro 5pp_macro_body
+1pp_hash`pp_directive pp_macro 5pp_macro_body
 
 keyword func()
 {

@@ -12,23 +12,23 @@ ext
 macro
 macro
 ext
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
-0pp_direct
+0pp_hash
+0pp_hash
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
+1pp_hash0pp_directive
 macro
 func
 func()
@@ -214,9 +214,9 @@ namespace::type
 !var_local
 str
 str
-7pp_direct 0pp_other
-7pp_direct 0pp_other
-7pp_direct 0pp_other
+1pp_hash`pp_directive 0pp_other
+1pp_hash`pp_directive 0pp_other
+1pp_hash`pp_directive 0pp_other
 &
 &&
 &var_local

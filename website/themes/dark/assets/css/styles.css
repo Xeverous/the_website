@@ -395,13 +395,25 @@ nav.breadcrumb {
 	}
 }
 
-/* custom vibrant ink theme - mostly for C++ */
+/*
+ * custom vibrant ink theme - mostly for C++
+ *
+ * unless specified, each is for both clangd and mirror coloring
+ *
+ * "type" was and still is used within mirror files
+ * other "type-*" are for clangd which reports more detailed information about types than expected
+ *
+ * "problem" and "spec" are strictly for mirror to highlight special parts of code
+ */
 
 .code.custom-cpp              { color: #ffffff } /* default color */
 .code.custom-cpp .spec        { color: #808080; font-style: italic; } /* specification */
 .code.custom-cpp .keyword     { color: #ec691e } /* keywords */
 .code.custom-cpp .namespace,                     /* namespace names */
-.code.custom-cpp .type        { color: #9cf828 } /* classes, structs, unions, enum types, type aliases, etc. */
+.code.custom-cpp .type-class,                    /* clangd: classes and their aliases */
+.code.custom-cpp .type-interface,                /* clangd: interfaces and their aliases */
+.code.custom-cpp .type-enum,                     /* clangd: enums and their aliases */
+.code.custom-cpp .type        { color: #9cf828 } /* type aliases and any form of user-defined type */
 .code.custom-cpp .enum        { color: #408000 } /* enum values */
 .code.custom-cpp .ext         { color: #ffffff } /* extensions, e.g. __builtin_* stuff */
 .code.custom-cpp .oo,                            /* overloaded operators */
@@ -431,7 +443,8 @@ nav.breadcrumb {
 .code.custom-cpp .com-multi-dox  { color: #4b71e3 } /* Doxygen multi-line comments */
 .code.custom-cpp .com-tag-dox    { color: #c402c4 } /* Doxygen tag in comments */
 
-.code.custom-cpp .pp-direct      { color: #ec691e } /* preprocessor directives (includes, pragmas, etc.) */
+.code.custom-cpp .pp-hash,                          /* # and ## anywhere within preprocessor code */
+.code.custom-cpp .pp-directive   { color: #ec691e } /* preprocessor directives (includes, pragmas, etc.) */
 .code.custom-cpp .pp-header      { color: #319bbe } /* preprocessor header names */
 .code.custom-cpp .pp-other       { color: #ffffff } /* e.g. text after #pragma and #error */
 .code.custom-cpp .pp-macro       { color: #f7c527 } /* macro definitions in preprocessor code */

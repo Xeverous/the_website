@@ -1,4 +1,4 @@
-7pp_direct pp_macro(pp_macro_param, pp_macro_param) pp_macro_param < pp_macro_param ? pp_macro_param : pp_macro_param
+1pp_hash`pp_directive pp_macro(pp_macro_param, pp_macro_param) pp_macro_param < pp_macro_param ? pp_macro_param : pp_macro_param
 
 keyword var_local = num;
 keyword var_local = num;

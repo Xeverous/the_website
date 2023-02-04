@@ -1,6 +1,6 @@
-8pp_direct 0pp_header
-8pp_direct 0pp_header
-8pp_direct 10pp_header 0com_single
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 0pp_header
+1pp_hash`pp_directive 10pp_header 0com_single
 
 keyword keyword type { enum, enum };
 
