@@ -5,8 +5,8 @@
 
 Let's recall the example multi-file program from the previous lesson. This time we will introduce multiple problems into the project in order to observe build errors and explain certain aspects of the C/C++ build process.
 
-.. admonition:: warning
-  :class: warning
+.. admonition:: note
+  :class: note
 
   Multiple examples in this lesson intentionally violate ODR (One Definition Rule). Some of such violations are technically *undefined behavior* or *ill-formed no diagnostic required* so a conforming implementation may not detect all such problems or produce very different errors.
 
@@ -37,7 +37,7 @@ A symbol is a single entity for the linker, usually some intermediate code attac
 
     What is name mangling?
 
-Name mangling is transformation of ordinary entity names into ones that can be understood and differentiated by the linker. Generally, linkers work on lower level than the programming language and since they don't understand various high-level features that can result in same or complex names, they need a mechanism to differentiate them. For more information, see `Wikipedia article about name mangling <https://en.wikipedia.org/wiki/Name_mangling>`_.
+Name mangling is transformation of ordinary entity names into ones that can be understood and differentiated by the linker. Generally, linkers work on lower level than the programming language and since they don't understand various high-level features that can result in same or complex names, they need a mechanism to differentiate them. Simply put, name mangling is the process of encoding language-specific entity names into a form that is simple enough to avoid having to understand given programming language syntax and semantics. For more information and examples, see `Wikipedia article about name mangling <https://en.wikipedia.org/wiki/Name_mangling>`_.
 
 Undefined reference
 ###################
@@ -59,7 +59,7 @@ The error appears because some entity (a function in this case) was ODR-used (us
 .. admonition:: note
   :class: note
 
-  Compilers and linkers typically automatically link C++ standard library and require a specific option to disable it. For any other library, the situation is reverse (an option required to link it).
+  Compilers and linkers typically automatically link C++ standard library and require a specific option to disable it. For any other library, the situation is reverse (opt-in instead of opt-out).
 
 Multiple reference
 ##################
@@ -146,7 +146,7 @@ Since header guards are a such often used mechanism, many compilers implemented 
 
 The usage is much simpler - less code, no unique identifier required and no :cch:`#endif` at the end of the file. The only disadvantage is that pragmas are not strictly standard. On the other hand, personally I had never any problems with :cch:`#pragma once` while I have observed many people (including myself) get into errors after broken traditional header guards (usually due to missing :cch:`#endif` or non-unique identifier).
 
-There were some attempts to standarize :cch:`#pragma once` as it's probably the most common preprocessor extension but ultimately they failed. Reasons were many but mostly because each implementation uses different way of veryfying that a file is unique and no universal solution could be agreed upon. Standarizing it as "implementation-defined solution" makes very little sense because all pragmas already work this way. Even though the feature remains an extension, many projects use this type of guard for it's simplicity and very widespread support.
+There were some attempts to standarize :cch:`#pragma once` as it's probably the most common preprocessor extension but ultimately they failed. Reasons were many but mostly because each implementation uses different way of verifying that a file is unique and no universal solution could be agreed upon. Standarizing it as "implementation-defined solution" makes very little sense because pragmas are already under this term. Even though the feature remains an extension, many projects use this type of guard for it's simplicity and very widespread support.
 
 Recommendation
 ##############

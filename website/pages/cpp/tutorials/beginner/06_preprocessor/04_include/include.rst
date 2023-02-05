@@ -7,7 +7,7 @@ So far all presented programs were written in a single file. Most examples will 
 
 So how is it done exactly?
 
-Surprisingly, both C and C++ specifications do not define how code can/should/must be split and/or how it cooperates between different files. The only real thing that governs compilation process is **ODR** (one definition rule). As long as ODR is satisfied, any form of separation of code into different files is valid.
+Surprisingly, both C and C++ specifications do not define how code can/should/must be split and/or how it cooperates between different files. The only real thing that governs compilation process is **ODR** (One Definition Rule). As long as ODR is satisfied, any form of separation of code into different files is valid.
 
 History
 #######
@@ -20,13 +20,17 @@ Such situation could not last long. It was simply too error-prone. Later functio
 
 To simplify the work and avoid code duplication, people started writing files which contained just function declarations and used the preprocessor :cch:`#include` directive to paste their contents into other files (intended for compilation) that needed these declarations. That's how **header files** were born.
 
+*Whole paragraph:* citation needed.
+
 The C/C++ build process
 #######################
+
+You already know that you need to include certain files in order to use certain parts of the C++ standard library. The same thing applies for your code.
 
 There are 2 types of files for C and C++ code:
 
 - header files, which main purpose is to provide necessary information for other files (source files or other headers)
-- source files, which main purpose is to implement various compilable entities (mostly functions) that have been declared elsewhere
+- source files, which main purpose is to implement various compilable entities (mostly functions) that have been declared in header files
 
 The build process instructs the compiler only to compile source files. Each source file :cch:`#include`\ s headers to satisfy ODR (basically provide necessary information) and implements entities which are transformed to machine code.
 
@@ -38,10 +42,10 @@ In other words, headers are files for code shared between source files.
 
 No. This is an incorrect mental shortcut.
 
-- Some things should be defined in headers. The best example are *user-defined types*. Almost all code which uses new types defined in code needs to see their definition, otherwise the compiler will not be able to generate machine code to handle them. Types themselves do not form compilable code, but their use in functions does.
+- Some things should be defined in headers. The best example are user-defined types. Almost all code which uses new types defined in code needs to see their definition, otherwise the compiler will not be able to generate machine code to handle them. Types themselves do not form compilable code, but their use in functions does.
 - Some things can be declared in sources (or not declared at all), mostly because they are used only within a single file.
 
-Instead, I propose to think of headers and sources in more generic terms such as specification and implementation. The mechanism is quite flexible - **C++ does not impose any strict rules what needs to be in which file. The language doesn't even define what a header or a source file is** - this is just a very strong convention that was formed through practice. All that really matters is that when code is compiled, ODR is satisfied.
+Instead, I propose to think of headers and sources in more generic terms such as specification and implementation. The mechanism is quite flexible - **C++ does not impose any strict rules what needs to be in which file. The language doesn't even define what a header or a source file is** - this is just a very strong convention that was formed through practice to make the best use of the preprocessor. **All that really matters is that when code is compiled, ODR is satisfied.**
 
     So which entities are put where? Is there any convention for it?
 
@@ -75,12 +79,22 @@ In C++:
 .. admonition:: note
     :class: note
 
-    Some C++ headers have ``h`` extension, making them have the same name as in C. These only provide a subset of what is available in both C and C++ in addition to having all names placed in global scope (not in :cch:`namespace std$$$keyword namespace`) - all for mutual compatibility (some C and C++ projects expose headers that are compatible for both languages). In C++ such headers typically have their respective C++-exclusive header where the file name is without extension and has "c" prepended, for example: ``<cstdio>`` vs ``<stdio.h>``, ``<cstdlib>`` vs ``<stdlib.h>`` (`full list on cppreference <https://en.cppreference.com/w/cpp/header>`_). Use C++-exclusive headers unless you intend to write "polyglot" code that is compatible in both languages. The for-compatibility-only headers pollute global scope and may not contain everything. The topic is further discussed in `P2340 <https://wg21.link/p2340>`_.
+    Some standard library headers exist in 2 forms: one with ``h`` extension and one with ``c`` prepended - e.g. ``<stdio.h>`` vs ``<cstdio>``, ``<stdlib.h>`` vs ``<cstdlib>`` (`full list on cppreference <https://en.cppreference.com/w/cpp/header>`_). The former are for compatibility only and additionally have everything placed in global scope (not in :cch:`namespace std$$$keyword namespace`). The latter are a "C++-ified" version of the headers that were already present in C. Newer C++ additions happen only in the latter.
+
+    The status of these headers is discussed in `P2340 <https://wg21.link/P2340>`_.
+
+The main purpose of ``.h`` standard library headers in C++ is the ability to import C code into C++ projects with minimal edits. When writing new projects that are not starting from C code, you should use C++-exclusive headers (the ones without ``.h``). They are cleaner (entities are inside standard namespace) and only these are being updated.
+
+    How about using ``.h`` headers to write polyglot code that compiles in both languages?
+
+This practice has much better alternatives. The main problem with polyglot code is that it is neither full C nor C++. Apart from having reduced set of features, there are syntax constructs that have different meaning in both languages (most notably character literals: they have type :cch:`int` in C but `char` in C++).
+
+If one intends to write a project that is compatible for both C and C++, the predominant approach is to write it in C and only make headers polyglot. This uses the :cch:`extern "C"` feature in C++ that was designed to import code compiled in other languages.
 
 Include directive
 #################
 
-The directive behaves as if the contents of provided file were copy-pasted in place of the directive. It's not strictly working as such (compiler vendors can implement preprocessor to be entirely in-memory, without any file operations) but it's a very good mental shortcut of how it works because it's specified to work as if that happened.
+The directive behaves as if the contents of specified file were copy-pasted in place of the directive. It's not strictly working as such (compilers can implement preprocessor to be entirely in-memory, without any file operations) but it's a very good mental shortcut of how it works because it's specified to work as if that happened.
 
 The main purpose of the directive is to avoid manual work of copying and pasting code that provides required information. Instead, a header file is written (such as :cch:`<iostream>`) and you can have as many source files as you want, each able to access entire information about I/O stream library with just a single preprocessor statement.
 
@@ -88,7 +102,7 @@ The main purpose of the directive is to avoid manual work of copying and pasting
 
 Then it includes other headers for itself. Includes work transitively, so if file A includes B which includes C, C content will be visible in any *translation unit* that included A.
 
-You should not rely on transitive includes though. Example: some code uses :cch:`<iostream>` and it also needs to access some mathematical functions from :cch:`<cmath>` but does not :cch:`#include` it and may still compile - on at least one compiler, I have observed that including :cch:`<iostream>` also provides something (or everything) from :cch:`<cmath>`. But it's only because on this particular compiler implementers of the I/O stream library also needed mathematical functions. If you try to build such project using a different compiler, it may fail due to missing :cch:`#include`.
+You should not rely on transitive includes though. Example: some code uses :cch:`<iostream>` and it also needs to access some mathematical functions from :cch:`<cmath>` but does not :cch:`#include` it. On at least one compiler, I have observed that including :cch:`<iostream>` also provides something (or everything) from :cch:`<cmath>`. But it's only because on this particular compiler implementers of the I/O stream library also needed mathematical functions. If you try to build such project using a different compiler, it may fail due to missing :cch:`#include`.
 
 .. admonition:: tip
   :class: tip
@@ -125,7 +139,7 @@ This mini project should compile and build fine, but it can be improved - ``hell
 
   If a source file has respective header for its contents, the header should always be included in this source file even if it's not strictly necessary. This allows the compiler to detect many problems.
 
-There are no requirements for specific order of included heades (we just list dependencies and if they have their own dependencies *header guards* make redundant includes empty) but there are some benefits for inside-out order - mostly hitting any build errors sooner than later and preventing code from accidentally relying on dependencies of dependencies.
+There are no requirements for specific order of header inclusion (we just list dependencies and if they have their own dependencies *header guards* make redundant includes empty) but there are some benefits for inside-out order - mostly hitting any build errors sooner than later and preventing code from accidentally relying on dependencies of dependencies.
 
 Therefore, I recommend the following order:
 
@@ -138,7 +152,7 @@ This way your project headers will be always parsed first, making sure they are 
 
     What if there is a loop within includes (e.g. A includes B which includes A)?
 
-Technically this is possible but in practice, it's as useful as a program which is stuck on an infinite loop. Whatever happens (out of memory error or actual detection of this problem by the implementation) the build surely has no way to succeed. If there is a situation of dependencies within code leading to this, the code must either be reordered or employ *forward declarations* to break some dependencies.
+Technically this is possible but in practice, it's as useful as a program which is stuck on an infinite loop. Whatever happens (out of memory error or actual detection of this problem by the compiler) the build surely has no way to succeed. If there is a situation of dependencies within code leading to this, the code must either be reordered or employ *forward declarations* to break some dependencies.
 
 ``<>`` vs ``""``
 ################
@@ -149,6 +163,8 @@ By convention:
 
 - ``<>`` should be used for C++ standard library and any other library that has been specified in compiler options
 - ``""`` should be used for files local to the project. The search usually starts from the same directory trying a relative path first
+
+Some library projects use ``<>`` for all of their files.
 
 Source layout
 #############
@@ -206,8 +222,8 @@ No. This is what usually happens but:
 
 - Some source files do not need headers as nothing uses their code elsewhere. This happens most commonly for ``main.cpp`` and files with tests.
 - Some headers do not need sources because they don't contain code requiring compilation. Such headers usually contain only constants, :cch:`inline` definitions or templates (which are implicitly :cch:`inline`).
-- Some headers may have multiple sources with the same name but different directory and only one specific source file is compiled depending on the selected platform.
-- In most extreme case, some library projects are designed to be header-only. Such libraries don't require compilation and to use them it's enough to just provide path to the include directory in compiler's options. Boost (and many other template-heavy) projects practice it as templates by practical reasons have to be in headers.
+- Some headers may have multiple source files associated but only one specific source file is compiled depending on the selected platform (one of possible approaches for multiplatform code).
+- In most extreme case, some library projects are designed to be header-only. Such libraries don't require compilation and to use them it's enough to just provide path to the include directory in compiler's options. Boost (and many other template-heavy library projects) use this approach as templates by practical reasons have to be in headers and the lack of source files simplifies build management.
 
 :cch:`#include` guidelines
 ##########################
@@ -219,8 +235,8 @@ Suppose that a project presented above has one more file: ``cat/actions/pat.cpp`
     :color_path: include_guidelines.color
 
 - A: very impractical. All of major compilers accept mostly directory paths and ideally there should be only 1 path required per project for its include directory tree. Such approach would also complicate build recipes.
-- B: generally it will work, but is annoying in practice. Paths with ``..`` break when one of the files is moved. Strictly technically, there is nothing about support of ``..`` in paths in the standard.
-- C: the preferred and recommended approach. Requires 1 simple compiler option and is very clear where the file is. Many projects which use this approach use ``<>``.
+- B: generally it will work, but is annoying and fragile in practice. Paths with ``..`` break when one of the files is moved. Strictly technically, there is nothing about support of ``..`` in paths in the standard.
+- C: the preferred and recommended approach. Requires 1 simple compiler option and is very clear where the file is. Many projects which use this approach only use ``<>`` includes.
 
 .. admonition:: tip
   :class: tip
@@ -242,7 +258,7 @@ Which files should be compiled?
 .. details::
   :summary: answer
 
-  Only source files.
+  Only source files (with their includes, forming translation units).
 
 Which files can include other files?
 
@@ -256,4 +272,4 @@ What is a translation unit?
 .. details::
   :summary: answer
 
-  A virtual file that is actually compiled by the compiler. It consists of one source file and all (potentially indirectly) included header files.
+  A virtual file that is actually compiled by the compiler. It consists of one source file and all (potentially transitively) included header files.
