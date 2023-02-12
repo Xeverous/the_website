@@ -215,6 +215,7 @@ class CustomCodeHighlight(Directive):
         "code_path": directives.unchanged_required,
         "color_path": passthrough,
         "lang": passthrough,
+        "highlight_printf_formatting": bool
     }
 
     # for internal purposes
@@ -229,7 +230,7 @@ class CustomCodeHighlight(Directive):
         self.state.document.settings.record_dependencies.add(code_absolute_path)
 
         if not color_path:
-            return self.run_clangd_highlighter(code_absolute_path)
+            return self.run_clangd_highlighter(code_absolute_path, self.options.get("highlight_printf_formatting", False))
 
         is_code_path_relative = is_relative_path(code_path)
         is_color_path_relative = is_relative_path(color_path)
@@ -268,7 +269,7 @@ class CustomCodeHighlight(Directive):
             get_logger(__name__).error(error_str)
             return fail_gracefully(error_str)
 
-    def run_clangd_highlighter(self, code_absolute_path: str):
+    def run_clangd_highlighter(self, code_absolute_path: str, highlight_printf_formatting: bool):
         try:
             lang = "custom-cpp"
 
@@ -284,7 +285,8 @@ class CustomCodeHighlight(Directive):
                 semantic_token_modifiers=CustomCodeHighlight.clangd.semantic_token_modifiers,
                 semantic_tokens=semantic_tokens,
                 keywords=KEYWORDS_LIST,
-                table_wrap_css_class=lang)
+                table_wrap_css_class=lang,
+                highlight_printf_formatting=highlight_printf_formatting)
             return [nodes.raw('', result, format='html')]
         except Exception as err:
             error_str = (f"clangd highlight failed:\n{str(err)}\ncode_path: {code_absolute_path}\n")

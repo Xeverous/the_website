@@ -2,7 +2,7 @@
 #include <utility>
 
 #define EMPTY
-#define PRINT(x)  \
+#define PRINT(x) \
 	std::cout << #x " = " << (x) << "\n"
 
 #ifndef EMPTY
@@ -39,16 +39,18 @@ struct test
 	else
 		return n * factorial(n - 1);
 }
+
 #define X(g, ...)
 auto global = /* not so multiline comment */ 123.456l;
-# /// shouldn't be a problem
+# /// lone hash shouldn't be a problem
+
 namespace anything { enum class something { one, two, three }; }
 
 auto main() -> int
 {
 	test<decltype(global)>{}.reset(global);
-	PRINT(global);
 	auto str_lit = R"test(raw\nstring\nliteral)test";
-	const auto& fmt = L"pointr = %p, length = %zu, string = %s";
+	PRINT(str_lit);
+	const auto& fmt = L"pointer = %p, length = %zu, string = %s";
 	std::cout << "sizeof(fmt) = " << sizeof(fmt) << "\n";
 }

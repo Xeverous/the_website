@@ -366,6 +366,7 @@ Uses clangd and basic parsing to colorize the code. No color file required, but 
 
 .. cch::
   :code_path: test_code_clangd.cpp
+  :highlight_printf_formatting: True
 
 Custom ANSI highlight
 ---------------------
