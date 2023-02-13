@@ -7,6 +7,6 @@ PluginCategory = RestExtension
 
 [Documentation]
 Author = Xeverous
-Version = 1.1
+Version = 2.0
 Website = https://xeverous.github.io
 Description = Implements custom reStructuredText directives and roles
