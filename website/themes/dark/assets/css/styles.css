@@ -156,6 +156,10 @@ details > ul {
   margin-bottom: 0;
 }
 
+.strikethrough {
+	text-decoration: line-through;
+}
+
 .layout {
 	display: flex;
 	justify-content: center;
