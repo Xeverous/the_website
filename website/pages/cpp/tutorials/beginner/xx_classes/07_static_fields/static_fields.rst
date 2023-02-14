@@ -89,4 +89,4 @@ Summary
 
     Does it mean that through constructor of a static object I can inject a function to be run before main?
 
-Yes. Obviously this should not be abused. Order of intialization of objects with *static storage duration* is *undefined* but C++ guuatantees that standard library objects are initialized first - this means that you can use :cch:`std::cout` before :cch:`main` starts executing.
+Yes. Obviously this should not be abused. Order of intialization of objects with *static storage duration* is *undefined* but C++ guarantees that standard library objects are initialized first - this means that you can use :cch:`std::cout` before :cch:`main` starts executing.

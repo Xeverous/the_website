@@ -30,7 +30,7 @@ Approaches
 
 Typos and logical bugs are best dealt with by code review and automated testing. Tests simply proof that the program reacts correctly to predetermined situations. Some logical bugs may lead to UB so these 2 categories can overlap.
 
-UB has numerous ways to prevent or detect it. By nature of UB once it happens you have no guuarantees what your program will do. Thus, you should primarily aim to prevent it from happening rather than dealing with it.
+UB has numerous ways to prevent or detect it. By nature of UB once it happens you have no guarantees what your program will do. Thus, you should primarily aim to prevent it from happening rather than dealing with it.
 
 Operation failures and input errors have a very wide set of possible approaches, each with different tradeoffs. Generally, error reporting and handling can be done in variety of ways, the most significant part being how it affects the function which has to report the failure and the function which has to deal with it (sometimes far apart on the stack). These aspects are by far the biggest error handling topic.
 

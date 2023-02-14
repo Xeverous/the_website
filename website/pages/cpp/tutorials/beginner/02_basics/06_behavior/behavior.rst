@@ -11,7 +11,7 @@ During some experiments, you might have made something like this:
 
 The variable has not been initialized. Compilers try to translate the source code as best as they can to optimal hardware instructions while following language specifications but because of C++ nature (full-spectrum programming language with no lower-level mechanisms hidden underneath) situations like this can happen.
 
-This is an example of **undefined behavior**. It's unknown what will actually happen. Intuitively, the compiler will allocate memory for the variable, attempt to read it and send received bytes to operating system's standard output. What will these bytes contain? No idea. Most likely some garbage that was left after previous program which happened to use the same block of memory. The program above might print a different value every time it's run. Basically, C++ specification does not define what happens with reads of uninitialized memory so there are no guuarantees on the execution of this program.
+This is an example of **undefined behavior**. It's unknown what will actually happen. Intuitively, the compiler will allocate memory for the variable, attempt to read it and send received bytes to operating system's standard output. What will these bytes contain? No idea. Most likely some garbage that was left after previous program which happened to use the same block of memory. The program above might print a different value every time it's run. Basically, C++ specification does not define what happens with reads of uninitialized memory so there are no guarantees on the execution of this program.
 
 If you try to compile this program, you might get a warning from the compiler about the use of an uninitialized object. Because compilers optimize code during many transformation steps from source code to machine code, programs containing undefined behavior might be deformed even further, amplifying problems. This is a very simple case but as the code gets larger and more complex, it gets really hard to predict and search for potential errors. Many optimizations transform machine code based on the assumption that the program has no bugs - if they didn't there would be no sense in optimizing malfunctioning code.
 
@@ -29,7 +29,7 @@ Basically, there are no limits on what can happen. For this reason, **you should
 Other behaviors
 ###############
 
-C++ specification defines few more terms that describe different levels of guuarantees, but **only undefined behavior is the dangerous one**. Others just let the programmer rely more or less on certain things.
+C++ specification defines few more terms that describe different levels of guarantees, but **only undefined behavior is the dangerous one**. Others just let the programmer rely more or less on certain things.
 
 Unspecified behaviour
 =====================
@@ -38,7 +38,7 @@ Behaviour that varies between implementations (mostly between compilers) but the
 
 This covers situations in which there is no single good answer. There are multiple valid solutions, you just don't know which one is used by the given implementation as it can depend on a lot of factors including applied optimizations, hardware characteristics and operating system decisions.
 
-Example - in the expression :cch:`2 * 3 + 4 * 5$$$num * num + num * num` it's *unspecified* which multiplication is done first. As long as specification and mathematical laws are concerned, the only guuarantee is that the addition will be done last. But since both multiplications are independent, there is no obligation for the compiler to write machine code that performs them in certain order.
+Example - in the expression :cch:`2 * 3 + 4 * 5$$$num * num + num * num` it's *unspecified* which multiplication is done first. As long as specification and mathematical laws are concerned, the only guarantee is that the addition will be done last. But since both multiplications are independent, there is no obligation for the compiler to write machine code that performs them in certain order.
 
 Similarly, in the expression :cch:`foo(bar(), baz())$$$func(func(), func())` it's *unspecified* which of :cch:`bar$$$func` and :cch:`baz$$$func` is called first. By analyzing parentheses (``()``) we can clearly see that the function :cch:`foo$$$func` requires results of 2 other functions as its input. But these 2 functions have no determined order - the compiler is free to decide. The code should not rely on specific order between :cch:`bar$$$func` and :cch:`baz$$$func` - it's *unspecified*.
 
@@ -58,7 +58,7 @@ A subset of implementation-defined behavior is *locale-specific behavior*, which
 Well-defined behaviour
 ======================
 
-The highest level of guuarantees, usually very precisely specified in the specification giving very little or no space for compilers to do it differently.
+The highest level of guarantees, usually very precisely specified in the specification giving very little or no space for compilers to do it differently.
 
 Best examples are all kinds of logical and arithmetic operations - math is everywhere the same.
 

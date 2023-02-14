@@ -40,7 +40,7 @@ The cast keywords are:
 
 Apart from solving ambiguity and code clarity problems, a big advantage of these keywords is that they look exactly like function templates - new casts can be added with the same syntax. Some already exist:
 
-- C++20 :cch:`std::bit_cast` - obtains value of type :cch:`T` by reinterpreting object representation. This could be thought as a short form of specific usage of :cch:`reinterpret_cast` but the bit cast guuarantees no *aliasing* violations while the keyword alone does not. It's also :cch:`constexpr`.
+- C++20 :cch:`std::bit_cast` - obtains value of type :cch:`T` by reinterpreting object representation. This could be thought as a short form of specific usage of :cch:`reinterpret_cast` but the bit cast guarantees no *aliasing* violations while the keyword alone does not. It's also :cch:`constexpr`.
 - :cch:`boost::lexical_cast` (string to number and number to string)
 - :cch:`boost::numeric_cast` (number to number)
 
@@ -103,7 +103,7 @@ The cast has same ambiguity and accessibility preconditions as the upcast, but a
     :code_path: static_cast_downcast.cpp
     :color_path: static_cast_downcast.color
 
-Because of undefined behavior risk, :cch:`static_cast` downcasts must guuarantee through other means that the object is in fact of derived type - usually the base class has a :cch:`virtual` method which returns unique value for each type (basically manual and simplified implementation of RTTI).
+Because of undefined behavior risk, :cch:`static_cast` downcasts must guarantee through other means that the object is in fact of derived type - usually the base class has a :cch:`virtual` method which returns unique value for each type (basically manual and simplified implementation of RTTI).
 
 Member pointer upcasts
 ======================
@@ -302,7 +302,7 @@ In short, **while the cast allows to strip** :cch:`const` **and** :cch:`volatile
 
 Similarly to :cch:`const_cast`, :cch:`reinterpret_cast` does not compile to any machine instructions (except when converting between integers and pointers or on obscure architectures where pointer representation depends on its type). **It is purely a compile time directive which instructs the compiler to treat expression as if it had a different type.**
 
-Because the cast allows to explicitly violate the type system (except :cch:`const` and :cch:`volatile` for which :cch:`const_cast` has to be used) and multiple implementation and platform shenanigans are in play, there are numerous rules that specify different requirements and guuarantees. The cast is used practically only for platform-specific code or code that relies on particular implementation guuarantees (larger than the standard).
+Because the cast allows to explicitly violate the type system (except :cch:`const` and :cch:`volatile` for which :cch:`const_cast` has to be used) and multiple implementation and platform shenanigans are in play, there are numerous rules that specify different requirements and guarantees. The cast is used practically only for platform-specific code or code that relies on particular implementation guarantees (larger than the standard).
 
 The standard technically allows many obscure platforms, but in practice many (if not majority or all) platforms have relatively simple pointer implementation where:
 

@@ -9,7 +9,7 @@ An additional argument against the use of exceptions is having to work with exce
 
 Exceptions are mostly disabled for these reasons:
 
-- They take a lot of time to process with no predictability or any guuarantees.
+- They take a lot of time to process with no predictability or any guarantees.
 - They take a lot of space in binary code - additional data has to be embedded in the executable to enable their support (problematic in embedded systems).
 - They are weakly supported on rarer architectures.
 - They prevent some optimizations (without them, everything is :cch:`noexcept`).

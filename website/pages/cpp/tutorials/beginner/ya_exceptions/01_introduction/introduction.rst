@@ -99,7 +99,7 @@ No. I think it's a bad mental shortcut because:
 
     What if :cch:`x` is defined outside the :cch:`try` block, it is of some class type and I call a member function on it that throws? Will the object be left in the same state as before the call or will it be left as-is (potentially modified) at the moment of throw?
 
-It will be left potentially modified. Any code executed before the :cch:`throw` statement can leave modifications. This question touches an important topic of **exception safety** - it's up to the class writer to ensure that when an exception is thrown from a member function, the object is left in a reasonable state. The C++ standard library defines multiple levels of *exception guuarantees*, which you can aim for when writing your code. They are explained in a later lesson.
+It will be left potentially modified. Any code executed before the :cch:`throw` statement can leave modifications. This question touches an important topic of **exception safety** - it's up to the class writer to ensure that when an exception is thrown from a member function, the object is left in a reasonable state. The C++ standard library defines multiple levels of *exception guarantees*, which you can aim for when writing your code. They are explained in a later lesson.
 
     What happens when an exception is thrown and during stack unwinding, a destructor of some local object throws another exception?
 

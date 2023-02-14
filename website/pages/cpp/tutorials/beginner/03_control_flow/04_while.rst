@@ -137,7 +137,7 @@ Example sequences to test:
 
 Don't input too large numbers though - the data types being used (:cch:`int`, :cch:`long`, :cch:`long long`) have finite range. Too large numbers will invoke *undefined behavior*, typically by performing *overflow*.
 
-Even though huge numbers have been tested, no proof or pattern has been found that would guuarantee that every number reaches 1. If negative numbers are allowed, there are 3 extra known loops:
+Even though huge numbers have been tested, no proof or pattern has been found that would guarantee that every number reaches 1. If negative numbers are allowed, there are 3 extra known loops:
 
 - -1, -2, -1
 - -5, -14, -7, -20, -10, -5

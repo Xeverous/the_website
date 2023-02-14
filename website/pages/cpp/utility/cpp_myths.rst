@@ -19,7 +19,7 @@ Once a resource has been encapsulated inside a RAII class (in other words, the c
 
 Extra notes:
 
-- C++ compilers have special rule that allows them to optimize redundant object copies **even if their special member functions have side effects** - what is guuatanteed is that every constructed object sooner or later will be destroyed.
+- C++ compilers have special rule that allows them to optimize redundant object copies **even if their special member functions have side effects** - what is guaranteed is that every constructed object sooner or later will be destroyed.
 - Resource does not have to be memory. It can be anything that requires acquisition and cleanup.
 - Even though C++11 added language support for move operations, the RAII idiom was possible to be used much earlier.
 

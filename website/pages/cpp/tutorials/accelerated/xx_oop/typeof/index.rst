@@ -31,7 +31,7 @@ The behavior of the keyword is dependent on exact usage.
   - If the object is polymorphic (a class that declares or inherits at least 1 virtual function):
 
     - A runtime cost is incurred to evaluate the exact type of the object (typical implementation will use object's vtable pointer to access global metadata).
-    - If the expression is :cch:`typeid(*ptr)$$$keyword(*var_local)` and the pointer is null, additional guuarantee exists: instead of undefined behavior an exception is thrown of type :cch:`std::bad_typeid` or a type derived from it.
+    - If the expression is :cch:`typeid(*ptr)$$$keyword(*var_local)` and the pointer is null, additional guarantee exists: instead of undefined behavior an exception is thrown of type :cch:`std::bad_typeid` or a type derived from it.
 
   - If the object is not polymorphic, the expression is not evaluated and is resolved at compile time (though it's not considered :cch:`constexpr`). *Decay* does not happen. In this case the resulting type ID may not represent actual (most derived) type of the object.
 
@@ -50,7 +50,7 @@ The interface looks as follows:
 Hash code
 =========
 
-The hash code is the same for all :cch:`std::type_info` referring to the same type. No other guuarantees are given, this means that:
+The hash code is the same for all :cch:`std::type_info` referring to the same type. No other guarantees are given, this means that:
 
 - multiple types may have the same hash (although discouraged by the standard)
 - hash code for the same type can change between invocations of the program
@@ -67,7 +67,7 @@ Name
 
 You would probably expect the real name of the type, as written in code, with all qualifiers. But this is not the case. The standard places no requirements on it, not even the lifetime of the returned string.
 
-This is an example place where the specification is very tolerant. It's much better to not guuarantee something than to label practically-valuable implementations non-conforming.
+This is an example place where the specification is very tolerant. It's much better to not guarantee something than to label practically-valuable implementations non-conforming.
 
 So what's the reality then? `https://en.cppreference.com/w/cpp/types/type_info/name <cppreference>`_ says:
 
@@ -93,7 +93,7 @@ Alternatives
 
 RTTI is a costly OOP feature (as far as typical C++ philosophy is concerned). Some frameworks (most notably Qt) generate their own metadata using their own ways.
 
-If you want to use standard-like :cch:`typeid` with a richer API and guuarantees, check `Boost.TypeIndex library <https://www.boost.org/doc/libs/release/doc/html/boost_typeindex.html>`_
+If you want to use standard-like :cch:`typeid` with a richer API and guarantees, check `Boost.TypeIndex library <https://www.boost.org/doc/libs/release/doc/html/boost_typeindex.html>`_
 
 :cch:`decltype`
 ###############

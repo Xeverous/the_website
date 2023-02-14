@@ -20,7 +20,7 @@ spaces
 Pros:
 
 - Simpler to understand and from what I have seen, people make less mistakes with it.
-- Well-suited for fixed showcases like prints and presentations - basically where code is treated as an image instead of text. Sufficient amount of spaces will guuarantee that indents are clearly visible.
+- Well-suited for fixed showcases like prints and presentations - basically where code is treated as an image instead of text. Sufficient amount of spaces will guarantee that indents are clearly visible.
 
 Cons:
 

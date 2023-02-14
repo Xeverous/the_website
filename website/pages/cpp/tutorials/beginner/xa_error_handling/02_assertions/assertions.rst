@@ -36,7 +36,7 @@ How the macro works:
 - if :cch:`NDEBUG` is not defined: expands to a statement that evaluates given expression:
 
     - if :cch:`true` then nothing happens.
-    - if :cch:`false` outputs implementation-defined diagnostic information on the standard error stream and calls :cch:`std::abort`, which terminates the program. The diagnostic message is guuaranteed to contain the source code from the expression (turned into text by preprocessor stringization - :cch:`#`), :cch:`__FILE__`, :cch:`__LINE__` and :cch:`__func__`.
+    - if :cch:`false` outputs implementation-defined diagnostic information on the standard error stream and calls :cch:`std::abort`, which terminates the program. The diagnostic message is guaranteed to contain the source code from the expression (turned into text by preprocessor stringization - :cch:`#`), :cch:`__FILE__`, :cch:`__LINE__` and :cch:`__func__`.
 
 Why weird NDEBUG ("not debug") name? Just history. NDEBUG is never defined within standard library but high-level build tools (e.g. CMake, Meson) and IDEs have the concept of relase and debug build configurations. Pretty much all such tools will add ``-DNDEBUG`` (or equivalent) to compiler flags in release configuration to disable the macro in release builds (C++ does not define this macro by default). Many libraries offer similar macro, sometimes implemented as a wrapper around the standard one.
 

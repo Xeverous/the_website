@@ -44,7 +44,7 @@ From performance point of view, if the cost of a function call is ``F`` and the 
 Allocation
 ==========
 
-:cch:`std::function` may allocate its storage dynamically to hold necessary data to perform the call. In case of pointer or :cch:`std::reference_wrapper` targets, small buffer optimization is guuaranteed (no dynamic allocation, the class will use its own static buffer capable of holding a pointer).
+:cch:`std::function` may allocate its storage dynamically to hold necessary data to perform the call. In case of pointer or :cch:`std::reference_wrapper` targets, small buffer optimization is guaranteed (no dynamic allocation, the class will use its own static buffer capable of holding a pointer).
 
 Binds
 #####

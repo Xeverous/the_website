@@ -248,7 +248,7 @@ Yes, but to put it simply, other people will not be happy if you write types thi
 
     What lengths do they actually have?
 
-Exact lengths depend on the hardware for which the code is compiled but it is guuaranteed that larger types have equal or wider range of representatable values, e.g. :cch:`long long` can store everything that :cch:`long` can.
+Exact lengths depend on the hardware for which the code is compiled but it is guaranteed that larger types have equal or wider range of representatable values, e.g. :cch:`long long` can store everything that :cch:`long` can.
 
 Most commonly implemented lengths on x86 (32-bit PC), x86-64 (64-bit PC) and 64-bit ARM (common architecture for mobile devices):
 

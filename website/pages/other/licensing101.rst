@@ -143,7 +143,7 @@ This license is like CC0 but adds one condition - **attribution of the author**.
 
 To avoid interpretation problems, many authors explicitly state in their project how their work should be referenced (usually author's name and a link to original source).
 
-This license gives almost unlimited freedom for users of the work (as long as attribution condition is satisfied, everything is allowed including commerciality and any modifications) but at the same time ensures that the author will not be forgotten. For some projects alone (if they become popular enough) it's enough to guuarantee significant recognition for the author.
+This license gives almost unlimited freedom for users of the work (as long as attribution condition is satisfied, everything is allowed including commerciality and any modifications) but at the same time ensures that the author will not be forgotten. For some projects alone (if they become popular enough) it's enough to guarantee significant recognition for the author.
 
 CC-BY-SA
 ========

@@ -129,7 +129,7 @@ How it works? Each time a file is included, the preprocessor is required to chec
 
   This specific form of preprocessor directives is known as **header guards** and **include guards**.
 
-The identifier must be unique for each header, so to guuarantee uniqueness it usually consists of the company name and/or project name, root-relative file path and sometimes a date/time when it was created.
+The identifier must be unique for each header, so to guarantee uniqueness it usually consists of the company name and/or project name, root-relative file path and sometimes a date/time when it was created.
 
     Why source files did not get these directives?
 

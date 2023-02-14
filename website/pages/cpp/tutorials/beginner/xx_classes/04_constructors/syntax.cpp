@@ -35,6 +35,6 @@ int main()
 
 	// some people prefer to do this because it looks like a function call
 	// the ctor creates a temporary object, then another object is assigned from it
-	// since C++17 this is guuaranteed to be optimized to avoid temporary and assignment
+	// since C++17 this is guaranteed to be optimized to avoid temporary and assignment
 	auto fr2 = fraction(2, 3);
 }

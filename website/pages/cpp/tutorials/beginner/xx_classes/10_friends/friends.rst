@@ -94,7 +94,7 @@ Friends defeat the purpose of encapsulation and can be used to break class invar
 - If two classes friend each other, they probably should be rewritten as one class or their public/non-public code is badly designed.
 - If one class friends a lot of other code, it probably has insufficient public interface.
 
-**Do not friend anything from the standard library!** Each implementation can be different and contain multiple layers of internal code - since friendship is not transitive and does not propagate there are no guuatantees whether the implementation of particular standard library entity will be able to use non-public members.
+**Do not friend anything from the standard library!** Each implementation can be different and contain multiple layers of internal code - since friendship is not transitive and does not propagate there are no guarantees whether the implementation of particular standard library entity will be able to use non-public members.
 
 .. admonition:: note
   :class: note

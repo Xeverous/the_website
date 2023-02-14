@@ -82,7 +82,7 @@ While it looks like a simplification, it would actually result in a significantl
 In practice
 ###########
 
-Apply :cch:`noexcept` very carefully. Just because a function doesn't throw doesn't mean it will never do after any future edits. You can easily :cch:`std::terminate` your program by applying :cch:`noexcept` and realizing that many stack frames deeper some subfunction can throw. Don't use :cch:`noexcept` unless you can verify and guuarantee that all calls within will never throw.
+Apply :cch:`noexcept` very carefully. Just because a function doesn't throw doesn't mean it will never do after any future edits. You can easily :cch:`std::terminate` your program by applying :cch:`noexcept` and realizing that many stack frames deeper some subfunction can throw. Don't use :cch:`noexcept` unless you can verify and guarantee that all calls within will never throw.
 
 Only a small subset of functions is recommended to be marked as :cch:`noexcept`:
 
@@ -94,4 +94,4 @@ Only a small subset of functions is recommended to be marked as :cch:`noexcept`:
   - interacting with C: passing addresses of C++ functions to a C API - if C code calls a C++ function and it throws, undefined behavior occurs
   - badly written C++ - there is a lot of exception-unsafe C++ code, including whole libraries (e.g. Qt)
 
-Special member functions do not have to be :cch:`noexcept`, but if they are the C++ standard library takes advantage of it in various places (mostly containers and algorithms - improved performance or better *exception guuarantees*).
+Special member functions do not have to be :cch:`noexcept`, but if they are the C++ standard library takes advantage of it in various places (mostly containers and algorithms - improved performance or better *exception guarantees*).

@@ -109,7 +109,7 @@ Integer division is done ... on integers. The result is also an integer so any f
 
     Integer division and modulo where second operand is zero is *undefined behavior*.
 
-The above warning should be self-explanatory. Such operations have no definition in mathematical world, and the same happens in C++. If you perform these operations and can not guuarantee what the second operand is (e.g. it's provided by the user of the program) you should definitely check it to prevent any potential bugs.
+The above warning should be self-explanatory. Such operations have no definition in mathematical world, and the same happens in C++. If you perform these operations and can not guarantee what the second operand is (e.g. it's provided by the user of the program) you should definitely check it to prevent any potential bugs.
 
 Overflow
 ========
