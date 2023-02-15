@@ -38,10 +38,10 @@ def log_correctness(root_dir: PageDir) -> None:
     logger = get_logger(__name__)
     if root_dir.index_page():
         if not root_dir.subdirs() and not root_dir.pages():
-            logger.warn(f'Directory "{root_dir.directory_name()}" contains an index page but no child pages or directories')
+            logger.warning(f'Directory "{root_dir.directory_name()}" contains an index page but no child pages or directories')
     else:
         if not root_dir.subdirs() and not root_dir.pages():
-            logger.warn(f'Directory "{root_dir.directory_name()}" is empty')
+            logger.warning(f'Directory "{root_dir.directory_name()}" is empty')
         else:
             logger.error(f'Directory "{root_dir.directory_name()}" has child pages or directories but does not contain an index!')
 
@@ -176,10 +176,10 @@ def check_page_slug(page: Post, is_index_page: bool) -> None:
     file_ext = page.source_ext()
     page_slug = page.meta[page.default_lang].get("slug")
     if page_slug != index_page_slug and page_slug + file_ext != file_name:
-        logger.warn(f'page {page.permalink()} uses slug "{page_slug}" which is different from source file name "{file_name}"')
+        logger.warning(f'page {page.permalink()} uses slug "{page_slug}" which is different from source file name "{file_name}"')
     # for consistency, index pages (that is, pages with "index_path" specified) should have slug "index"
     if is_index_page and page_slug != index_page_slug:
-        logger.warn(f'page {page.permalink()} is an index page but has slug "{page_slug}" which is different from expected "{index_page_slug}"')
+        logger.warning(f'page {page.permalink()} is an index page but has slug "{page_slug}" which is different from expected "{index_page_slug}"')
 
 def check_required_metadata(page: Post) -> None:
     check_required_metadata_field(page, "title")
@@ -191,7 +191,7 @@ def check_required_metadata_field(page: Post, field_name: str) -> None:
     logger = get_logger(__name__)
     field = page.meta[page.default_lang].get(field_name)
     if not field:
-        logger.warn(f'page {page.permalink()} has missing "{field_name}" metadata field')
+        logger.warning(f'page {page.permalink()} has missing "{field_name}" metadata field')
 
 class BreadcrumbEntry:
     def __init__(self, link: str, name: str):
@@ -286,15 +286,15 @@ def verify_sidebar(sidebar: Sidebar, all_pages: List[Post]):
 
     for section in sidebar.sections():
         if section.title() == "":
-            logger.warn(f'sidebar section with empty title, it has description: "{section.description()}"')
+            logger.warning(f'sidebar section with empty title, it has description: "{section.description()}"')
         if len(section.pages()) == 0:
-            logger.warn(f'sidebar section "{section.title()}" has no pages')
+            logger.warning(f'sidebar section "{section.title()}" has no pages')
 
         for page in section.pages():
             if page.title() == "":
-                logger.warn(f'untitled page in sidebar section "{section.title()}"')
+                logger.warning(f'untitled page in sidebar section "{section.title()}"')
             if page.link() == "":
-                logger.warn(f'page "{page.title()}" in sidebar section "{section.title()}" has empty link')
+                logger.warning(f'page "{page.title()}" in sidebar section "{section.title()}" has empty link')
 
             page_found = False
             for p in all_pages:
@@ -304,7 +304,7 @@ def verify_sidebar(sidebar: Sidebar, all_pages: List[Post]):
                     break
 
             if not page_found:
-                logger.warn(f'sidebar page "{page.title()}" link "{page.link()}" is invalid')
+                logger.warning(f'sidebar page "{page.title()}" link "{page.link()}" is invalid')
 
 def make_sidebar() -> Sidebar:
     return Sidebar([
