@@ -183,6 +183,14 @@ class Connection:
             elif json_rpc_is_notification(message):
                 if DEBUG:
                     logger.info(f"NOTIFICATION:\n{json.dumps(message, indent=4)}")
+                if message.get("method") == "textDocument/publishDiagnostics":
+                    params = message.get("params")
+                    if params:
+                        diagnostics = params.get("diagnostics", [])
+                        if diagnostics:
+                            logger.warning(f"diagnostics for {params.get('uri')}")
+                            for diagnostic in diagnostics:
+                                logger.warning(json.dumps(diagnostic, indent=4))
             else:
                return json_rpc_response_extract_result(message, id)
 
