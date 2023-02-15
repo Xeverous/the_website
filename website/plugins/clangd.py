@@ -17,12 +17,15 @@ logger = get_logger("clangd_plugin")
 # 3) We need only path-to-URI and URI-to-path functionality
 # https://en.wikipedia.org/wiki/File_URI_scheme
 URI_FILE_PREFIX = "file:///"
-def path_to_uri(path: str) -> str:
-    return f"{URI_FILE_PREFIX}{path}"
+# removeprefix because URIs assume paths are absolute, initial / is undesired
+# for Windows, starting with drive letter is fine and requires no additional logic
+URI_FILE_RELATIVE_PATH_PREFIX = f"{URI_FILE_PREFIX}{os.getcwd().removeprefix('/')}/"
+def relative_path_to_uri(path: str) -> str:
+    return f"{URI_FILE_RELATIVE_PATH_PREFIX}{path}"
 
-def uri_to_path(uri: str) -> str:
-    if uri.startswith(URI_FILE_PREFIX):
-        return uri.removeprefix(URI_FILE_PREFIX)
+def uri_to_relative_path(uri: str) -> str:
+    if uri.startswith(URI_FILE_RELATIVE_PATH_PREFIX):
+        return uri.removeprefix(URI_FILE_RELATIVE_PATH_PREFIX)
     else:
         raise RuntimeError(f"URI {uri} is not valid or unsupported")
 
@@ -99,7 +102,7 @@ def lsp_make_range_whole_file(num_lines: int) -> dict[str, dict[str, int]]:
     return lsp_make_range(0, 0, num_lines, 0)
 
 def lsp_make_text_document_identifier(path: str) -> dict[str, Any]:
-    return {"uri": path_to_uri(path)}
+    return {"uri": relative_path_to_uri(path)}
 
 def lsp_make_text_document_position_params(path: str, position: dict[str, int]):
     return {
@@ -109,7 +112,7 @@ def lsp_make_text_document_position_params(path: str, position: dict[str, int]):
 
 def lsp_make_text_document_item(path: str, text: str) -> dict[str, Any]:
     return {
-        "uri": path_to_uri(path),
+        "uri": relative_path_to_uri(path),
         "languageId": "cpp",
         "version": 0,
         "text": text
@@ -188,7 +191,7 @@ class Connection:
                     if params:
                         diagnostics = params.get("diagnostics", [])
                         if diagnostics:
-                            logger.warning(f"diagnostics for {params.get('uri')}")
+                            logger.warning(f"diagnostics for {uri_to_relative_path(params.get('uri'))}")
                             for diagnostic in diagnostics:
                                 logger.warning(json.dumps(diagnostic, indent=4))
             else:
