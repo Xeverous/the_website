@@ -22,13 +22,10 @@ We could use such vector of pointers, but having to create objects elsewhere and
 
 There is a solution to all these problems though: *smart pointers*.
 
-.. TODO implement strikethrough inline directive
-.. https://stackoverflow.com/questions/6518788/rest-strikethrough
-
 .. admonition:: definition
   :class: definition
 
-  A smart pointer is a pointer that *is smart* automatically manages memory.
+  A smart pointer is a pointer that automatically manages memory. Different smart pointers implement different managing strategies. They can also be used to manage non-memory resources.
 
 Memory management
 #################
