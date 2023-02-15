@@ -1,4 +1,7 @@
 #include <stdexcept>
+#include <optional>
+#include <functional>
+
 int may_throw();
 
 int func()
@@ -6,7 +9,7 @@ int func()
 	auto handler = [](const std::exception& /* e */) {
 		/* do stuff with e */
 		return 0;
-	}
+	};
 
 	try {
 		return may_throw();

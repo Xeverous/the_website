@@ -26,7 +26,7 @@ class runtime_error : public exception
 
 	// returns the string that was passed to the ctor
 	// implementations are allowed to do so through other means than overriding
-	const char* what() const override;
+	const char* what() const noexcept override;
 };
 
 }

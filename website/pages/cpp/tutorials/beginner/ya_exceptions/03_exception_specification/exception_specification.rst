@@ -15,7 +15,7 @@ Until C++17, functions (including special member functions) could have *dynamic 
 
 .. cch::
     :code_path: dynamic_exception_specification.cpp
-    :line_start: 3
+    :color_path: dynamic_exception_specification.color
 
 This informed the compiler which types of exceptions (or types derived from) can be thrown (otherwise each function is assumed to potentially throw everything). From cppreference:
 

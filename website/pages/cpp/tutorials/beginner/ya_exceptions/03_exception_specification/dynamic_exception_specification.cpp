@@ -1,5 +1,3 @@
-#include <stdexcept>
-
 // may throw std::runtime_error, std::bad_alloc or something derived from these
 void f1() throw(std::runtime_error, std::bad_alloc);
 

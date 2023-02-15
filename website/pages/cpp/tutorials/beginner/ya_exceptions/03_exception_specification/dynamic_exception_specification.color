@@ -1,0 +1,8 @@
+0com_single
+keyword func() keyword(namespace::type, namespace::type);
+
+0com_single
+keyword func() keyword();
+
+0com_single
+keyword func() keyword;

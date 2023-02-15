@@ -60,13 +60,13 @@ There are 2 solutions for it:
 
 .. cch::
     :code_path: catch_many_lambda.cpp
-    :line_start: 4
+    :line_start: 7
 
 - catching a generic type and performing dynamic casts to check dynamic type
 
 .. cch::
     :code_path: catch_many_cast.cpp
-    :line_start: 4
+    :line_start: 7
 
 Comparing by machine code, they will be very similar. Both :cch:`dynamic_cast` and built-in :cch:`catch` mechanism relies on RTTI so both implementations perform roughly the same operations. For the latter version, if the exception is not matched it can simply be thrown again. Because of this and additional conditional instructions I presume most programmers would think of the first approach as cleaner.
 
