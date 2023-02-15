@@ -213,9 +213,13 @@ class CustomCodeHighlight(Directive):
     optional_arguments = 0
     option_spec = {
         "code_path": directives.unchanged_required,
-        "color_path": passthrough,
+        "color_path": passthrough, # if present, use mirror highlight, otherwise use clangd
         "lang": passthrough,
-        "highlight_printf_formatting": bool
+        "highlight_printf_formatting": bool,
+        # ignored for now, intended for clangd highlight only
+        # TODO implement either here or in ACH, decide which side should do table wrap
+        "line_start": directives.positive_int,
+        "line_end": directives.positive_int
     }
 
     # for internal purposes
