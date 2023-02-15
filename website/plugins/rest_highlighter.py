@@ -203,7 +203,7 @@ def passthrough(value: Any) -> Any:
     return value
 
 def fail_gracefully(result: str, css_class: str = "code"):
-    result = enclose_in_html(result, "pre", css_class)
+    result = enclose_in_html(escape_text_into_html(result), "pre", css_class)
     return [nodes.raw('', result, format='html')]
 
 class CustomCodeHighlight(Directive):
@@ -223,7 +223,13 @@ class CustomCodeHighlight(Directive):
     }
 
     # for internal purposes
-    clangd = Clangd()
+    try:
+        clangd = Clangd()
+    except RuntimeError as err:
+        clangd = None
+        logger = get_logger(__name__)
+        logger.error(str(err))
+        logger.warning("build will function but clangd-based highlight will be disabled")
 
     def run(self):
         code_path = self.options["code_path"]
@@ -277,7 +283,7 @@ class CustomCodeHighlight(Directive):
         try:
             lang = "custom-cpp"
 
-            if pyach is None:
+            if CustomCodeHighlight.clangd is None:
                 # fail gracefully with raw text
                 # problems are already reported when the plugin fails to initialize
                 return fail_gracefully(read_file(code_absolute_path), f"code {lang}")

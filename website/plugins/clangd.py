@@ -131,10 +131,10 @@ def get_clangd_path() -> str:
 
 class Connection:
     def __init__(self, connect=True, initialize=True):
-        self.clangd_path = get_clangd_path()
         self.id = 1
         self.p = None
         self.initialized = False
+        self.clangd_path = get_clangd_path()
         if connect:
             self.open_connection()
             if initialize:
@@ -245,8 +245,9 @@ class Connection:
 
     def close_connection(self) -> None:
         self.shutdown()
-        self.make_lsp_notification("exit", None)
-        self.p = None
+        if self.p:
+            self.make_lsp_notification("exit", None)
+            self.p = None
 
     def __del__(self):
         self.close_connection()
