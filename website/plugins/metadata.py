@@ -256,7 +256,7 @@ class Sidebar:
         return self._sections
 
 class SidebarSection:
-    def __init__(self, title: str, description: str, pages: List[SidebarLink]):
+    def __init__(self, title: str, description: str, pages: List[SidebarPage]):
         self._title = title
         self._description = description
         self._pages = pages
@@ -267,7 +267,7 @@ class SidebarSection:
     def description(self) -> str:
         return self._description
 
-    def pages(self) -> List[SidebarLink]:
+    def pages(self) -> List[SidebarPage]:
         return self._pages
 
 class SidebarPage:
