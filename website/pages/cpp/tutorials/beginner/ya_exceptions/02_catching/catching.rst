@@ -107,9 +107,11 @@ They are useful primarily in concurrent programs for:
 - capturing a running exception, passing :cch:`std::exception_ptr` to a different thread and repropagating it there
 - creating :cch:`std::future` objects holding exceptions to signal a failure in satisfying :cch:`std::promise` (a mechanism of asynchronous communication)
 
+`An external article <http://cppsecrets.blogspot.com/2013/12/using-lippincott-function-for.html>`_ describes "Lippincott technique" which can be used as a pattern to implement the same uniform exception handling in multiple places.
+
 Summary
 #######
 
 - write handlers in order of decreasing specificity
 - catch by const reference
-- when rethrowing the same exception object, write just :cch:`throw;`
+- when rethrowing the same exception object, write just :cch:`throw;`, otherwise the exception will be sliced
