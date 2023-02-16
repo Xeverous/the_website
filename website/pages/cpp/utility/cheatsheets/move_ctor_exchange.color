@@ -1,0 +1,4 @@
+	type(type&& param) keyword
+	: var_member(namespace::func(param.var_member, keyword))
+	, var_member(namespace::func(param.var_member, num))
+	{}

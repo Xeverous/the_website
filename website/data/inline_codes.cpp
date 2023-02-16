@@ -88,6 +88,7 @@ std::error_code
 std::error_condition
 std::exception
 std::exception_ptr
+std::exchange
 std::forward_list
 std::fprintf
 std::fscanf

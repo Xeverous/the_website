@@ -1,5 +1,5 @@
 .. title: cheatsheets
-.. slug: cheatsheets
+.. slug: index
 .. description: C++ cheatsheets
 .. author: Xeverous
 
@@ -525,6 +525,20 @@ Legend:
 Notes:
 
 - Overloading convertion operator affects all functional casts, C-style cast and :cch:`static_cast`.
+
+RAII
+####
+
+Below are idiomatic implementations of classes that implement the *Rule of 5*.
+
+.. cch::
+  :code_path: rule_of_5.cpp
+
+Depending on the class exact planned behavior (some may not have default constructor and default member initializers), a cannonical implementation can replace swaps with member initializer lists using :cch:`std::exchange`:
+
+.. cch::
+  :code_path: move_ctor_exchange.cpp
+  :color_path: move_ctor_exchange.color
 
 Initialization
 ##############
