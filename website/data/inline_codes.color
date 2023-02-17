@@ -282,6 +282,8 @@ param_tmpl&
 param_tmpl&&
 param_tmpl(spec)
 param_tmpl*
+param_tmpl[param_tmpl]
+param_tmpl[]
 param_tmpl
 param_tmpl{spec}
 param_tmpl

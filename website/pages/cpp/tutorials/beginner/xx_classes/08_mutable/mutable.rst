@@ -1,4 +1,4 @@
-.. title: 06 - mutable
+.. title: 08 - mutable
 .. slug: index
 .. description: mutable class members
 .. author: Xeverous

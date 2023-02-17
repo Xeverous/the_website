@@ -16,6 +16,7 @@ keyword:
 	0com_single
 	0com_single
 	0com_single
+	0com_single
 	func(keyword param, keyword param)
 	: var_member(param)
 	, var_member(func(param))

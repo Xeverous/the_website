@@ -1,4 +1,4 @@
-.. title: 10 - friends
+.. title: 12 - friends
 .. slug: index
 .. description: friend declaration
 .. author: Xeverous

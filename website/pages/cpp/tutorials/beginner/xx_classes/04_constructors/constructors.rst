@@ -3,9 +3,6 @@
 .. description: constructors
 .. author: Xeverous
 
-.. TODO explain explicit
-.. TODO std::move and recommendation: ctor takes by value, setter by const reference
-
 Remember recent problem of being unable to create objects with custom initial values? This lesson will solve it.
 
 Constructors are one of **special member functions**. They are automatically called whenever an object of their type is created. They have 2 main purposes:
@@ -41,7 +38,7 @@ Constructors use special syntax for initialization - **member initializer list**
 
 *Member intializer list* is placed before the body, it starts with ``:`` and member initializers are separated by ``,``. The example presents a common style of formatting.
 
-You might have also noticed a surprising thing - **parameter names are identical to member names.** This is a special feature of *member intializer list* - names after ``:`` and ``,`` are parsed as member names, everything else is treated as function (constructor) parameters.
+You might have also noticed a surprising thing - **parameter names are identical to member names.** This is a special feature of *member intializer list* - names in the list (outside parentheses and constructor body) will refer to class members.
 
 The list does not have to contain all class members - if any of them already have an initializer defined in the class body, they can be skipped. If a member is present in the list, its initialization code simply overrides the default initializer.
 
@@ -70,7 +67,7 @@ Order of fields in member initializer list has no influence on the initializatio
 .. admonition:: tip
   :class: tip
 
-  Always write members in *member initializer list* in the same order as they are defined in the class definition.
+  Always write members in *member initializer list* in the same order as they are defined in the class definition. `CG C.47. <https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#Rc-order>`_
 
 Delegating constructors
 #######################
@@ -115,33 +112,17 @@ Calling constructors works the same way as *function overloading* but there is a
 
 This syntax problem is not present when you do :cch:`auto fr = fraction();$$$keyword var_local = type();`.
 
-Other options
-=============
-
 There are 2 other ways to call constructors:
 
 .. cch::
     :code_path: calling_ctors_other.cpp
     :color_path: calling_ctors_other.color
 
+Reminder: ``=`` used during object definition acts as initialization, not assignment.
+
 ``=`` is very convenient when you want to call a constructor with exactly 1 argument (the specific constructor overload can take more arguments as long as they have default values). For the :cch:`fraction$$$type` class this allows very intuitive statements like :cch:`fraction fr = 5;$$$type var_local = num;` (here creating a fraction 5/1). This form is not allowed if the constructor is :cch:`explicit`.
 
 ``{}`` places additional requirement: no *narrowing convertions*. So giving a :cch:`long` would not work because convertion from :cch:`long` to :cch:`int` is considered *narrowing*.
-
-.. admonition:: note
-  :class: note
-
-  If a class contains a constructor that takes an object of type :cch:`std::initializer_list` as the first argument, such overload has higher priority and individual values are treated as list elements, not constructor arguments.
-
-  This can be particulary surprising when a type has many overloads:
-
-  .. cch::
-    :code_path: init_list_ctor.cpp
-    :color_path: init_list_ctor.color
-
-  In such case my recommendation is to write :cch:`v2 = {5, 2}$$$var_local = {num, num}` which is much clearer about intent.
-
-.. TODO std::initializer_list explanation when?
 
 Default constructor
 ###################
@@ -155,18 +136,18 @@ If a class does not have any constructors specified, it automatically gets a **d
 
 If you have defined custom constructors and still want to have the default one, you can write :cch:`class_name() = default;$$$func() = keyword;` to force its existence. You can also write :cch:`class_name() = delete;$$$func() = keyword;` to explicitly disable its existence.
 
-When an object of specific class can be constructed with 0 arguments, the class is *default constructible*. Note that this can be achieved even if the constructor takes multiple parameters - just provide default arguments (see variant C in delegation example).
+When an object of specific class can be constructed with 0 arguments, the class is *default constructible*. Default constructible types are easier to work with and some templates within standard and external libraries require types to satisfy this requirement. Note that this can be achieved even if the constructor takes multiple parameters - just provide default arguments (see variant C in delegation example).
 
 Questions
 #########
 
-    How does *function overloading* interact with *access specifiers*?
-
-Access specifiers do not affect *overload resolution* - functions are selected without checking their access. If a function is selected and it can not be called in the current context (e.g. a :cch:`private` function call outside the class) it's simply a compiler error.
-
     Constructors are affected by access specifiers. Is there any point of other specifier than :cch:`public` for a constructor? Wouldn't other access prevent from creating an object?
 
-It would, but only outside the class code. There are some situations where having non-public constructor is beneficial. For example, a class can have 1 :cch:`private` constructor overload and many :cch:`public` overloads, all which delegate to the :cch:`private` one. More examples of non-public constructors will be presented in later lessons.
+It would, but only outside the class code. There are some situations where having non-public constructor is beneficial. For example, a class can have 1 :cch:`private` constructor overload and many :cch:`public` overloads, all which delegate to the :cch:`private` one. Another case (from a later lesson) is a set of :cch:`public` and :cch:`static` functions that call :cch:`private` constructor.
+
+    How does *function overloading* interact with *access specifiers*?
+
+Access specifiers do not affect *overload resolution* - functions are selected without checking their access. If a function has multiple overloads and they differ by access level, it's possible to end up in compilation error because selected overload is not :cch:`public`.
 
     What happens if there is a loop within constructor delegations?
 

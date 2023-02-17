@@ -1,4 +1,4 @@
-.. title: 07 - static fields
+.. title: 09 - static fields
 .. slug: index
 .. description: class static data members
 .. author: Xeverous

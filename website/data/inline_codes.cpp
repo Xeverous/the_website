@@ -282,6 +282,8 @@ T&
 T&&
 T(expression)
 T*
+T[N]
+T[]
 Traits
 T{expression}
 U

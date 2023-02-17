@@ -1,4 +1,4 @@
-.. title: 08 - static methods
+.. title: 10 - static methods
 .. slug: index
 .. description: class static function members
 .. author: Xeverous

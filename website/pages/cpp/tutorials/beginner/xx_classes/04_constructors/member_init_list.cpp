@@ -14,8 +14,9 @@ public:
 	}
 
 	// GOOD: fields are initialized
-	// the syntax is :member1(init1), member2(init2), member3(init3)
-	// many like to format it this way to align : and ,
+	// the syntax is : followed by comma-separated list of members
+	// members can be initialized using () and {}
+	// the formatting below aligns : and ,
 	fraction(int numerator, int denominator)
 	: numerator(numerator)
 	, denominator(make_valid_denominator(denominator))
