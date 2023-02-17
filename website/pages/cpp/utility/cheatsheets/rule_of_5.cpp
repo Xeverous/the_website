@@ -28,12 +28,12 @@ public:
 		return *this;
 	}
 
+	// (no move assignment because the overload above is optimal for both)
+
 	~copyable()
 	{
 		clear();
 	}
-
-	// (no move assignment because the overload above is optimal for both)
 
 	friend void swap(copyable& lhs, copyable& rhs) noexcept
 	{
