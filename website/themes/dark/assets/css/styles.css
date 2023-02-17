@@ -323,6 +323,15 @@ nav.breadcrumb {
 	margin-bottom: 0.5rem;
 }
 
+/*
+ * It's unfortunate that docutils give no way to disable generation of titles for admonitions.
+ * Every admonition has 2 paragraphs and the title simply must be present. Because this website
+ * doesn't use the title, the workaround is to simply disable it through CSS.
+ */
+p.admonition-title {
+	display: none;
+}
+
 .admonition.definition {
 	background-color: #500050;
 }
