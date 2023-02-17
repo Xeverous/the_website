@@ -46,40 +46,43 @@ The syntax is:
     :code_path: range_based_loop_syntax.cpp
     :color_path: range_based_loop_syntax.color
 
-This is strictly syntax sugar - it doesn't rely on any particular magic feature of arrays, ranged-based loops are rewritten by the compiler to act as if they were the following (magic variable names for the sake of example):
+This is strictly syntax sugar - it doesn't rely on any particular magic feature of arrays, ranged-based loops are simply rewritten by the compiler to traditional for-loops.
 
-.. cch::
+.. details::
+  :summary: details
+
+  .. cch::
     :code_path: range_based_loop_expanded.cpp
     :color_path: range_based_loop_expanded.color
 
-- if :cch:`range-expression$$$0spec` is a C-array:
+  - if :cch:`range-expression$$$0spec` is a C-array:
 
-  - :cch:`begin_expr$$$spec` is :cch:`__range$$$var_local`
-  - :cch:`end_expr$$$spec` is :cch:`__range + __array_size$$$var_local + var_local` where :cch:`__array_size$$$var_local` is the size of the array
+    - :cch:`begin_expr$$$spec` is :cch:`__range$$$var_local`
+    - :cch:`end_expr$$$spec` is :cch:`__range + __array_size$$$var_local + var_local` where :cch:`__array_size$$$var_local` is the size of the array
 
-- else if :cch:`range-expression$$$0spec` is a class type that has members named ``begin`` and ``end``:
+  - else if :cch:`range-expression$$$0spec` is a class type that has members named ``begin`` and ``end``:
 
-  - :cch:`begin_expr$$$spec` is :cch:`__range.begin()$$$var_local.func()`
-  - :cch:`end_expr$$$spec` is :cch:`__range.end()$$$var_local.func()`
+    - :cch:`begin_expr$$$spec` is :cch:`__range.begin()$$$var_local.func()`
+    - :cch:`end_expr$$$spec` is :cch:`__range.end()$$$var_local.func()`
 
-- else:
+  - else:
 
-  - :cch:`begin_expr$$$spec` is :cch:`begin(__range)$$$func(var_local)`
-  - :cch:`end_expr$$$spec` is :cch:`end(__range)$$$func(var_local)`
+    - :cch:`begin_expr$$$spec` is :cch:`begin(__range)$$$func(var_local)`
+    - :cch:`end_expr$$$spec` is :cch:`end(__range)$$$func(var_local)`
 
-Don't worry if you don't get all this code - the whole feature exists so that you don't have to know all the details.
+  Don't worry if you don't get all this code - the whole feature exists so that you don't have to know all the details.
 
-In other words, the variables used in the loop are initialized to:
+  In other words, the variables used in the loop are initialized to:
 
-- memory address range if the type is a C-array
-- result of :cch:`begin()` and :cch:`end()` if the type has such member functions
-- result of global functions otherwise (functions are expected to match range as their argument) (functions found by *ADL*) - this specific variant allows to write helper functions to iterate on foreign types (usually from an external library) when the type can not be modified (it's not your code)
+  - memory address range if the type is a C-array
+  - result of :cch:`begin()` and :cch:`end()` if the type has such member functions
+  - result of global functions otherwise (functions are expected to match range as their argument) (functions found by *ADL*) - this specific variant allows to write helper functions to iterate on foreign types (usually from an external library) when the type can not be modified (it's not your code)
 
-.. TODO where/when to explain ADL?
+  .. TODO where/when to explain ADL?
 
-Some examples to demonstrate:
+  Some examples to demonstrate:
 
-.. cch::
+  .. cch::
     :code_path: range_based_loop_demo.cpp
     :color_path: range_based_loop_demo.color
 
@@ -105,6 +108,8 @@ For C arrays I have mentioned that they must have a positive size (with the spec
 - :cch:`.begin()$$$.func()` will be :cch:`==` to :cch:`.end()$$$.func()`
 - any loop will terminate immediately (no iterations would be made)
 
+..
+
     How does is this possible if :cch:`std::array` contains a C-array inside? Are they implemented with compiler extensions?
 
 No. They are implemented using *template specialization* which allows to provide separate definition for specific parameters. If the size parameter is 0, the definition is different. The main purpose of this specialization is to make it work consistently for any size parameter, even though size 0 has almost no practical value (but someone writing templates can accidentally create such arrays, without easily realizing it).
@@ -120,20 +125,25 @@ Passing :cch:`std::array`
 
 Thus, it's recommended to still use:
 
-- pointer + size: :cch:`(const T*, size_t)$$$(keyword param_tmpl*, type)`
+- pointer + size: :cch:`(const T*, std::size_t)$$$(keyword param_tmpl*, namespace::type)`
 - (C++20) :cch:`(std::span<T>)$$$(namespace::type<param_tmpl>)` which essentially is a struct containing pointer and size
 
 Functions with such parameters will work for:
 
-- C-arrays
+- C-arrays (:cch:`T[]`)
 - :cch:`std::array`
-- :cch:`std::vector` and any other container (not necessarily from standard library) that has *contiguous storage*
+- :cch:`std::vector`
+- any other container (not necessarily from standard library) that has *contiguous storage*
 
 ..
 
     How do you pass :cch:`std::array` into a function? How to turn it to :cch:`const T*`?
 
-:cch:`f(arr.data(), arr.size())$$$func(var_local.func(), var_local.func())`. This is the same for any *container* that follows standard library conventions. Different containers implement different *data structures* in memory, so each offers only a specific subset of all container-typical functions, but if a function of specific name is present, you can expect it to be usable in the same way.
+:cch:`f(arr.data(), arr.size())$$$func(var_local.func(), var_local.func())`. The approach is the same for any *container* that follows standard library conventions. Different containers implement different *data structures* in memory, so not every function is offered by every container, but if a function of specific name is present, you can expect it to have the same semantics.
+
+The size function is offered by pretty much every container (though elements may be laid out in memory very differently). The data function is offered by types which implement contiguous storage (only one block of stack or dynamically allocated memory) - most predominantly string types, :cch:`std::array` and :cch:`std::vector`.
+
+By using a "pointer + size" (or C++20 span class) interfaces, you allow your functions to support a variety of containers without forcing external code to use any particular data structure implementation. What the function should care about is not any particular implementation but just contiguous storage.
 
 Exercise
 ########

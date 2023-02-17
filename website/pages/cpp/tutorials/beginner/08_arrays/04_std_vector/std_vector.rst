@@ -35,5 +35,8 @@ If you actually thought about this (unlike most questions in the tutorial which 
 
 - Due to different usage patterns, vectors are typically passed as ranges (e.g. a pair of iterators, pointer + size) while strings are passed as a whole object. The reason for ranges is that many algorithms do not care how a given data structure layouts its memory, only what operations it performs (more on this in later chapters). Strings may have more expectations than just valid memory range.
 
+In short, strings have different expectations and usage patterns which make separate implementation justifiable.
+
 .. TODO explain .c_str()
 .. TODO some vector exercises?
+.. TODO explain how vector implementation works
