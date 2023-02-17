@@ -423,10 +423,10 @@ nav.breadcrumb {
 .code.custom-cpp .dep-name    { color: #c402c4 } /* dependent names */
 .code.custom-cpp .ext         { color: #ffffff } /* extensions, e.g. __builtin_* stuff */
 .code.custom-cpp .oo,                            /* overloaded operators */
-.code.custom-cpp .func-virtual{ color: #f7c527; font-style: italic; } /* clangd: virtual function calls */
 .code.custom-cpp .func-free,                     /* clangd: non-member functions */
 .code.custom-cpp .func-member,                   /* clangd: member functions */
 .code.custom-cpp .func        { color: #f7c527 } /* function/method calls and declarations */
+.code.custom-cpp .func-virtual{ color: #f7c527; font-style: italic; } /* clangd: virtual function calls */
 .code.custom-cpp .label       { color: #ffffff } /* labels (jump places in assembly and for goto) */
 .code.custom-cpp .lit-pre,                       /* literal prefixes */
 .code.custom-cpp .lit-suf     { color: #ffffff } /* literal suffixes */
