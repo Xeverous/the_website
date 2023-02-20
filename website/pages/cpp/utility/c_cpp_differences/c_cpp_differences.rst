@@ -184,3 +184,15 @@ Names in the global scope that are :cch:`const` and not :cch:`extern` have exter
     :color_path: linkage.color
 
 .. TODO inline differences
+
+Expressions
+###########
+
+From:
+
+- https://en.cppreference.com/w/c/language/operator_precedence
+- https://en.cppreference.com/w/cpp/language/operator_precedence
+
+In C++, the conditional operator has the same precedence as assignment operators, and prefix ++ and -- and assignment operators don't have the restrictions about their operands.
+
+In C, the ternary conditional operator has higher precedence than assignment operators. Therefore, the expression ``e = a < d ? a++ : a = d``, which is parsed in C++ as ``e = ((a < d) ? (a++) : (a = d))``, will fail to compile in C due to grammatical or semantic constraints in C.
