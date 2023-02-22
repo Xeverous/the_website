@@ -196,3 +196,9 @@ From:
 In C++, the conditional operator has the same precedence as assignment operators, and prefix ++ and -- and assignment operators don't have the restrictions about their operands.
 
 In C, the ternary conditional operator has higher precedence than assignment operators. Therefore, the expression ``e = a < d ? a++ : a = d``, which is parsed in C++ as ``e = ((a < d) ? (a++) : (a = d))``, will fail to compile in C due to grammatical or semantic constraints in C.
+
+.. TOWRITE convertions
+.. T** to const T* const convertion (valid in C++, invalid in C)
+.. https://stackoverflow.com/questions/48560778/intermediate-pointers-in-cast-must-be-const-qualified-why/
+.. https://stackoverflow.com/a/29553017
+.. http://c-faq.com/ansi/constmismatch.html
