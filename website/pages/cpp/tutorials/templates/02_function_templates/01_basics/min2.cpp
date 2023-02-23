@@ -1,3 +1,5 @@
+#include <string>
+
 double min(double x, double y)
 {
 	if (y < x)

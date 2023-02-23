@@ -1,3 +1,4 @@
 CompileFlags:
-  Add: [-xc++, -std=c++17, -Wall, -Wextra, -Wpedantic]
+  # -Wno-unused-variable because too many examples do it intentionally to showcase something
+  Add: [-xc++, -std=c++17, -Wall, -Wextra, -Wpedantic, -Wno-unused-variable]
   Compiler: clang++

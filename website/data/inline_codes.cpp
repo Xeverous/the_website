@@ -280,12 +280,14 @@ NULL
 T
 T&
 T&&
+T()
 T(expression)
 T*
 T[N]
 T[]
 Traits
 T{expression}
+T{}
 U
 V
 WinMain
@@ -415,8 +417,10 @@ signed int
 signed long long int
 signed short int
 sizeof T
+sizeof(void)
 sizeof...(T)
 static thread_local
+static_assert(false)
 static_cast<T>(expression)
 std::basic_ostream<char>
 std::basic_ostream<wchar_t>

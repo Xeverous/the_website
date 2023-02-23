@@ -280,12 +280,14 @@ macro
 param_tmpl
 param_tmpl&
 param_tmpl&&
+param_tmpl()
 param_tmpl(spec)
 param_tmpl*
 param_tmpl[param_tmpl]
 param_tmpl[]
 param_tmpl
 param_tmpl{spec}
+param_tmpl{}
 param_tmpl
 param_tmpl
 func
@@ -415,8 +417,10 @@ keyword keyword
 keyword keyword keyword keyword
 keyword keyword keyword
 keyword param_tmpl
+keyword(keyword)
 keyword...(param_tmpl)
 keyword keyword
+keyword(keyword)
 keyword<param_tmpl>(spec)
 namespace::type<keyword>
 namespace::type<keyword>
