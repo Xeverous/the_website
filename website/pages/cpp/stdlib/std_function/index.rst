@@ -98,9 +98,9 @@ Since C++23 there is :cch:`std::move_only_function` that allows move-only callab
 
 - :cch:`const` qualifier, ref-qualifiers and :cch:`noexcept` are a part of class template specializations and they are "forwarded" to the :cch:`operator()` so this class is more const-correct, ref-correct and noexcept-correct than :cch:`std::function`.
 - Calling :cch:`operator()` when there is no target is UB instead of throwing an exception.
-- No :cch:`target$$$func` and `target_type$$$func` member functions.
+- No :cch:`target$$$func` and :cch:`target_type$$$func` member functions.
 
-For reasoning, see `https://wg21.link/P0288R9 <P0288R9>`_
+For reasoning, see `P0288 <https://wg21.link/P0288>`_
 
 Additional resources
 ####################
