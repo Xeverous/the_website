@@ -19,7 +19,7 @@
 			</ul>
 		</nav>
 
-		<div class='container'>
+		<div class='main container'>
 			{% if page.metadata.has_breadcrumb() %}
 				<nav class='breadcrumb'>
 					<ol>
@@ -37,9 +37,8 @@
 				<h1>{{ page.title() }}</h1>{# TODO add author date etc #}
 				{{ page.text() }}
 			</div>
+			{% import 'imports/footer.html' as footer %} {{ footer.footer() }}
 		</div>
 	</div>
-
-	{% import 'imports/footer.html' as footer %} {{ footer.footer() }}
 </body>
 {% endmacro %}

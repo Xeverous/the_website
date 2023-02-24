@@ -161,7 +161,6 @@ details > ul {
 }
 
 .layout {
-	display: flex;
 	justify-content: center;
 }
 
@@ -247,7 +246,7 @@ ul.menu, ol.menu {
 .sidebar {
 	position: fixed;
 	width: 80%;
-	left: -100vh;
+	display: none;
 	height: 100%;
 	top: 0;
 	padding: 20px 20px;
@@ -258,7 +257,8 @@ ul.menu, ol.menu {
 }
 
 .sidebar.show {
-	left: 0vw;
+	display: block;
+	left: 0px;
 }
 
 .sidebar ul {
@@ -274,12 +274,6 @@ ul.menu, ol.menu {
 	font-style: italic;
 	font-size: 0.75em;
 	margin-bottom: 5px;
-}
-
-.container {
-	min-width: 50%;
-	max-width: 800px;
-	margin-top: 4rem;
 }
 
 nav.breadcrumb {
@@ -366,7 +360,6 @@ p.admonition-title {
 	overflow: hidden;
 	background-color: #000000;
 	font-size: 0.75rem;
-	border-top: #ffffff 1px solid;
 	display: flex;
 	justify-content: space-around;
 }
@@ -392,15 +385,20 @@ p.admonition-title {
 	}
 
 	.sidebar {
-		position: relative;
-		left: unset;
+		display: block;
+		left: 0px;
 		height: 100%;
 		width: 30%;
 		min-width: 200px;
 	}
 
-	.container {
+	.main {
 		margin: 0;
+		left: 30%;
+		width: 70%;
+		position: fixed;
+		overflow: auto;
+		height: 100%;
 	}
 
 	.breadcrumb, .content {
