@@ -17,8 +17,8 @@ U convert_to(T value)
 
 int main()
 {
-	// min(1, 2.0); // error: conflicting deductions for T
-	min<double>(1, 2.0); // ok: T = double
+	// ::min(1, 2.0); // error: conflicting deductions for T
+	::min<double>(1, 2.0); // ok: T = double
 
 	// U is explicitly specified as unsigned short
 	// T is deduced from the argument as int

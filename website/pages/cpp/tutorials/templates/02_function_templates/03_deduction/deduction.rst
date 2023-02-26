@@ -10,6 +10,8 @@ When a template is being used (*instantiated*), the compiler needs to "figure ou
 
 The example above is very trivial; however *template type deduction* itself is a rather complex feature. I won't describe it in detail because there are simply too many cases and too many possible combinations with other language features. Instead, you will learn specific deduction rules along the way, similarly how :cch:`const` is laid out in the beginner tutorial - not a chapter of its own but an addition to every other feature (const objects, const parameters, const functions, const methods, ...). Deduction intertwines significantly with various elements of the type system and introducing them all in a single lesson would roughly be copy-pasting cppreference or the standard specification.
 
+The examples use ``::`` to avoid ambiguities with standard library functions. Because of ADL, calls to function templates can also search identical names in the standard library if the type of one of arguments also comes from the standard library namespace.
+
 Deduction vs :cch:`auto`
 ########################
 
