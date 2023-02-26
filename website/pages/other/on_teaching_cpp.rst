@@ -45,7 +45,7 @@ problems caused by teaching C first
 - Students experience all of the C backwards compatibility cruft (grammar anomalies, unsafe type system, language history (which at this point is very boring)).
 - Students constantly think and fear of pointers, compiler errors and any kind of bug caused by undefined behavior.
 - Once noticed C++ power mechanisms (such as :cch:`std::string` and templates), they immediately abandon previously showcased material (such as :cch:`char*` and macros) because they find C++-specific stuff to be easier to use and learn. Students wonder why they could not use these at the start.
-- Students miss a ton of simple and powerful stuff that makes ++ in C++. Stuff that is easily showcased and easily remembered. Stuff with which you can start making simple programs instead of dying in depression caused by reading :cch:`printf` documentation after compiler error.
+- Students miss a ton of simple and powerful stuff that makes ++ in C++. Stuff that is easily showcased and easily remembered. Stuff with which you can start making simple programs instead of dying in depression caused by reading :cch:`printf` documentation after a compiler error.
 
 stuff to avoid at the beginning
 ===============================
@@ -119,7 +119,7 @@ Other recommendations
 - When explaining heap, you can mention :cch:`new` and :cch:`delete` but:
 
   - Don't spend much time on it. Just explain they are used to explicitly create and destroy stuff (in contrast  to stack lifetime) and tell that classes such as strings and vectors use this mechanism inside their implementation.
-  - You may may a comparison to GC-based languages (e.g. Java, C#) where :cch:`new` is required for every object creation.
+  - You may make a comparison to GC-based languages (e.g. Java, C#) where :cch:`new` is required for every object creation.
   - Introduce smart pointers to showcase how easy it is now to make a heap-allocated RAII object.
 
 - Raw pointers can be introduced after references and smart pointers as a more complex mechanism to manipulate objects. But do not present raw owning pointers! Use pointers as a non-owning mechanism only - e.g. to showcase :cch:`nullptr` and ability to rebind them.
@@ -201,7 +201,7 @@ Function parameters are what function definition expects to be passed in. Functi
 "User-defined type is a very formal name for a class"
 =====================================================
 
-User-defined type is any new type (not an alias of an existing type) that has been defined in code. Standard library classes are also user-defined types. Apart from classes, C++ has another mechanism for creating new types - enumerations.
+User-defined type is any new type (not an alias of an existing type) that has been defined in code. Standard library classes are also user-defined types. Apart from classes, C++ has other mechanisms for creating new types - enumerations and unions.
 
 "Header files are for declarations. Source file are for definitions."
 =====================================================================
@@ -313,6 +313,6 @@ In simpler words:
 
 - :cch:`typedef` declaration expects only 1 subexpression which is also a part of a larger grammar used for declarations.
 - :cch:`typedef` declaration recursively reuses other grammars and treats a specific subpart as the newly declared type.
-- It is not :cch:`typedef A B$$$keyword spec spec` (where :cch:`A$$$spec` and :cch:`A$$$spec` are disjoint grammars) but :cch:`typedef X$$$keyword spec` where :cch:`X$$$spec` is a recursive grammar, part of which will be treated as the newly introduced type alias identifier.
+- It is not :cch:`typedef A B$$$keyword spec spec` (where :cch:`A$$$spec` and :cch:`B$$$spec` are disjoint grammars) but :cch:`typedef X$$$keyword spec` where :cch:`X$$$spec` is a recursive grammar, part of which will be treated as the newly introduced type alias identifier.
 
 I know it would be really hard (and pretty much pointless) to explain grammar for beginners (especially this heavily-recursive case) but **do not explain** :cch:`typedef` **syntax using mental shortcut mentioned above**. It leads people to a very false thinking. It's much better explained as ":cch:`typedef` reuses declaration grammar but the identifier instead of being a new object is treated as a newly introduced type alias".
