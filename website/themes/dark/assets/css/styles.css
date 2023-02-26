@@ -58,6 +58,11 @@ p {
 	margin-bottom: 1rem;
 }
 
+hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
 table {
 	max-width: 100%;
 	margin-bottom: 1rem;
@@ -119,10 +124,11 @@ a:hover, a:active {
 details {
   margin: 0 auto;
   background: rgb(56, 56, 56);
+  padding-left: 1rem;
   margin-bottom: .5rem;
   box-shadow: 0 .1rem 1rem -.5rem rgba(0,0,0,.4);
   border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
 }
 
 summary {
