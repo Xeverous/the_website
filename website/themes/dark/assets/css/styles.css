@@ -97,6 +97,8 @@ code, .code {
 	background-color: #000000;
 	font-family: 'Consolas', 'Lucida Console', monospace;
 	font-weight: bold;
+	width: 100%;
+	overflow-x: auto;
 }
 
 table.codetable {
@@ -128,7 +130,6 @@ details {
   margin-bottom: .5rem;
   box-shadow: 0 .1rem 1rem -.5rem rgba(0,0,0,.4);
   border-radius: 5px;
-  overflow: auto;
 }
 
 summary {
@@ -282,6 +283,11 @@ ul.menu, ol.menu {
 	margin-bottom: 5px;
 }
 
+.main {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
 nav.breadcrumb {
 	background-color: #1c1c1c;
 	border: 1px solid #3c3c3c;
@@ -363,7 +369,6 @@ p.admonition-title {
 
 .footer {
 	clear: both;
-	overflow: hidden;
 	background-color: #000000;
 	font-size: 0.75rem;
 	display: flex;
@@ -403,7 +408,6 @@ p.admonition-title {
 		left: 30%;
 		width: 70%;
 		position: fixed;
-		overflow: auto;
 		height: 100%;
 	}
 
