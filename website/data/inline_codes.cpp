@@ -436,6 +436,8 @@ std::string&&
 std::vector<T>
 std::vector<char>
 std::vector<wchar_t>
+template <class T>
+template <typename T>
 throw;
 typedef struct
 typeid(T)

@@ -436,6 +436,8 @@ namespace::type&&
 namespace::type<param_tmpl>
 namespace::type<keyword>
 namespace::type<keyword>
+keyword <keyword param_tmpl>
+keyword <keyword param_tmpl>
 keyword;
 keyword keyword
 keyword(param_tmpl)
