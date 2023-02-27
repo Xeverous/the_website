@@ -16,7 +16,7 @@ beginner vs accelerated
 - If your only experience is C, use the beginner tutorial (only skipping the preprocessor articles). There are multiple reasons for it:
 
   - The accelerated tutorial assumes you are already familar with many OOP and other concepts (that are not in C) and therefore does not explain them or only lists differences from other languages.
-  - The beginner C++ tutorial **does not start from teaching C**. It is actually one of the biggest mistakes ever that any C++ teacher can make, so big that I made a `separate article <link://filename/pages/other/on_teaching_cpp.rst>`_ about this problem.
+  - The beginner C++ tutorial **does not start from teaching C**. It is actually one of the biggest mistakes ever that any C++ teacher can make, so big that I made a `separate article <link://filename/pages/cpp/utility/on_teaching_cpp/on_teaching_cpp.rst>`_ about this problem.
 
 templates tutorial
 ##################

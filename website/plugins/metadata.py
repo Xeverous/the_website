@@ -313,16 +313,20 @@ def make_sidebar() -> Sidebar:
             SidebarPage("accelerated", "/cpp/tutorials/accelerated/"),
             SidebarPage("templates", "/cpp/tutorials/templates/")
         ]),
-        SidebarSection("C++ how-to", "Common and specific tasks explained.", []),
-        SidebarSection("C++ cheatsheets", "Yes, they exist!", [
-            SidebarPage("C++ cheatsheets", "/cpp/utility/cheatsheets/")
+        SidebarSection("C++ how-to", "Common and specific tasks explained.", [
+            SidebarPage("standard library components", "/cpp/stdlib/")
         ]),
-        SidebarSection("C++ meta", "About the language itself.", [
+        SidebarSection("C++ utilities", "Various metarials with concentrated information.", [
+            SidebarPage("C++ cheatsheets", "/cpp/utility/cheatsheets/"),
             SidebarPage("C++ FAQ", "/cpp/utility/cpp_faq/"),
-            SidebarPage("glossary", "/cpp/utility/glossary/")
+            SidebarPage("C++ myths", "/cpp/utility/cpp_myths/"),
+            SidebarPage("glossary", "/cpp/utility/glossary/"),
+            SidebarPage("(all articles)", "/cpp/utility/")
         ]),
-        SidebarSection("tooling", "How to setup environment and make writing programs easier", []),
         SidebarSection("misc / meta", "About this website and its authors.", [
-            SidebarPage("about", "/about/")
+            SidebarPage("about", "/about/"),
+            SidebarPage("website FAQ", "/meta/site_faq/"),
+            SidebarPage("Markdown test page", "/meta/markdown_test/"),
+            SidebarPage("reStructuredText test page", "/meta/rest_examples/")
         ])
     ])

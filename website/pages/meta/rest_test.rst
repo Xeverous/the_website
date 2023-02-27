@@ -6,7 +6,7 @@
 
 The following page presents reStructuredText examples and how they look on the site. Compare the source of this page with how it looks on the site (after the build) to learn how everything is rendered. Not everything may look pretty - reStructuredText is an output-agnostic format and this website build process does not implement every possible reStructuredText feature.
 
-In other words, this page is for testing feature implementations. For recommendation how to write pages using reStructuredText check `reST examples <link://filename/pages/test/rest_examples.rst>`__.
+In other words, this page is for testing feature implementations. For recommendation how to write pages using reStructuredText check `reST examples <link://filename/pages/meta/rest_examples.rst>`__.
 
 User documentation:
 

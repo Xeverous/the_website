@@ -1,5 +1,5 @@
 .. title: on teaching C++
-.. slug: on_teaching_cpp
+.. slug: index
 .. description: common mistakes in teaching C++
 .. author: Xeverous
 
@@ -224,8 +224,8 @@ Both of these are wrong:
 The myth comes from very often forgotten implicit convertion caused by *decay*:
 
 .. cch::
-    :code_path: on_teaching_cpp/str_abc.cpp
-    :color_path: on_teaching_cpp/str_abc.color
+    :code_path: str_abc.cpp
+    :color_path: str_abc.color
 
 .. admonition:: Note
     :class: note
@@ -236,8 +236,8 @@ The myth comes from very often forgotten implicit convertion caused by *decay*:
 =========================================================================================
 
 .. cch::
-    :code_path: on_teaching_cpp/typedef.cpp
-    :color_path: on_teaching_cpp/typedef.color
+    :code_path: typedef.cpp
+    :color_path: typedef.color
 
 Such mental shortcut **exhibits the fact that the teacher does not understand language grammar**. This isn't even true for "simple cases", whatever you might think of such term. The whole idea that :cch:`typedef` declaration grammar expects 1 type expression and 1 identifer expression is just wrong.
 

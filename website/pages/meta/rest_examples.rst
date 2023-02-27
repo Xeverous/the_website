@@ -97,7 +97,7 @@ Hyperlinks can have embedded URIs, like `Python <http://www.python.org/>`_. Such
 Links inside the website
 ------------------------
 
-Nikola has a `built-in feature <https://getnikola.com/path-handlers.html>`__ do to it, like this: `reST examples <link://filename/pages/test/rest_examples.rst>`__.
+Nikola has a `built-in feature <https://getnikola.com/path-handlers.html>`__ do to it, like this: `reST examples <link://filename/pages/meta/rest_examples.rst>`__.
 
 Internal Hyperlink Targets
 --------------------------
