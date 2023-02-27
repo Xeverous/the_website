@@ -12,7 +12,7 @@ int map_error_code(int http_code) noexcept
 		case 0: return 0;
 		case 200: return 0;
 		// ...
-		case 403: return ACCES;
+		case 403: return EACCES;
 		case 404: return ENOENT;
 		case 405: return ENOTSUP;
 		// ...

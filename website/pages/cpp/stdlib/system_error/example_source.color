@@ -11,11 +11,11 @@ keyword func(keyword type) keyword
 	{
 		keyword num: keyword num;
 		keyword num: keyword num;
-		// ...
+		0com_single
 		keyword num: keyword macro;
 		keyword num: keyword macro;
 		keyword num: keyword macro;
-		// ...
+		0com_single
 		keyword: keyword macro; 0com_single
 	}
 }
