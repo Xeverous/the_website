@@ -2,7 +2,6 @@ from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 
 from nikola.plugin_categories import RestExtension
-from nikola.utils import get_logger
 
 from plugins.html_utils import escape_text_into_html
 

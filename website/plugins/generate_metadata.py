@@ -1,4 +1,3 @@
-import typing
 from blinker import signal
 
 from nikola.plugin_categories import SignalHandler
