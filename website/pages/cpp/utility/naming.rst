@@ -54,7 +54,7 @@ Templates
 #########
 
 - ``T``, ``U``, ``V``, ... - similarly to loops, likely originated from ``T`` as a shortcut for *type* or *template*, used as template type parameter names
-- ``ForwardIterator``, ``UnaryPredicate``, ``TriviallyCopyable`` - concept names for types that are expected to satisfy certain requirements (since C++20 actual language feature, no longer just a convention)
+- ``ForwardIterator``, ``UnaryPredicate``, ``TriviallyCopyable`` - concept names for types that are expected to satisfy certain requirements; since C++20 no longer a convention but actual language feature; while aliases in templates traditionally used ``PascalCase``, concept names in the standard library use ``snake_case`` instead (any custom concept definitions should too)
 - ``Ts``, ``Args``, any noun in plural form - to name parameter pack in variadic templates
 - ``*_t`` - types found inside type traits
 - ``*_v`` - values found inside type traits
