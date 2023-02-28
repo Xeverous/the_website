@@ -69,7 +69,7 @@ table {
 	border-collapse: collapse;
 	background-color: #212529;
 	position: relative;
-	display: block;
+	display: inline-block;
 	overflow-x: auto;
 	white-space: nowrap;
 }
