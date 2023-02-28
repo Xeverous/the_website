@@ -327,6 +327,6 @@ def make_sidebar() -> Sidebar:
             SidebarPage("about", "/about/"),
             SidebarPage("website FAQ", "/meta/site_faq/"),
             SidebarPage("Markdown test page", "/meta/markdown_test/"),
-            SidebarPage("reStructuredText test page", "/meta/rest_examples/")
+            SidebarPage("reStructuredText test page", "/meta/rest_test/")
         ])
     ])
