@@ -190,6 +190,7 @@ details > ul {
 	width: 100%;
 	top: 0;
 	left: 0;
+	z-index: 1;
 
 	display: flex;
 	justify-content: center;
@@ -273,7 +274,7 @@ ul.menu, ol.menu {
 	padding: 20px 20px;
 	background: #383838;
 	transition: left 100ms ease-in-out;
-	z-index: 1;
+	z-index: 2;
 	overflow: auto;
 }
 
