@@ -283,11 +283,8 @@ ul.menu, ol.menu {
 }
 
 .sidebar ul {
-	display: flex;
-	flex-flow: column;
 	list-style: none;
 	padding-left: 0;
-	height: 100%;
 	margin-top: 0;
 }
 
