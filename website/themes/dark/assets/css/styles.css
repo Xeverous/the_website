@@ -71,7 +71,6 @@ table {
 	position: relative;
 	display: inline-block;
 	overflow-x: auto;
-	white-space: nowrap;
 }
 
 table.codetable td:first-of-type {
@@ -85,7 +84,12 @@ table td, table th {
 }
 
 table.codetable td, table.codetable th {
-	border: none; /* borders cause horizontally scollable code tables to wobble  */
+	border: none; /* borders cause horizontally scrollable code tables to wobble  */
+}
+
+table.codetable {
+	line-height: 1.2rem;
+	width: 100%;
 }
 
 tbody tr:nth-child(odd) td, tbody tr:nth-child(odd) th {
@@ -113,10 +117,6 @@ code, .code {
 	width: 100%;
 	height: 100%;
 	overflow-x: auto;
-}
-
-table.codetable {
-	line-height: 1.2rem;
 }
 
 tbody tr:nth-child(odd) td.code, table tr:nth-child(odd) th.code {
