@@ -754,6 +754,14 @@ The "code" directive constructs a literal block. Language and ``number-lines`` o
 
 The ``code`` directive is used on the website but only for non-highlighted code like shell output of sample programs. Use custom directives for highlighted code.
 
+Non-highlighted code sample:
+
+.. code::
+
+    /tmp/ccQJjzeS.o: In function `main':
+    main.cpp:(.text+0x5): undefined reference to `write_hello()'
+    collect2: error: ld returned 1 exit status
+
 Unsupported
 ###########
 
