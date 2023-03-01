@@ -73,6 +73,10 @@ table {
 	overflow-x: auto;
 }
 
+table p {
+	margin: 0;
+}
+
 table.codetable td:first-of-type {
 	position: sticky;
 	left: 0;
