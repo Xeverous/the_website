@@ -445,6 +445,7 @@ p.admonition-title {
  */
 
 .code.custom-cpp              { color: #ffffff } /* default color */
+.code.custom-cpp .attr        { color: #ffffff } /* attributes - default color because clangd doesn't report them */
 .code.custom-cpp .spec        { color: #808080; font-style: italic; } /* specification */
 .code.custom-cpp .keyword     { color: #ec691e } /* keywords */
 .code.custom-cpp .namespace,                     /* namespace names */

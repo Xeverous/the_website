@@ -88,7 +88,7 @@ class RestHighlighter(RestExtension):
 # CCH implementation
 ##############################################################################
 
-VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;concept;problem;label;spec;"
+VALID_CSS_CLASSES = ("keyword;type;namespace;enum;ext;func;oo;concept;problem;label;spec;attr;"
 "var_local;var_member;var_global;param;param_out;param_tmpl;lit_pre;lit_suf;lit_num;lit_str;lit_chr;esc_seq;fmt_seq;"
 "com_single;com_multi;com_tag_todo;com_single_dox;com_multi_dox;com_tag_dox;pp_hash;pp_directive;pp_header;pp_other;"
 "macro;pp_macro;pp_macro_param;pp_macro_body;asm_direct")
