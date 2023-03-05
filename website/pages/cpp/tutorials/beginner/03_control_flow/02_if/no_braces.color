@@ -1,0 +1,4 @@
+keyword (var_local % num == num)
+	namespace::var_global 2oo var_local 2oo str;
+keyword
+	namespace::var_global 2oo var_local 2oo str;

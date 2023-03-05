@@ -4,7 +4,6 @@
 .. author: Xeverous
 
 .. TODO state somewhere "This chapter will also continue with I/O examples and showcase various utilities in action."
-.. TOCOLOR
 
 Errors are unavoidable. Sooner or later you will encounter one and this is just a part of the job. In fact, you probably have encountered a lot of them already. Time to tidy up the knowledge about them and learn how to best deal with different kinds of errors.
 

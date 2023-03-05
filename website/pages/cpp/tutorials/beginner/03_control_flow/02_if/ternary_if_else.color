@@ -1,0 +1,16 @@
+keyword keyword var_local =
+	  var_local == num ? chr
+	: var_local == num ? chr
+	: var_local == num ? chr
+	: var_local == num ? chr
+	: var_local == num ? chr
+	: chr;
+
+0com_single
+keyword var_local; 0com_single
+     keyword (var_local == num) var_local = chr;
+keyword keyword (var_local == num) var_local = chr;
+keyword keyword (var_local == num) var_local = chr;
+keyword keyword (var_local == num) var_local = chr;
+keyword keyword (var_local == num) var_local = chr;
+keyword             var_local = chr;

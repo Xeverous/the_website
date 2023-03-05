@@ -1,0 +1,10 @@
+keyword (keyword var_local = func(); var_local == num || var_local == num)
+{
+	0com_single
+}
+keyword
+{
+	0com_single
+}
+
+0com_single

@@ -1,4 +1,19 @@
 CompileFlags:
-  # -Wno-unused-variable because too many examples do it intentionally to showcase something
-  Add: [-xc++, -std=c++17, -Wall, -Wextra, -Wpedantic, -Wno-unused-variable]
+  Add: [-xc++, -std=c++17, -Wall, -Wextra, -Wpedantic]
   Compiler: clang++
+---
+# -Wno-unused-variable because these examples do it intentionally to showcase something
+If:
+  PathMatch:
+    - pages/cpp/tutorials/templates/02_function_templates/03_deduction/initializer_list.cpp
+    - pages/cpp/tutorials/templates/02_function_templates/03_deduction/auto.cpp
+CompileFlags:
+  Add: [-Wno-unused-variable]
+---
+If:
+  PathMatch: pages/cpp/tutorials/beginner/03_control_flow/02_if/misleading_indentiation.cpp
+CompileFlags:
+  Add: [-Wno-misleading-indentation]
+Diagnostics:
+  ClangTidy:
+    Remove: [readability-misleading-indentation]

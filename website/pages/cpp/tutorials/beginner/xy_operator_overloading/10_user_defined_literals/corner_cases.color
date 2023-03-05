@@ -1,0 +1,17 @@
+0com_single
+1lit_pre`str str str2lit_suf;  0com_single
+str2problem str str2problem; 0com_single
+str2lit_suf str str2lit_suf; 0com_single
+
+0com_single
+0com_single
+keyword var_local = 3num6problem;   0com_single
+keyword var_local = 3num2lit_suf+3num;   0com_single
+keyword var_local = 3num2lit_suf +3num;  0com_single
+keyword var_local = (3num2lit_suf)+3num; 0com_single
+keyword var_local = num4problem;       0com_single
+keyword var_local = num2lit_suf +num;      0com_single
+
+keyword var_local = num12problem(); 0com_single
+keyword var_local = num3lit_suf .func(); 0com_single
+keyword var_local = (num3lit_suf).func(); 0com_single

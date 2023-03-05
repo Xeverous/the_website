@@ -1,0 +1,2 @@
+keyword var_local = func(var_local);
+var_local = namespace::func(var_local == var_local, var_local);

@@ -1,0 +1,24 @@
+(keyword keyword keyword) 0com_single
+(keyword keyword) 0com_single
+0com_single
+0com_single
+(keyword keyword*) 0com_single
+keyword <keyword...>
+9com_multi () 0com_single
+
+0com_single
+(keyword)
+(keyword)
+(keyword) 0com_single
+(keyword)
+(keyword)
+
+0com_single
+(keyword keyword*, namespace::type)
+(keyword keyword*, namespace::type)
+(keyword keyword*, namespace::type) 0com_single
+(keyword keyword*, namespace::type)
+(keyword keyword*, namespace::type)
+0com_single
+keyword <type>
+9com_multi ()

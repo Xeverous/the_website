@@ -7,51 +7,15 @@
 
 The simplest control flow keywords of them all - :cch:`if`. It executes attached code only if the condition is :cch:`true`.
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        std::cout << "Enter a number: ";
-        int x = 0;
-        std::cin >> x;
-
-        if (x % 2 == 0)
-        {
-            std::cout << x << " is even (divisible by 2)\n";
-        }
-    }
+.. cch::
+  :code_path: if.cpp
 
 Comparisons naturally produce values of type :cch:`bool` but the condition can be any expression that is or can be converted to a value of type :cch:`bool`. :cch:`if` works as an explicit convertion so objects which require explicit convertion will also work.
 
 The negative branch can be introduced with :cch:`else`:
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        std::cout << "Enter a number: ";
-        int x = 0;
-        std::cin >> x;
-
-        if (x % 2 == 0)
-        {
-            // positive branch - executed only if condition is true
-            std::cout << x << " is even (divisible by 2)\n";
-        {
-        else
-        {
-            // negative branch - executed only if condition is false
-            std::cout << x << " is odd\n";
-        }
-    }
+.. cch::
+  :code_path: if_negative_branch.cpp
 
 ..
 
@@ -59,28 +23,15 @@ The negative branch can be introduced with :cch:`else`:
 
 Simply reverse the result. You can use ``!`` to flip a boolean but often you can just modify the condition to produce reversed result:
 
-.. TOCOLOR
-
-.. code::
-
-    // reverse result
-    // use when the condition's code can not be easily modified
-    if (!(x % 2 == 0))
-
-    // modify condition
-    // the preferred way - it results in simpler code
-    if (x % 2 != 0)
+.. cch::
+  :code_path: reverse_condition.cpp
+  :color_path: reverse_condition.color
 
 You can omit braces (``{}``) if exactly one statement is used:
 
-.. TOCOLOR
-
-.. code::
-
-    if (x % 2 == 0)
-        std::cout << x << " is even (divisible by 2)\n";
-    else
-        std::cout << x << " is odd\n";
+.. cch::
+  :code_path: no_braces.cpp
+  :color_path: no_braces.color
 
 .. admonition:: tip
     :class: tip
@@ -94,24 +45,8 @@ You can omit braces (``{}``) if exactly one statement is used:
 
 Some projects take the rule even further and always require braces, even for simplest and shortest 1-line statements - the argument for it is safety as braces prevent situations like this:
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x = 6;
-
-        if (x % 2 == 0)
-            std::cout << x << " is even\n";
-
-            if (x % 4 == 0)
-                std::cout << x << " is divisible by 4\n";
-        else
-            std::cout << x << " is odd\n";
-    }
+.. cch::
+  :code_path: misleading_indentiation.cpp
 
 The above program will print that :cch:`x` is both even and odd. The problem is that code has been written assuming that the :cch:`else` will attach to the first :cch:`if` statement, but it attached to the second - formatting does not affect language grammar. Some compilers may print a warning that the code is misleadingly indented:
 
@@ -125,28 +60,8 @@ The above program will print that :cch:`x` is both even and odd. The problem is 
 
 This is the minimum to make the code work and be consistent:
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x = 6;
-
-        if (x % 2 == 0)
-        {
-            std::cout << x << " is even\n";
-
-            if (x % 4 == 0)
-                std::cout << x << " is divisible by 4\n";
-        }
-        else
-        {
-            std::cout << x << " is odd\n";
-        }
-    }
+.. cch::
+  :code_path: misleading_indentiation_fixed.cpp
 
 Sometimes, thanks to many conditions your code might indent very deeply, like this (image shows PHP, not C++):
 
@@ -155,57 +70,13 @@ Sometimes, thanks to many conditions your code might indent very deeply, like th
 
 There are ways to solve such problems. One of them does not require any additional features so I can present it to you now. If you have an if-else tree that nests only on one end like this:
 
-.. TOCOLOR
-
-.. code::
-
-    if (x % 2 == 0)
-    {
-        std::cout << x << " is divisible by 2\n";
-    }
-    else
-    {
-        if (x % 3 == 0)
-        {
-            std::cout << x << " is divisible by 3\n";
-        }
-        else
-        {
-            if (x % 5 == 0)
-            {
-                std::cout << x << " is divisible by 5\n";
-            }
-            else
-            {
-                if (x % 7 == 0)
-                {
-                    std::cout << x << " is divisible by 7\n";
-                }
-                else
-                {
-                    if (x % 11 == 0)
-                        std::cout << x << " is divisible by 11\n";
-                }
-            }
-        }
-    }
+.. cch::
+  :code_path: if_tree.cpp
 
 ...then you can use the rule that allows a single statement without braces and format the code in a very compact way:
 
-.. TOCOLOR
-
-.. code::
-
-    if (x % 2 == 0)
-        std::cout << x << " is divisible by 2\n";
-    else if (x % 3 == 0)
-        std::cout << x << " is divisible by 3\n";
-    else if (x % 5 == 0)
-        std::cout << x << " is divisible by 5\n";
-    else if (x % 7 == 0)
-        std::cout << x << " is divisible by 7\n";
-    else if (x % 11 == 0)
-        std::cout << x << " is divisible by 11\n";
+.. cch::
+  :code_path: if_tree_compact.cpp
 
 Here braces are not only ommited for print statements, but they are also ommited between :cch:`else` and :cch:`if` keywords.
 
@@ -214,75 +85,47 @@ Syntax sugar
 
 Since C++17 it's possible to have an extra statement inside :cch:`if`, before the condition. It's very useful if you need to perform extra work but also limit the scope of any extra objects:
 
-.. TOCOLOR
-
-.. code::
-
-    if (int x = func(); x == 0 || x == 1)
-    {
-        // do stuff...
-    }
-    else
-    {
-        // do other stuff...
-    }
-
-    // x does not exist in this scope
+.. cch::
+  :code_path: cpp17_syntax.cpp
+  :color_path: cpp17_syntax.color
 
 The code is equivalent to:
 
-.. TOCOLOR
-
-.. code::
-
-    {
-        int x = func();
-
-        if (x == 0 || x == 1)
-        {
-            // do stuff...
-        }
-        else
-        {
-            // do other stuff...
-        }
-    }
+.. cch::
+  :code_path: cpp17_syntax_equivalent.cpp
+  :color_path: cpp17_syntax_equivalent.color
 
 Ternary conditional
 ###################
 
 There is a special ternary (arity of 3) operator that is similar to :cch:`if` but it works on the expression level, not statement. This makes it possible to use it as a subexpression inside complex statements:
 
-.. TOCOLOR
-
-.. code::
-
-    // () are necessary because ?: has normally lower priority than <<
-    std::cout << "x is " << (x % 2 == 0 ? "even" : "odd") << "\n";
+.. cch::
+  :code_path: ternary_print.cpp
+  :color_path: ternary_print.color
 
 and to simply else-if code:
 
-.. TOCOLOR
-
-.. code::
-
-    const char c = x == 1 ? 'a'
-                 : x == 2 ? 'b'
-                 : x == 3 ? 'c'
-                 : x == 4 ? 'd'
-                 : x == 5 ? 'e'
-                 : 'f';
-
-    // equivalent else-if code
-    char c; // can't use const here
-         if (x == 1) c = 'a';
-    else if (x == 2) c = 'b';
-    else if (x == 3) c = 'c';
-    else if (x == 4) c = 'd';
-    else if (x == 5) c = 'e';
-    else             c = 'f';
+.. cch::
+  :code_path: ternary_if_else.cpp
+  :color_path: ternary_if_else.color
 
 The ``?:`` operator must always have 2 branches. You can get very creative with its usage (it works as a functional subexpression, not as a full statement) (not only for assignments) but I advise you to not overuse it because (due to grammar and backwards compatibility) `its evaluation rules <https://en.cppreference.com/w/cpp/language/operator_other#Conditional_operator>`_ have gone extremely complex.
+
+Advanced example
+################
+
+Sometimes it might not be obvious how large simplifications are possible. The example below has a space for multiple potential improvements.
+
+.. cch::
+  :code_path: example_advanced.cpp
+  :color_path: example_advanced.color
+
+Note that the result of the function is wanted in both branches - the first branch (before improvements) used a local variable to avoid duplicate function calls but this resulted in hiding of the redundancy.
+
+.. cch::
+  :code_path: example_advanced_fixed.cpp
+  :color_path: example_advanced_fixed.color
 
 Exercise
 ########
@@ -292,18 +135,9 @@ Question 1
 
 What's wrong with the following code?
 
-.. TOCOLOR
-
-.. code::
-
-    if (x != 0);
-    {
-        // do stuff...
-    }
-    else
-    {
-        // do other stuff...
-    }
+.. cch::
+  :code_path: exercise_q1.cpp
+  :color_path: exercise_q1.color
 
 .. details::
     :summary: Answer
@@ -313,30 +147,18 @@ What's wrong with the following code?
     - There is ``;`` immediately after the condition (null statement) which acts as the braceless one statement. It will prevent actually intended statements from happening and break the :cch:`else` (either shifting it to a different :cch:`if` or making a compiler error).
     - There are 2 branches but the condition contains a negation. It can be simplified by reversing the condition and swapping branch bodies:
 
-    .. TOCOLOR
-
-    .. code::
-
-        if (x == 0)
-        {
-            // do other stuff...
-        }
-        else
-        {
-            // do stuff...
-        }
+    .. cch::
+      :code_path: exercise_a1.cpp
+      :color_path: exercise_a1.color
 
 Question 2
 ==========
 
 What's wrong with the following code?
 
-.. TOCOLOR
-
-.. code::
-
-    if (x = func())
-        std::cout << "x is non-zero\n";
+.. cch::
+  :code_path: exercise_q2.cpp
+  :color_path: exercise_q2.color
 
 .. details::
     :summary: Answer
@@ -347,33 +169,15 @@ What's wrong with the following code?
 
     If both the assignment and the test are desired, major compilers agreed on this solution:
 
-    .. TOCOLOR
-
-    .. code::
-
-        // extra set of () indicates desirable assignment in subexpression
-        if ((x = func()))
-            std::cout << "x is non-zero\n";
+    .. cch::
+      :code_path: exercise_a2.cpp
+      :color_path: exercise_a2.color
 
 ..
 
     I don't get the *assignment operator returns first operand* part. What makes ``=`` compile inside :cch:`if`?
 
 You need to understand that :cch:`if` does not see every entity inside the condition, it simply acts as a test of a value of type :cch:`bool`. The whole condition expression is evaluated first and only then its result is brought to the :cch:`if` logic. Why assignments *return* first operand as the result? This will get clearer once you get familiar with *functions* and the concept of *returning* a result - many parts of C++ work on the basis of functions and most operators (including ``=``) too.
-
-Question 3
-==========
-
-Simplify this code:
-
-.. TOCOLOR
-
-.. code::
-
-    if (a == f(b))
-        x = std::make_pair(true, a);
-    else
-        x = std::make_pair(false, f(b));
 
 Writing
 =======

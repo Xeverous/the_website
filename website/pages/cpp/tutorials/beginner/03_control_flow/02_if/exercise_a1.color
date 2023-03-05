@@ -1,0 +1,8 @@
+keyword (var_local == num)
+{
+	0com_single
+}
+keyword
+{
+	0com_single
+}

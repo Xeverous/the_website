@@ -1,0 +1,12 @@
+0com_single
+keyword num:
+keyword num:
+keyword num:
+keyword num:
+keyword num:
+keyword num:
+	namespace::var_global 2oo str 2oo var_local 2oo str;
+	keyword;
+keyword:
+	namespace::var_global << str;
+	keyword;

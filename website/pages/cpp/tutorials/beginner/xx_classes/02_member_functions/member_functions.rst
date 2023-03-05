@@ -26,8 +26,6 @@ Notice few things:
 
 If you would like to split the code above into files:
 
-.. TOCOLOR
-
 .. cch::
     :code_path: split_code.cpp
     :color_path: split_code.color

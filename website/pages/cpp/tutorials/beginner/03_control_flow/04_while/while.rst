@@ -1,5 +1,5 @@
 .. title: 04 - while
-.. slug: 04_while
+.. slug: index
 .. description: while loops in C++
 .. author: Xeverous
 
@@ -13,33 +13,8 @@ The second most used type of control flow instructions are loops.
 While loop
 ##########
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        std::cout << "Enter a number: ";
-        int x = 0;
-        std::cin >> x;
-
-        if (x == 0)
-        {
-            std::cout << "You entered zero.\n";
-        }
-        else
-        {
-            while (x % 2 == 0)
-            {
-                std::cout << "dividing " << x << "\n";
-                x /= 2; // equivalent to x = x / 2
-            }
-
-            std::cout << "The final, odd value is " << x << ".\n";
-        }
-    }
+.. cch::
+  :code_path: while_loop.cpp
 
 Before each iteration, the condition is evaluated. If it's :cch:`false` the loop ends and execution continues after the loop's body. In worst case (when first condition evaluation returns :cch:`false`) the loop never runs.
 
@@ -56,22 +31,8 @@ Do-while loop
 
 An alternative loop is formed using :cch:`do` and :cch:`while` keywords. The only difference is that the condition is checked **after** the loop body, which means that it's guaranteed to execute at least once.
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x = 0;
-        do
-        {
-            std::cout << "Enter a non-negative number: ";
-            std::cin >> x;
-        } while (x < 0);
-        //             ^ spot the semicolon
-    }
+.. cch::
+    :code_path: do_while_loop.cpp
 
 .. admonition:: note
     :class: note
@@ -83,31 +44,15 @@ Breaking a loop
 
 It's possible to :cch:`break` a loop, exiting it prematurely. The following program is equivalent to the previous one:
 
-.. TOCOLOR
-
-.. code::
-
-    #include <iostream>
-
-    int main()
-    {
-        int x = 0;
-        while (true)
-        {
-            std::cout << "Enter a non-negative number: ";
-            std::cin >> x;
-
-            if (x >= 0)
-                break;
-        }
-    }
+.. cch::
+  :code_path: loop_break.cpp
 
 Many would say this version has better code as do-while loops are known for their low readability. If you can, try to refactor do-while loops to other loops.
 
 Advancing a loop
 ################
 
-.. TODO
+TODO describe continue
 
 Recommendation
 ##############

@@ -1,0 +1,3 @@
+0com_single
+keyword ((var_local = func()))
+	namespace::var_global 2oo str;

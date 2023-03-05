@@ -209,15 +209,9 @@ Automatic type
 
 A simple but very useful feature is the type placeholder :cch:`auto`. It will deduce the type based on the expression used in intialization:
 
-.. TOCOLOR
-
-.. code::
-
-    auto b = true; // bool
-    auto i = 1;    // int
-    auto l = 1l;   // long
-    auto f = 1.0f; // float
-    auto x; // error: can't deduce without initializer
+.. cch::
+  :code_path: auto.cpp
+  :color_path: auto.color
 
 .. admonition:: note
     :class: note

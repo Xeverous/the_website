@@ -1,0 +1,12 @@
+keyword (var_local)
+{
+	keyword num:
+		keyword var_local = num; 0com_single
+		namespace::var_global 2oo var_local 2oo chr;
+		keyword;
+	keyword:
+		0com_single
+		0com_single
+		namespace::var_global 2oo str;
+		keyword;
+}

@@ -1,0 +1,9 @@
+namespace::func(var_local.func(), var_local.func());
+macro(!func(var_local));
+
+keyword func(keyword namespace::type<type>& param)
+{
+	macro(namespace::func(param.func(), param.func()));
+	0com_single
+	keyword namespace::func(param.func(), param.func()) 2oo param.func();
+}

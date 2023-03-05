@@ -3,8 +3,6 @@
 .. description: self-checks within a program
 .. author: Xeverous
 
-.. TOCOLOR
-
 From Wikipedia:
 
     In computer programming, specifically when using the imperative programming paradigm, an assertion is a predicate (a Boolean-valued function over the state space, usually expressed as a logical proposition using the variables of a program) connected to a point in the program, that always should evaluate to true at that point in code execution. Assertions can help a programmer read the code, help a compiler compile it, or help the program detect its own defects.
@@ -89,47 +87,23 @@ An assertion should never have any side effects. They are not present in release
 
 A hypothetical program loads its configuration and puts entries of the same type into an array. Then, just before they are used, an assert is placed to ensure there are no duplicate entries:
 
-.. code::
-
-    // at the end of configuration loading
-    assert(!has_duplicates(entries));
-
-    // elsewhere - function definition
-    bool has_duplicates(std::vector<config_entry>& v)
-    {
-        std::sort(v.begin(), v.end());
-        // after sorting, duplicate elements would be next to each other
-        return std::adjacent_find(v.begin(), v.end()) != v.end();
-    }
+.. cch::
+  :code_path: side_effect.cpp
+  :color_path: side_effect.color
 
 This isn't a good assertion because it has a side effect. If the assert is present (even if it does not fire) executing it will sort the vector. This doesn't seem to affect program state immediately, but it could impact program performance differently in release and debug builds aswell as change the order of processing configuration (which could have non-trivial consequences, depending on how it works).
 
 What could be done to improve this code? If the program's configuration should always be sorted (e.g. because processing it requires certain order), the code could be modified as such:
 
-.. code::
-
-    std::sort(entries.begin(), entries.end());
-    assert(!has_duplicates(entries));
-
-    bool has_duplicates(const std::vector<config_entry>& v)
-    {
-        assert(std::is_sorted(v.begin(), v.end()));
-        // after sorting, duplicate elements would be next to each other
-        return std::adjacent_find(v.begin(), v.end()) != v.end();
-    }
+.. cch::
+  :code_path: side_effect_outside.cpp
+  :color_path: side_effect_outside.color
 
 If sorting is not necessary, then the assertion could be written as in original example but with 1 difference - the function should take vector by value (copy) and then sort this vector. Sorting a copy would not affect original vector.
 
-.. code::
-
-    assert(!has_duplicates(entries));
-
-    bool has_duplicates(std::vector<config_entry> v)
-    {
-        std::sort(v.begin(), v.end());
-        // after sorting, duplicate elements would be next to each other
-        return std::adjacent_find(v.begin(), v.end()) != v.end();
-    }
+.. cch::
+    :code_path: side_effect_copy.cpp
+    :color_path: side_effect_copy.color
 
 ..
 

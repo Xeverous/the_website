@@ -1,0 +1,9 @@
+keyword type { 9com_multi };
+
+keyword type keyword`str2func(keyword keyword param)
+{
+	keyword type(param);
+}
+
+0com_single
+keyword keyword var_global = 4num2lit_suf; 0com_single

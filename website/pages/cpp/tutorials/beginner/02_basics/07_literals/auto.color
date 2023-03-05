@@ -1,0 +1,5 @@
+keyword var_local = keyword; 0com_single
+keyword var_local = num;    0com_single
+keyword var_local = 1num1lit_suf;   0com_single
+keyword var_local = 3num1lit_suf; 0com_single
+keyword problem; 0com_single
