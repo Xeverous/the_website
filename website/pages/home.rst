@@ -38,7 +38,7 @@ No plans for it as of now. I would have to learn it first :). It would also be r
 
   How can I help?
 
-- The biggest amount of work by far is ordering of lessons and finding good examples. Writing articles (when materials are already prepared) is relatively easy. By *good examples* I mean stuff like the :cch:`fraction$$$type` class that can be found in the first OOP chapter in the beginner tutorial. The class is so good that I use it to explain numerous features across multiple lessons. See the `rationale article <link://filename/pages/cpp/tutorials/beginner/appendix/rationale.rst>` which explains why it's so good in detail.
+- The biggest amount of work by far is ordering of lessons and finding good examples. Writing articles (when materials are already prepared) is relatively easy. By *good examples* I mean stuff like the :cch:`fraction$$$type` class that can be found in the first OOP chapter in the beginner tutorial. The class is so good that I use it to explain numerous features across multiple lessons. See the `rationale article <link://filename/pages/cpp/tutorials/beginner/appendix/rationale.rst>`_ which explains why it's so good in detail.
 - CSS: whatever you can improve. Please don't make PRs importing thousand-lines-long Bootstrap or other frameworks - such changes will be rejected.
 - non-tutorial articles: if you have a topic that is C++ related or generally useful in the programming world (e.g. explaining Unicode, software licensing, an idea for a cheatsheet) you are encouraged to contribute. As of writing this, all the content is mine but I can easily add author information to pages with separate articles.
 - Whatever else: just open an issue. Link to the repo at the bottom of every page.
@@ -58,5 +58,5 @@ See `reStructuredText test page <link://filename/pages/meta/rest_test/rest_test.
 News
 ####
 
-- 2023.03.05: Initial release of a functioning website (beginner C++ mostly complete and others barely started).
+- 2023.03.05: Initial release of a functioning website (beginner C++ mostly complete and others barely started). `Reddit post. <https://www.reddit.com/r/cpp/comments/11j8pa7/opensource_c_tutorials_website_project_first>`_
 - 2021.06.04: `First reddit post <https://www.reddit.com/r/cpp/comments/ns4hl5/what_do_you_think_of_learning_c_through_online>`_ that announces the project.
