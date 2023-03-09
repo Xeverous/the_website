@@ -58,5 +58,6 @@ See `reStructuredText test page <link://filename/pages/meta/rest_test/rest_test.
 News
 ####
 
+- 2023.03.10: Bugfix index page link (missing trailing slash).
 - 2023.03.05: Initial release of a functioning website (beginner C++ mostly complete and others barely started). `Reddit post. <https://www.reddit.com/r/cpp/comments/11j8pa7/opensource_c_tutorials_website_project_first>`_
 - 2021.06.04: `First reddit post <https://www.reddit.com/r/cpp/comments/ns4hl5/what_do_you_think_of_learning_c_through_online>`_ that announces the project.

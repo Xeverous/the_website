@@ -6,9 +6,9 @@
 		<nav class='topbar'>
 			<ul class='menu'>
 				<li class='button'><a href='/'>HOME</a></li>
-				<li class='button'><a href='/index'>INDEX</a></li>
-				<li class='button'><a href='/faq'>FAQ</a></li>
-				<li class='button'><a href='/about'>ABOUT</a></li>
+				<li class='button'><a href='/index/'>INDEX</a></li>
+				<li class='button'><a href='/faq/'>FAQ</a></li>
+				<li class='button'><a href='/about/'>ABOUT</a></li>
 				<li class='button menu-button'>
 					<div class="menu-icon">
 						<div class="bar1"></div>
@@ -23,7 +23,7 @@
 			{% if page.metadata.has_breadcrumb() %}
 				<nav class='breadcrumb'>
 					<ol>
-						<li><a href='/index'>index</a></li>
+						<li><a href='/index/'>index</a></li>
 						<span>/</span>
 						{% for b in page.metadata.breadcrumb() %}
 							<li><a href="{{ b.link() }}">{{ b.name() }}</a></li>
