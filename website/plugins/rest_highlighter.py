@@ -35,7 +35,7 @@ except ImportError as err:
     pyach = None
 
 import ansi2html
-import pkg_resources
+from importlib.metadata import version
 
 from plugins.html_utils import escape_text_into_html
 from plugins.clangd import Clangd
@@ -71,9 +71,9 @@ class RestHighlighter(RestExtension):
             inline_codes = load_inline_codes()
             logger.info(f"loaded inline codes: {len(inline_codes)} lines")
         else:
-            logger.error("failed to import ACH extension, cch roles and directives will generate dummy output")
+            logger.error("failed to import ACH extension, cch roles and directives will output raw (colorless) code")
             inline_codes = None
-        logger.info(f"using ansi2html version {pkg_resources.get_distribution('ansi2html').version}")
+        logger.info(f"using ansi2html version {version('ansi2html')}")
 
         # custom directives need to register a class that implements certain members
         # custom roles need to register a function - because we need to pass some state
@@ -224,12 +224,16 @@ class CustomCodeHighlight(Directive):
 
     # for internal purposes
     try:
+        if pyach is None:
+            raise RuntimeError("ACH not present")
         clangd = Clangd()
-    except RuntimeError as err:
+        clangd_highlighter = pyach.ClangdHighlighter(clangd.semantic_token_types, clangd.semantic_token_modifiers, KEYWORDS_LIST)
+    except (RuntimeError, ValueError) as err:
         clangd = None
+        clangd_highlighter = None
         logger = get_logger(__name__)
         logger.error(str(err))
-        logger.warning("build will function but clangd-based highlight will be disabled")
+        logger.warning("website build will function but clangd-based highlight will be disabled")
 
     def run(self):
         code_path = self.options["code_path"]
@@ -289,12 +293,9 @@ class CustomCodeHighlight(Directive):
                 return fail_gracefully(read_file(code_absolute_path), f"code {lang}")
 
             file_content, semantic_tokens = CustomCodeHighlight.clangd.file_content_and_semantic_tokens_with_color_variance(code_absolute_path)
-            result = pyach.run_clangd_highlighter(
+            result = CustomCodeHighlight.clangd_highlighter.run(
                 file_content,
-                semantic_token_types=CustomCodeHighlight.clangd.semantic_token_types,
-                semantic_token_modifiers=CustomCodeHighlight.clangd.semantic_token_modifiers,
                 semantic_tokens=semantic_tokens,
-                keywords=KEYWORDS_LIST,
                 table_wrap_css_class=lang,
                 highlight_printf_formatting=highlight_printf_formatting)
             return [nodes.raw('', result, format='html')]

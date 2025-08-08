@@ -35,6 +35,8 @@ Since this site uses custom plugins and hooks custom build steps, any errors sho
 - `export NIKOLA_SHOW_TRACEBACKS=1` when debugging. `unset NIKOLA_SHOW_TRACEBACKS` to clear it. Note that opening new shell clears environmental variables.
 - Error that address already in use when launching Nikola server: previous Nikola execution was not stopped gracefully. `sudo killall nikola` should fix it.
 - If you spot multiple errors in the website build log, focus on the first ones first. A lot of further errors can be caused by previous ones.
+- If ACH is built with sanitizer support, an error like "ASan runtime does not come first in initial library list" might appear. In such case use `export ASAN_OPTIONS=verify_asan_link_order=0` in the same shell in which you build. See https://stackoverflow.com/a/59894695/4818802 for more info.
+- Sometimes some files may be properly rebuilt but browsers may cache too aggressively. `ctrl + F5` is often the shortcut to do a hard refresh.
 
 ## writing pages
 
@@ -105,6 +107,22 @@ Specified paths are mandatory. If the path begins with `/`, it is relative to th
 #### custom code highlight
 
 TODO describe `cch` (inline role and directive).
+
+##### mirror
+
+- constructors (inside the class and out-of-class definitions): `func`, otherwise `type`
+- overloaded operators: `operator==` as `keyword2func` (operator definiton and explicit calls), regular operator calls should use `oo`, in templates - no color
+- using declarations like using `base_type::base_type;` - `keyword type::type;` (they work differently from using declarations for functions)
+- literals: num parses only digits, use `Xnum` when there are non-digit symbols but use suf for language- and user-defined suffixes: `3.14if` should be `4num2suf`
+- `override`, `final` - `keyword` if used in their dedicated places
+- `ext` - extensions like `__builtin` and all weird stuff (e.g. second parameter to `va_start`)
+- formats in strings (like `%s` in printf-family or `{}` in format family) and also `0xdeadbeef` - `2fmt_seq8num`
+
+Fast edit of a particular color name in mirror files: `find pages/ -type f -name "*.color" -exec sed -i 's/foo/bar/g' {} +`.
+
+##### clangd
+
+No color file required. `clangd.py` will color it automatically. The code must be compileable (not necessarily runnable).
 
 #### ANSI highlight
 

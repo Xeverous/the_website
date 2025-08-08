@@ -132,6 +132,11 @@ def get_clangd_path() -> str:
     raise RuntimeError("clangd not found. Specify env variable CLANGD that points to the executable or to a name searchable in PATH")
 
 
+# Resources for implementing the pipe
+# https://stackoverflow.com/questions/375427/a-non-blocking-read-on-a-subprocess-pipe-in-python
+# https://github.com/python-lsp/python-lsp-server/blob/develop/test/test_language_server.py
+# https://github.com/python-lsp/python-lsp-server/blob/ff418805b1a4361959ab8d1b560117f50fc08856/pylsp/python_lsp.py#L150
+# https://github.com/yeger00/pylspclient/blob/master/pylspclient/json_rpc_endpoint.py
 class Connection:
     def __init__(self, connect=True, initialize=True):
         self.id = 1
@@ -512,7 +517,8 @@ class Clangd:
         for token in semantic_tokens:
             token_string = lines[token.line][token.column:token.column+token.length]
             output_lines.append(
-                f'line|col+len|cv: {token.line:>3}|{token.column:>3}+{token.length:>2}|{token.color_variant:>2}, '
+                # add 1 to line and column to change 0-based index to 1-based for human output
+                f'line|col+len|cv: {token.line+1:>3}|{token.column+1:>3}+{token.length:>2}|{token.color_variant:>2}, '
                 f'token: {token_string:<16}, '
                 f'type: {self.semantic_token_types[token.token_type]:<13}, '
                 f'modifiers: {", ".join(self.list_of_token_modifiers(token.token_modifiers))}\n'

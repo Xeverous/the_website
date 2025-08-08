@@ -3,7 +3,8 @@ Name = strikethrough
 Module = strikethrough
 
 [Nikola]
-PluginCategory = RestExtension
+compiler = rest
+PluginCategory = CompilerExtension
 
 [Documentation]
 Author = Xeverous

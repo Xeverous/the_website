@@ -3,7 +3,8 @@ Name = rest_highlighter
 Module = rest_highlighter
 
 [Nikola]
-PluginCategory = RestExtension
+compiler = rest
+PluginCategory = CompilerExtension
 
 [Documentation]
 Author = Xeverous

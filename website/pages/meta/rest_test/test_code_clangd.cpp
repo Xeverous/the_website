@@ -8,6 +8,11 @@
 #ifndef EMPTY
 #define BUG
 #error Misconfigured build!
+auto disabled_function()
+{
+	/// TODO fix compilation
+	return non_existent_function(3.14f, "test");
+}
 #endif
 
 // some comment

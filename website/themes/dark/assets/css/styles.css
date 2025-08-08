@@ -442,21 +442,31 @@ p.admonition-title {
  * (analogically the same for "func" and "func-*")
  *
  * "problem" and "spec" are strictly for mirror to highlight special parts of code
+ *
+ * new colors to test:
+ * tags in comments: 800080 814582
+ * literals: 477488
+ * locals: 3C758D 357A92 357A8F
+ * functions: F1C438 E3B735 F1C436
+ * comments: D0AEEB BB63FF 8c3fc8 8146a2 4c6073
+ * types: 87F025 91e625 7fff00
+ * tparam: D9B0AC CDB1AD
+ * problem ff8f8f
  */
 
 .code.custom-cpp              { color: #ffffff } /* default color */
 .code.custom-cpp .attr        { color: #ffffff } /* attributes - default color because clangd doesn't report them */
-.code.custom-cpp .spec        { color: #808080; font-style: italic; } /* specification */
+.code.custom-cpp .spec        { color: #808080; font-style: italic; } /* mirror: specification (C++ pseudocode) */
 .code.custom-cpp .keyword     { color: #ec691e } /* keywords */
 .code.custom-cpp .namespace,                     /* namespace names */
 .code.custom-cpp .type-class,                    /* clangd: classes and their aliases */
 .code.custom-cpp .type-interface,                /* clangd: interfaces and their aliases */
 .code.custom-cpp .type-enum,                     /* clangd: enums and their aliases */
-.code.custom-cpp .type        { color: #9cf828 } /* type aliases and any form of user-defined type */
+.code.custom-cpp .type        { color: #9cf828 } /* mirror: any type, clangd: type aliases and any form of user-defined type */
 .code.custom-cpp .enum        { color: #408000 } /* enum values */
 .code.custom-cpp .dep-name    { color: #c402c4 } /* dependent names */
 .code.custom-cpp .ext         { color: #ffffff } /* extensions, e.g. __builtin_* stuff */
-.code.custom-cpp .oo,                            /* overloaded operators */
+.code.custom-cpp .oo,                            /* mirror: overloaded operators, clangd: operator + userDefined */
 .code.custom-cpp .func-free,                     /* clangd: non-member functions */
 .code.custom-cpp .func-member,                   /* clangd: member functions */
 .code.custom-cpp .func        { color: #f7c527 } /* function/method calls and declarations */
@@ -467,18 +477,18 @@ p.admonition-title {
 .code.custom-cpp .lit-num,                       /* numeric literals */
 .code.custom-cpp .lit-str,                       /* string literals */
 .code.custom-cpp .lit-chr,                       /* character literals */
-.code.custom-cpp .var-local,                     /* function-local variables */
-.code.custom-cpp .var-member  { color: #319bbe } /* member variables */
-.code.custom-cpp .var-global  { color: #ffffff } /* objects with static storage duration */
-.code.custom-cpp .lit-str-raw-delim,             /* delimeters of raw string literals */
+.code.custom-cpp .var-local,                     /* mirror: function-local variables, clangd: functionScope */
+.code.custom-cpp .var-member  { color: #319bbe } /* mirror: member variables, clangd: classScope */
+.code.custom-cpp .var-global  { color: #ffffff } /* mirror: objects with static storage duration, clangd: fileScope, globalScope */
+.code.custom-cpp .lit-str-raw-delim,             /* delimeters of raw string literals, e.g. foo in R"foo(str)foo" */
 .code.custom-cpp .esc-seq     { color: #868613 } /* escape sequences within literals */
 .code.custom-cpp .fmt-seq     { color: #408000 } /* formatting sequences (e.g. % for printf, {} for fmt) */
 
 .code.custom-cpp .param       { color: #408000 } /* parameters (to functions) */
-.code.custom-cpp .param-out   { color: #c86496 } /* output parameters (passed by non-const reference) */
+.code.custom-cpp .param-out   { color: #c86496 } /* mirror: output parameters (passed by non-const reference), clangd: usedAsMutableReference */
 .code.custom-cpp .param-tmpl,                    /* template parameters */
 .code.custom-cpp .concept     { color: #ffaf7b } /* concepts (constrained templates) */
-.code.custom-cpp .problem     { color: #ff0000 } /* compiler errors etc. */
+.code.custom-cpp .problem     { color: #ff0000 } /* mirror: compiler errors etc. */
 
 .code.custom-cpp .com-single     { color: #af47ff } /* single-line comments */
 .code.custom-cpp .com-multi      { color: #be68ff } /* multi-line comments */
@@ -496,8 +506,8 @@ p.admonition-title {
 .code.custom-cpp .pp-macro-body  { color: #aaaaaa } /* macro body */
 .code.custom-cpp .macro          { color: #ffffff } /* macro usages outside preprocessor code */
 .code.custom-cpp .asm-direct     { color: #ec691e } /* directives in assembly */
-.code.custom-cpp .disabled-code  { color: #777777 } /* clangd: ifdef'ed out code */
 .code.custom-cpp .unknown        { color: #ffffff } /* clangd: unknown */
+.code.custom-cpp .disabled-code  { filter: brightness(0.5); } /* clangd: ifdef'ed out code (reported as comment) */
 
 /*
  * styles for ANSI-escaped text
