@@ -3,7 +3,8 @@ Name = details_element
 Module = details_element
 
 [Nikola]
-PluginCategory = RestExtension
+compiler = rest
+PluginCategory = CompilerExtension
 
 [Documentation]
 Author = Xeverous

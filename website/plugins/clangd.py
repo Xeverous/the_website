@@ -512,7 +512,8 @@ class Clangd:
         for token in semantic_tokens:
             token_string = lines[token.line][token.column:token.column+token.length]
             output_lines.append(
-                f'line|col+len|cv: {token.line:>3}|{token.column:>3}+{token.length:>2}|{token.color_variant:>2}, '
+                # add 1 to line and column to change 0-based index to 1-based for human output
+                f'line|col+len|cv: {token.line+1:>3}|{token.column+1:>3}+{token.length:>2}|{token.color_variant:>2}, '
                 f'token: {token_string:<16}, '
                 f'type: {self.semantic_token_types[token.token_type]:<13}, '
                 f'modifiers: {", ".join(self.list_of_token_modifiers(token.token_modifiers))}\n'

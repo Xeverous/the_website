@@ -1,5 +1,5 @@
 Jinja2==3.1.2
 ansi2html==1.8.0
-Nikola==8.2.3
-aiohttp==3.8.3
+Nikola==8.3.3
+aiohttp==3.9.0b0
 watchdog==2.1.9
