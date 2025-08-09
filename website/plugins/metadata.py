@@ -314,7 +314,8 @@ def make_sidebar() -> Sidebar:
             SidebarPage("templates", "/cpp/tutorials/templates/")
         ]),
         SidebarSection("C++ how-to", "Common and specific tasks explained.", [
-            SidebarPage("standard library components", "/cpp/stdlib/")
+            SidebarPage("standard library components", "/cpp/how_to/std_lib/"),
+            SidebarPage("language features", "/cpp/how_to/language/")
         ]),
         SidebarSection("C++ utilities", "Various metarials with concentrated information.", [
             SidebarPage("C++ cheatsheets", "/cpp/utility/cheatsheets/"),

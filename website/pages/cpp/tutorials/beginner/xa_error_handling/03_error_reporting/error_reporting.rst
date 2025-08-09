@@ -306,6 +306,6 @@ There are many more approaches to error reporting - some as simple as creating a
 
 Later, you will learn about one very special feature made specifically for error reporting and handling: *exceptions* (:cch:`try`, :cch:`throw` and :cch:`catch`).
 
-There is also an article (outside the tutorial) about `standard library for system errors <link://filename/pages/cpp/stdlib/system_error/system_error.rst>`_ which describes how to encapsulate :cch:`errno` and create own numbered error categories. The mechanism relies on classes though, which are yet to be explained.
+There is also an article (outside the tutorial) about `standard library for system errors <link://filename/pages/cpp/how_to/std_lib/system_error/system_error.rst>`_ which describes how to encapsulate :cch:`errno` and create own numbered error categories. The mechanism relies on classes though, which are yet to be explained.
 
 .. TODO write exceptions chapter and revisit here to decide whether or not to make a short introduction to exceptions
