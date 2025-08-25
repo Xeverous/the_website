@@ -1,5 +1,4 @@
 #include <utility>
-#include <cassert>
 #include <algorithm>
 
 class copyable
@@ -7,14 +6,18 @@ class copyable
 public:
 	copyable() = default;
 
-	copyable(const copyable& other)
-	: m_size(other.m_size)
+	copyable(const double* data, int size)
+	: m_size(size)
 	{
-		if (m_size > 0) {
-			m_data = new double[m_size];
-			copy_from(other.m_data, other.m_size);
+		if (size > 0) {
+			m_data = new double[size];
+			std::copy(data, data + size, m_data);
 		}
 	}
+
+	copyable(const copyable& other)
+	: copyable(other.m_data, other.m_size)
+	{}
 
 	copyable(copyable&& other) noexcept
 	{
@@ -44,16 +47,15 @@ public:
 	void clear() noexcept
 	{
 		delete m_data;
+		m_data = nullptr;
 		m_size = 0;
 	}
 
-private:
-	void copy_from(const double* data, int size)
-	{
-		assert(m_size >= size);
-		std::copy(data, data + size, m_data);
-	}
+	double* data() { return m_data; }
+	const double* data() const { return m_data; }
+	int size() { return m_size; }
 
+private:
 	double* m_data = nullptr;
 	int m_size = 0;
 };
@@ -61,6 +63,15 @@ private:
 class moveable
 {
 	moveable() = default;
+
+	moveable(const double* data, int size)
+	: m_size(size)
+	{
+		if (size > 0) {
+			m_data = new double[size];
+			std::copy(data, data + size, m_data);
+		}
+	}
 
 	moveable(const moveable& other) = delete;
 	moveable(moveable&& other) noexcept
@@ -89,8 +100,13 @@ class moveable
 	void clear() noexcept
 	{
 		delete m_data;
+		m_data = nullptr;
 		m_size = 0;
 	}
+
+	double* data() { return m_data; }
+	const double* data() const { return m_data; }
+	int size() { return m_size; }
 
 private:
 	double* m_data = nullptr;
